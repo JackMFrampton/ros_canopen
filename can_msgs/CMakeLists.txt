@@ -1,11 +1,19 @@
 cmake_minimum_required(VERSION 3.5)
 project(can_msgs)
-
+# test2
 # Default to C99
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
 endif()
 
+<<<<<<< HEAD
+# Default to C99
+if(NOT CMAKE_C_STANDARD)
+  set(CMAKE_C_STANDARD 99)
+endif()
+
+=======
+>>>>>>> e1ef33566ced77671d35e5fb5bb6c9e6645f98fe
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
