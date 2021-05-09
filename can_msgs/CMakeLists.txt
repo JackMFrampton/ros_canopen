@@ -5,6 +5,7 @@ project(can_msgs)
 if(NOT CMAKE_C_STANDARD)
   set(CMAKE_C_STANDARD 99)
 endif()
+<<<<<<< HEAD
 
 <<<<<<< HEAD
 # Default to C99
@@ -13,6 +14,9 @@ if(NOT CMAKE_C_STANDARD)
 endif()
 
 =======
+>>>>>>> e1ef33566ced77671d35e5fb5bb6c9e6645f98fe
+=======
+
 >>>>>>> e1ef33566ced77671d35e5fb5bb6c9e6645f98fe
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
