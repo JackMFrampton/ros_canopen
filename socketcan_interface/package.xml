@@ -22,7 +22,7 @@
   <exec_depend>libboost-chrono-dev</exec_depend>
   <exec_depend>libboost-system-dev</exec_depend>
   <exec_depend>libboost-thread-dev</exec_depend>
-  <exec_depend>rcutils</exec_depend>
+  <exec_depend>class_loader</exec_depend>
   <exec_depend>libconsole-bridge-dev</exec_depend>
   <exec_depend>linux-kernel-headers</exec_depend>
   <exec_depend>rosidl_default_runtime</exec_depend>

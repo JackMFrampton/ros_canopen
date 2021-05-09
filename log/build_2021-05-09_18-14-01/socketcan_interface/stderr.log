@@ -1,0 +1,17 @@
+CMake Error at CMakeLists.txt:95 (find_package):
+  By not providing "Findxmlrpcpp.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "xmlrpcpp",
+  but CMake did not find one.
+
+  Could not find a package configuration file provided by "xmlrpcpp" with any
+  of the following names:
+
+    xmlrpcppConfig.cmake
+    xmlrpcpp-config.cmake
+
+  Add the installation prefix of "xmlrpcpp" to CMAKE_PREFIX_PATH or set
+  "xmlrpcpp_DIR" to a directory containing one of the above files.  If
+  "xmlrpcpp" provides a separate development package or SDK, be sure it has
+  been installed.
+
+

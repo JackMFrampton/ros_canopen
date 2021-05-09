@@ -1,1 +1,1 @@
-builtin_interfaces:libboost-chrono-dev:libboost-dev:libboost-system-dev:libboost-thread-dev:libconsole-bridge-dev:linux-kernel-headers:rcutils:rosidl_default_runtime
+builtin_interfaces:class_loader:libboost-chrono-dev:libboost-dev:libboost-system-dev:libboost-thread-dev:libconsole-bridge-dev:linux-kernel-headers:rosidl_default_runtime

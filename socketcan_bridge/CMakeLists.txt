@@ -1,37 +1,33 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5)
 project(socketcan_bridge)
 
+# Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
   set(CMAKE_CXX_STANDARD 14)
 endif()
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
-find_package(catkin REQUIRED
-  COMPONENTS
-    can_msgs
-    rosconsole_bridge
-    roscpp
-    socketcan_interface
-)
+find_package(rosidl_default_generators REQUIRED)
+find_package(can_msgs REQUIRED)
+find_package(rosconsole_bridge REQUIRED)
+find_package(rclpp REQUIRED)
+find_package(socketcan_interface REQUIRED)
 
-catkin_package(
-  INCLUDE_DIRS
-    include
-  LIBRARIES
-    socketcan_to_topic
-    topic_to_socketcan
-  CATKIN_DEPENDS
-    can_msgs
-    rosconsole_bridge
-    roscpp
-    socketcan_interface
-)
+ament_export_dependencies(can_msgs 
+                          rosconsole_bridge
+                          roscpp
+                          socketcan_interface)
+
+ament_export_include_directories(include)
+
+ament_export_libraries(socketcan_to_topic
+                        topic_to_socketcan)
 
 include_directories(
   include
-  ${catkin_INCLUDE_DIRS}
 )
-
 
 # socketcan_to_topic
 add_library(socketcan_to_topic
@@ -39,7 +35,6 @@ add_library(socketcan_to_topic
   src/socketcan_to_topic.cpp
 )
 target_link_libraries(socketcan_to_topic
-  ${catkin_LIBRARIES}
 )
 add_dependencies(socketcan_to_topic
   ${catkin_EXPORTED_TARGETS}
@@ -51,7 +46,6 @@ add_library(topic_to_socketcan
   src/topic_to_socketcan.cpp
 )
 target_link_libraries(topic_to_socketcan
-  ${catkin_LIBRARIES}
 )
 add_dependencies(topic_to_socketcan
   ${catkin_EXPORTED_TARGETS}
@@ -63,7 +57,6 @@ add_executable(socketcan_to_topic_node
 )
 target_link_libraries(socketcan_to_topic_node
   socketcan_to_topic
-  ${catkin_LIBRARIES}
 )
 
 # topic_to_socketcan_node
@@ -73,7 +66,6 @@ add_executable(topic_to_socketcan_node
 )
 target_link_libraries(topic_to_socketcan_node
   topic_to_socketcan
-  ${catkin_LIBRARIES}
 )
 
 # socketcan_bridge_node
@@ -83,7 +75,6 @@ add_executable(${PROJECT_NAME}_node
 target_link_libraries(${PROJECT_NAME}_node
   topic_to_socketcan
   socketcan_to_topic
-  ${catkin_LIBRARIES}
 )
 
 install(
@@ -93,18 +84,18 @@ install(
     socketcan_to_topic_node
     topic_to_socketcan
     topic_to_socketcan_node
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
 install(
   DIRECTORY
     include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  DESTINATION include/${PROJECT_NAME}
 )
 
-if(CATKIN_ENABLE_TESTING)
+if(BUILD_TESTING)
   find_package(rostest REQUIRED)
   find_package(roslint REQUIRED)
 
@@ -112,13 +103,12 @@ if(CATKIN_ENABLE_TESTING)
   roslint_add_test()
 
   # unit test for the can_msgs::Frame and can::Frame types.
-  catkin_add_gtest(test_conversion
+  ament_add_gtest(test_conversion
     test/test_conversion.cpp
   )
   target_link_libraries(test_conversion
     topic_to_socketcan
     socketcan_to_topic
-    ${catkin_LIBRARIES}
   )
 
 
@@ -128,7 +118,6 @@ if(CATKIN_ENABLE_TESTING)
   )
   target_link_libraries(test_to_socketcan
     topic_to_socketcan
-    ${catkin_LIBRARIES}
   )
 
   add_rostest_gtest(test_to_topic
@@ -138,7 +127,6 @@ if(CATKIN_ENABLE_TESTING)
   target_link_libraries(test_to_topic
     socketcan_to_topic
     topic_to_socketcan
-    ${catkin_LIBRARIES}
   )
 
 endif()

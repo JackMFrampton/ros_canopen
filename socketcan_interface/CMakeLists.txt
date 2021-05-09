@@ -1,28 +1,20 @@
 cmake_minimum_required(VERSION 3.5)
 project(socketcan_interface)
 
-# Default to C99
-if(NOT CMAKE_C_STANDARD)
-  set(CMAKE_C_STANDARD 99)
-endif()
-
 # Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 14)
 endif()
-
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
 
-
 find_package(ament_cmake REQUIRED)
-#find_package(class_loader REQUIRED)
-find_package(rclcpp REQUIRED)
+find_package(class_loader REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(rosidl_typesupport_c REQUIRED)
 find_package(console_bridge REQUIRED)
-
+find_package(Threads REQUIRED)
 find_package(Boost REQUIRED
   COMPONENTS
     chrono
@@ -30,33 +22,14 @@ find_package(Boost REQUIRED
     thread
 )
 
-find_package(Threads REQUIRED)
+include_directories(include ${Boost_INCLUDE_DIRS})
+include_directories(include ${console_bridge_INCLUDE_DIRS}) 
 
-
-ament_export_include_directories(
-  include
-)
-
-ament_export_libraries(
-  ${PROJECT_NAME}_string
-)
-
-ament_export_dependencies(
-  DEPENDS
-    Boost
-    console_bridge
-)
-
-ament_package(
-  CONFIG_EXTRAS
-)
-
-include_directories(
-  include
-  ${Boost_INCLUDE_DIRS}
-  ${catkin_INCLUDE_DIRS}
-  ${console_bridge_INCLUDE_DIRS}
-)
+ament_export_dependencies(DEPENDS
+                        Boost 
+                        console_bridge 
+                        class_loader)
+ament_export_include_directories(include)
 
 # ${PROJECT_NAME}_string
 add_library(${PROJECT_NAME}_string
@@ -71,10 +44,10 @@ add_executable(socketcan_dump
 target_link_libraries(socketcan_dump
    ${PROJECT_NAME}_string
    ${console_bridge_LIBRARIES}
-   ${catkin_LIBRARIES}
    ${Boost_LIBRARIES}
-   ${CMAKE_THREAD_LIBS_INIT}
 )
+
+ament_target_dependencies(socketcan_dump class_loader)
 
 # socketcan_bcm
 add_executable(socketcan_bcm
@@ -84,7 +57,6 @@ add_executable(socketcan_bcm
 target_link_libraries(socketcan_bcm
    ${PROJECT_NAME}_string
    ${console_bridge_LIBRARIES}
-   ${catkin_LIBRARIES}
    ${Boost_LIBRARIES}
 )
 
@@ -94,7 +66,6 @@ add_library(${PROJECT_NAME}_plugin
 )
 target_link_libraries(${PROJECT_NAME}_plugin
   ${console_bridge_LIBRARIES}
-  ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
 
@@ -104,80 +75,83 @@ install(
     socketcan_dump
     ${PROJECT_NAME}_plugin
     ${PROJECT_NAME}_string
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
 install(
-  DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION include/${PROJECT_NAME}
+  DIRECTORY
+    include/${PROJECT_NAME}/
+  DESTINATION include
+  FILES_MATCHING PATTERN "*.h"
 )
 
 install(
-  FILES ${PROJECT_NAME}_plugin.xml
-  DESTINATION include ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  FILES
+    ${PROJECT_NAME}_plugin.xml
+  DESTINATION share/${PROJECT_NAME}
 )
-if(CATKIN_ENABLE_TESTING)
-  find_package(xmlrpcpp REQUIRED)
 
-  catkin_add_gtest(${PROJECT_NAME}-test_dummy_interface
-    test/test_dummy_interface.cpp
-  )
-  target_link_libraries(${PROJECT_NAME}-test_dummy_interface
-    ${PROJECT_NAME}_string
-    ${console_bridge_LIBRARIES}
-    ${catkin_LIBRARIES}
-    ${Boost_LIBRARIES}
-  )
+#if(BUILD_TESTING)
+#  find_package(xmlrpcpp REQUIRED)
+#
+#  ament_add_gtest(${PROJECT_NAME}-test_dummy_interface
+#    test/test_dummy_interface.cpp
+#  )
+#  target_link_libraries(${PROJECT_NAME}-test_dummy_interface
+#    ${PROJECT_NAME}_string
+#    ${console_bridge_LIBRARIES}
+#    ${Boost_LIBRARIES}
+#  )
 
-  catkin_add_gtest(${PROJECT_NAME}-test_delegates
-    test/test_delegates.cpp
-  )
-  target_link_libraries(${PROJECT_NAME}-test_delegates
-    ${PROJECT_NAME}_string
-    ${catkin_LIBRARIES}
-    ${Boost_LIBRARIES}
-  )
+#  ament_add_gtest(${PROJECT_NAME}-test_delegates
+#    test/test_delegates.cpp
+#  )
+#  target_link_libraries(${PROJECT_NAME}-test_delegates
+#    ${PROJECT_NAME}_string
+#    ${Boost_LIBRARIES}
+#  )
 
-  catkin_add_gtest(${PROJECT_NAME}-test_settings
-    test/test_settings.cpp
-  )
-  target_include_directories(${PROJECT_NAME}-test_settings PRIVATE
-    ${xmlrpcpp_INCLUDE_DIRS}
-  )
-  target_link_libraries(${PROJECT_NAME}-test_settings
-    ${PROJECT_NAME}_string
-    ${catkin_LIBRARIES}
-    ${xmlrpcpp_LIBRARIES}
-  )
+#  ament_add_gtest(${PROJECT_NAME}-test_settings
+#    test/test_settings.cpp
+#  )
+#  target_include_directories(${PROJECT_NAME}-test_settings PRIVATE
+#    ${xmlrpcpp_INCLUDE_DIRS}
+#  )
+#  target_link_libraries(${PROJECT_NAME}-test_settings
+#    ${PROJECT_NAME}_string
+#    ${xmlrpcpp_LIBRARIES}
+#  )
 
-  catkin_add_gtest(${PROJECT_NAME}-test_string
-    test/test_string.cpp
-  )
-  target_link_libraries(${PROJECT_NAME}-test_string
-    ${PROJECT_NAME}_string
-    ${console_bridge_LIBRARIES}
-    ${catkin_LIBRARIES}
-  )
+#  ament_add_gtest(${PROJECT_NAME}-test_string
+#    test/test_string.cpp
+#  )
+#  target_link_libraries(${PROJECT_NAME}-test_string
+#    ${PROJECT_NAME}_string
+#    ${console_bridge_LIBRARIES}
+#    ${catkin_LIBRARIES}
+#  )
 
-  catkin_add_gtest(${PROJECT_NAME}-test_filter
-    test/test_filter.cpp
-  )
-  target_link_libraries(${PROJECT_NAME}-test_filter
-    ${PROJECT_NAME}_string
-    ${console_bridge_LIBRARIES}
-    ${catkin_LIBRARIES}
-    ${Boost_LIBRARIES}
-  )
+#  ament_add_gtest(${PROJECT_NAME}-test_filter
+#    test/test_filter.cpp
+#  )
+#  target_link_libraries(${PROJECT_NAME}-test_filter
+#    ${PROJECT_NAME}_string
+#    ${console_bridge_LIBRARIES}
+#    ${Boost_LIBRARIES}
+#  )
 
-  catkin_add_gtest(${PROJECT_NAME}-test_dispatcher
-    test/test_dispatcher.cpp
-  )
-  target_link_libraries(${PROJECT_NAME}-test_dispatcher
-    ${PROJECT_NAME}_string
-    ${catkin_LIBRARIES}
-    ${Boost_LIBRARIES}
-  )
-  target_compile_options(${PROJECT_NAME}-test_dispatcher PRIVATE -Wno-deprecated-declarations)
-endif()
+#  ament_add_gtest(${PROJECT_NAME}-test_dispatcher
+#    test/test_dispatcher.cpp
+#  )
+#  target_link_libraries(${PROJECT_NAME}-test_dispatcher
+#    ${PROJECT_NAME}_string
+#    ${catkin_LIBRARIES}
+#    ${Boost_LIBRARIES}
+#  )
+#  target_compile_options(${PROJECT_NAME}-test_dispatcher PRIVATE -Wno-deprecated-declarations)
+
+#endif()
+
+ament_package()

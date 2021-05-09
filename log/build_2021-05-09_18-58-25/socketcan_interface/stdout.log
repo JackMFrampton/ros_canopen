@@ -1,0 +1,58 @@
+-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found class_loader: 2.0.2 (/opt/ros/foxy/share/class_loader/cmake)
+-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /root/ros_canopen/build/socketcan_interface
+[ 25%] Built target socketcan_interface_string
+[ 50%] Built target socketcan_interface_plugin
+[35m[1mScanning dependencies of target socketcan_dump[0m
+[ 75%] Built target socketcan_bcm
+[ 87%] [32mBuilding CXX object CMakeFiles/socketcan_dump.dir/src/candump.cpp.o[0m
+[100%] [32m[1mLinking CXX executable socketcan_dump[0m
+[100%] Built target socketcan_dump
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_bcm
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_dump
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_plugin.a
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_string.a
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/socketcan_interface_plugin.xml
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/package_run_dependencies/socketcan_interface
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/parent_prefix_path/socketcan_interface
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.sh
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.dsv
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.sh
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.dsv
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.bash
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.sh
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.zsh
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.dsv
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.dsv
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/packages/socketcan_interface
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig.cmake
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig-version.cmake
+-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.xml
+-- Installing: /root/ros_canopen/install/socketcan_interface/include
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/make_shared.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/interface.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/string.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/delegates.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/bcm.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/asio_base.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/socketcan.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/threading.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/dispatcher.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/settings.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/logging.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/filter.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/dummy.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/reader.h
+-- Installing: /root/ros_canopen/install/socketcan_interface/include/xmlrpc_settings.h

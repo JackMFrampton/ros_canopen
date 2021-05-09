@@ -1,0 +1,20 @@
+CMake Error at /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package):
+  By not providing "Findmessage_runtime.cmake" in CMAKE_MODULE_PATH this
+  project has asked CMake to find a package configuration file provided by
+  "message_runtime", but CMake did not find one.
+
+  Could not find a package configuration file provided by "message_runtime"
+  with any of the following names:
+
+    message_runtimeConfig.cmake
+    message_runtime-config.cmake
+
+  Add the installation prefix of "message_runtime" to CMAKE_PREFIX_PATH or
+  set "message_runtime_DIR" to a directory containing one of the above files.
+  If "message_runtime" provides a separate development package or SDK, be
+  sure it has been installed.
+Call Stack (most recent call first):
+  /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig.cmake:41 (include)
+  CMakeLists.txt:13 (find_package)
+
+

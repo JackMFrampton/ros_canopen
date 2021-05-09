@@ -1,0 +1,48 @@
+[0.020s] Invoking command in '/root/ros_canopen/build/socketcan_bridge': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy /usr/bin/cmake /root/ros_canopen/socketcan_bridge -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/socketcan_bridge
+[0.177s] -- The C compiler identification is GNU 9.3.0
+[0.255s] -- The CXX compiler identification is GNU 9.3.0
+[0.262s] -- Check for working C compiler: /usr/bin/cc
+[0.355s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.356s] -- Detecting C compiler ABI info
+[0.454s] -- Detecting C compiler ABI info - done
+[0.473s] -- Detecting C compile features
+[0.473s] -- Detecting C compile features - done
+[0.477s] -- Check for working CXX compiler: /usr/bin/c++
+[0.580s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.581s] -- Detecting CXX compiler ABI info
+[0.687s] -- Detecting CXX compiler ABI info - done
+[0.711s] -- Detecting CXX compile features
+[0.713s] -- Detecting CXX compile features - done
+[0.720s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[0.723s] -- Found ament_cmake_core: 0.9.8 (/opt/ros/foxy/share/ament_cmake_core/cmake)
+[0.744s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") 
+[0.744s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.946s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.957s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.972s] -- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[1.121s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[1.143s] -- Found FastRTPS: /opt/ros/foxy/include  
+[1.253s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.296s] -- Found can_msgs: 0.0.0 (/root/ros_canopen/install/can_msgs/share/can_msgs/cmake)
+[1.303s] CMake Error at /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_dependencies-extras.cmake:21 (find_package):
+[1.303s]   By not providing "Findmessage_runtime.cmake" in CMAKE_MODULE_PATH this
+[1.303s]   project has asked CMake to find a package configuration file provided by
+[1.303s]   "message_runtime", but CMake did not find one.
+[1.303s] 
+[1.303s]   Could not find a package configuration file provided by "message_runtime"
+[1.303s]   with any of the following names:
+[1.304s] 
+[1.304s]     message_runtimeConfig.cmake
+[1.304s]     message_runtime-config.cmake
+[1.304s] 
+[1.304s]   Add the installation prefix of "message_runtime" to CMAKE_PREFIX_PATH or
+[1.304s]   set "message_runtime_DIR" to a directory containing one of the above files.
+[1.304s]   If "message_runtime" provides a separate development package or SDK, be
+[1.304s]   sure it has been installed.
+[1.304s] Call Stack (most recent call first):
+[1.305s]   /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig.cmake:41 (include)
+[1.305s]   CMakeLists.txt:13 (find_package)
+[1.305s] 
+[1.305s] 
+[1.305s] -- Configuring incomplete, errors occurred!
+[1.305s] See also "/root/ros_canopen/build/socketcan_bridge/CMakeFiles/CMakeOutput.log".

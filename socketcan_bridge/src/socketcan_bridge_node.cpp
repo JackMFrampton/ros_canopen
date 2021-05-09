@@ -25,7 +25,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <ros/ros.h>
+#include "rclcpp/rclcpp.hpp"
 #include <socketcan_bridge/topic_to_socketcan.h>
 #include <socketcan_bridge/socketcan_to_topic.h>
 #include <socketcan_interface/threading.h>
@@ -37,7 +37,6 @@
 int main(int argc, char *argv[])
 {
   ros::init(argc, argv, "socketcan_bridge_node");
-
   ros::NodeHandle nh(""), nh_param("~");
 
   std::string can_device;

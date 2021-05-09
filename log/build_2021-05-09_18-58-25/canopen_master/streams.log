@@ -1,0 +1,35 @@
+[0.021s] Invoking command in '/root/ros_canopen/build/canopen_master': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface /usr/bin/cmake /root/ros_canopen/canopen_master -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCATKIN_SYMLINK_INSTALL=ON -DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/canopen_master
+[0.187s] -- The C compiler identification is GNU 9.3.0
+[0.279s] -- The CXX compiler identification is GNU 9.3.0
+[0.289s] -- Check for working C compiler: /usr/bin/cc
+[0.382s] -- Check for working C compiler: /usr/bin/cc -- works
+[0.384s] -- Detecting C compiler ABI info
+[0.479s] -- Detecting C compiler ABI info - done
+[0.503s] -- Detecting C compile features
+[0.504s] -- Detecting C compile features - done
+[0.521s] -- Check for working CXX compiler: /usr/bin/c++
+[0.618s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[0.619s] -- Detecting CXX compiler ABI info
+[0.726s] -- Detecting CXX compiler ABI info - done
+[0.754s] -- Detecting CXX compile features
+[0.755s] -- Detecting CXX compile features - done
+[0.763s] CMake Error at CMakeLists.txt:9 (find_package):
+[0.763s]   By not providing "Findcatkin.cmake" in CMAKE_MODULE_PATH this project has
+[0.763s]   asked CMake to find a package configuration file provided by "catkin", but
+[0.763s]   CMake did not find one.
+[0.763s] 
+[0.764s]   Could not find a package configuration file provided by "catkin" with any
+[0.764s]   of the following names:
+[0.764s] 
+[0.764s]     catkinConfig.cmake
+[0.764s]     catkin-config.cmake
+[0.764s] 
+[0.765s]   Add the installation prefix of "catkin" to CMAKE_PREFIX_PATH or set
+[0.765s]   "catkin_DIR" to a directory containing one of the above files.  If "catkin"
+[0.765s]   provides a separate development package or SDK, be sure it has been
+[0.765s]   installed.
+[0.765s] 
+[0.765s] 
+[0.765s] -- Configuring incomplete, errors occurred!
+[0.766s] See also "/root/ros_canopen/build/canopen_master/CMakeFiles/CMakeOutput.log".
+[0.767s] Invoked command in '/root/ros_canopen/build/canopen_master' returned '1': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface /usr/bin/cmake /root/ros_canopen/canopen_master -DCATKIN_INSTALL_INTO_PREFIX_ROOT=0 -DCATKIN_SYMLINK_INSTALL=ON -DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/canopen_master
