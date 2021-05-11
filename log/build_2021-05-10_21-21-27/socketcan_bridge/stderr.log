@@ -1,0 +1,8 @@
+CMake Error at CMakeLists.txt:39 (add_dependencies):
+  add_dependencies called with incorrect number of arguments
+
+
+CMake Error at CMakeLists.txt:49 (add_dependencies):
+  add_dependencies called with incorrect number of arguments
+
+

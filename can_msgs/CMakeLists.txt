@@ -21,20 +21,14 @@ find_package(std_msgs REQUIRED)
 find_package(rosidl_default_generators REQUIRED)
 find_package(rosidl_typesupport_c REQUIRED)
 
-set(msg_files
+rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Frame.msg"
-  )
-
-#rosidl_generate_interfaces(${PROJECT_NAME}
-#  ${msg_files}
-#  DEPENDENCIES std_msgs
-#)
+  DEPENDENCIES std_msgs
+)
 
 ament_export_dependencies(
     message_runtime
     std_msgs
 )
 
-ament_package(
-  CONFIG_EXTRAS
-)
+ament_package()

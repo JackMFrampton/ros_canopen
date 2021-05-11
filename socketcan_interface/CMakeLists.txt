@@ -22,10 +22,11 @@ find_package(Boost REQUIRED
     thread
 )
 
+include_directories(include)
 include_directories(include ${Boost_INCLUDE_DIRS})
 include_directories(include ${console_bridge_INCLUDE_DIRS}) 
 
-ament_export_dependencies(DEPENDS
+ament_export_dependencies(
                         Boost 
                         console_bridge 
                         class_loader)

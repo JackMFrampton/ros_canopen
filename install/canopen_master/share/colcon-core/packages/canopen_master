@@ -1,1 +1,1 @@
-class_loader:libboost-atomic-dev:libboost-chrono-dev:libboost-dev:libboost-thread-dev:socketcan_interface
+builtin_interfaces:class_loader:libboost-atomic-dev:libboost-chrono-dev:libboost-dev:libboost-thread-dev:rosidl_default_runtime:socketcan_interface

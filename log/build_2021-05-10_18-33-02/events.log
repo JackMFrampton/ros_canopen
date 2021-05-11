@@ -1,0 +1,710 @@
+[0.000000] (-) TimerEvent: {}
+[0.000293] (can_msgs) JobQueued: {'identifier': 'can_msgs', 'dependencies': OrderedDict()}
+[0.000663] (socketcan_interface) JobQueued: {'identifier': 'socketcan_interface', 'dependencies': OrderedDict()}
+[0.000745] (canopen_master) JobQueued: {'identifier': 'canopen_master', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface')])}
+[0.000801] (socketcan_bridge) JobQueued: {'identifier': 'socketcan_bridge', 'dependencies': OrderedDict([('can_msgs', '/root/ros_canopen/install/can_msgs'), ('socketcan_interface', '/root/ros_canopen/install/socketcan_interface')])}
+[0.000853] (canopen_402) JobQueued: {'identifier': 'canopen_402', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master')])}
+[0.000909] (canopen_chain_node) JobQueued: {'identifier': 'canopen_chain_node', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master')])}
+[0.001032] (canopen_motor_node) JobQueued: {'identifier': 'canopen_motor_node', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master'), ('canopen_402', '/root/ros_canopen/install/canopen_402'), ('canopen_chain_node', '/root/ros_canopen/install/canopen_chain_node')])}
+[0.001091] (ros_canopen) JobQueued: {'identifier': 'ros_canopen', 'dependencies': OrderedDict([('can_msgs', '/root/ros_canopen/install/can_msgs'), ('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master'), ('socketcan_bridge', '/root/ros_canopen/install/socketcan_bridge'), ('canopen_402', '/root/ros_canopen/install/canopen_402'), ('canopen_chain_node', '/root/ros_canopen/install/canopen_chain_node'), ('canopen_motor_node', '/root/ros_canopen/install/canopen_motor_node')])}
+[0.001162] (socketcan_interface) JobStarted: {'identifier': 'socketcan_interface'}
+[0.014928] (can_msgs) JobStarted: {'identifier': 'can_msgs'}
+[0.025913] (socketcan_interface) JobProgress: {'identifier': 'socketcan_interface', 'progress': 'cmake'}
+[0.026572] (socketcan_interface) Command: {'cmd': ['/usr/bin/cmake', '/root/ros_canopen/socketcan_interface', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/socketcan_interface'], 'cwd': '/root/ros_canopen/build/socketcan_interface', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_interface'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.035223] (can_msgs) JobProgress: {'identifier': 'can_msgs', 'progress': 'cmake'}
+[0.035602] (can_msgs) Command: {'cmd': ['/usr/bin/cmake', '/root/ros_canopen/can_msgs', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/can_msgs'], 'cwd': '/root/ros_canopen/build/can_msgs', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/can_msgs'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.099149] (-) TimerEvent: {}
+[0.114067] (socketcan_interface) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[0.126923] (can_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[0.192142] (socketcan_interface) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[0.198969] (socketcan_interface) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.199254] (-) TimerEvent: {}
+[0.211022] (can_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[0.223042] (can_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[0.296608] (socketcan_interface) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.298444] (socketcan_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299374] (-) TimerEvent: {}
+[0.310823] (can_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[0.313142] (can_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.388765] (socketcan_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.397609] (can_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.399454] (-) TimerEvent: {}
+[0.412527] (socketcan_interface) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.412781] (socketcan_interface) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.417096] (socketcan_interface) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.423190] (can_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.423937] (can_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.427635] (can_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[0.499572] (-) TimerEvent: {}
+[0.521733] (socketcan_interface) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.527931] (socketcan_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.528885] (can_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[0.529210] (can_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.599681] (-) TimerEvent: {}
+[0.628789] (socketcan_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.635435] (can_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.652272] (socketcan_interface) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.653239] (socketcan_interface) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.655766] (can_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.656584] (can_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.657230] (socketcan_interface) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.660567] (can_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.681870] (socketcan_interface) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[0.682114] (socketcan_interface) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.686230] (can_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[0.686534] (can_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.699777] (-) TimerEvent: {}
+[0.800105] (-) TimerEvent: {}
+[0.885106] (socketcan_interface) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.891478] (can_msgs) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.900213] (-) TimerEvent: {}
+[0.938292] (socketcan_interface) StdoutLine: {'line': b'-- Found class_loader: 2.0.2 (/opt/ros/foxy/share/class_loader/cmake)\n'}
+[0.945411] (can_msgs) StdoutLine: {'line': b'-- Found rclcpp: 2.3.1 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[0.971970] (socketcan_interface) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[0.977330] (socketcan_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.988796] (socketcan_interface) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.000328] (-) TimerEvent: {}
+[1.022509] (can_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.037817] (can_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.092147] (socketcan_interface) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.100433] (-) TimerEvent: {}
+[1.127028] (socketcan_interface) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.129759] (can_msgs) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[1.164209] (can_msgs) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[1.200538] (-) TimerEvent: {}
+[1.244441] (socketcan_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.271765] (can_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.288572] (socketcan_interface) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.300659] (-) TimerEvent: {}
+[1.383830] (can_msgs) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[1.386125] (can_msgs) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[1.387607] (can_msgs) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[1.393595] (socketcan_interface) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.393934] (socketcan_interface) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.400775] (-) TimerEvent: {}
+[1.485040] (can_msgs) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[1.485424] (can_msgs) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[1.500879] (-) TimerEvent: {}
+[1.501548] (socketcan_interface) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.502584] (socketcan_interface) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.585870] (socketcan_interface) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.586179] (socketcan_interface) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.587435] (can_msgs) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[1.587657] (can_msgs) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[1.600989] (-) TimerEvent: {}
+[1.673296] (can_msgs) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[1.673602] (can_msgs) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[1.677335] (socketcan_interface) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.678775] (socketcan_interface) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.701100] (-) TimerEvent: {}
+[1.711708] (socketcan_interface) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0") found components: chrono system thread \n'}
+[1.762717] (can_msgs) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[1.764833] (can_msgs) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[1.801229] (-) TimerEvent: {}
+[1.825135] (socketcan_interface) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.841724] (socketcan_interface) StdoutLine: {'line': b'-- Generating done\n'}
+[1.844975] (socketcan_interface) StdoutLine: {'line': b'-- Build files have been written to: /root/ros_canopen/build/socketcan_interface\n'}
+[1.854008] (socketcan_interface) CommandEnded: {'returncode': 0}
+[1.854801] (socketcan_interface) JobProgress: {'identifier': 'socketcan_interface', 'progress': 'build'}
+[1.856259] (socketcan_interface) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/socketcan_interface', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/socketcan_interface', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_interface'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.901392] (-) TimerEvent: {}
+[1.907592] (socketcan_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target socketcan_interface_plugin\x1b[0m\n'}
+[1.907882] (socketcan_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target socketcan_interface_string\x1b[0m\n'}
+[1.930540] (socketcan_interface) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding CXX object CMakeFiles/socketcan_interface_string.dir/src/string.cpp.o\x1b[0m\n'}
+[1.947708] (socketcan_interface) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/socketcan_interface_plugin.dir/src/socketcan_interface_plugin.cpp.o\x1b[0m\n'}
+[2.001488] (-) TimerEvent: {}
+[2.102134] (-) TimerEvent: {}
+[2.152951] (can_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[2.202245] (-) TimerEvent: {}
+[2.207756] (can_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.5") \n'}
+[2.302362] (-) TimerEvent: {}
+[2.402702] (-) TimerEvent: {}
+[2.503037] (-) TimerEvent: {}
+[2.546109] (can_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.1 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[2.603150] (-) TimerEvent: {}
+[2.703828] (-) TimerEvent: {}
+[2.804523] (-) TimerEvent: {}
+[2.905166] (-) TimerEvent: {}
+[2.982385] (can_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.005281] (-) TimerEvent: {}
+[3.105661] (-) TimerEvent: {}
+[3.160807] (can_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.200020] (can_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3.5") \n'}
+[3.204039] (can_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[3.205909] (-) TimerEvent: {}
+[3.242983] (can_msgs) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.8.so (found suitable version "3.8.5", minimum required is "3.5") \n'}
+[3.243247] (can_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[3.243458] (can_msgs) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[3.243617] (can_msgs) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[3.270726] (can_msgs) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[3.306018] (-) TimerEvent: {}
+[3.406337] (-) TimerEvent: {}
+[3.444329] (can_msgs) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.506461] (-) TimerEvent: {}
+[3.567824] (can_msgs) StdoutLine: {'line': b'-- Generating done\n'}
+[3.574414] (can_msgs) StdoutLine: {'line': b'-- Build files have been written to: /root/ros_canopen/build/can_msgs\n'}
+[3.588491] (can_msgs) CommandEnded: {'returncode': 0}
+[3.589126] (can_msgs) JobProgress: {'identifier': 'can_msgs', 'progress': 'build'}
+[3.589997] (can_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/can_msgs', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/can_msgs', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/can_msgs'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[3.606583] (-) TimerEvent: {}
+[3.674928] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[3.675433] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/string.hpp:4\x1b[m\x1b[K,\n'}
+[3.675795] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/string.cpp:1\x1b[m\x1b[K:\n'}
+[3.676142] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.676476] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.676777] (socketcan_interface) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[3.677076] (socketcan_interface) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[3.677413] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.677698] (socketcan_interface) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[3.678013] (socketcan_interface) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[3.680334] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__cpp\x1b[0m\n'}
+[3.685034] (can_msgs) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[3.700312] (can_msgs) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[3.706674] (-) TimerEvent: {}
+[3.722368] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/string.hpp:4\x1b[m\x1b[K,\n'}
+[3.722759] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/string.cpp:1\x1b[m\x1b[K:\n'}
+[3.723082] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.723425] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[3.723745] (socketcan_interface) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[3.724041] (socketcan_interface) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[3.806780] (-) TimerEvent: {}
+[3.913399] (-) TimerEvent: {}
+[3.957499] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/string.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kcan::FrameFilterSharedPtr can::tofilter(const T&) [with T = std::__cxx11::basic_string<char>]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.957879] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/string.cpp:154:12:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kthis statement may fall through [\x1b[01;35m\x1b[K-Wimplicit-fallthrough=\x1b[m\x1b[K]\n'}
+[3.958173] (socketcan_interface) StderrLine: {'line': b'  154 |     \x1b[01;35m\x1b[Kinvert = true\x1b[m\x1b[K;\n'}
+[3.958442] (socketcan_interface) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.958739] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/string.cpp:155:4:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Khere\n'}
+[3.959006] (socketcan_interface) StderrLine: {'line': b"  155 |    \x1b[01;36m\x1b[Kcase\x1b[m\x1b[K ':':\n"}
+[3.959269] (socketcan_interface) StderrLine: {'line': b'      |    \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[3.959589] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/string.cpp:159:12:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kthis statement may fall through [\x1b[01;35m\x1b[K-Wimplicit-fallthrough=\x1b[m\x1b[K]\n'}
+[3.959856] (socketcan_interface) StderrLine: {'line': b'  159 |     \x1b[01;35m\x1b[Kinvert = true\x1b[m\x1b[K;\n'}
+[3.960121] (socketcan_interface) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[3.960409] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/string.cpp:160:4:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Khere\n'}
+[3.960679] (socketcan_interface) StderrLine: {'line': b"  160 |    \x1b[01;36m\x1b[Kcase\x1b[m\x1b[K '-':\n"}
+[3.961299] (socketcan_interface) StderrLine: {'line': b'      |    \x1b[01;36m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.013513] (-) TimerEvent: {}
+[4.119684] (-) TimerEvent: {}
+[4.168374] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[4.168748] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/asio_base.hpp:4\x1b[m\x1b[K,\n'}
+[4.169035] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:4\x1b[m\x1b[K,\n'}
+[4.169292] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/socketcan_interface_plugin.cpp:2\x1b[m\x1b[K:\n'}
+[4.169560] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.169830] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[4.170105] (socketcan_interface) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[4.170388] (socketcan_interface) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[4.170717] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[4.170985] (socketcan_interface) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[4.171221] (socketcan_interface) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[4.214789] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/asio_base.hpp:4\x1b[m\x1b[K,\n'}
+[4.215134] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:4\x1b[m\x1b[K,\n'}
+[4.215430] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/socketcan_interface_plugin.cpp:2\x1b[m\x1b[K:\n'}
+[4.215741] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.216057] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[4.216326] (socketcan_interface) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[4.216586] (socketcan_interface) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[4.219783] (-) TimerEvent: {}
+[4.299820] (socketcan_interface) StdoutLine: {'line': b'[ 37%] \x1b[32m\x1b[1mLinking CXX static library libsocketcan_interface_string.a\x1b[0m\n'}
+[4.311079] (can_msgs) StdoutLine: {'line': b'[  6%] Built target can_msgs__cpp\n'}
+[4.319899] (-) TimerEvent: {}
+[4.343460] (can_msgs) StdoutLine: {'line': b'[  9%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.346091] (can_msgs) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.359331] (can_msgs) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[4.420003] (-) TimerEvent: {}
+[4.427676] (socketcan_interface) StdoutLine: {'line': b'[ 37%] Built target socketcan_interface_string\n'}
+[4.491835] (socketcan_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target socketcan_bcm\x1b[0m\n'}
+[4.501851] (socketcan_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target socketcan_dump\x1b[0m\n'}
+[4.520102] (-) TimerEvent: {}
+[4.559446] (socketcan_interface) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/socketcan_bcm.dir/src/canbcm.cpp.o\x1b[0m\n'}
+[4.588803] (socketcan_interface) StdoutLine: {'line': b'[ 62%] \x1b[32mBuilding CXX object CMakeFiles/socketcan_dump.dir/src/candump.cpp.o\x1b[0m\n'}
+[4.620214] (-) TimerEvent: {}
+[4.722525] (-) TimerEvent: {}
+[4.815505] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_generator_c\x1b[0m\n'}
+[4.822630] (-) TimerEvent: {}
+[4.902619] (can_msgs) StdoutLine: {'line': b'[ 19%] \x1b[32mBuilding C object CMakeFiles/can_msgs__rosidl_generator_c.dir/rosidl_generator_c/can_msgs/msg/detail/frame__functions.c.o\x1b[0m\n'}
+[4.922737] (-) TimerEvent: {}
+[5.029071] (-) TimerEvent: {}
+[5.079475] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_typesupport_cpp\x1b[0m\n'}
+[5.129175] (-) TimerEvent: {}
+[5.130610] (can_msgs) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libcan_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[5.161039] (can_msgs) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/can_msgs/msg/frame__type_support.cpp.o\x1b[0m\n'}
+[5.229274] (-) TimerEvent: {}
+[5.307547] (can_msgs) StdoutLine: {'line': b'[ 25%] Built target can_msgs__rosidl_generator_c\n'}
+[5.325409] (can_msgs) StdoutLine: {'line': b'[ 29%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[5.329379] (-) TimerEvent: {}
+[5.431632] (-) TimerEvent: {}
+[5.537765] (-) TimerEvent: {}
+[5.595554] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[5.637873] (-) TimerEvent: {}
+[5.675475] (can_msgs) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/can_msgs/msg/detail/dds_fastrtps/frame__type_support.cpp.o\x1b[0m\n'}
+[5.737983] (-) TimerEvent: {}
+[5.775439] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[5.838336] (-) TimerEvent: {}
+[5.880864] (can_msgs) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/can_msgs/msg/detail/frame__type_support.cpp.o\x1b[0m\n'}
+[5.938452] (-) TimerEvent: {}
+[6.044414] (-) TimerEvent: {}
+[6.150572] (-) TimerEvent: {}
+[6.252922] (-) TimerEvent: {}
+[6.358663] (-) TimerEvent: {}
+[6.467992] (-) TimerEvent: {}
+[6.484955] (can_msgs) StdoutLine: {'line': b'[ 38%] \x1b[32m\x1b[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[6.568094] (-) TimerEvent: {}
+[6.674275] (-) TimerEvent: {}
+[6.712557] (can_msgs) StdoutLine: {'line': b'[ 38%] Built target can_msgs__rosidl_typesupport_cpp\n'}
+[6.732942] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[6.774398] (-) TimerEvent: {}
+[6.793492] (can_msgs) StdoutLine: {'line': b'[ 41%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[6.823747] (can_msgs) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/can_msgs/msg/detail/frame__type_support.c.o\x1b[0m\n'}
+[6.874496] (-) TimerEvent: {}
+[6.881830] (can_msgs) StdoutLine: {'line': b'[ 48%] \x1b[32m\x1b[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[6.901514] (can_msgs) StdoutLine: {'line': b'[ 51%] \x1b[32m\x1b[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[6.943213] (can_msgs) StdoutLine: {'line': b'[ 54%] \x1b[32m\x1b[1mLinking C shared library libcan_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[6.974603] (-) TimerEvent: {}
+[7.075023] (-) TimerEvent: {}
+[7.111112] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/socketcan_interface_plugin.cpp:2\x1b[m\x1b[K:\n'}
+[7.111506] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kbool can::SocketCANInterface::init(const string&, bool, can_err_mask_t, can_err_mask_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.111792] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_ifindex\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.112052] (socketcan_interface) StderrLine: {'line': b'  180 |             struct sockaddr_can addr = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[7.112294] (socketcan_interface) StderrLine: {'line': b'      |                                          \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[7.112601] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_addr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.117126] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::SocketCANInterface::enqueue(const can::Frame&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.117510] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::can_dlc\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.117803] (socketcan_interface) StderrLine: {'line': b'  216 |         can_frame frame = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[7.118071] (socketcan_interface) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[7.118395] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__pad\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.118713] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res0\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.119053] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res1\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.119396] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.130922] (can_msgs) StdoutLine: {'line': b'[ 54%] Built target can_msgs__rosidl_typesupport_introspection_c\n'}
+[7.141866] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/socketcan_interface_plugin.cpp:\x1b[m\x1b[K At global scope:\n'}
+[7.142140] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/socketcan_interface_plugin.cpp:4:75:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[7.142325] (socketcan_interface) StderrLine: {'line': b'    4 | CLASS_LOADER_REGISTER_CLASS(can::SocketCANInterface, can::DriverInterface)\x1b[01;35m\x1b[K;\x1b[m\x1b[K\n'}
+[7.142500] (socketcan_interface) StderrLine: {'line': b'      |                                                                           \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[7.151892] (can_msgs) StdoutLine: {'line': b'[ 54%] Built target can_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[7.170814] (can_msgs) StdoutLine: {'line': b'[ 58%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[7.176373] (-) TimerEvent: {}
+[7.273914] (can_msgs) StdoutLine: {'line': b'[ 58%] Built target can_msgs__rosidl_typesupport_introspection_cpp\n'}
+[7.276477] (-) TimerEvent: {}
+[7.376816] (-) TimerEvent: {}
+[7.477188] (-) TimerEvent: {}
+[7.578415] (-) TimerEvent: {}
+[7.679262] (-) TimerEvent: {}
+[7.780982] (-) TimerEvent: {}
+[7.881514] (-) TimerEvent: {}
+[7.897135] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_typesupport_c\x1b[0m\n'}
+[7.971537] (can_msgs) StdoutLine: {'line': b'[ 61%] \x1b[32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/can_msgs/msg/frame__type_support.cpp.o\x1b[0m\n'}
+[7.971821] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[7.981624] (-) TimerEvent: {}
+[8.028967] (can_msgs) StdoutLine: {'line': b'[ 64%] \x1b[32mBuilding CXX object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/can_msgs/msg/detail/frame__type_support_c.cpp.o\x1b[0m\n'}
+[8.081738] (-) TimerEvent: {}
+[8.127728] (can_msgs) StdoutLine: {'line': b'[ 67%] \x1b[32m\x1b[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[8.181850] (-) TimerEvent: {}
+[8.282269] (-) TimerEvent: {}
+[8.351074] (can_msgs) StdoutLine: {'line': b'[ 67%] Built target can_msgs__rosidl_typesupport_c\n'}
+[8.382383] (-) TimerEvent: {}
+[8.468922] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[8.469360] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/bcm.hpp:4\x1b[m\x1b[K,\n'}
+[8.469692] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/canbcm.cpp:1\x1b[m\x1b[K:\n'}
+[8.470025] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.470334] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.470648] (socketcan_interface) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[8.471002] (socketcan_interface) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[8.471415] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.471762] (socketcan_interface) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[8.472080] (socketcan_interface) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[8.482501] (-) TimerEvent: {}
+[8.507710] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/bcm.hpp:4\x1b[m\x1b[K,\n'}
+[8.508067] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/canbcm.cpp:1\x1b[m\x1b[K:\n'}
+[8.508346] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.508732] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.509012] (socketcan_interface) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[8.509268] (socketcan_interface) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[8.582616] (-) TimerEvent: {}
+[8.656760] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/canbcm.cpp:1\x1b[m\x1b[K:\n'}
+[8.657156] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/bcm.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kbool can::BCMsocket::init(const string&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.657497] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/bcm.hpp:69:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_ifindex\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[8.657816] (socketcan_interface) StderrLine: {'line': b'   69 |         struct sockaddr_can addr = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[8.658155] (socketcan_interface) StderrLine: {'line': b'      |                                      \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[8.658514] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/bcm.hpp:69:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_addr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[8.682739] (-) TimerEvent: {}
+[8.783141] (-) TimerEvent: {}
+[8.883551] (-) TimerEvent: {}
+[8.957115] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[8.957398] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/asio_base.hpp:4\x1b[m\x1b[K,\n'}
+[8.957589] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:4\x1b[m\x1b[K,\n'}
+[8.957763] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/candump.cpp:7\x1b[m\x1b[K:\n'}
+[8.957941] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.958112] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.958282] (socketcan_interface) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[8.958448] (socketcan_interface) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[8.958615] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.958790] (socketcan_interface) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[8.958956] (socketcan_interface) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[8.969144] (can_msgs) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libcan_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[8.983662] (-) TimerEvent: {}
+[8.994445] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/asio_base.hpp:4\x1b[m\x1b[K,\n'}
+[8.994781] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:4\x1b[m\x1b[K,\n'}
+[8.994985] (socketcan_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/candump.cpp:7\x1b[m\x1b[K:\n'}
+[8.995182] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.995380] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.995557] (socketcan_interface) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[8.995731] (socketcan_interface) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[9.083787] (-) TimerEvent: {}
+[9.194510] (-) TimerEvent: {}
+[9.205044] (can_msgs) StdoutLine: {'line': b'[ 70%] Built target can_msgs__rosidl_typesupport_fastrtps_c\n'}
+[9.225000] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs\x1b[0m\n'}
+[9.246044] (can_msgs) StdoutLine: {'line': b'[ 70%] Built target can_msgs\n'}
+[9.262179] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__py\x1b[0m\n'}
+[9.268207] (socketcan_interface) StdoutLine: {'line': b'[ 75%] \x1b[32m\x1b[1mLinking CXX executable socketcan_bcm\x1b[0m\n'}
+[9.280635] (can_msgs) StdoutLine: {'line': b'[ 74%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[9.294611] (-) TimerEvent: {}
+[9.401138] (-) TimerEvent: {}
+[9.440561] (socketcan_interface) StdoutLine: {'line': b'[ 75%] Built target socketcan_bcm\n'}
+[9.501243] (-) TimerEvent: {}
+[9.601584] (-) TimerEvent: {}
+[9.707533] (-) TimerEvent: {}
+[9.807865] (-) TimerEvent: {}
+[9.908202] (-) TimerEvent: {}
+[10.008547] (-) TimerEvent: {}
+[10.108931] (-) TimerEvent: {}
+[10.209313] (-) TimerEvent: {}
+[10.213420] (can_msgs) StdoutLine: {'line': b'[ 74%] Built target can_msgs__py\n'}
+[10.250206] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__python\x1b[0m\n'}
+[10.279580] (can_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding C object CMakeFiles/can_msgs__python.dir/rosidl_generator_py/can_msgs/msg/_frame_s.c.o\x1b[0m\n'}
+[10.309430] (-) TimerEvent: {}
+[10.415345] (socketcan_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/src/candump.cpp:7\x1b[m\x1b[K:\n'}
+[10.415631] (-) TimerEvent: {}
+[10.415821] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kbool can::SocketCANInterface::init(const string&, bool, can_err_mask_t, can_err_mask_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[10.416005] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_ifindex\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[10.416164] (socketcan_interface) StderrLine: {'line': b'  180 |             struct sockaddr_can addr = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[10.416334] (socketcan_interface) StderrLine: {'line': b'      |                                          \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[10.416844] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_addr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[10.419736] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::SocketCANInterface::enqueue(const can::Frame&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[10.420034] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::can_dlc\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[10.420243] (socketcan_interface) StderrLine: {'line': b'  216 |         can_frame frame = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[10.420413] (socketcan_interface) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[10.420571] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__pad\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[10.420729] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res0\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[10.420898] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res1\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[10.421053] (socketcan_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[10.487463] (can_msgs) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/can_msgs/libcan_msgs__python.so\x1b[0m\n'}
+[10.515765] (-) TimerEvent: {}
+[10.577884] (can_msgs) StdoutLine: {'line': b'[ 80%] Built target can_msgs__python\n'}
+[10.596604] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[10.597519] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[10.615532] (can_msgs) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target can_msgs__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[10.615836] (-) TimerEvent: {}
+[10.657387] (can_msgs) StdoutLine: {'line': b'[ 83%] \x1b[32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[10.677001] (can_msgs) StdoutLine: {'line': b'[ 87%] \x1b[32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[10.696611] (can_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/can_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/can_msgs/_can_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[10.715957] (-) TimerEvent: {}
+[10.816331] (-) TimerEvent: {}
+[10.916827] (-) TimerEvent: {}
+[10.971209] (can_msgs) StdoutLine: {'line': b'[ 93%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[10.973216] (can_msgs) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking CXX shared library rosidl_generator_py/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[10.985885] (can_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\x1b[0m\n'}
+[11.016976] (-) TimerEvent: {}
+[11.079131] (can_msgs) StdoutLine: {'line': b'[100%] Built target can_msgs__rosidl_typesupport_c__pyext\n'}
+[11.103502] (socketcan_interface) StdoutLine: {'line': b'[ 87%] \x1b[32m\x1b[1mLinking CXX static library libsocketcan_interface_plugin.a\x1b[0m\n'}
+[11.117078] (-) TimerEvent: {}
+[11.156868] (can_msgs) StdoutLine: {'line': b'[100%] Built target can_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[11.171359] (can_msgs) StdoutLine: {'line': b'[100%] Built target can_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[11.191486] (socketcan_interface) StdoutLine: {'line': b'[ 87%] Built target socketcan_interface_plugin\n'}
+[11.192498] (can_msgs) CommandEnded: {'returncode': 0}
+[11.217253] (-) TimerEvent: {}
+[11.264474] (can_msgs) JobProgress: {'identifier': 'can_msgs', 'progress': 'install'}
+[11.277519] (can_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ros_canopen/build/can_msgs'], 'cwd': '/root/ros_canopen/build/can_msgs', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/can_msgs'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[11.290234] (can_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[11.291211] (can_msgs) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[11.291811] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/rosidl_interfaces/can_msgs\n'}
+[11.302881] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__functions.h\n'}
+[11.313224] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.h\n'}
+[11.317343] (-) TimerEvent: {}
+[11.326261] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__type_support.h\n'}
+[11.341873] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.h\n'}
+[11.358280] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[11.369153] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/library_path.sh\n'}
+[11.379941] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/library_path.dsv\n'}
+[11.391410] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_fastrtps_c.h\n'}
+[11.401947] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[11.413187] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[11.417455] (-) TimerEvent: {}
+[11.428574] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[11.443389] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[11.458593] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[11.472536] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_introspection_c.h\n'}
+[11.484544] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[11.495852] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__builder.hpp\n'}
+[11.506301] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp\n'}
+[11.516725] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__traits.hpp\n'}
+[11.517553] (-) TimerEvent: {}
+[11.536159] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp\n'}
+[11.551597] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_introspection_cpp.hpp\n'}
+[11.562600] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/pythonpath.sh\n'}
+[11.573673] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/pythonpath.dsv\n'}
+[11.584723] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/__init__.py\n'}
+[11.595963] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/__init__.py\n'}
+[11.606563] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/_frame.py\n'}
+[11.617261] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\n'}
+[11.617632] (-) TimerEvent: {}
+[11.631345] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\n'}
+[11.645634] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\n'}
+[11.660215] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__python.so\n'}
+[11.671403] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/msg/Frame.idl\n'}
+[11.682021] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/msg/Frame.msg\n'}
+[11.692742] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/package_run_dependencies/can_msgs\n'}
+[11.703242] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/parent_prefix_path/can_msgs\n'}
+[11.713944] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/ament_prefix_path.sh\n'}
+[11.717742] (-) TimerEvent: {}
+[11.729992] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/ament_prefix_path.dsv\n'}
+[11.742760] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/path.sh\n'}
+[11.754703] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/path.dsv\n'}
+[11.765425] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.bash\n'}
+[11.776258] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.sh\n'}
+[11.787325] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.zsh\n'}
+[11.798110] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.dsv\n'}
+[11.808425] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/package.dsv\n'}
+[11.817858] (-) TimerEvent: {}
+[11.819286] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/packages/can_msgs\n'}
+[11.833146] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[11.847579] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[11.859191] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[11.869778] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[11.880797] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[11.891998] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[11.903291] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[11.914237] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig.cmake\n'}
+[11.917962] (-) TimerEvent: {}
+[11.926505] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig-version.cmake\n'}
+[11.943148] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/package.xml\n'}
+[11.959052] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_generator_c.so\n'}
+[11.959346] (can_msgs) StdoutLine: {'line': b'-- Set runtime path of "/root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_generator_c.so" to ""\n'}
+[11.959630] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_c.so\n'}
+[11.959891] (can_msgs) StdoutLine: {'line': b'-- Set runtime path of "/root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[11.960083] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_c.so\n'}
+[11.960433] (can_msgs) StdoutLine: {'line': b'-- Set runtime path of "/root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_c.so" to ""\n'}
+[11.960703] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[11.961421] (can_msgs) StdoutLine: {'line': b'-- Set runtime path of "/root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[11.961968] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_cpp.so\n'}
+[11.962584] (can_msgs) StdoutLine: {'line': b'-- Set runtime path of "/root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[12.003977] (can_msgs) StdoutLine: {'line': b"Compiling '/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/__init__.py'...\n"}
+[12.010042] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport.cmake\n'}
+[12.010535] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[12.010835] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[12.011100] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[12.011393] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport.cmake\n'}
+[12.011668] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[12.012017] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cppExport.cmake\n'}
+[12.012412] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[12.012712] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[12.013005] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[12.013266] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[12.017054] (can_msgs) CommandEnded: {'returncode': 0}
+[12.018030] (-) TimerEvent: {}
+[12.118711] (-) TimerEvent: {}
+[12.128786] (can_msgs) JobEnded: {'identifier': 'can_msgs', 'rc': 0}
+[12.218842] (-) TimerEvent: {}
+[12.319151] (-) TimerEvent: {}
+[12.419478] (-) TimerEvent: {}
+[12.519826] (-) TimerEvent: {}
+[12.620167] (-) TimerEvent: {}
+[12.720511] (-) TimerEvent: {}
+[12.820863] (-) TimerEvent: {}
+[12.921171] (-) TimerEvent: {}
+[13.021525] (-) TimerEvent: {}
+[13.121877] (-) TimerEvent: {}
+[13.222219] (-) TimerEvent: {}
+[13.322544] (-) TimerEvent: {}
+[13.419551] (socketcan_interface) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable socketcan_dump\x1b[0m\n'}
+[13.422666] (-) TimerEvent: {}
+[13.522939] (-) TimerEvent: {}
+[13.611604] (socketcan_interface) StdoutLine: {'line': b'[100%] Built target socketcan_dump\n'}
+[13.623193] (-) TimerEvent: {}
+[13.624063] (socketcan_interface) CommandEnded: {'returncode': 0}
+[13.660562] (socketcan_interface) JobProgress: {'identifier': 'socketcan_interface', 'progress': 'install'}
+[13.661315] (socketcan_interface) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ros_canopen/build/socketcan_interface'], 'cwd': '/root/ros_canopen/build/socketcan_interface', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_interface'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[13.672182] (socketcan_interface) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[13.672835] (socketcan_interface) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[13.673484] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_bcm\n'}
+[13.683437] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_dump\n'}
+[13.693399] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_plugin.a\n'}
+[13.703156] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_string.a\n'}
+[13.713183] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/socketcan_interface_plugin.xml\n'}
+[13.723123] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/package_run_dependencies/socketcan_interface\n'}
+[13.723381] (-) TimerEvent: {}
+[13.736162] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/parent_prefix_path/socketcan_interface\n'}
+[13.749953] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.sh\n'}
+[13.759991] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.dsv\n'}
+[13.770035] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.sh\n'}
+[13.779990] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.dsv\n'}
+[13.789911] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.bash\n'}
+[13.799693] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.sh\n'}
+[13.809525] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.zsh\n'}
+[13.819411] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.dsv\n'}
+[13.823483] (-) TimerEvent: {}
+[13.830318] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.dsv\n'}
+[13.843768] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/packages/socketcan_interface\n'}
+[13.855605] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[13.865627] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[13.875395] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig.cmake\n'}
+[13.885213] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig-version.cmake\n'}
+[13.895098] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.xml\n'}
+[13.904632] (socketcan_interface) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/socketcan_interface/include\n'}
+[13.908581] (socketcan_interface) CommandEnded: {'returncode': 0}
+[13.923657] (-) TimerEvent: {}
+[13.961432] (socketcan_interface) JobEnded: {'identifier': 'socketcan_interface', 'rc': 0}
+[13.968499] (canopen_master) JobStarted: {'identifier': 'canopen_master'}
+[13.969597] (socketcan_bridge) JobStarted: {'identifier': 'socketcan_bridge'}
+[13.980622] (canopen_master) JobProgress: {'identifier': 'canopen_master', 'progress': 'cmake'}
+[13.980969] (canopen_master) Command: {'cmd': ['/usr/bin/cmake', '/root/ros_canopen/canopen_master', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/canopen_master'], 'cwd': '/root/ros_canopen/build/canopen_master', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/canopen_master'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy')]), 'shell': False}
+[13.987479] (socketcan_bridge) JobProgress: {'identifier': 'socketcan_bridge', 'progress': 'cmake'}
+[13.990000] (socketcan_bridge) Command: {'cmd': ['/usr/bin/cmake', '/root/ros_canopen/socketcan_bridge', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/socketcan_bridge'], 'cwd': '/root/ros_canopen/build/socketcan_bridge', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/ros_canopen/install/can_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_bridge'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy')]), 'shell': False}
+[14.023745] (-) TimerEvent: {}
+[14.055518] (canopen_master) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[14.085773] (socketcan_bridge) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.3.0\n'}
+[14.123947] (-) TimerEvent: {}
+[14.135262] (canopen_master) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[14.145303] (canopen_master) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[14.187562] (socketcan_bridge) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.3.0\n'}
+[14.197876] (socketcan_bridge) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[14.223988] (-) TimerEvent: {}
+[14.241072] (canopen_master) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[14.242437] (canopen_master) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[14.309370] (socketcan_bridge) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[14.309698] (socketcan_bridge) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[14.324437] (-) TimerEvent: {}
+[14.341485] (canopen_master) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[14.363512] (canopen_master) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[14.364363] (canopen_master) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[14.368507] (canopen_master) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[14.424478] (-) TimerEvent: {}
+[14.431408] (socketcan_bridge) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[14.455621] (socketcan_bridge) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[14.456268] (socketcan_bridge) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[14.461882] (socketcan_bridge) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[14.471469] (canopen_master) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[14.472524] (canopen_master) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[14.524608] (-) TimerEvent: {}
+[14.581483] (socketcan_bridge) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[14.584194] (socketcan_bridge) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[14.607403] (canopen_master) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[14.624718] (-) TimerEvent: {}
+[14.634931] (canopen_master) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[14.636116] (canopen_master) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[14.643141] (canopen_master) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[14.678458] (canopen_master) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[14.678777] (canopen_master) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[14.704707] (socketcan_bridge) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[14.724835] (-) TimerEvent: {}
+[14.725993] (socketcan_bridge) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[14.726418] (socketcan_bridge) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[14.730785] (socketcan_bridge) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[14.761958] (socketcan_bridge) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[14.762540] (socketcan_bridge) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[14.824935] (-) TimerEvent: {}
+[14.925254] (-) TimerEvent: {}
+[14.933567] (canopen_master) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[14.980897] (socketcan_bridge) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[15.001092] (canopen_master) StdoutLine: {'line': b'-- Found class_loader: 2.0.2 (/opt/ros/foxy/share/class_loader/cmake)\n'}
+[15.025396] (-) TimerEvent: {}
+[15.039864] (canopen_master) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[15.040151] (socketcan_bridge) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[15.047500] (canopen_master) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[15.049042] (socketcan_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[15.065062] (canopen_master) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[15.066528] (socketcan_bridge) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[15.125530] (-) TimerEvent: {}
+[15.183572] (canopen_master) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[15.199642] (socketcan_bridge) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[15.210162] (canopen_master) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[15.225125] (socketcan_bridge) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/foxy/include  \n'}
+[15.225610] (-) TimerEvent: {}
+[15.325904] (-) TimerEvent: {}
+[15.342686] (canopen_master) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[15.372308] (socketcan_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[15.406874] (canopen_master) StdoutLine: {'line': b'-- Found socketcan_interface: 0.8.5 (/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake)\n'}
+[15.426046] (-) TimerEvent: {}
+[15.436377] (socketcan_bridge) StdoutLine: {'line': b'-- Found can_msgs: 0.8.5 (/root/ros_canopen/install/can_msgs/share/can_msgs/cmake)\n'}
+[15.526159] (-) TimerEvent: {}
+[15.626510] (-) TimerEvent: {}
+[15.646221] (socketcan_bridge) StdoutLine: {'line': b'-- Found rclcpp: 2.3.1 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[15.726617] (-) TimerEvent: {}
+[15.740725] (socketcan_bridge) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[15.744063] (socketcan_bridge) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[15.745621] (socketcan_bridge) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[15.826740] (-) TimerEvent: {}
+[15.831049] (canopen_master) StdoutLine: {'line': b'-- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake (found version "1.71.0") found components: atomic chrono thread \n'}
+[15.846570] (socketcan_bridge) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[15.846995] (socketcan_bridge) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[15.926841] (-) TimerEvent: {}
+[15.947672] (socketcan_bridge) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[15.948003] (socketcan_bridge) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[15.951045] (canopen_master) StdoutLine: {'line': b'-- Configuring done\n'}
+[15.964617] (canopen_master) StdoutLine: {'line': b'-- Generating done\n'}
+[15.967368] (canopen_master) StdoutLine: {'line': b'-- Build files have been written to: /root/ros_canopen/build/canopen_master\n'}
+[15.974980] (canopen_master) CommandEnded: {'returncode': 0}
+[15.975827] (canopen_master) JobProgress: {'identifier': 'canopen_master', 'progress': 'build'}
+[15.976360] (canopen_master) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/canopen_master', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/canopen_master', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/root'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/canopen_master'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy')]), 'shell': False}
+[16.026903] (socketcan_bridge) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[16.027226] (-) TimerEvent: {}
+[16.027549] (socketcan_bridge) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[16.033071] (canopen_master) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target canopen_bcm_sync\x1b[0m\n'}
+[16.038359] (canopen_master) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target canopen_master\x1b[0m\n'}
+[16.071528] (canopen_master) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object CMakeFiles/canopen_bcm_sync.dir/src/bcm_sync.cpp.o\x1b[0m\n'}
+[16.080409] (canopen_master) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/canopen_master.dir/src/objdict.cpp.o\x1b[0m\n'}
+[16.080704] (canopen_master) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/canopen_master.dir/src/node.cpp.o\x1b[0m\n'}
+[16.085391] (canopen_master) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/canopen_master.dir/src/emcy.cpp.o\x1b[0m\n'}
+[16.097295] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:1\x1b[m\x1b[K:\n'}
+[16.097657] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Ksocketcan_interface/interface.hpp: No such file or directory\n'}
+[16.097838] (canopen_master) StderrLine: {'line': b'    4 | #include \x1b[01;31m\x1b[K<socketcan_interface/interface.hpp>\x1b[m\x1b[K\n'}
+[16.097988] (canopen_master) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[16.098145] (canopen_master) StderrLine: {'line': b'compilation terminated.\n'}
+[16.098562] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[16.098856] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Ksocketcan_interface/interface.hpp: No such file or directory\n'}
+[16.099012] (canopen_master) StderrLine: {'line': b'    4 | #include \x1b[01;31m\x1b[K<socketcan_interface/interface.hpp>\x1b[m\x1b[K\n'}
+[16.099161] (canopen_master) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[16.099328] (canopen_master) StderrLine: {'line': b'compilation terminated.\n'}
+[16.099477] (canopen_master) StderrLine: {'line': b'make[2]: *** [CMakeFiles/canopen_master.dir/build.make:76: CMakeFiles/canopen_master.dir/src/node.cpp.o] Error 1\n'}
+[16.099623] (canopen_master) StderrLine: {'line': b'make[2]: *** Waiting for unfinished jobs....\n'}
+[16.100700] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[16.100946] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:4:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Ksocketcan_interface/bcm.hpp: No such file or directory\n'}
+[16.101118] (canopen_master) StderrLine: {'line': b'    4 | #include \x1b[01;31m\x1b[K<socketcan_interface/bcm.hpp>\x1b[m\x1b[K\n'}
+[16.101258] (canopen_master) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[16.101394] (canopen_master) StderrLine: {'line': b'compilation terminated.\n'}
+[16.102253] (canopen_master) StderrLine: {'line': b'make[2]: *** [CMakeFiles/canopen_master.dir/build.make:63: CMakeFiles/canopen_master.dir/src/emcy.cpp.o] Error 1\n'}
+[16.102466] (canopen_master) StderrLine: {'line': b'make[2]: *** [CMakeFiles/canopen_bcm_sync.dir/build.make:63: CMakeFiles/canopen_bcm_sync.dir/src/bcm_sync.cpp.o] Error 1\n'}
+[16.102635] (canopen_master) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/canopen_bcm_sync.dir/all] Error 2\n'}
+[16.102795] (canopen_master) StderrLine: {'line': b'make[1]: *** Waiting for unfinished jobs....\n'}
+[16.127398] (-) TimerEvent: {}
+[16.159236] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/objdict.cpp:1\x1b[m\x1b[K:\n'}
+[16.159513] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/objdict.hpp:9:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Ksocketcan_interface/delegates.hpp: No such file or directory\n'}
+[16.159670] (canopen_master) StderrLine: {'line': b'    9 | #include \x1b[01;31m\x1b[K<socketcan_interface/delegates.hpp>\x1b[m\x1b[K\n'}
+[16.159803] (canopen_master) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[16.159933] (canopen_master) StderrLine: {'line': b'compilation terminated.\n'}
+[16.160518] (socketcan_bridge) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[16.162478] (socketcan_bridge) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[16.163508] (canopen_master) StderrLine: {'line': b'make[2]: *** [CMakeFiles/canopen_master.dir/build.make:89: CMakeFiles/canopen_master.dir/src/objdict.cpp.o] Error 1\n'}
+[16.164113] (canopen_master) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:136: CMakeFiles/canopen_master.dir/all] Error 2\n'}
+[16.164321] (canopen_master) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[16.168367] (canopen_master) CommandEnded: {'returncode': 2}
+[16.213844] (canopen_master) JobEnded: {'identifier': 'canopen_master', 'rc': 2}
+[16.227509] (-) TimerEvent: {}
+[16.327860] (-) TimerEvent: {}
+[16.425703] (socketcan_bridge) StdoutLine: {'line': b'-- Found socketcan_interface: 0.8.5 (/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake)\n'}
+[16.427932] (-) TimerEvent: {}
+[16.459252] (socketcan_bridge) StderrLine: {'line': b'CMake Error at CMakeLists.txt:39 (add_dependencies):\n'}
+[16.459537] (socketcan_bridge) StderrLine: {'line': b'  add_dependencies called with incorrect number of arguments\n'}
+[16.459710] (socketcan_bridge) StderrLine: {'line': b'\n'}
+[16.459860] (socketcan_bridge) StderrLine: {'line': b'\n'}
+[16.460007] (socketcan_bridge) StderrLine: {'line': b'CMake Error at CMakeLists.txt:49 (add_dependencies):\n'}
+[16.460156] (socketcan_bridge) StderrLine: {'line': b'  add_dependencies called with incorrect number of arguments\n'}
+[16.460304] (socketcan_bridge) StderrLine: {'line': b'\n'}
+[16.460459] (socketcan_bridge) StderrLine: {'line': b'\n'}
+[16.463803] (socketcan_bridge) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[16.464042] (socketcan_bridge) StdoutLine: {'line': b'See also "/root/ros_canopen/build/socketcan_bridge/CMakeFiles/CMakeOutput.log".\n'}
+[16.464204] (socketcan_bridge) StdoutLine: {'line': b'See also "/root/ros_canopen/build/socketcan_bridge/CMakeFiles/CMakeError.log".\n'}
+[16.471801] (socketcan_bridge) JobEnded: {'identifier': 'socketcan_bridge', 'rc': 'SIGINT'}
+[16.482721] (canopen_402) JobSkipped: {'identifier': 'canopen_402'}
+[16.482815] (canopen_chain_node) JobSkipped: {'identifier': 'canopen_chain_node'}
+[16.482864] (canopen_motor_node) JobSkipped: {'identifier': 'canopen_motor_node'}
+[16.482917] (ros_canopen) JobSkipped: {'identifier': 'ros_canopen'}
+[16.482964] (-) EventReactorShutdown: {}

@@ -4,7 +4,7 @@
 
 #include <boost/exception/diagnostic_information.hpp>
 #include <class_loader/class_loader.hpp>
-#include <socketcan_interface/socketcan.h>
+#include <socketcan_interface/socketcan.hpp>
 
 using namespace can;
 

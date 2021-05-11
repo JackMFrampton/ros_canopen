@@ -1,5 +1,0 @@
-CMake Error at CMakeLists.txt:155 (endif):
-  endif An ENDIF command was found outside of a proper IF ENDIF structure.
-  Or its arguments did not match the opening IF command.
-
-

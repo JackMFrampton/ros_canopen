@@ -1,17 +1,19 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5)
 project(canopen_master)
 
+# Default to C++14
 if(NOT CMAKE_CXX_STANDARD)
-  set(CMAKE_CXX_STANDARD_REQUIRED ON)
   set(CMAKE_CXX_STANDARD 14)
 endif()
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
-find_package(catkin REQUIRED
-  COMPONENTS
-    class_loader
-    socketcan_interface
-)
-
+find_package(ament_cmake REQUIRED)
+find_package(class_loader REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+find_package(rosidl_typesupport_c REQUIRED)
+find_package(socketcan_interface REQUIRED)
 find_package(Boost REQUIRED
   COMPONENTS
     atomic
@@ -19,17 +21,11 @@ find_package(Boost REQUIRED
     thread
 )
 
-catkin_package(
-  INCLUDE_DIRS
-    include
-  LIBRARIES
-    ${PROJECT_NAME}
-  CATKIN_DEPENDS
-    socketcan_interface
-  DEPENDS
-    Boost
-)
-include_directories(include ${catkin_INCLUDE_DIRS})
+include_directories(socketcan_interface)
+include_directories(include ${Boost_INCLUDE_DIRS})
+ament_export_libraries(${PROJECT_NAME})
+ament_export_dependencies(socketcan_interface Boost class_loader)
+ament_export_include_directories(include)
 
 add_library(${PROJECT_NAME}
   src/emcy.cpp
@@ -39,7 +35,6 @@ add_library(${PROJECT_NAME}
   src/sdo.cpp
 )
 target_link_libraries(${PROJECT_NAME}
-  ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
 
@@ -48,7 +43,6 @@ add_library(${PROJECT_NAME}_plugin
 )
 
 target_link_libraries(${PROJECT_NAME}_plugin
-  ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
   ${PROJECT_NAME}
 )
@@ -59,7 +53,7 @@ add_executable(canopen_bcm_sync
 )
 target_link_libraries(canopen_bcm_sync
   ${Boost_LIBRARIES}
-  ${catkin_LIBRARIES}
+  socketcan_interface
 )
 
 install(
@@ -67,36 +61,38 @@ install(
     canopen_bcm_sync
     ${PROJECT_NAME}
    ${PROJECT_NAME}_plugin
-  ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
-  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
 install(
   DIRECTORY
     include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
+  DESTINATION include
   FILES_MATCHING PATTERN "*.h"
 )
 
 install(
   FILES
     master_plugin.xml
-  DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
+  DESTINATION share/${PROJECT_NAME}
 )
 
-if(CATKIN_ENABLE_TESTING)
-  catkin_add_gtest(${PROJECT_NAME}-test_parser
-    test/test_parser.cpp
-  )
-  target_link_libraries(${PROJECT_NAME}-test_parser
-    ${PROJECT_NAME}
-  )
+#if(BUILD_TESTING)
+#  ament_add_gtest(${PROJECT_NAME}-test_parser
+#    test/test_parser.cpp
+#  )
+#  target_link_libraries(${PROJECT_NAME}-test_parser
+#    ${PROJECT_NAME}
+#  )
+#
+#  ament_add_gtest(${PROJECT_NAME}-test_node
+#    test/test_node.cpp
+#  )
+#  target_link_libraries(${PROJECT_NAME}-test_node
+#    ${PROJECT_NAME}
+#  )
+#endif()
 
-  catkin_add_gtest(${PROJECT_NAME}-test_node
-    test/test_node.cpp
-  )
-  target_link_libraries(${PROJECT_NAME}-test_node
-    ${PROJECT_NAME}
-  )
-endif()
+ament_package()
