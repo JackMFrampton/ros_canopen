@@ -28,9 +28,6 @@ add_library(socketcan_to_topic
 ament_target_dependencies(socketcan_to_topic
   rclcpp
   can_msgs)
-# target_link_libraries(socketcan_to_topic
-# )
-# add_dependencies(socketcan_to_topic)
 
 
 # topic_to_socketcan
@@ -41,10 +38,6 @@ add_library(topic_to_socketcan
 ament_target_dependencies(topic_to_socketcan
   rclcpp
   can_msgs)
-# target_link_libraries(topic_to_socketcan
-# )
-# add_dependencies(topic_to_socketcan
-# )
 
 # socketcan_to_topic_node
 add_executable(socketcan_to_topic_node
@@ -60,7 +53,6 @@ target_link_libraries(socketcan_to_topic_node
 # topic_to_socketcan_node
 add_executable(topic_to_socketcan_node
   src/topic_to_socketcan_node.cpp
-
 )
 ament_target_dependencies(topic_to_socketcan_node
   rclcpp
@@ -72,6 +64,7 @@ target_link_libraries(topic_to_socketcan_node
 # socketcan_bridge_node
 add_executable(${PROJECT_NAME}_node
   src/${PROJECT_NAME}_node.cpp
+  src/${PROJECT_NAME}_driver.cpp
 )
 ament_target_dependencies(${PROJECT_NAME}_node
   rclcpp
