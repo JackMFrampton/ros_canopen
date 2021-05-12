@@ -28,10 +28,10 @@
 #ifndef SOCKETCAN_BRIDGE_SOCKETCAN_TO_TOPIC_H
 #define SOCKETCAN_BRIDGE_SOCKETCAN_TO_TOPIC_H
 
-#include <socketcan_interface/socketcan.h>
-#include <socketcan_interface/filter.h>
-#include <can_msgs/Frame.h>
-#include <ros/ros.h>
+#include <socketcan_interface/socketcan.hpp>
+#include <socketcan_interface/filter.hpp>
+#include <can_msgs/Frame.hpp>
+#include <rclcpp/rclcpp.hpp>
 
 namespace socketcan_bridge
 {

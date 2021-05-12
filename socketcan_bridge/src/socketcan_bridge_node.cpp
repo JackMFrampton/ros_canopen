@@ -26,10 +26,10 @@
  */
 
 #include "rclcpp/rclcpp.hpp"
-#include <socketcan_bridge/topic_to_socketcan.h>
-#include <socketcan_bridge/socketcan_to_topic.h>
-#include <socketcan_interface/threading.h>
-#include <socketcan_interface/xmlrpc_settings.h>
+#include <socketcan_bridge/topic_to_socketcan.hpp>
+#include <socketcan_bridge/socketcan_to_topic.hpp>
+#include <socketcan_interface/threading.hpp>
+#include <socketcan_interface/xmlrpc_settings.hpp>
 #include <memory>
 #include <string>
 

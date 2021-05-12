@@ -25,11 +25,11 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <ros/ros.h>
-#include <socketcan_bridge/socketcan_to_topic.h>
-#include <socketcan_interface/threading.h>
-#include <socketcan_interface/string.h>
-#include <socketcan_interface/xmlrpc_settings.h>
+#include <rclcpp/rclcpp.hpp>
+#include <socketcan_bridge/socketcan_to_topic.hpp>
+#include <socketcan_interface/threading.hpp>
+#include <socketcan_interface/string.hpp>
+#include <socketcan_interface/xmlrpc_settings.hpp>
 #include <memory>
 #include <string>
 

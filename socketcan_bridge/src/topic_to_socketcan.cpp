@@ -25,8 +25,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <socketcan_bridge/topic_to_socketcan.h>
-#include <socketcan_interface/string.h>
+#include <socketcan_bridge/topic_to_socketcan.hpp>
+#include <socketcan_interface/string.hpp>
 #include <string>
 
 namespace socketcan_bridge

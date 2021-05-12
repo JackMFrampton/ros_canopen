@@ -10,33 +10,27 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 find_package(ament_cmake REQUIRED)
-find_package(rosidl_default_generators REQUIRED)
-find_package(rosidl_typesupport_c REQUIRED)
+# find_package(rosidl_default_generators REQUIRED)
+# find_package(rosidl_typesupport_c REQUIRED)
 find_package(can_msgs REQUIRED)
 find_package(rosconsole_bridge REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(socketcan_interface REQUIRED)
 
-ament_export_dependencies(can_msgs 
-                          rosconsole_bridge
-                          roscpp
-                          socketcan_interface)
-
-ament_export_include_directories(include)
-
-ament_export_libraries(socketcan_to_topic
-                        topic_to_socketcan)
-
-include_directories(include ${socketcan_interface_INCLUDE_DIRS})
+include_directories(include)
+include_directories(${socketcan_interface_INCLUDE_DIRS})
 
 # socketcan_to_topic
 add_library(socketcan_to_topic
   src/rosconsole_bridge.cpp
   src/socketcan_to_topic.cpp
 )
-target_link_libraries(socketcan_to_topic
-)
-add_dependencies(socketcan_to_topic)
+ament_target_dependencies(socketcan_to_topic
+  rclcpp
+  can_msgs)
+# target_link_libraries(socketcan_to_topic
+# )
+# add_dependencies(socketcan_to_topic)
 
 
 # topic_to_socketcan
@@ -44,15 +38,21 @@ add_library(topic_to_socketcan
   src/rosconsole_bridge.cpp
   src/topic_to_socketcan.cpp
 )
-target_link_libraries(topic_to_socketcan
-)
-add_dependencies(topic_to_socketcan
-)
+ament_target_dependencies(topic_to_socketcan
+  rclcpp
+  can_msgs)
+# target_link_libraries(topic_to_socketcan
+# )
+# add_dependencies(topic_to_socketcan
+# )
 
 # socketcan_to_topic_node
 add_executable(socketcan_to_topic_node
   src/socketcan_to_topic_node.cpp
 )
+ament_target_dependencies(socketcan_to_topic_node
+  rclcpp
+  can_msgs)
 target_link_libraries(socketcan_to_topic_node
   socketcan_to_topic
 )
@@ -62,6 +62,9 @@ add_executable(topic_to_socketcan_node
   src/topic_to_socketcan_node.cpp
 
 )
+ament_target_dependencies(topic_to_socketcan_node
+  rclcpp
+  can_msgs)
 target_link_libraries(topic_to_socketcan_node
   topic_to_socketcan
 )
@@ -70,6 +73,9 @@ target_link_libraries(topic_to_socketcan_node
 add_executable(${PROJECT_NAME}_node
   src/${PROJECT_NAME}_node.cpp
 )
+ament_target_dependencies(${PROJECT_NAME}_node
+  rclcpp
+  can_msgs)
 target_link_libraries(${PROJECT_NAME}_node
   topic_to_socketcan
   socketcan_to_topic
@@ -128,3 +134,15 @@ install(
 #  )
 
 #endif()
+
+ament_export_dependencies(can_msgs 
+                          rosconsole_bridge
+                          roscpp
+                          socketcan_interface)
+
+ament_export_include_directories(include)
+
+ament_export_libraries(socketcan_to_topic
+                        topic_to_socketcan)
+
+ament_package()

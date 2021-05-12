@@ -28,9 +28,9 @@
 #ifndef SOCKETCAN_BRIDGE_TOPIC_TO_SOCKETCAN_H
 #define SOCKETCAN_BRIDGE_TOPIC_TO_SOCKETCAN_H
 
-#include <socketcan_interface/socketcan.h>
-#include <can_msgs/Frame.h>
-#include <ros/ros.h>
+#include <socketcan_interface/socketcan.hpp>
+#include <can_msgs/Frame.hpp>
+#include <rclcpp/rclcpp.hpp>
 
 namespace socketcan_bridge
 {

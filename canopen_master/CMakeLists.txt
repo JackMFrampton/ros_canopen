@@ -21,11 +21,8 @@ find_package(Boost REQUIRED
     thread
 )
 
-include_directories(socketcan_interface)
+include_directories(${socketcan_interface_INCLUDE_DIRS})
 include_directories(include ${Boost_INCLUDE_DIRS})
-ament_export_libraries(${PROJECT_NAME})
-ament_export_dependencies(socketcan_interface Boost class_loader)
-ament_export_include_directories(include)
 
 add_library(${PROJECT_NAME}
   src/emcy.cpp
@@ -94,5 +91,9 @@ install(
 #    ${PROJECT_NAME}
 #  )
 #endif()
+
+ament_export_libraries(${PROJECT_NAME})
+ament_export_dependencies(socketcan_interface Boost class_loader)
+ament_export_include_directories(include)
 
 ament_package()

@@ -26,12 +26,6 @@ include_directories(include)
 include_directories(include ${Boost_INCLUDE_DIRS})
 include_directories(include ${console_bridge_INCLUDE_DIRS}) 
 
-ament_export_dependencies(
-                        Boost 
-                        console_bridge 
-                        class_loader)
-ament_export_include_directories(include)
-
 # ${PROJECT_NAME}_string
 add_library(${PROJECT_NAME}_string
     src/string.cpp
@@ -82,11 +76,8 @@ install(
 )
 
 install(
-  DIRECTORY
-    include/${PROJECT_NAME}/
-  DESTINATION include
-  FILES_MATCHING PATTERN "*.h"
-)
+  DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION include/${PROJECT_NAME})
 
 install(
   FILES
@@ -155,4 +146,9 @@ install(
 
 #endif()
 
+ament_export_dependencies(
+                        Boost 
+                        console_bridge 
+                        class_loader)
+ament_export_include_directories(include)
 ament_package()
