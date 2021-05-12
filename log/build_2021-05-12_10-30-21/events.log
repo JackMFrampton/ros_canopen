@@ -1,0 +1,969 @@
+[0.000000] (-) TimerEvent: {}
+[0.000160] (can_msgs) JobQueued: {'identifier': 'can_msgs', 'dependencies': OrderedDict()}
+[0.000218] (socketcan_interface) JobQueued: {'identifier': 'socketcan_interface', 'dependencies': OrderedDict()}
+[0.000269] (canopen_master) JobQueued: {'identifier': 'canopen_master', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface')])}
+[0.000320] (socketcan_bridge) JobQueued: {'identifier': 'socketcan_bridge', 'dependencies': OrderedDict([('can_msgs', '/root/ros_canopen/install/can_msgs'), ('socketcan_interface', '/root/ros_canopen/install/socketcan_interface')])}
+[0.000360] (canopen_402) JobQueued: {'identifier': 'canopen_402', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master')])}
+[0.000415] (canopen_chain_node) JobQueued: {'identifier': 'canopen_chain_node', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master')])}
+[0.000470] (canopen_motor_node) JobQueued: {'identifier': 'canopen_motor_node', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master'), ('canopen_402', '/root/ros_canopen/install/canopen_402'), ('canopen_chain_node', '/root/ros_canopen/install/canopen_chain_node')])}
+[0.001505] (ros_canopen) JobQueued: {'identifier': 'ros_canopen', 'dependencies': OrderedDict([('can_msgs', '/root/ros_canopen/install/can_msgs'), ('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master'), ('socketcan_bridge', '/root/ros_canopen/install/socketcan_bridge'), ('canopen_402', '/root/ros_canopen/install/canopen_402'), ('canopen_chain_node', '/root/ros_canopen/install/canopen_chain_node'), ('canopen_motor_node', '/root/ros_canopen/install/canopen_motor_node')])}
+[0.001703] (socketcan_interface) JobStarted: {'identifier': 'socketcan_interface'}
+[0.022965] (can_msgs) JobStarted: {'identifier': 'can_msgs'}
+[0.033177] (socketcan_interface) JobProgress: {'identifier': 'socketcan_interface', 'progress': 'cmake'}
+[0.034948] (socketcan_interface) Command: {'cmd': ['/usr/bin/cmake', '/root/ros_canopen/socketcan_interface', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/socketcan_interface'], 'cwd': '/root/ros_canopen/build/socketcan_interface', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_interface'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.045358] (can_msgs) JobProgress: {'identifier': 'can_msgs', 'progress': 'cmake'}
+[0.047243] (can_msgs) Command: {'cmd': ['/usr/bin/cmake', '/root/ros_canopen/can_msgs', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/can_msgs'], 'cwd': '/root/ros_canopen/build/can_msgs', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/can_msgs'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.098849] (-) TimerEvent: {}
+[0.138258] (socketcan_interface) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.141424] (can_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[0.162897] (can_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") \n'}
+[0.163168] (socketcan_interface) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.163295] (can_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[0.198874] (-) TimerEvent: {}
+[0.299330] (-) TimerEvent: {}
+[0.373809] (can_msgs) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.374044] (socketcan_interface) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.397560] (socketcan_interface) StdoutLine: {'line': b'-- Found class_loader: 2.0.2 (/opt/ros/foxy/share/class_loader/cmake)\n'}
+[0.397807] (can_msgs) StdoutLine: {'line': b'-- Found std_msgs: 2.0.4 (/opt/ros/foxy/share/std_msgs/cmake)\n'}
+[0.399422] (-) TimerEvent: {}
+[0.432804] (socketcan_interface) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[0.440481] (socketcan_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.444811] (can_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.450350] (socketcan_interface) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.451715] (can_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[0.499544] (-) TimerEvent: {}
+[0.600011] (-) TimerEvent: {}
+[0.647101] (socketcan_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.650350] (can_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.700145] (-) TimerEvent: {}
+[0.752271] (can_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[0.794205] (can_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found version "3.8.5") \n'}
+[0.800237] (-) TimerEvent: {}
+[0.846511] (socketcan_interface) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.875939] (socketcan_interface) StdoutLine: {'line': b'-- Generating done\n'}
+[0.878326] (socketcan_interface) StdoutLine: {'line': b'-- Build files have been written to: /root/ros_canopen/build/socketcan_interface\n'}
+[0.886073] (socketcan_interface) CommandEnded: {'returncode': 0}
+[0.886870] (socketcan_interface) JobProgress: {'identifier': 'socketcan_interface', 'progress': 'build'}
+[0.888205] (socketcan_interface) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/socketcan_interface', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/socketcan_interface', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_interface'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.900374] (-) TimerEvent: {}
+[0.961843] (socketcan_interface) StdoutLine: {'line': b'[ 25%] Built target socketcan_interface_string\n'}
+[0.969438] (socketcan_interface) StdoutLine: {'line': b'[ 50%] Built target socketcan_interface_plugin\n'}
+[0.991451] (socketcan_interface) StdoutLine: {'line': b'[ 75%] Built target socketcan_bcm\n'}
+[0.995055] (socketcan_interface) StdoutLine: {'line': b'[100%] Built target socketcan_dump\n'}
+[1.000630] (-) TimerEvent: {}
+[1.010859] (socketcan_interface) CommandEnded: {'returncode': 0}
+[1.047171] (socketcan_interface) JobProgress: {'identifier': 'socketcan_interface', 'progress': 'install'}
+[1.062036] (socketcan_interface) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ros_canopen/build/socketcan_interface'], 'cwd': '/root/ros_canopen/build/socketcan_interface', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_interface'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.064165] (can_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.9.1 (/opt/ros/foxy/share/ament_cmake_ros/cmake)\n'}
+[1.072738] (socketcan_interface) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[1.073438] (socketcan_interface) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[1.074240] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_bcm\n'}
+[1.074600] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_dump\n'}
+[1.075115] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_plugin.a\n'}
+[1.075555] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_string.a\n'}
+[1.076509] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp\n'}
+[1.086095] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp\n'}
+[1.095638] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/delegates.hpp\n'}
+[1.100741] (-) TimerEvent: {}
+[1.108342] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/dispatcher.hpp\n'}
+[1.121741] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/dummy.hpp\n'}
+[1.135084] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/filter.hpp\n'}
+[1.145117] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp\n'}
+[1.154879] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/logging.hpp\n'}
+[1.164504] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/make_shared.hpp\n'}
+[1.174107] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/reader.hpp\n'}
+[1.183785] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp\n'}
+[1.193593] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp\n'}
+[1.200843] (-) TimerEvent: {}
+[1.203406] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/string.hpp\n'}
+[1.218545] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/threading.hpp\n'}
+[1.230176] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/xmlrpc_settings.hpp\n'}
+[1.240042] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/socketcan_interface_plugin.xml\n'}
+[1.240613] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/package_run_dependencies/socketcan_interface\n'}
+[1.241155] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/parent_prefix_path/socketcan_interface\n'}
+[1.241656] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.sh\n'}
+[1.242185] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.dsv\n'}
+[1.242719] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.sh\n'}
+[1.243231] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.dsv\n'}
+[1.243749] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.bash\n'}
+[1.244239] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.sh\n'}
+[1.244726] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.zsh\n'}
+[1.245261] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.dsv\n'}
+[1.245662] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.dsv\n'}
+[1.255954] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/packages/socketcan_interface\n'}
+[1.256468] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[1.257003] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[1.257510] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig.cmake\n'}
+[1.257834] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig-version.cmake\n'}
+[1.258339] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.xml\n'}
+[1.261617] (socketcan_interface) CommandEnded: {'returncode': 0}
+[1.301096] (-) TimerEvent: {}
+[1.341952] (can_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.344513] (socketcan_interface) JobEnded: {'identifier': 'socketcan_interface', 'rc': 0}
+[1.351182] (canopen_master) JobStarted: {'identifier': 'canopen_master'}
+[1.362560] (canopen_master) JobProgress: {'identifier': 'canopen_master', 'progress': 'cmake'}
+[1.364113] (canopen_master) Command: {'cmd': ['/usr/bin/cmake', '/root/ros_canopen/canopen_master', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/canopen_master'], 'cwd': '/root/ros_canopen/build/canopen_master', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/canopen_master'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy')]), 'shell': False}
+[1.387351] (canopen_master) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[1.401159] (-) TimerEvent: {}
+[1.412577] (canopen_master) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.501743] (-) TimerEvent: {}
+[1.504012] (can_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.541020] (can_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3.5") \n'}
+[1.542784] (can_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)\n'}
+[1.566472] (can_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.566754] (can_msgs) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8\n'}
+[1.566934] (can_msgs) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so\n'}
+[1.601846] (-) TimerEvent: {}
+[1.646588] (canopen_master) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[1.657592] (canopen_master) StdoutLine: {'line': b'-- Found class_loader: 2.0.2 (/opt/ros/foxy/share/class_loader/cmake)\n'}
+[1.662045] (can_msgs) StdoutLine: {'line': b'-- Configuring done\n'}
+[1.676630] (canopen_master) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[1.680456] (canopen_master) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.685513] (canopen_master) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[1.701998] (-) TimerEvent: {}
+[1.780035] (can_msgs) StdoutLine: {'line': b'-- Generating done\n'}
+[1.785394] (can_msgs) StdoutLine: {'line': b'-- Build files have been written to: /root/ros_canopen/build/can_msgs\n'}
+[1.792204] (can_msgs) CommandEnded: {'returncode': 0}
+[1.792983] (can_msgs) JobProgress: {'identifier': 'can_msgs', 'progress': 'build'}
+[1.793651] (can_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/can_msgs', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/can_msgs', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/can_msgs'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.802142] (-) TimerEvent: {}
+[1.850268] (canopen_master) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.864772] (can_msgs) StdoutLine: {'line': b'[  3%] Built target can_msgs__cpp\n'}
+[1.895014] (can_msgs) StdoutLine: {'line': b'[ 12%] Built target can_msgs__rosidl_generator_c\n'}
+[1.902239] (-) TimerEvent: {}
+[1.903640] (canopen_master) StdoutLine: {'line': b'-- Found socketcan_interface: 0.8.5 (/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake)\n'}
+[1.917716] (can_msgs) StdoutLine: {'line': b'[ 22%] Built target can_msgs__rosidl_typesupport_cpp\n'}
+[1.929781] (can_msgs) StdoutLine: {'line': b'[ 32%] Built target can_msgs__rosidl_typesupport_introspection_cpp\n'}
+[1.932390] (can_msgs) StdoutLine: {'line': b'[ 41%] Built target can_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[1.954226] (can_msgs) StdoutLine: {'line': b'[ 51%] Built target can_msgs__rosidl_typesupport_introspection_c\n'}
+[1.970915] (can_msgs) StdoutLine: {'line': b'[ 61%] Built target can_msgs__rosidl_typesupport_c\n'}
+[1.979099] (can_msgs) StdoutLine: {'line': b'[ 70%] Built target can_msgs__rosidl_typesupport_fastrtps_c\n'}
+[2.001808] (can_msgs) StdoutLine: {'line': b'[ 70%] Built target can_msgs\n'}
+[2.002314] (-) TimerEvent: {}
+[2.033566] (can_msgs) StdoutLine: {'line': b'[ 74%] Built target can_msgs__py\n'}
+[2.061074] (canopen_master) StdoutLine: {'line': b'-- Configuring done\n'}
+[2.068018] (can_msgs) StdoutLine: {'line': b'[ 80%] Built target can_msgs__python\n'}
+[2.081139] (canopen_master) StdoutLine: {'line': b'-- Generating done\n'}
+[2.084720] (canopen_master) StdoutLine: {'line': b'-- Build files have been written to: /root/ros_canopen/build/canopen_master\n'}
+[2.094026] (canopen_master) CommandEnded: {'returncode': 0}
+[2.095498] (canopen_master) JobProgress: {'identifier': 'canopen_master', 'progress': 'build'}
+[2.095586] (canopen_master) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/canopen_master', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/canopen_master', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/canopen_master'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy')]), 'shell': False}
+[2.102439] (-) TimerEvent: {}
+[2.108884] (can_msgs) StdoutLine: {'line': b'[ 87%] Built target can_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[2.111717] (can_msgs) StdoutLine: {'line': b'[100%] Built target can_msgs__rosidl_typesupport_c__pyext\n'}
+[2.111976] (can_msgs) StdoutLine: {'line': b'[100%] Built target can_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[2.128430] (can_msgs) CommandEnded: {'returncode': 0}
+[2.158130] (canopen_master) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target canopen_bcm_sync\x1b[0m\n'}
+[2.158845] (canopen_master) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target canopen_master\x1b[0m\n'}
+[2.175283] (canopen_master) StdoutLine: {'line': b'[ 10%] \x1b[32mBuilding CXX object CMakeFiles/canopen_bcm_sync.dir/src/bcm_sync.cpp.o\x1b[0m\n'}
+[2.182474] (canopen_master) StdoutLine: {'line': b'[ 20%] \x1b[32mBuilding CXX object CMakeFiles/canopen_master.dir/src/emcy.cpp.o\x1b[0m\n'}
+[2.186704] (canopen_master) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/canopen_master.dir/src/objdict.cpp.o\x1b[0m\n'}
+[2.192651] (can_msgs) JobProgress: {'identifier': 'can_msgs', 'progress': 'install'}
+[2.193256] (can_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ros_canopen/build/can_msgs'], 'cwd': '/root/ros_canopen/build/can_msgs', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/can_msgs'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[2.196126] (canopen_master) StdoutLine: {'line': b'[ 40%] \x1b[32mBuilding CXX object CMakeFiles/canopen_master.dir/src/node.cpp.o\x1b[0m\n'}
+[2.202551] (-) TimerEvent: {}
+[2.206973] (can_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[2.208188] (can_msgs) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[2.209242] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/rosidl_interfaces/can_msgs\n'}
+[2.210463] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__functions.h\n'}
+[2.212210] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.h\n'}
+[2.215097] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__type_support.h\n'}
+[2.215309] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.h\n'}
+[2.215486] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[2.216027] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/library_path.sh\n'}
+[2.216226] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/library_path.dsv\n'}
+[2.216435] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_fastrtps_c.h\n'}
+[2.216584] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[2.217063] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[2.220310] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[2.221207] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[2.224301] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[2.224721] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_introspection_c.h\n'}
+[2.224953] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[2.225143] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__builder.hpp\n'}
+[2.225322] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp\n'}
+[2.225499] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__traits.hpp\n'}
+[2.225751] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp\n'}
+[2.226095] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_introspection_cpp.hpp\n'}
+[2.226679] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/pythonpath.sh\n'}
+[2.227391] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/pythonpath.dsv\n'}
+[2.229702] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/__init__.py\n'}
+[2.231539] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/__init__.py\n'}
+[2.232050] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/_frame.py\n'}
+[2.232965] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\n'}
+[2.234806] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\n'}
+[2.236791] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\n'}
+[2.237814] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__python.so\n'}
+[2.238303] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/msg/Frame.idl\n'}
+[2.238766] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/msg/Frame.msg\n'}
+[2.239281] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/package_run_dependencies/can_msgs\n'}
+[2.239777] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/parent_prefix_path/can_msgs\n'}
+[2.240252] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/ament_prefix_path.sh\n'}
+[2.240760] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/ament_prefix_path.dsv\n'}
+[2.241133] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/path.sh\n'}
+[2.241598] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/path.dsv\n'}
+[2.242058] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.bash\n'}
+[2.242584] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.sh\n'}
+[2.243077] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.zsh\n'}
+[2.243582] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.dsv\n'}
+[2.243970] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/package.dsv\n'}
+[2.254212] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/packages/can_msgs\n'}
+[2.254689] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[2.255168] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[2.255814] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[2.256226] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[2.256716] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[2.257140] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[2.257600] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[2.258057] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig.cmake\n'}
+[2.258413] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig-version.cmake\n'}
+[2.258871] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/package.xml\n'}
+[2.260792] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_generator_c.so\n'}
+[2.262634] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_c.so\n'}
+[2.264421] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_c.so\n'}
+[2.266150] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[2.269048] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_cpp.so\n'}
+[2.302642] (-) TimerEvent: {}
+[2.332281] (can_msgs) StdoutLine: {'line': b"Compiling '/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/__init__.py'...\n"}
+[2.342386] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport.cmake\n'}
+[2.342908] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[2.343822] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[2.344379] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[2.345453] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport.cmake\n'}
+[2.346001] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[2.346838] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cppExport.cmake\n'}
+[2.347501] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[2.347950] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[2.348865] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[2.349400] (can_msgs) StdoutLine: {'line': b'-- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[2.356478] (can_msgs) CommandEnded: {'returncode': 0}
+[2.402842] (-) TimerEvent: {}
+[2.503487] (-) TimerEvent: {}
+[2.521009] (can_msgs) JobEnded: {'identifier': 'can_msgs', 'rc': 0}
+[2.526844] (socketcan_bridge) JobStarted: {'identifier': 'socketcan_bridge'}
+[2.545876] (socketcan_bridge) JobProgress: {'identifier': 'socketcan_bridge', 'progress': 'cmake'}
+[2.548117] (socketcan_bridge) Command: {'cmd': ['/usr/bin/cmake', '/root/ros_canopen/socketcan_bridge', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/socketcan_bridge'], 'cwd': '/root/ros_canopen/build/socketcan_bridge', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/ros_canopen/install/can_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_bridge'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy')]), 'shell': False}
+[2.592755] (socketcan_bridge) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[2.608699] (-) TimerEvent: {}
+[2.635241] (socketcan_bridge) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[2.708788] (-) TimerEvent: {}
+[2.809220] (-) TimerEvent: {}
+[2.909537] (-) TimerEvent: {}
+[2.974277] (socketcan_bridge) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[2.993939] (socketcan_bridge) StdoutLine: {'line': b'-- Found can_msgs: 0.8.5 (/root/ros_canopen/install/can_msgs/share/can_msgs/cmake)\n'}
+[3.009645] (-) TimerEvent: {}
+[3.078757] (socketcan_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[3.098756] (socketcan_bridge) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[3.109754] (-) TimerEvent: {}
+[3.210089] (-) TimerEvent: {}
+[3.310428] (-) TimerEvent: {}
+[3.410776] (-) TimerEvent: {}
+[3.466980] (socketcan_bridge) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.510887] (-) TimerEvent: {}
+[3.612455] (-) TimerEvent: {}
+[3.714421] (-) TimerEvent: {}
+[3.816460] (-) TimerEvent: {}
+[3.918618] (-) TimerEvent: {}
+[3.973765] (socketcan_bridge) StdoutLine: {'line': b'-- Found rclcpp: 2.3.1 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[4.018737] (-) TimerEvent: {}
+[4.092294] (socketcan_bridge) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[4.096960] (socketcan_bridge) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[4.118842] (-) TimerEvent: {}
+[4.220358] (-) TimerEvent: {}
+[4.320755] (-) TimerEvent: {}
+[4.421099] (-) TimerEvent: {}
+[4.524904] (-) TimerEvent: {}
+[4.630714] (-) TimerEvent: {}
+[4.658998] (socketcan_bridge) StdoutLine: {'line': b'-- Found socketcan_interface: 0.8.5 (/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake)\n'}
+[4.730822] (-) TimerEvent: {}
+[4.831192] (-) TimerEvent: {}
+[4.905466] (socketcan_bridge) StdoutLine: {'line': b'-- Configuring done\n'}
+[4.931315] (-) TimerEvent: {}
+[5.016354] (socketcan_bridge) StdoutLine: {'line': b'-- Generating done\n'}
+[5.020963] (socketcan_bridge) StdoutLine: {'line': b'-- Build files have been written to: /root/ros_canopen/build/socketcan_bridge\n'}
+[5.031428] (-) TimerEvent: {}
+[5.046821] (socketcan_bridge) CommandEnded: {'returncode': 0}
+[5.048825] (socketcan_bridge) JobProgress: {'identifier': 'socketcan_bridge', 'progress': 'build'}
+[5.048937] (socketcan_bridge) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/socketcan_bridge', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/socketcan_bridge', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/ros_canopen/install/can_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_bridge'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy')]), 'shell': False}
+[5.131635] (-) TimerEvent: {}
+[5.238230] (-) TimerEvent: {}
+[5.303125] (socketcan_bridge) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target socketcan_to_topic\x1b[0m\n'}
+[5.303939] (socketcan_bridge) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target topic_to_socketcan\x1b[0m\n'}
+[5.338342] (-) TimerEvent: {}
+[5.364850] (socketcan_bridge) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding CXX object CMakeFiles/socketcan_to_topic.dir/src/socketcan_to_topic.cpp.o\x1b[0m\n'}
+[5.377120] (socketcan_bridge) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/topic_to_socketcan.dir/src/topic_to_socketcan.cpp.o\x1b[0m\n'}
+[5.408319] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Ksocketcan_bridge/socketcan_to_topic.hpp: No such file or directory\n'}
+[5.408786] (socketcan_bridge) StderrLine: {'line': b'   28 | #include \x1b[01;31m\x1b[K<socketcan_bridge/socketcan_to_topic.hpp>\x1b[m\x1b[K\n'}
+[5.409114] (socketcan_bridge) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.409475] (socketcan_bridge) StderrLine: {'line': b'compilation terminated.\n'}
+[5.422555] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kfatal error: \x1b[m\x1b[Ksocketcan_bridge/topic_to_socketcan.hpp: No such file or directory\n'}
+[5.422837] (socketcan_bridge) StderrLine: {'line': b'   28 | #include \x1b[01;31m\x1b[K<socketcan_bridge/topic_to_socketcan.hpp>\x1b[m\x1b[K\n'}
+[5.423029] (socketcan_bridge) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.423220] (socketcan_bridge) StderrLine: {'line': b'compilation terminated.\n'}
+[5.423882] (socketcan_bridge) StderrLine: {'line': b'make[2]: *** [CMakeFiles/topic_to_socketcan.dir/build.make:76: CMakeFiles/topic_to_socketcan.dir/src/topic_to_socketcan.cpp.o] Error 1\n'}
+[5.424153] (socketcan_bridge) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/topic_to_socketcan.dir/all] Error 2\n'}
+[5.424342] (socketcan_bridge) StderrLine: {'line': b'make[1]: *** Waiting for unfinished jobs....\n'}
+[5.425075] (socketcan_bridge) StderrLine: {'line': b'make[2]: *** [CMakeFiles/socketcan_to_topic.dir/build.make:76: CMakeFiles/socketcan_to_topic.dir/src/socketcan_to_topic.cpp.o] Error 1\n'}
+[5.425688] (socketcan_bridge) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:113: CMakeFiles/socketcan_to_topic.dir/all] Error 2\n'}
+[5.425933] (socketcan_bridge) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[5.428731] (socketcan_bridge) CommandEnded: {'returncode': 2}
+[5.438684] (-) TimerEvent: {}
+[5.539565] (socketcan_bridge) JobEnded: {'identifier': 'socketcan_bridge', 'rc': 2}
+[5.556344] (-) TimerEvent: {}
+[5.663564] (-) TimerEvent: {}
+[5.768480] (-) TimerEvent: {}
+[5.868862] (-) TimerEvent: {}
+[5.969217] (-) TimerEvent: {}
+[6.069648] (-) TimerEvent: {}
+[6.124845] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[6.125253] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:4\x1b[m\x1b[K,\n'}
+[6.125462] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:4\x1b[m\x1b[K,\n'}
+[6.125653] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[6.125840] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.126026] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.126199] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[6.126369] (canopen_master) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[6.126557] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.126728] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[6.126896] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[6.147999] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:4\x1b[m\x1b[K,\n'}
+[6.148302] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:4\x1b[m\x1b[K,\n'}
+[6.148509] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[6.148697] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.148873] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.149047] (canopen_master) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[6.149211] (canopen_master) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[6.164858] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[6.165198] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4\x1b[m\x1b[K,\n'}
+[6.165387] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:1\x1b[m\x1b[K:\n'}
+[6.165569] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.165752] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.165929] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[6.166100] (canopen_master) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[6.166433] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.166735] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[6.167031] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[6.168173] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[6.168445] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4\x1b[m\x1b[K,\n'}
+[6.168666] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[6.168839] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.169013] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.169201] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[6.169383] (canopen_master) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[6.169561] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.169730] (-) TimerEvent: {}
+[6.170844] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[6.171161] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[6.206079] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4\x1b[m\x1b[K,\n'}
+[6.206473] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:1\x1b[m\x1b[K:\n'}
+[6.206804] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.207106] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.207402] (canopen_master) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[6.207684] (canopen_master) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[6.240476] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4\x1b[m\x1b[K,\n'}
+[6.240748] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[6.240935] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.241120] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.241293] (canopen_master) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[6.241483] (canopen_master) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[6.265609] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:4\x1b[m\x1b[K,\n'}
+[6.265890] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[6.266070] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kbool can::BCMsocket::init(const string&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.266241] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:69:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_ifindex\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[6.266436] (canopen_master) StderrLine: {'line': b'   69 |         struct sockaddr_can addr = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[6.266600] (canopen_master) StderrLine: {'line': b'      |                                      \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[6.266770] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:69:38:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_addr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[6.269859] (-) TimerEvent: {}
+[6.371838] (-) TimerEvent: {}
+[6.439020] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/objdict.hpp:15\x1b[m\x1b[K,\n'}
+[6.439296] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/objdict.cpp:1\x1b[m\x1b[K:\n'}
+[6.439500] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::PointerInvalid::PointerInvalid(const string&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.439680] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kw\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.439859] (canopen_master) StderrLine: {'line': b'   17 |     PointerInvalid(\x1b[01;35m\x1b[Kconst std::string &w\x1b[m\x1b[K) : Exception("Pointer invalid") {}\n'}
+[6.440051] (canopen_master) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[6.471953] (-) TimerEvent: {}
+[6.572343] (-) TimerEvent: {}
+[6.672776] (-) TimerEvent: {}
+[6.773173] (-) TimerEvent: {}
+[6.809875] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[6.810155] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/string.hpp:4\x1b[m\x1b[K,\n'}
+[6.810350] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/objdict.cpp:2\x1b[m\x1b[K:\n'}
+[6.810535] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.810714] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.810891] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[6.811062] (canopen_master) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[6.811228] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.811394] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[6.811560] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[6.845168] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/string.hpp:4\x1b[m\x1b[K,\n'}
+[6.845454] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/objdict.cpp:2\x1b[m\x1b[K:\n'}
+[6.845648] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.845835] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.846012] (canopen_master) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[6.846201] (canopen_master) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[6.873295] (-) TimerEvent: {}
+[6.961195] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7\x1b[m\x1b[K,\n'}
+[6.961600] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:1\x1b[m\x1b[K:\n'}
+[6.962057] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::PointerInvalid::PointerInvalid(const string&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[6.962372] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kw\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[6.962680] (canopen_master) StderrLine: {'line': b'   17 |     PointerInvalid(\x1b[01;35m\x1b[Kconst std::string &w\x1b[m\x1b[K) : Exception("Pointer invalid") {}\n'}
+[6.962983] (canopen_master) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[6.973401] (-) TimerEvent: {}
+[7.073831] (-) TimerEvent: {}
+[7.103180] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[7.103566] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:1\x1b[m\x1b[K:\n'}
+[7.103912] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K At global scope:\n'}
+[7.104222] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[7.104537] (canopen_master) StderrLine: {'line': b'   44 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void warn(const std::string & r) { set(WARN, r); }\n'}
+[7.104864] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.105284] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[7.105594] (canopen_master) StderrLine: {'line': b'   45 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void error(const std::string & r) { set(ERROR, r); }\n'}
+[7.105889] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.106317] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[7.106632] (canopen_master) StderrLine: {'line': b'   46 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void stale(const std::string & r) { set(STALE, r); }\n'}
+[7.106962] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.122909] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7\x1b[m\x1b[K,\n'}
+[7.123300] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[7.123499] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::PointerInvalid::PointerInvalid(const string&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.123682] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kw\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[7.123857] (canopen_master) StderrLine: {'line': b'   17 |     PointerInvalid(\x1b[01;35m\x1b[Kconst std::string &w\x1b[m\x1b[K) : Exception("Pointer invalid") {}\n'}
+[7.124030] (canopen_master) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[7.126791] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[7.127062] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:1\x1b[m\x1b[K:\n'}
+[7.131327] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.131628] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[7.131827] (canopen_master) StderrLine: {'line': b'  236 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}\n'}
+[7.132023] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.173945] (-) TimerEvent: {}
+[7.268487] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[7.268880] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[7.269104] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K At global scope:\n'}
+[7.269324] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[7.269539] (canopen_master) StderrLine: {'line': b'   44 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void warn(const std::string & r) { set(WARN, r); }\n'}
+[7.269726] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.269902] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[7.270073] (canopen_master) StderrLine: {'line': b'   45 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void error(const std::string & r) { set(ERROR, r); }\n'}
+[7.270241] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.270406] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[7.270573] (canopen_master) StderrLine: {'line': b'   46 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void stale(const std::string & r) { set(STALE, r); }\n'}
+[7.270737] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[7.274058] (-) TimerEvent: {}
+[7.294061] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[7.294350] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[7.294553] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.294733] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[7.294926] (canopen_master) StderrLine: {'line': b'  236 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}\n'}
+[7.295103] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.374177] (-) TimerEvent: {}
+[7.474109] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/objdict.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Ksize_t canopen::ObjectStorage::map(uint16_t, uint8_t, const ReadFunc&, const WriteFunc&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.474445] (-) TimerEvent: {}
+[7.474649] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/objdict.cpp:374:16:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcatching polymorphic type \xe2\x80\x98\x1b[01m\x1b[Kclass std::out_of_range\x1b[m\x1b[K\xe2\x80\x99 by value [\x1b[01;35m\x1b[K-Wcatch-value=\x1b[m\x1b[K]\n'}
+[7.474897] (canopen_master) StderrLine: {'line': b'  374 |     catch(std::\x1b[01;35m\x1b[Kout_of_range\x1b[m\x1b[K) {\n'}
+[7.475074] (canopen_master) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[7.574572] (-) TimerEvent: {}
+[7.674935] (-) TimerEvent: {}
+[7.775298] (-) TimerEvent: {}
+[7.875688] (-) TimerEvent: {}
+[7.955837] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:5\x1b[m\x1b[K,\n'}
+[7.956106] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[7.956273] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kbool can::SocketCANInterface::init(const string&, bool, can_err_mask_t, can_err_mask_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.956446] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_ifindex\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.956609] (canopen_master) StderrLine: {'line': b'  180 |             struct sockaddr_can addr = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[7.956745] (canopen_master) StderrLine: {'line': b'      |                                          \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[7.956879] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_addr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.959972] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::SocketCANInterface::enqueue(const can::Frame&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[7.960228] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::can_dlc\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.960420] (canopen_master) StderrLine: {'line': b'  216 |         can_frame frame = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[7.960585] (canopen_master) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[7.960736] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__pad\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.960897] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res0\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.961052] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res1\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.961202] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[7.975805] (-) TimerEvent: {}
+[8.081880] (-) TimerEvent: {}
+[8.187571] (-) TimerEvent: {}
+[8.293478] (-) TimerEvent: {}
+[8.393893] (-) TimerEvent: {}
+[8.487455] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7\x1b[m\x1b[K,\n'}
+[8.487741] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6\x1b[m\x1b[K,\n'}
+[8.487931] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[8.488112] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::PointerInvalid::PointerInvalid(const string&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.488287] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kw\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.488501] (canopen_master) StderrLine: {'line': b'   17 |     PointerInvalid(\x1b[01;35m\x1b[Kconst std::string &w\x1b[m\x1b[K) : Exception("Pointer invalid") {}\n'}
+[8.488678] (canopen_master) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[8.489609] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[8.490085] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6\x1b[m\x1b[K,\n'}
+[8.490381] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[8.490578] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K At global scope:\n'}
+[8.490763] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[8.490941] (canopen_master) StderrLine: {'line': b'   44 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void warn(const std::string & r) { set(WARN, r); }\n'}
+[8.491113] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[8.491279] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[8.491456] (canopen_master) StderrLine: {'line': b'   45 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void error(const std::string & r) { set(ERROR, r); }\n'}
+[8.491631] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[8.491816] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[8.491988] (canopen_master) StderrLine: {'line': b'   46 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void stale(const std::string & r) { set(STALE, r); }\n'}
+[8.492157] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[8.494001] (-) TimerEvent: {}
+[8.528478] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[8.528922] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6\x1b[m\x1b[K,\n'}
+[8.529244] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[8.529657] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.530003] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.530343] (canopen_master) StderrLine: {'line': b'  236 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}\n'}
+[8.530745] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.594119] (-) TimerEvent: {}
+[8.694578] (-) TimerEvent: {}
+[8.743099] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[8.743403] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.743609] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::storage_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.743811] (canopen_master) StderrLine: {'line': b'   56 |     const ObjectStorageSharedPtr \x1b[01;35m\x1b[Kstorage_\x1b[m\x1b[K;\n'}
+[8.744017] (canopen_master) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[8.744247] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcan::BufferedReader canopen::SDOClient::reader_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.744473] (canopen_master) StderrLine: {'line': b'   38 |     can::BufferedReader \x1b[01;35m\x1b[Kreader_\x1b[m\x1b[K;\n'}
+[8.744689] (canopen_master) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[8.744881] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.745089] (canopen_master) StderrLine: {'line': b'   60 |     \x1b[01;35m\x1b[KSDOClient\x1b[m\x1b[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)\n'}
+[8.745301] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[8.778009] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:1\x1b[m\x1b[K:\n'}
+[8.778329] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.778525] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::storage_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.778708] (canopen_master) StderrLine: {'line': b'   56 |     const ObjectStorageSharedPtr \x1b[01;35m\x1b[Kstorage_\x1b[m\x1b[K;\n'}
+[8.778880] (canopen_master) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[8.779051] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcan::BufferedReader canopen::SDOClient::reader_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.779227] (canopen_master) StderrLine: {'line': b'   38 |     can::BufferedReader \x1b[01;35m\x1b[Kreader_\x1b[m\x1b[K;\n'}
+[8.779397] (canopen_master) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[8.779569] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.779753] (canopen_master) StderrLine: {'line': b'   60 |     \x1b[01;35m\x1b[KSDOClient\x1b[m\x1b[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)\n'}
+[8.779925] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[8.789423] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6\x1b[m\x1b[K,\n'}
+[8.789704] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[8.789898] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.790080] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::storage_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.790260] (canopen_master) StderrLine: {'line': b'   56 |     const ObjectStorageSharedPtr \x1b[01;35m\x1b[Kstorage_\x1b[m\x1b[K;\n'}
+[8.790433] (canopen_master) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[8.790607] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcan::BufferedReader canopen::SDOClient::reader_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.790794] (canopen_master) StderrLine: {'line': b'   38 |     can::BufferedReader \x1b[01;35m\x1b[Kreader_\x1b[m\x1b[K;\n'}
+[8.790964] (canopen_master) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[8.791132] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.791303] (canopen_master) StderrLine: {'line': b'   60 |     \x1b[01;35m\x1b[KSDOClient\x1b[m\x1b[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)\n'}
+[8.791472] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[8.794692] (-) TimerEvent: {}
+[8.796376] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[8.796693] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K At global scope:\n'}
+[8.796892] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[8.797071] (canopen_master) StderrLine: {'line': b'  197 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K State getState();\n'}
+[8.797243] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[8.836559] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:20:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[8.836840] (canopen_master) StderrLine: {'line': b'   20 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K uint32_t get() const { return *(uint32_t*) this; }\n'}
+[8.837038] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[8.838316] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[8.838593] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::EMCYHandler::EMCYHandler(can::CommInterfaceSharedPtr, canopen::ObjectStorageSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.838809] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:154:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcanopen::EMCYHandler::storage_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.838997] (canopen_master) StderrLine: {'line': b'  154 |     const ObjectStorageSharedPtr \x1b[01;35m\x1b[Kstorage_\x1b[m\x1b[K;\n'}
+[8.839176] (canopen_master) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[8.839364] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:149:23:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd::atomic<bool> canopen::EMCYHandler::has_error_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.839557] (canopen_master) StderrLine: {'line': b'  149 |     std::atomic<bool> \x1b[01;35m\x1b[Khas_error_\x1b[m\x1b[K;\n'}
+[8.839726] (canopen_master) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.839894] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:53:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.840083] (canopen_master) StderrLine: {'line': b'   53 | \x1b[01;35m\x1b[KEMCYHandler\x1b[m\x1b[K::EMCYHandler(const can::CommInterfaceSharedPtr interface, const ObjectStorageSharedPtr storage): Layer("EMCY handler"), storage_(storage), has_error_(true){\n'}
+[8.840272] (canopen_master) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.841807] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::EMCYHandler::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.842086] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:79:44:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.842291] (canopen_master) StderrLine: {'line': b'   79 | void EMCYHandler::handleWrite(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K, const LayerState &current_state) {\n'}
+[8.842483] (canopen_master) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.842668] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:79:70:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.842849] (canopen_master) StderrLine: {'line': b'   79 | void EMCYHandler::handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[8.843022] (canopen_master) StderrLine: {'line': b'      |                                                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.846946] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::EMCYHandler::resetErrors(canopen::LayerStatus&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.847361] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:136:44:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.847585] (canopen_master) StderrLine: {'line': b'  136 | void EMCYHandler::resetErrors(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K){\n'}
+[8.847779] (canopen_master) StderrLine: {'line': b'      |                               \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.847961] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::EMCYHandler::handleShutdown(canopen::LayerStatus&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.848139] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:144:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.848319] (canopen_master) StderrLine: {'line': b'  144 | void EMCYHandler::handleShutdown(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K){\n'}
+[8.848520] (canopen_master) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.848701] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::EMCYHandler::handleHalt(canopen::LayerStatus&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.848890] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:146:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.849077] (canopen_master) StderrLine: {'line': b'  146 | void EMCYHandler::handleHalt(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K){\n'}
+[8.849254] (canopen_master) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.853031] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:1\x1b[m\x1b[K:\n'}
+[8.853311] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K At global scope:\n'}
+[8.853528] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[8.853714] (canopen_master) StderrLine: {'line': b'  197 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K State getState();\n'}
+[8.853894] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[8.871355] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6\x1b[m\x1b[K,\n'}
+[8.871655] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[8.871848] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K At global scope:\n'}
+[8.872028] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[8.872219] (canopen_master) StderrLine: {'line': b'  197 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K State getState();\n'}
+[8.872422] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[8.876991] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::Node::Node(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t, canopen::SyncCounterSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.877273] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:35:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcatching polymorphic type \xe2\x80\x98\x1b[01m\x1b[Kconst class std::out_of_range\x1b[m\x1b[K\xe2\x80\x99 by value [\x1b[01;35m\x1b[K-Wcatch-value=\x1b[m\x1b[K]\n'}
+[8.877472] (canopen_master) StderrLine: {'line': b'   35 |     catch(const std::\x1b[01;35m\x1b[Kout_of_range\x1b[m\x1b[K){\n'}
+[8.877773] (canopen_master) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[8.877959] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:\x1b[m\x1b[K At global scope:\n'}
+[8.878145] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:39:1:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[8.878320] (canopen_master) StderrLine: {'line': b'   39 | \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K Node::State Node::getState(){\n'}
+[8.878496] (canopen_master) StderrLine: {'line': b'      | \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[8.894811] (-) TimerEvent: {}
+[8.896538] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::Node::handleShutdown(canopen::LayerStatus&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.896941] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:210:40:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.897220] (canopen_master) StderrLine: {'line': b'  210 | void Node::handleShutdown(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K){\n'}
+[8.897499] (canopen_master) StderrLine: {'line': b'      |                           \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.897792] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::Node::handleHalt(canopen::LayerStatus&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.898099] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:216:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.898399] (canopen_master) StderrLine: {'line': b'  216 | void Node::handleHalt(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K){\n'}
+[8.898685] (canopen_master) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.946187] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[8.946471] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::BCMsync::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.946669] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:78:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.946848] (canopen_master) StderrLine: {'line': b'   78 |     virtual void handleRead(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K, const LayerState &current_state) {\n'}
+[8.947020] (canopen_master) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.948617] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::BCMsync::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.948889] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:82:43:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.949091] (canopen_master) StderrLine: {'line': b'   82 |     virtual void handleWrite(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K, const LayerState &current_state) {\n'}
+[8.949267] (canopen_master) StderrLine: {'line': b'      |                              \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.950074] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::BCMsync::handleShutdown(canopen::LayerStatus&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.950332] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:119:46:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.950548] (canopen_master) StderrLine: {'line': b'  119 |     virtual void handleShutdown(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K){\n'}
+[8.950732] (canopen_master) StderrLine: {'line': b'      |                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.951326] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::BCMsync::handleHalt(canopen::LayerStatus&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.951580] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:125:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[8.951777] (canopen_master) StderrLine: {'line': b'  125 |     virtual void handleHalt(\x1b[01;35m\x1b[KLayerStatus &status\x1b[m\x1b[K) {\n'}
+[8.951956] (canopen_master) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K~~~~~~~~~~~~~^~~~~~\x1b[m\x1b[K\n'}
+[8.952712] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[8.952992] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::BCMsync::BCMsync(const string&, can::SocketCANDriverSharedPtr, const canopen::SyncProperties&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[8.953196] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:34:14:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcanopen::BCMsync::sync_ms_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.953385] (canopen_master) StderrLine: {'line': b'   34 |     uint16_t \x1b[01;35m\x1b[Ksync_ms_\x1b[m\x1b[K;\n'}
+[8.953559] (canopen_master) StderrLine: {'line': b'      |              \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[8.953725] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:33:36:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcan::SocketCANDriverSharedPtr canopen::BCMsync::driver_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.953900] (canopen_master) StderrLine: {'line': b'   33 |     can::SocketCANDriverSharedPtr  \x1b[01;35m\x1b[Kdriver_\x1b[m\x1b[K;\n'}
+[8.954073] (canopen_master) StderrLine: {'line': b'      |                                    \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[8.954242] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[8.954413] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:143:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[8.954582] (canopen_master) StderrLine: {'line': b'  143 |     \x1b[01;35m\x1b[KBCMsync\x1b[m\x1b[K(const std::string &device, can::SocketCANDriverSharedPtr  driver, const SyncProperties &sync_properties)\n'}
+[8.954753] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[8.994925] (-) TimerEvent: {}
+[9.095290] (-) TimerEvent: {}
+[9.195661] (-) TimerEvent: {}
+[9.296049] (-) TimerEvent: {}
+[9.396444] (-) TimerEvent: {}
+[9.496818] (-) TimerEvent: {}
+[9.597205] (-) TimerEvent: {}
+[9.697586] (-) TimerEvent: {}
+[9.797954] (-) TimerEvent: {}
+[9.898343] (-) TimerEvent: {}
+[9.998930] (-) TimerEvent: {}
+[10.099299] (-) TimerEvent: {}
+[10.199681] (-) TimerEvent: {}
+[10.282659] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[10.282993] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/emcy.cpp:1\x1b[m\x1b[K:\n'}
+[10.283207] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[10.283391] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:\x1b[m\x1b[K   required from here\n'}
+[10.283697] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[10.283894] (canopen_master) StderrLine: {'line': b'  215 |     virtual void handleRead(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[10.284083] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[10.284267] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[10.284489] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:\x1b[m\x1b[K   required from here\n'}
+[10.284673] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[10.284846] (canopen_master) StderrLine: {'line': b'  218 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[10.285018] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[10.299802] (-) TimerEvent: {}
+[10.400171] (-) TimerEvent: {}
+[10.500519] (-) TimerEvent: {}
+[10.598347] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[10.598851] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/node.cpp:1\x1b[m\x1b[K:\n'}
+[10.599145] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[10.599559] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:\x1b[m\x1b[K   required from here\n'}
+[10.599847] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[10.600131] (canopen_master) StderrLine: {'line': b'  215 |     virtual void handleRead(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[10.600407] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[10.600594] (-) TimerEvent: {}
+[10.602628] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[10.603066] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:\x1b[m\x1b[K   required from here\n'}
+[10.603381] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[10.603812] (canopen_master) StderrLine: {'line': b'  218 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[10.604137] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[10.682228] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[10.682553] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6\x1b[m\x1b[K,\n'}
+[10.682786] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1\x1b[m\x1b[K:\n'}
+[10.683037] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[10.683254] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:\x1b[m\x1b[K   required from here\n'}
+[10.683442] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[10.683630] (canopen_master) StderrLine: {'line': b'  215 |     virtual void handleRead(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[10.683817] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[10.684157] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[10.684378] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:\x1b[m\x1b[K   required from here\n'}
+[10.684600] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[10.684814] (canopen_master) StderrLine: {'line': b'  218 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[10.685012] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[10.700718] (-) TimerEvent: {}
+[10.805468] (-) TimerEvent: {}
+[10.905825] (-) TimerEvent: {}
+[11.006206] (-) TimerEvent: {}
+[11.106570] (-) TimerEvent: {}
+[11.206930] (-) TimerEvent: {}
+[11.307317] (-) TimerEvent: {}
+[11.407927] (-) TimerEvent: {}
+[11.508299] (-) TimerEvent: {}
+[11.608671] (-) TimerEvent: {}
+[11.709016] (-) TimerEvent: {}
+[11.809370] (-) TimerEvent: {}
+[11.909737] (-) TimerEvent: {}
+[12.010088] (-) TimerEvent: {}
+[12.111338] (-) TimerEvent: {}
+[12.211700] (-) TimerEvent: {}
+[12.312062] (-) TimerEvent: {}
+[12.384364] (canopen_master) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/canopen_master.dir/src/pdo.cpp.o\x1b[0m\n'}
+[12.412177] (-) TimerEvent: {}
+[12.514456] (-) TimerEvent: {}
+[12.616652] (-) TimerEvent: {}
+[12.719048] (-) TimerEvent: {}
+[12.821464] (-) TimerEvent: {}
+[12.923604] (-) TimerEvent: {}
+[13.025699] (-) TimerEvent: {}
+[13.126295] (-) TimerEvent: {}
+[13.226667] (-) TimerEvent: {}
+[13.327027] (-) TimerEvent: {}
+[13.427388] (-) TimerEvent: {}
+[13.527743] (-) TimerEvent: {}
+[13.628089] (-) TimerEvent: {}
+[13.728445] (-) TimerEvent: {}
+[13.828793] (-) TimerEvent: {}
+[13.895226] (canopen_master) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX executable canopen_bcm_sync\x1b[0m\n'}
+[13.928904] (-) TimerEvent: {}
+[13.953520] (canopen_master) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/canopen_master.dir/src/sdo.cpp.o\x1b[0m\n'}
+[14.019284] (canopen_master) StderrLine: {'line': b'/usr/bin/ld: cannot find -lsocketcan_interface\n'}
+[14.019747] (canopen_master) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[14.022262] (canopen_master) StderrLine: {'line': b'make[2]: *** [CMakeFiles/canopen_bcm_sync.dir/build.make:88: canopen_bcm_sync] Error 1\n'}
+[14.022520] (canopen_master) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/canopen_bcm_sync.dir/all] Error 2\n'}
+[14.022700] (canopen_master) StderrLine: {'line': b'make[1]: *** Waiting for unfinished jobs....\n'}
+[14.029007] (-) TimerEvent: {}
+[14.134497] (-) TimerEvent: {}
+[14.236824] (-) TimerEvent: {}
+[14.339067] (-) TimerEvent: {}
+[14.445165] (-) TimerEvent: {}
+[14.545512] (-) TimerEvent: {}
+[14.645875] (-) TimerEvent: {}
+[14.751381] (-) TimerEvent: {}
+[14.851741] (-) TimerEvent: {}
+[14.952105] (-) TimerEvent: {}
+[15.052473] (-) TimerEvent: {}
+[15.152826] (-) TimerEvent: {}
+[15.253164] (-) TimerEvent: {}
+[15.273781] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[15.274070] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4\x1b[m\x1b[K,\n'}
+[15.274260] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:1\x1b[m\x1b[K:\n'}
+[15.274430] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.274589] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[15.274740] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[15.274892] (canopen_master) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[15.275084] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[15.275249] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[15.275403] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[15.306606] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4\x1b[m\x1b[K,\n'}
+[15.306871] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:1\x1b[m\x1b[K:\n'}
+[15.307044] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.307203] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[15.307359] (canopen_master) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[15.307509] (canopen_master) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[15.353287] (-) TimerEvent: {}
+[15.454162] (-) TimerEvent: {}
+[15.554523] (-) TimerEvent: {}
+[15.654879] (-) TimerEvent: {}
+[15.756479] (-) TimerEvent: {}
+[15.857006] (-) TimerEvent: {}
+[15.867096] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7\x1b[m\x1b[K,\n'}
+[15.867382] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:1\x1b[m\x1b[K:\n'}
+[15.867575] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::PointerInvalid::PointerInvalid(const string&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[15.867761] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kw\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[15.867936] (canopen_master) StderrLine: {'line': b'   17 |     PointerInvalid(\x1b[01;35m\x1b[Kconst std::string &w\x1b[m\x1b[K) : Exception("Pointer invalid") {}\n'}
+[15.868106] (canopen_master) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[15.957122] (-) TimerEvent: {}
+[15.994615] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[15.995104] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:1\x1b[m\x1b[K:\n'}
+[15.995504] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K At global scope:\n'}
+[15.995898] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[15.996313] (canopen_master) StderrLine: {'line': b'   44 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void warn(const std::string & r) { set(WARN, r); }\n'}
+[15.996776] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[15.997361] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[15.997827] (canopen_master) StderrLine: {'line': b'   45 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void error(const std::string & r) { set(ERROR, r); }\n'}
+[15.998225] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[15.998749] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[15.999157] (canopen_master) StderrLine: {'line': b'   46 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void stale(const std::string & r) { set(STALE, r); }\n'}
+[15.999557] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[16.016444] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[16.016688] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:1\x1b[m\x1b[K:\n'}
+[16.016810] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[16.016920] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[16.017228] (canopen_master) StderrLine: {'line': b'  236 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}\n'}
+[16.017476] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[16.057228] (-) TimerEvent: {}
+[16.157693] (-) TimerEvent: {}
+[16.258082] (-) TimerEvent: {}
+[16.337678] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[16.337991] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4\x1b[m\x1b[K,\n'}
+[16.338179] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/sdo.cpp:1\x1b[m\x1b[K:\n'}
+[16.338353] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[16.338524] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[16.338709] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[16.338889] (canopen_master) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[16.339084] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[16.339268] (canopen_master) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[16.339443] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[16.358194] (-) TimerEvent: {}
+[16.366201] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4\x1b[m\x1b[K,\n'}
+[16.366427] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/sdo.cpp:1\x1b[m\x1b[K:\n'}
+[16.366550] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[16.366676] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[16.366787] (canopen_master) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[16.366893] (canopen_master) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[16.458304] (-) TimerEvent: {}
+[16.561292] (-) TimerEvent: {}
+[16.661650] (-) TimerEvent: {}
+[16.762032] (-) TimerEvent: {}
+[16.862408] (-) TimerEvent: {}
+[16.956737] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7\x1b[m\x1b[K,\n'}
+[16.957024] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/sdo.cpp:1\x1b[m\x1b[K:\n'}
+[16.957236] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::PointerInvalid::PointerInvalid(const string&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[16.957421] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kw\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[16.957594] (canopen_master) StderrLine: {'line': b'   17 |     PointerInvalid(\x1b[01;35m\x1b[Kconst std::string &w\x1b[m\x1b[K) : Exception("Pointer invalid") {}\n'}
+[16.957762] (canopen_master) StderrLine: {'line': b'      |                    \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[16.962534] (-) TimerEvent: {}
+[17.042166] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[17.042456] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/sdo.cpp:1\x1b[m\x1b[K:\n'}
+[17.042662] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K At global scope:\n'}
+[17.042855] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[17.043031] (canopen_master) StderrLine: {'line': b'   44 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void warn(const std::string & r) { set(WARN, r); }\n'}
+[17.043200] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[17.043367] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[17.043538] (canopen_master) StderrLine: {'line': b'   45 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void error(const std::string & r) { set(ERROR, r); }\n'}
+[17.043704] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[17.043870] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[17.044051] (canopen_master) StderrLine: {'line': b'   46 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K void stale(const std::string & r) { set(STALE, r); }\n'}
+[17.044216] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[17.053631] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[17.053907] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/sdo.cpp:1\x1b[m\x1b[K:\n'}
+[17.054080] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[17.054251] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[17.054478] (canopen_master) StderrLine: {'line': b'  236 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}\n'}
+[17.054680] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[17.062643] (-) TimerEvent: {}
+[17.163159] (-) TimerEvent: {}
+[17.188884] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:1\x1b[m\x1b[K:\n'}
+[17.189162] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[17.189361] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::storage_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[17.189547] (canopen_master) StderrLine: {'line': b'   56 |     const ObjectStorageSharedPtr \x1b[01;35m\x1b[Kstorage_\x1b[m\x1b[K;\n'}
+[17.189720] (canopen_master) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[17.190066] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcan::BufferedReader canopen::SDOClient::reader_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[17.190334] (canopen_master) StderrLine: {'line': b'   38 |     can::BufferedReader \x1b[01;35m\x1b[Kreader_\x1b[m\x1b[K;\n'}
+[17.190523] (canopen_master) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[17.190699] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[17.190870] (canopen_master) StderrLine: {'line': b'   60 |     \x1b[01;35m\x1b[KSDOClient\x1b[m\x1b[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)\n'}
+[17.191033] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[17.222568] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:1\x1b[m\x1b[K:\n'}
+[17.222893] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K At global scope:\n'}
+[17.223083] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[17.223258] (canopen_master) StderrLine: {'line': b'  197 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K State getState();\n'}
+[17.223423] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[17.235180] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kbool check_com_changed(const canopen::ObjectDict&, uint16_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[17.235574] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:62:21:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcatching polymorphic type \xe2\x80\x98\x1b[01m\x1b[Kclass std::out_of_range\x1b[m\x1b[K\xe2\x80\x99 by value [\x1b[01;35m\x1b[K-Wcatch-value=\x1b[m\x1b[K]\n'}
+[17.235817] (canopen_master) StderrLine: {'line': b'   62 |         catch (std::\x1b[01;35m\x1b[Kout_of_range\x1b[m\x1b[K) {}\n'}
+[17.236018] (canopen_master) StderrLine: {'line': b'      |                     \x1b[01;35m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[17.236203] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kbool check_map_changed(const uint8_t&, const canopen::ObjectDict&, const uint16_t&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[17.236384] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:79:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcatching polymorphic type \xe2\x80\x98\x1b[01m\x1b[Kclass std::out_of_range\x1b[m\x1b[K\xe2\x80\x99 by value [\x1b[01;35m\x1b[K-Wcatch-value=\x1b[m\x1b[K]\n'}
+[17.236605] (canopen_master) StderrLine: {'line': b'   79 |             catch (std::\x1b[01;35m\x1b[Kout_of_range\x1b[m\x1b[K) {}\n'}
+[17.236777] (canopen_master) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[17.263276] (-) TimerEvent: {}
+[17.278002] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::PDOMapper::Buffer::read(const canopen::ObjectDict::Entry&, canopen::String&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[17.278307] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:363:16:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kvariable \xe2\x80\x98\x1b[01m\x1b[Kabs_time\x1b[m\x1b[K\xe2\x80\x99 set but not used [\x1b[01;35m\x1b[K-Wunused-but-set-variable\x1b[m\x1b[K]\n'}
+[17.278495] (canopen_master) StderrLine: {'line': b'  363 |     time_point \x1b[01;35m\x1b[Kabs_time\x1b[m\x1b[K = get_abs_time(boost::chrono::seconds(1));\n'}
+[17.278674] (canopen_master) StderrLine: {'line': b'      |                \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[17.363397] (-) TimerEvent: {}
+[17.463770] (-) TimerEvent: {}
+[17.564123] (-) TimerEvent: {}
+[17.664477] (-) TimerEvent: {}
+[17.764831] (-) TimerEvent: {}
+[17.865204] (-) TimerEvent: {}
+[17.965565] (-) TimerEvent: {}
+[17.979545] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/sdo.cpp:1\x1b[m\x1b[K:\n'}
+[17.979829] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K In constructor \xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[17.980023] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcanopen::SDOClient::storage_\x1b[m\x1b[K\xe2\x80\x99 will be initialized after [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[17.980203] (canopen_master) StderrLine: {'line': b'   56 |     const ObjectStorageSharedPtr \x1b[01;35m\x1b[Kstorage_\x1b[m\x1b[K;\n'}
+[17.980374] (canopen_master) StderrLine: {'line': b'      |                                  \x1b[01;35m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[17.980571] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcan::BufferedReader canopen::SDOClient::reader_\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[17.980769] (canopen_master) StderrLine: {'line': b'   38 |     can::BufferedReader \x1b[01;35m\x1b[Kreader_\x1b[m\x1b[K;\n'}
+[17.980952] (canopen_master) StderrLine: {'line': b'      |                         \x1b[01;35m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[17.981129] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[K  when initialized here [\x1b[01;35m\x1b[K-Wreorder\x1b[m\x1b[K]\n'}
+[17.981301] (canopen_master) StderrLine: {'line': b'   60 |     \x1b[01;35m\x1b[KSDOClient\x1b[m\x1b[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)\n'}
+[17.981468] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[18.015979] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/sdo.cpp:1\x1b[m\x1b[K:\n'}
+[18.016266] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:\x1b[m\x1b[K At global scope:\n'}
+[18.016481] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Ktype qualifiers ignored on function return type [\x1b[01;35m\x1b[K-Wignored-qualifiers\x1b[m\x1b[K]\n'}
+[18.016670] (canopen_master) StderrLine: {'line': b'  197 |     \x1b[01;35m\x1b[Kconst\x1b[m\x1b[K State getState();\n'}
+[18.016845] (canopen_master) StderrLine: {'line': b'      |     \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[18.065680] (-) TimerEvent: {}
+[18.166056] (-) TimerEvent: {}
+[18.190832] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[18.191112] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/pdo.cpp:1\x1b[m\x1b[K:\n'}
+[18.191307] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[18.191611] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:\x1b[m\x1b[K   required from here\n'}
+[18.191818] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[18.192012] (canopen_master) StderrLine: {'line': b'  215 |     virtual void handleRead(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[18.192195] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[18.192372] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[18.192565] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:\x1b[m\x1b[K   required from here\n'}
+[18.192736] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[18.192907] (canopen_master) StderrLine: {'line': b'  218 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[18.193077] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[18.266177] (-) TimerEvent: {}
+[18.366543] (-) TimerEvent: {}
+[18.466906] (-) TimerEvent: {}
+[18.567276] (-) TimerEvent: {}
+[18.668486] (-) TimerEvent: {}
+[18.768842] (-) TimerEvent: {}
+[18.869031] (canopen_master) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8\x1b[m\x1b[K,\n'}
+[18.869296] (-) TimerEvent: {}
+[18.869490] (canopen_master) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/canopen_master/src/sdo.cpp:1\x1b[m\x1b[K:\n'}
+[18.869918] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[18.870158] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:\x1b[m\x1b[K   required from here\n'}
+[18.870361] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[18.870573] (canopen_master) StderrLine: {'line': b'  215 |     virtual void handleRead(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[18.870759] (canopen_master) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[18.870934] (canopen_master) StderrLine: {'line': b'/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of \xe2\x80\x98\x1b[01m\x1b[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer]\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[18.871114] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:\x1b[m\x1b[K   required from here\n'}
+[18.871282] (canopen_master) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kcurrent_state\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[18.871454] (canopen_master) StderrLine: {'line': b'  218 |     virtual void handleWrite(LayerStatus &status, \x1b[01;35m\x1b[Kconst LayerState &current_state\x1b[m\x1b[K) {\n'}
+[18.871614] (canopen_master) StderrLine: {'line': b'      |                                                   \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[18.969414] (-) TimerEvent: {}
+[19.069770] (-) TimerEvent: {}
+[19.170137] (-) TimerEvent: {}
+[19.270491] (-) TimerEvent: {}
+[19.370845] (-) TimerEvent: {}
+[19.471198] (-) TimerEvent: {}
+[19.571552] (-) TimerEvent: {}
+[19.671959] (-) TimerEvent: {}
+[19.772318] (-) TimerEvent: {}
+[19.872777] (-) TimerEvent: {}
+[19.973419] (-) TimerEvent: {}
+[20.073768] (-) TimerEvent: {}
+[20.124608] (canopen_master) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking CXX static library libcanopen_master.a\x1b[0m\n'}
+[20.173906] (-) TimerEvent: {}
+[20.274244] (-) TimerEvent: {}
+[20.374581] (-) TimerEvent: {}
+[20.475139] (-) TimerEvent: {}
+[20.575492] (-) TimerEvent: {}
+[20.676187] (-) TimerEvent: {}
+[20.777046] (-) TimerEvent: {}
+[20.877771] (-) TimerEvent: {}
+[20.927679] (canopen_master) StdoutLine: {'line': b'[ 80%] Built target canopen_master\n'}
+[20.932464] (canopen_master) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[20.939071] (canopen_master) CommandEnded: {'returncode': 2}
+[20.978210] (-) TimerEvent: {}
+[21.065988] (canopen_master) JobEnded: {'identifier': 'canopen_master', 'rc': 2}
+[21.076869] (canopen_402) JobSkipped: {'identifier': 'canopen_402'}
+[21.077010] (canopen_chain_node) JobSkipped: {'identifier': 'canopen_chain_node'}
+[21.077062] (canopen_motor_node) JobSkipped: {'identifier': 'canopen_motor_node'}
+[21.077105] (ros_canopen) JobSkipped: {'identifier': 'ros_canopen'}
+[21.077147] (-) EventReactorShutdown: {}

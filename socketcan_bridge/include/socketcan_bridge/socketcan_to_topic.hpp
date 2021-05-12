@@ -30,7 +30,7 @@
 
 #include <socketcan_interface/socketcan.hpp>
 #include <socketcan_interface/filter.hpp>
-#include <can_msgs/Frame.hpp>
+#include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 
 namespace socketcan_bridge

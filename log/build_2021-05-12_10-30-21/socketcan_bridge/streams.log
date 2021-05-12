@@ -1,0 +1,36 @@
+[0.022s] Invoking command in '/root/ros_canopen/build/socketcan_bridge': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy LD_LIBRARY_PATH=/root/ros_canopen/install/can_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /root/ros_canopen/socketcan_bridge -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/socketcan_bridge
+[0.066s] -- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.109s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.448s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.467s] -- Found can_msgs: 0.8.5 (/root/ros_canopen/install/can_msgs/share/can_msgs/cmake)
+[0.552s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.572s] -- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.940s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.447s] -- Found rclcpp: 2.3.1 (/opt/ros/foxy/share/rclcpp/cmake)
+[1.566s] -- Found rmw_implementation_cmake: 1.0.3 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[1.570s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.132s] -- Found socketcan_interface: 0.8.5 (/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake)
+[2.379s] -- Configuring done
+[2.490s] -- Generating done
+[2.494s] -- Build files have been written to: /root/ros_canopen/build/socketcan_bridge
+[2.521s] Invoked command in '/root/ros_canopen/build/socketcan_bridge' returned '0': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy LD_LIBRARY_PATH=/root/ros_canopen/install/can_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake /root/ros_canopen/socketcan_bridge -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/socketcan_bridge
+[2.523s] Invoking command in '/root/ros_canopen/build/socketcan_bridge': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy LD_LIBRARY_PATH=/root/ros_canopen/install/can_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros_canopen/build/socketcan_bridge -- -j4 -l4
+[2.776s] [35m[1mScanning dependencies of target socketcan_to_topic[0m
+[2.777s] [35m[1mScanning dependencies of target topic_to_socketcan[0m
+[2.838s] [  8%] [32mBuilding CXX object CMakeFiles/socketcan_to_topic.dir/src/socketcan_to_topic.cpp.o[0m
+[2.850s] [ 16%] [32mBuilding CXX object CMakeFiles/topic_to_socketcan.dir/src/topic_to_socketcan.cpp.o[0m
+[2.882s] [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28:10:[m[K [01;31m[Kfatal error: [m[Ksocketcan_bridge/socketcan_to_topic.hpp: No such file or directory
+[2.882s]    28 | #include [01;31m[K<socketcan_bridge/socketcan_to_topic.hpp>[m[K
+[2.882s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.883s] compilation terminated.
+[2.896s] [01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28:10:[m[K [01;31m[Kfatal error: [m[Ksocketcan_bridge/topic_to_socketcan.hpp: No such file or directory
+[2.896s]    28 | #include [01;31m[K<socketcan_bridge/topic_to_socketcan.hpp>[m[K
+[2.896s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[2.896s] compilation terminated.
+[2.897s] make[2]: *** [CMakeFiles/topic_to_socketcan.dir/build.make:76: CMakeFiles/topic_to_socketcan.dir/src/topic_to_socketcan.cpp.o] Error 1
+[2.897s] make[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/topic_to_socketcan.dir/all] Error 2
+[2.898s] make[1]: *** Waiting for unfinished jobs....
+[2.898s] make[2]: *** [CMakeFiles/socketcan_to_topic.dir/build.make:76: CMakeFiles/socketcan_to_topic.dir/src/socketcan_to_topic.cpp.o] Error 1
+[2.899s] make[1]: *** [CMakeFiles/Makefile2:113: CMakeFiles/socketcan_to_topic.dir/all] Error 2
+[2.899s] make: *** [Makefile:141: all] Error 2
+[2.902s] Invoked command in '/root/ros_canopen/build/socketcan_bridge' returned '2': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy LD_LIBRARY_PATH=/root/ros_canopen/install/can_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros_canopen/build/socketcan_bridge -- -j4 -l4

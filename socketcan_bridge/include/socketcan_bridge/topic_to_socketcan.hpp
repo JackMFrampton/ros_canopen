@@ -29,7 +29,7 @@
 #define SOCKETCAN_BRIDGE_TOPIC_TO_SOCKETCAN_H
 
 #include <socketcan_interface/socketcan.hpp>
-#include <can_msgs/Frame.hpp>
+#include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 
 namespace socketcan_bridge

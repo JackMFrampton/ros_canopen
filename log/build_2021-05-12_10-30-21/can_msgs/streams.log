@@ -1,0 +1,114 @@
+[0.027s] Invoking command in '/root/ros_canopen/build/can_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/ros_canopen/can_msgs -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/can_msgs
+[0.118s] -- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.140s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3") 
+[0.140s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.351s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.375s] -- Found std_msgs: 2.0.4 (/opt/ros/foxy/share/std_msgs/cmake)
+[0.422s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.429s] -- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.627s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.729s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[0.771s] -- Found PythonInterp: /usr/bin/python3 (found version "3.8.5") 
+[1.042s] -- Found ament_cmake_ros: 0.9.1 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+[1.319s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.481s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.518s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.8.5", minimum required is "3.5") 
+[1.520s] -- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+[1.544s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.544s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.8
+[1.544s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.8.so
+[1.639s] -- Configuring done
+[1.757s] -- Generating done
+[1.762s] -- Build files have been written to: /root/ros_canopen/build/can_msgs
+[1.769s] Invoked command in '/root/ros_canopen/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake /root/ros_canopen/can_msgs -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/can_msgs
+[1.772s] Invoking command in '/root/ros_canopen/build/can_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/can_msgs -- -j4 -l4
+[1.842s] [  3%] Built target can_msgs__cpp
+[1.872s] [ 12%] Built target can_msgs__rosidl_generator_c
+[1.895s] [ 22%] Built target can_msgs__rosidl_typesupport_cpp
+[1.907s] [ 32%] Built target can_msgs__rosidl_typesupport_introspection_cpp
+[1.909s] [ 41%] Built target can_msgs__rosidl_typesupport_fastrtps_cpp
+[1.931s] [ 51%] Built target can_msgs__rosidl_typesupport_introspection_c
+[1.948s] [ 61%] Built target can_msgs__rosidl_typesupport_c
+[1.956s] [ 70%] Built target can_msgs__rosidl_typesupport_fastrtps_c
+[1.979s] [ 70%] Built target can_msgs
+[2.011s] [ 74%] Built target can_msgs__py
+[2.045s] [ 80%] Built target can_msgs__python
+[2.086s] [ 87%] Built target can_msgs__rosidl_typesupport_introspection_c__pyext
+[2.089s] [100%] Built target can_msgs__rosidl_typesupport_c__pyext
+[2.089s] [100%] Built target can_msgs__rosidl_typesupport_fastrtps_c__pyext
+[2.106s] Invoked command in '/root/ros_canopen/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/can_msgs -- -j4 -l4
+[2.172s] Invoking command in '/root/ros_canopen/build/can_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/ros_canopen/build/can_msgs
+[2.184s] -- Install configuration: ""
+[2.185s] -- Execute custom install script
+[2.186s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/rosidl_interfaces/can_msgs
+[2.187s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__functions.h
+[2.192s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.h
+[2.192s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__type_support.h
+[2.192s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.h
+[2.192s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_generator_c__visibility_control.h
+[2.193s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/library_path.sh
+[2.193s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/library_path.dsv
+[2.193s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_fastrtps_c.h
+[2.194s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[2.196s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_c.so
+[2.198s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_fastrtps_cpp.hpp
+[2.198s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[2.201s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_cpp.so
+[2.202s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_introspection_c.h
+[2.202s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[2.202s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__builder.hpp
+[2.202s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp
+[2.202s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__traits.hpp
+[2.203s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp
+[2.203s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_introspection_cpp.hpp
+[2.204s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/pythonpath.sh
+[2.204s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/pythonpath.dsv
+[2.207s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/__init__.py
+[2.209s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/__init__.py
+[2.209s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/_frame.py
+[2.210s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so
+[2.212s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so
+[2.214s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so
+[2.215s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__python.so
+[2.215s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/msg/Frame.idl
+[2.216s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/msg/Frame.msg
+[2.216s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/package_run_dependencies/can_msgs
+[2.217s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/parent_prefix_path/can_msgs
+[2.217s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/ament_prefix_path.sh
+[2.218s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/ament_prefix_path.dsv
+[2.218s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/path.sh
+[2.219s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/path.dsv
+[2.219s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.bash
+[2.220s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.sh
+[2.220s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.zsh
+[2.221s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.dsv
+[2.221s] -- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/package.dsv
+[2.231s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/packages/can_msgs
+[2.232s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake-extras.cmake
+[2.232s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[2.233s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[2.233s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[2.234s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.234s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[2.235s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[2.235s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig.cmake
+[2.235s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig-version.cmake
+[2.236s] -- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/package.xml
+[2.238s] -- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_generator_c.so
+[2.240s] -- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_c.so
+[2.241s] -- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_c.so
+[2.243s] -- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_cpp.so
+[2.246s] -- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_cpp.so
+[2.309s] Compiling '/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/__init__.py'...
+[2.319s] -- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport.cmake
+[2.320s] -- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport-noconfig.cmake
+[2.321s] -- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport.cmake
+[2.321s] -- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[2.322s] -- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport.cmake
+[2.323s] -- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[2.324s] -- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cppExport.cmake
+[2.325s] -- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[2.325s] -- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[2.326s] -- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport.cmake
+[2.326s] -- Installing: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[2.334s] Invoked command in '/root/ros_canopen/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/ros_canopen/build/can_msgs

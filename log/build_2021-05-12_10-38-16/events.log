@@ -1,0 +1,600 @@
+[0.000000] (-) TimerEvent: {}
+[0.000179] (can_msgs) JobQueued: {'identifier': 'can_msgs', 'dependencies': OrderedDict()}
+[0.000238] (socketcan_interface) JobQueued: {'identifier': 'socketcan_interface', 'dependencies': OrderedDict()}
+[0.000297] (canopen_master) JobQueued: {'identifier': 'canopen_master', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface')])}
+[0.000387] (socketcan_bridge) JobQueued: {'identifier': 'socketcan_bridge', 'dependencies': OrderedDict([('can_msgs', '/root/ros_canopen/install/can_msgs'), ('socketcan_interface', '/root/ros_canopen/install/socketcan_interface')])}
+[0.000442] (canopen_402) JobQueued: {'identifier': 'canopen_402', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master')])}
+[0.000498] (canopen_chain_node) JobQueued: {'identifier': 'canopen_chain_node', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master')])}
+[0.000573] (canopen_motor_node) JobQueued: {'identifier': 'canopen_motor_node', 'dependencies': OrderedDict([('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master'), ('canopen_402', '/root/ros_canopen/install/canopen_402'), ('canopen_chain_node', '/root/ros_canopen/install/canopen_chain_node')])}
+[0.001371] (ros_canopen) JobQueued: {'identifier': 'ros_canopen', 'dependencies': OrderedDict([('can_msgs', '/root/ros_canopen/install/can_msgs'), ('socketcan_interface', '/root/ros_canopen/install/socketcan_interface'), ('canopen_master', '/root/ros_canopen/install/canopen_master'), ('socketcan_bridge', '/root/ros_canopen/install/socketcan_bridge'), ('canopen_402', '/root/ros_canopen/install/canopen_402'), ('canopen_chain_node', '/root/ros_canopen/install/canopen_chain_node'), ('canopen_motor_node', '/root/ros_canopen/install/canopen_motor_node')])}
+[0.001662] (socketcan_interface) JobStarted: {'identifier': 'socketcan_interface'}
+[0.017352] (can_msgs) JobStarted: {'identifier': 'can_msgs'}
+[0.029370] (socketcan_interface) JobProgress: {'identifier': 'socketcan_interface', 'progress': 'cmake'}
+[0.030301] (socketcan_interface) JobProgress: {'identifier': 'socketcan_interface', 'progress': 'build'}
+[0.031399] (socketcan_interface) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/socketcan_interface', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/socketcan_interface', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_interface'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.038114] (can_msgs) JobProgress: {'identifier': 'can_msgs', 'progress': 'cmake'}
+[0.039441] (can_msgs) JobProgress: {'identifier': 'can_msgs', 'progress': 'build'}
+[0.039959] (can_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/can_msgs', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/can_msgs', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/can_msgs'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.098600] (socketcan_interface) StdoutLine: {'line': b'[ 25%] Built target socketcan_interface_string\n'}
+[0.099043] (-) TimerEvent: {}
+[0.100676] (socketcan_interface) StdoutLine: {'line': b'[ 50%] Built target socketcan_interface_plugin\n'}
+[0.135390] (can_msgs) StdoutLine: {'line': b'[  3%] Built target can_msgs__cpp\n'}
+[0.143980] (can_msgs) StdoutLine: {'line': b'[ 12%] Built target can_msgs__rosidl_generator_c\n'}
+[0.144320] (socketcan_interface) StdoutLine: {'line': b'[ 75%] Built target socketcan_dump\n'}
+[0.148543] (socketcan_interface) StdoutLine: {'line': b'[100%] Built target socketcan_bcm\n'}
+[0.167414] (socketcan_interface) CommandEnded: {'returncode': 0}
+[0.182377] (can_msgs) StdoutLine: {'line': b'[ 22%] Built target can_msgs__rosidl_typesupport_cpp\n'}
+[0.188700] (can_msgs) StdoutLine: {'line': b'[ 32%] Built target can_msgs__rosidl_typesupport_introspection_cpp\n'}
+[0.196189] (can_msgs) StdoutLine: {'line': b'[ 41%] Built target can_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[0.199145] (-) TimerEvent: {}
+[0.200319] (can_msgs) StdoutLine: {'line': b'[ 51%] Built target can_msgs__rosidl_typesupport_introspection_c\n'}
+[0.224097] (can_msgs) StdoutLine: {'line': b'[ 61%] Built target can_msgs__rosidl_typesupport_c\n'}
+[0.232069] (socketcan_interface) JobProgress: {'identifier': 'socketcan_interface', 'progress': 'install'}
+[0.234619] (can_msgs) StdoutLine: {'line': b'[ 70%] Built target can_msgs__rosidl_typesupport_fastrtps_c\n'}
+[0.243873] (socketcan_interface) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ros_canopen/build/socketcan_interface'], 'cwd': '/root/ros_canopen/build/socketcan_interface', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_interface'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.255211] (socketcan_interface) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.255841] (socketcan_interface) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.256502] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_bcm\n'}
+[0.256864] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_dump\n'}
+[0.257196] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_plugin.a\n'}
+[0.257511] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_string.a\n'}
+[0.257752] (can_msgs) StdoutLine: {'line': b'[ 70%] Built target can_msgs\n'}
+[0.258420] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp\n'}
+[0.258736] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp\n'}
+[0.259007] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/delegates.hpp\n'}
+[0.259246] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/dispatcher.hpp\n'}
+[0.259498] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/dummy.hpp\n'}
+[0.259838] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/filter.hpp\n'}
+[0.260164] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp\n'}
+[0.260642] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/logging.hpp\n'}
+[0.260966] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/make_shared.hpp\n'}
+[0.261318] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/reader.hpp\n'}
+[0.261697] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp\n'}
+[0.262061] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp\n'}
+[0.262390] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/string.hpp\n'}
+[0.262745] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/threading.hpp\n'}
+[0.263095] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/xmlrpc_settings.hpp\n'}
+[0.263694] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/socketcan_interface_plugin.xml\n'}
+[0.264321] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/package_run_dependencies/socketcan_interface\n'}
+[0.264927] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/parent_prefix_path/socketcan_interface\n'}
+[0.265485] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.sh\n'}
+[0.265981] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.dsv\n'}
+[0.266509] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.sh\n'}
+[0.267015] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.dsv\n'}
+[0.267529] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.bash\n'}
+[0.268053] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.sh\n'}
+[0.268667] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.zsh\n'}
+[0.269186] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.dsv\n'}
+[0.269585] (socketcan_interface) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.dsv\n'}
+[0.280016] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/packages/socketcan_interface\n'}
+[0.280520] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.281048] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.281560] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig.cmake\n'}
+[0.281856] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig-version.cmake\n'}
+[0.282359] (socketcan_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.xml\n'}
+[0.285781] (socketcan_interface) CommandEnded: {'returncode': 0}
+[0.286299] (can_msgs) StdoutLine: {'line': b'[ 74%] Built target can_msgs__py\n'}
+[0.299583] (-) TimerEvent: {}
+[0.323881] (can_msgs) StdoutLine: {'line': b'[ 80%] Built target can_msgs__python\n'}
+[0.362026] (can_msgs) StdoutLine: {'line': b'[ 87%] Built target can_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.363267] (can_msgs) StdoutLine: {'line': b'[ 93%] Built target can_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[0.368024] (can_msgs) StdoutLine: {'line': b'[100%] Built target can_msgs__rosidl_typesupport_c__pyext\n'}
+[0.376508] (socketcan_interface) JobEnded: {'identifier': 'socketcan_interface', 'rc': 0}
+[0.381019] (canopen_master) JobStarted: {'identifier': 'canopen_master'}
+[0.387612] (can_msgs) CommandEnded: {'returncode': 0}
+[0.391795] (canopen_master) JobProgress: {'identifier': 'canopen_master', 'progress': 'cmake'}
+[0.393135] (canopen_master) JobProgress: {'identifier': 'canopen_master', 'progress': 'build'}
+[0.396653] (canopen_master) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/canopen_master', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/canopen_master', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/canopen_master'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy')]), 'shell': False}
+[0.399697] (-) TimerEvent: {}
+[0.455328] (can_msgs) JobProgress: {'identifier': 'can_msgs', 'progress': 'install'}
+[0.456259] (can_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/root/ros_canopen/build/can_msgs'], 'cwd': '/root/ros_canopen/build/can_msgs', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/can_msgs'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[0.468854] (can_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.469726] (can_msgs) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.470301] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/rosidl_interfaces/can_msgs\n'}
+[0.471209] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__functions.h\n'}
+[0.471543] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.h\n'}
+[0.472257] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__type_support.h\n'}
+[0.472762] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.h\n'}
+[0.473118] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[0.473671] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/library_path.sh\n'}
+[0.473974] (canopen_master) StdoutLine: {'line': b'[ 60%] Built target canopen_master\n'}
+[0.474300] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/library_path.dsv\n'}
+[0.474999] (canopen_master) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX executable canopen_bcm_sync\x1b[0m\n'}
+[0.475414] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_fastrtps_c.h\n'}
+[0.475774] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[0.476621] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[0.477773] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.478102] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[0.478676] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[0.479386] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_introspection_c.h\n'}
+[0.479691] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[0.480443] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__builder.hpp\n'}
+[0.480790] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp\n'}
+[0.481133] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__traits.hpp\n'}
+[0.481460] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp\n'}
+[0.482245] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.482705] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/pythonpath.sh\n'}
+[0.483160] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/pythonpath.dsv\n'}
+[0.483632] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/__init__.py\n'}
+[0.484458] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/__init__.py\n'}
+[0.485380] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/msg/_frame.py\n'}
+[0.486057] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_fastrtps_c.cpython-38-x86_64-linux-gnu.so\n'}
+[0.486692] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_introspection_c.cpython-38-x86_64-linux-gnu.so\n'}
+[0.487343] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/python3.8/site-packages/can_msgs/can_msgs_s__rosidl_typesupport_c.cpython-38-x86_64-linux-gnu.so\n'}
+[0.488142] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__python.so\n'}
+[0.488716] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/msg/Frame.idl\n'}
+[0.489211] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/msg/Frame.msg\n'}
+[0.489767] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/package_run_dependencies/can_msgs\n'}
+[0.490257] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/parent_prefix_path/can_msgs\n'}
+[0.490774] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/ament_prefix_path.sh\n'}
+[0.491241] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/ament_prefix_path.dsv\n'}
+[0.491719] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/path.sh\n'}
+[0.492177] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/environment/path.dsv\n'}
+[0.492632] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.bash\n'}
+[0.493269] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.sh\n'}
+[0.493666] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.zsh\n'}
+[0.494047] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/local_setup.dsv\n'}
+[0.494432] (can_msgs) StdoutLine: {'line': b'-- Symlinking: /root/ros_canopen/install/can_msgs/share/can_msgs/package.dsv\n'}
+[0.499810] (-) TimerEvent: {}
+[0.509315] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/ament_index/resource_index/packages/can_msgs\n'}
+[0.511513] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[0.512681] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.512885] (canopen_master) StdoutLine: {'line': b'[ 90%] Built target canopen_master_plugin\n'}
+[0.514669] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.516142] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[0.516429] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.516599] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[0.516779] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[0.516943] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig.cmake\n'}
+[0.517151] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgsConfig-version.cmake\n'}
+[0.517328] (can_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /root/ros_canopen/install/can_msgs/share/can_msgs/package.xml\n'}
+[0.517493] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_generator_c.so\n'}
+[0.517656] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_c.so\n'}
+[0.517819] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_c.so\n'}
+[0.518043] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[0.518213] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/lib/libcan_msgs__rosidl_typesupport_cpp.so\n'}
+[0.563224] (canopen_master) StderrLine: {'line': b'/usr/bin/ld: cannot find -lsocketcan_interface\n'}
+[0.563612] (canopen_master) StderrLine: {'line': b'collect2: error: ld returned 1 exit status\n'}
+[0.565247] (canopen_master) StderrLine: {'line': b'make[2]: *** [CMakeFiles/canopen_bcm_sync.dir/build.make:88: canopen_bcm_sync] Error 1\n'}
+[0.565609] (canopen_master) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/canopen_bcm_sync.dir/all] Error 2\n'}
+[0.567610] (canopen_master) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[0.568296] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport.cmake\n'}
+[0.568820] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[0.569322] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[0.569819] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[0.570078] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport.cmake\n'}
+[0.570705] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[0.572760] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_generator_cppExport.cmake\n'}
+[0.573349] (canopen_master) CommandEnded: {'returncode': 2}
+[0.574297] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[0.574844] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[0.578280] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[0.578489] (can_msgs) StdoutLine: {'line': b'-- Up-to-date: /root/ros_canopen/install/can_msgs/share/can_msgs/cmake/can_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[0.578687] (can_msgs) CommandEnded: {'returncode': 0}
+[0.599966] (-) TimerEvent: {}
+[0.629833] (canopen_master) JobEnded: {'identifier': 'canopen_master', 'rc': 2}
+[0.669733] (can_msgs) JobEnded: {'identifier': 'can_msgs', 'rc': 0}
+[0.673458] (socketcan_bridge) JobStarted: {'identifier': 'socketcan_bridge'}
+[0.682700] (socketcan_bridge) JobProgress: {'identifier': 'socketcan_bridge', 'progress': 'cmake'}
+[0.683886] (socketcan_bridge) JobProgress: {'identifier': 'socketcan_bridge', 'progress': 'build'}
+[0.686064] (socketcan_bridge) Command: {'cmd': ['/usr/bin/cmake', '--build', '/root/ros_canopen/build/socketcan_bridge', '--', '-j4', '-l4'], 'cwd': '/root/ros_canopen/build/socketcan_bridge', 'env': OrderedDict([('HOSTNAME', 'bb6b91015a3a'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/root/ros_canopen/install/can_msgs/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib'), ('HOME', '/root'), ('OLDPWD', '/'), ('ROS_PYTHON_VERSION', '3'), ('_colcon_cd_root', '/root/ros2_install'), ('ROS_DISTRO', 'foxy'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('LANG', 'C.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy'), ('PWD', '/root/ros_canopen/build/socketcan_bridge'), ('LC_ALL', 'C.UTF-8'), ('PYTHONPATH', '/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy')]), 'shell': False}
+[0.700050] (-) TimerEvent: {}
+[0.739840] (socketcan_bridge) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target socketcan_to_topic\x1b[0m\n'}
+[0.749627] (socketcan_bridge) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding CXX object CMakeFiles/topic_to_socketcan.dir/src/topic_to_socketcan.cpp.o\x1b[0m\n'}
+[0.775528] (socketcan_bridge) StdoutLine: {'line': b'[ 16%] \x1b[32mBuilding CXX object CMakeFiles/socketcan_to_topic.dir/src/socketcan_to_topic.cpp.o\x1b[0m\n'}
+[0.800201] (-) TimerEvent: {}
+[0.900778] (-) TimerEvent: {}
+[1.001140] (-) TimerEvent: {}
+[1.101505] (-) TimerEvent: {}
+[1.201867] (-) TimerEvent: {}
+[1.302220] (-) TimerEvent: {}
+[1.402585] (-) TimerEvent: {}
+[1.502926] (-) TimerEvent: {}
+[1.603290] (-) TimerEvent: {}
+[1.703643] (-) TimerEvent: {}
+[1.803990] (-) TimerEvent: {}
+[1.904353] (-) TimerEvent: {}
+[2.004722] (-) TimerEvent: {}
+[2.105074] (-) TimerEvent: {}
+[2.205457] (-) TimerEvent: {}
+[2.305847] (-) TimerEvent: {}
+[2.406248] (-) TimerEvent: {}
+[2.501504] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[2.501809] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4\x1b[m\x1b[K,\n'}
+[2.501993] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4\x1b[m\x1b[K,\n'}
+[2.502163] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:31\x1b[m\x1b[K,\n'}
+[2.502339] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28\x1b[m\x1b[K:\n'}
+[2.502517] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.502692] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.502857] (socketcan_bridge) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[2.503020] (socketcan_bridge) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[2.503180] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.503342] (socketcan_bridge) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[2.503499] (socketcan_bridge) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[2.506355] (-) TimerEvent: {}
+[2.530168] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4\x1b[m\x1b[K,\n'}
+[2.530442] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4\x1b[m\x1b[K,\n'}
+[2.530636] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:31\x1b[m\x1b[K,\n'}
+[2.530814] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28\x1b[m\x1b[K:\n'}
+[2.530983] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.531169] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.531355] (socketcan_bridge) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[2.531527] (socketcan_bridge) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[2.562719] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12\x1b[m\x1b[K,\n'}
+[2.562987] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4\x1b[m\x1b[K,\n'}
+[2.563173] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4\x1b[m\x1b[K,\n'}
+[2.563338] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:31\x1b[m\x1b[K,\n'}
+[2.563505] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[2.563663] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.563821] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kn\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.563996] (socketcan_bridge) StderrLine: {'line': b'   38 |       virtual bool getRepr(\x1b[01;35m\x1b[Kconst std::string &n\x1b[m\x1b[K, std::string & repr) const { return false; }\n'}
+[2.564158] (socketcan_bridge) StderrLine: {'line': b'      |                            \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~^\x1b[m\x1b[K\n'}
+[2.564319] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Krepr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.564529] (socketcan_bridge) StderrLine: {'line': b'   38 |       virtual bool getRepr(const std::string &n, \x1b[01;35m\x1b[Kstd::string & repr\x1b[m\x1b[K) const { return false; }\n'}
+[2.564700] (socketcan_bridge) StderrLine: {'line': b'      |                                                  \x1b[01;35m\x1b[K~~~~~~~~~~~~~~^~~~\x1b[m\x1b[K\n'}
+[2.584501] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4\x1b[m\x1b[K,\n'}
+[2.584776] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4\x1b[m\x1b[K,\n'}
+[2.584970] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:31\x1b[m\x1b[K,\n'}
+[2.585163] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[2.585334] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[2.585505] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Ksettings\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[2.585674] (socketcan_bridge) StderrLine: {'line': b'  190 |     virtual bool init(const std::string &device, bool loopback, \x1b[01;35m\x1b[KSettingsConstSharedPtr settings\x1b[m\x1b[K) {\n'}
+[2.585837] (socketcan_bridge) StderrLine: {'line': b'      |                                                                 \x1b[01;35m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~\x1b[m\x1b[K\n'}
+[2.606472] (-) TimerEvent: {}
+[2.706838] (-) TimerEvent: {}
+[2.807208] (-) TimerEvent: {}
+[2.907571] (-) TimerEvent: {}
+[3.007933] (-) TimerEvent: {}
+[3.108301] (-) TimerEvent: {}
+[3.208687] (-) TimerEvent: {}
+[3.309041] (-) TimerEvent: {}
+[3.409400] (-) TimerEvent: {}
+[3.494727] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:31\x1b[m\x1b[K,\n'}
+[3.495051] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28\x1b[m\x1b[K:\n'}
+[3.495240] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kbool can::SocketCANInterface::init(const string&, bool, can_err_mask_t, can_err_mask_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.495412] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_ifindex\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.495587] (socketcan_bridge) StderrLine: {'line': b'  180 |             struct sockaddr_can addr = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[3.495749] (socketcan_bridge) StderrLine: {'line': b'      |                                          \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[3.495913] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_addr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.497786] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::SocketCANInterface::enqueue(const can::Frame&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.498137] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::can_dlc\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.498340] (socketcan_bridge) StderrLine: {'line': b'  216 |         can_frame frame = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[3.498515] (socketcan_bridge) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[3.498680] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__pad\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.498857] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res0\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.499016] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res1\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.499191] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.509545] (-) TimerEvent: {}
+[3.556569] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:31\x1b[m\x1b[K,\n'}
+[3.556867] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[3.557067] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kbool can::SocketCANInterface::init(const string&, bool, can_err_mask_t, can_err_mask_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.557239] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_ifindex\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.557420] (socketcan_bridge) StderrLine: {'line': b'  180 |             struct sockaddr_can addr = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[3.557601] (socketcan_bridge) StderrLine: {'line': b'      |                                          \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[3.557771] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Ksockaddr_can::can_addr\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.559946] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvirtual bool can::SocketCANInterface::enqueue(const can::Frame&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.560226] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::can_dlc\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.560438] (socketcan_bridge) StderrLine: {'line': b'  216 |         can_frame frame = {0\x1b[01;35m\x1b[K}\x1b[m\x1b[K;\n'}
+[3.560614] (socketcan_bridge) StderrLine: {'line': b'      |                             \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[3.560779] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__pad\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.560963] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res0\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.561130] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::__res1\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.561297] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kmissing initializer for member \xe2\x80\x98\x1b[01m\x1b[Kcan_frame::data\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wmissing-field-initializers\x1b[m\x1b[K]\n'}
+[3.609696] (-) TimerEvent: {}
+[3.710069] (-) TimerEvent: {}
+[3.810407] (-) TimerEvent: {}
+[3.910768] (-) TimerEvent: {}
+[4.011126] (-) TimerEvent: {}
+[4.111486] (-) TimerEvent: {}
+[4.211848] (-) TimerEvent: {}
+[4.312206] (-) TimerEvent: {}
+[4.412578] (-) TimerEvent: {}
+[4.512927] (-) TimerEvent: {}
+[4.571397] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28\x1b[m\x1b[K:\n'}
+[4.571715] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:\x1b[m\x1b[K At global scope:\n'}
+[4.571905] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:40:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kros\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[4.572081] (socketcan_bridge) StderrLine: {'line': b'   40 |     TopicToSocketCAN(\x1b[01;31m\x1b[Kros\x1b[m\x1b[K::NodeHandle* nh, ros::NodeHandle* nh_param, can::DriverInterfaceSharedPtr driver);\n'}
+[4.572248] (socketcan_bridge) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.572435] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:40:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K*\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.572610] (socketcan_bridge) StderrLine: {'line': b'   40 |     TopicToSocketCAN\x1b[34m\x1b[K(\x1b[m\x1b[Kros::NodeHandle\x1b[01;31m\x1b[K*\x1b[m\x1b[K nh, ros::NodeHandle* nh_param, can::DriverInterfaceSharedPtr driver);\n'}
+[4.572775] (socketcan_bridge) StderrLine: {'line': b'      |                     \x1b[34m\x1b[K~\x1b[m\x1b[K               \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.572951] (socketcan_bridge) StderrLine: {'line': b'      |                                     \x1b[32m\x1b[K)\x1b[m\x1b[K\n'}
+[4.573368] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:44:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kros\x1b[m\x1b[K\xe2\x80\x99 does not name a type; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcos\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[4.573572] (socketcan_bridge) StderrLine: {'line': b'   44 |     \x1b[01;31m\x1b[Kros\x1b[m\x1b[K::Subscriber can_topic_;\n'}
+[4.573740] (socketcan_bridge) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.573898] (socketcan_bridge) StderrLine: {'line': b'      |     \x1b[32m\x1b[Kcos\x1b[m\x1b[K\n'}
+[4.576601] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:38:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KFrame\x1b[m\x1b[K\xe2\x80\x99 in namespace \xe2\x80\x98\x1b[01m\x1b[Kcan_msgs\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[4.576994] (socketcan_bridge) StderrLine: {'line': b'   49 |     void msgCallback(const can_msgs::\x1b[01;31m\x1b[KFrame\x1b[m\x1b[K::ConstPtr& msg);\n'}
+[4.577196] (socketcan_bridge) StderrLine: {'line': b'      |                                      \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.577360] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:53:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected unqualified-id before \xe2\x80\x98\x1b[01m\x1b[K&\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.577527] (socketcan_bridge) StderrLine: {'line': b'   49 |     void msgCallback(const can_msgs::Frame::ConstPtr\x1b[01;31m\x1b[K&\x1b[m\x1b[K msg);\n'}
+[4.577688] (socketcan_bridge) StderrLine: {'line': b'      |                                                     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.577851] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:53:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K&\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.578021] (socketcan_bridge) StderrLine: {'line': b'   49 |     void msgCallback\x1b[34m\x1b[K(\x1b[m\x1b[Kconst can_msgs::Frame::ConstPtr\x1b[01;31m\x1b[K&\x1b[m\x1b[K msg);\n'}
+[4.578186] (socketcan_bridge) StderrLine: {'line': b'      |                     \x1b[34m\x1b[K~\x1b[m\x1b[K                               \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.578361] (socketcan_bridge) StderrLine: {'line': b'      |                                                     \x1b[32m\x1b[K)\x1b[m\x1b[K\n'}
+[4.578540] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:53:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 at end of member declaration\n'}
+[4.578849] (socketcan_bridge) StderrLine: {'line': b'   49 |     void msgCallback(const can_msgs::Frame::ConstPtr\x1b[01;31m\x1b[K&\x1b[m\x1b[K msg);\n'}
+[4.579422] (socketcan_bridge) StderrLine: {'line': b'      |                                                     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.579603] (socketcan_bridge) StderrLine: {'line': b'      |                                                      \x1b[32m\x1b[K;\x1b[m\x1b[K\n'}
+[4.579766] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:55:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kmsg\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[4.579926] (socketcan_bridge) StderrLine: {'line': b'   49 |     void msgCallback(const can_msgs::Frame::ConstPtr& \x1b[01;31m\x1b[Kmsg\x1b[m\x1b[K);\n'}
+[4.580085] (socketcan_bridge) StderrLine: {'line': b'      |                                                       \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.580240] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:53:48:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KFrame\x1b[m\x1b[K\xe2\x80\x99 in namespace \xe2\x80\x98\x1b[01m\x1b[Kcan_msgs\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[4.580429] (socketcan_bridge) StderrLine: {'line': b'   53 | void convertMessageToSocketCAN(const can_msgs::\x1b[01;31m\x1b[KFrame\x1b[m\x1b[K& m, can::Frame& f)\n'}
+[4.580605] (socketcan_bridge) StderrLine: {'line': b'      |                                                \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.580762] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid socketcan_bridge::convertMessageToSocketCAN(const int&, can::Frame&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.580927] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:55:12:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kid\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.581099] (socketcan_bridge) StderrLine: {'line': b'   55 |   f.id = m.\x1b[01;31m\x1b[Kid\x1b[m\x1b[K;\n'}
+[4.581254] (socketcan_bridge) StderrLine: {'line': b'      |            \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[4.581413] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:56:13:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kdlc\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.581572] (socketcan_bridge) StderrLine: {'line': b'   56 |   f.dlc = m.\x1b[01;31m\x1b[Kdlc\x1b[m\x1b[K;\n'}
+[4.581737] (socketcan_bridge) StderrLine: {'line': b'      |             \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.581894] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:57:18:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kis_error\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.582067] (socketcan_bridge) StderrLine: {'line': b'   57 |   f.is_error = m.\x1b[01;31m\x1b[Kis_error\x1b[m\x1b[K;\n'}
+[4.582233] (socketcan_bridge) StderrLine: {'line': b'      |                  \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.582397] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:58:16:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kis_rtr\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.582587] (socketcan_bridge) StderrLine: {'line': b'   58 |   f.is_rtr = m.\x1b[01;31m\x1b[Kis_rtr\x1b[m\x1b[K;\n'}
+[4.582756] (socketcan_bridge) StderrLine: {'line': b'      |                \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[4.582919] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:59:21:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kis_extended\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.583100] (socketcan_bridge) StderrLine: {'line': b'   59 |   f.is_extended = m.\x1b[01;31m\x1b[Kis_extended\x1b[m\x1b[K;\n'}
+[4.583270] (socketcan_bridge) StderrLine: {'line': b'      |                     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.583441] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:63:19:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kdata\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kconst int\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.583617] (socketcan_bridge) StderrLine: {'line': b'   63 |     f.data[i] = m.\x1b[01;31m\x1b[Kdata\x1b[m\x1b[K[i];\n'}
+[4.583782] (socketcan_bridge) StderrLine: {'line': b'      |                   \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.583958] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:\x1b[m\x1b[K At global scope:\n'}
+[4.584121] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:65:2:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.584288] (socketcan_bridge) StderrLine: {'line': b'   65 | }\x1b[01;35m\x1b[K;\x1b[m\x1b[K\n'}
+[4.584472] (socketcan_bridge) StderrLine: {'line': b'      |  \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.584643] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:67:2:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.584815] (socketcan_bridge) StderrLine: {'line': b'   67 | }\x1b[01;35m\x1b[K;\x1b[m\x1b[K  // namespace socketcan_bridge\n'}
+[4.585213] (socketcan_bridge) StderrLine: {'line': b'      |  \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.585431] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:34:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected constructor, destructor, or type conversion before \xe2\x80\x98\x1b[01m\x1b[K(\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.585625] (socketcan_bridge) StderrLine: {'line': b'   34 |   TopicToSocketCAN::TopicToSocketCAN\x1b[01;31m\x1b[K(\x1b[m\x1b[Kros::NodeHandle* nh, ros::NodeHandle* nh_param,\n'}
+[4.585979] (socketcan_bridge) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.592579] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:46:6:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.593030] (socketcan_bridge) StderrLine: {'line': b'   46 |     }\x1b[01;35m\x1b[K;\x1b[m\x1b[K\n'}
+[4.593208] (socketcan_bridge) StderrLine: {'line': b'      |      \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.593366] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:48:54:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KFrame\x1b[m\x1b[K\xe2\x80\x99 in namespace \xe2\x80\x98\x1b[01m\x1b[Kcan_msgs\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[4.593523] (socketcan_bridge) StderrLine: {'line': b'   48 |   void TopicToSocketCAN::msgCallback(const can_msgs::\x1b[01;31m\x1b[KFrame\x1b[m\x1b[K::ConstPtr& msg)\n'}
+[4.593667] (socketcan_bridge) StderrLine: {'line': b'      |                                                      \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.593805] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:48:69:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected unqualified-id before \xe2\x80\x98\x1b[01m\x1b[K&\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.593943] (socketcan_bridge) StderrLine: {'line': b'   48 |   void TopicToSocketCAN::msgCallback(const can_msgs::Frame::ConstPtr\x1b[01;31m\x1b[K&\x1b[m\x1b[K msg)\n'}
+[4.594075] (socketcan_bridge) StderrLine: {'line': b'      |                                                                     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.594204] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:48:69:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K&\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.594335] (socketcan_bridge) StderrLine: {'line': b'   48 |   void TopicToSocketCAN::msgCallback\x1b[34m\x1b[K(\x1b[m\x1b[Kconst can_msgs::Frame::ConstPtr\x1b[01;31m\x1b[K&\x1b[m\x1b[K msg)\n'}
+[4.594475] (socketcan_bridge) StderrLine: {'line': b'      |                                     \x1b[34m\x1b[K~\x1b[m\x1b[K                               \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.594605] (socketcan_bridge) StderrLine: {'line': b'      |                                                                     \x1b[32m\x1b[K)\x1b[m\x1b[K\n'}
+[4.594734] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:48:71:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected initializer before \xe2\x80\x98\x1b[01m\x1b[Kmsg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.594867] (socketcan_bridge) StderrLine: {'line': b'   48 |   void TopicToSocketCAN::msgCallback(const can_msgs::Frame::ConstPtr& \x1b[01;31m\x1b[Kmsg\x1b[m\x1b[K)\n'}
+[4.594997] (socketcan_bridge) StderrLine: {'line': b'      |                                                                       \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.598357] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid socketcan_bridge::TopicToSocketCAN::stateCallback(const can::State&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.598639] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:84:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KROS_INFO\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[4.598840] (socketcan_bridge) StderrLine: {'line': b'   84 |         \x1b[01;31m\x1b[KROS_INFO\x1b[m\x1b[K("State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());\n'}
+[4.599007] (socketcan_bridge) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.603150] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:88:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KROS_ERROR\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[KSO_ERROR\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[4.603502] (socketcan_bridge) StderrLine: {'line': b'   88 |         \x1b[01;31m\x1b[KROS_ERROR\x1b[m\x1b[K("Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());\n'}
+[4.603676] (socketcan_bridge) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[4.603837] (socketcan_bridge) StderrLine: {'line': b'      |         \x1b[32m\x1b[KSO_ERROR\x1b[m\x1b[K\n'}
+[4.604005] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:\x1b[m\x1b[K At global scope:\n'}
+[4.604173] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:90:6:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.604348] (socketcan_bridge) StderrLine: {'line': b'   90 |     }\x1b[01;35m\x1b[K;\x1b[m\x1b[K\n'}
+[4.604551] (socketcan_bridge) StderrLine: {'line': b'      |      \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.604733] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:91:2:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.604909] (socketcan_bridge) StderrLine: {'line': b'   91 | }\x1b[01;35m\x1b[K;\x1b[m\x1b[K  // namespace socketcan_bridge\n'}
+[4.605074] (socketcan_bridge) StderrLine: {'line': b'      |  \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.613035] (-) TimerEvent: {}
+[4.645439] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[4.645959] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:\x1b[m\x1b[K At global scope:\n'}
+[4.646147] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:41:22:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kros\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[4.646306] (socketcan_bridge) StderrLine: {'line': b'   41 |     SocketCANToTopic(\x1b[01;31m\x1b[Kros\x1b[m\x1b[K::NodeHandle* nh, ros::NodeHandle* nh_param, can::DriverInterfaceSharedPtr driver);\n'}
+[4.646454] (socketcan_bridge) StderrLine: {'line': b'      |                      \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.646599] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:41:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K*\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.646755] (socketcan_bridge) StderrLine: {'line': b'   41 |     SocketCANToTopic\x1b[34m\x1b[K(\x1b[m\x1b[Kros::NodeHandle\x1b[01;31m\x1b[K*\x1b[m\x1b[K nh, ros::NodeHandle* nh_param, can::DriverInterfaceSharedPtr driver);\n'}
+[4.646911] (socketcan_bridge) StderrLine: {'line': b'      |                     \x1b[34m\x1b[K~\x1b[m\x1b[K               \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.647054] (socketcan_bridge) StderrLine: {'line': b'      |                                     \x1b[32m\x1b[K)\x1b[m\x1b[K\n'}
+[4.647195] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:44:16:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KXmlRpc\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[4.647338] (socketcan_bridge) StderrLine: {'line': b'   44 |     void setup(\x1b[01;31m\x1b[KXmlRpc\x1b[m\x1b[K::XmlRpcValue filters);\n'}
+[4.647479] (socketcan_bridge) StderrLine: {'line': b'      |                \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[4.647617] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:44:36:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K,\x1b[m\x1b[K\xe2\x80\x99 or \xe2\x80\x98\x1b[01m\x1b[K...\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[Kfilters\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.647761] (socketcan_bridge) StderrLine: {'line': b'   44 |     void setup(XmlRpc::XmlRpcValue \x1b[01;31m\x1b[Kfilters\x1b[m\x1b[K);\n'}
+[4.647902] (socketcan_bridge) StderrLine: {'line': b'      |                                    \x1b[01;31m\x1b[K^~~~~~~\x1b[m\x1b[K\n'}
+[4.648049] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:45:16:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kros\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[4.648196] (socketcan_bridge) StderrLine: {'line': b'   45 |     void setup(\x1b[01;31m\x1b[Kros\x1b[m\x1b[K::NodeHandle nh);\n'}
+[4.648505] (socketcan_bridge) StderrLine: {'line': b'      |                \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.648683] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:45:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K,\x1b[m\x1b[K\xe2\x80\x99 or \xe2\x80\x98\x1b[01m\x1b[K...\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[Knh\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.648854] (socketcan_bridge) StderrLine: {'line': b'   45 |     void setup(ros::NodeHandle \x1b[01;31m\x1b[Knh\x1b[m\x1b[K);\n'}
+[4.649021] (socketcan_bridge) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[4.649189] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:45:10:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kvoid socketcan_bridge::SocketCANToTopic::setup(int)\x1b[m\x1b[K\xe2\x80\x99 cannot be overloaded with \xe2\x80\x98\x1b[01m\x1b[Kvoid socketcan_bridge::SocketCANToTopic::setup(int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.649366] (socketcan_bridge) StderrLine: {'line': b'   45 |     void \x1b[01;31m\x1b[Ksetup\x1b[m\x1b[K(ros::NodeHandle nh);\n'}
+[4.649510] (socketcan_bridge) StderrLine: {'line': b'      |          \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.649648] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:44:10:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kprevious declaration \xe2\x80\x98\x1b[01m\x1b[Kvoid socketcan_bridge::SocketCANToTopic::setup(int)\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.649809] (socketcan_bridge) StderrLine: {'line': b'   44 |     void \x1b[01;36m\x1b[Ksetup\x1b[m\x1b[K(XmlRpc::XmlRpcValue filters);\n'}
+[4.649968] (socketcan_bridge) StderrLine: {'line': b'      |          \x1b[01;36m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.650123] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:48:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kros\x1b[m\x1b[K\xe2\x80\x99 does not name a type; did you mean \xe2\x80\x98\x1b[01m\x1b[Kcos\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[4.650294] (socketcan_bridge) StderrLine: {'line': b'   48 |     \x1b[01;31m\x1b[Kros\x1b[m\x1b[K::Publisher can_topic_;\n'}
+[4.650452] (socketcan_bridge) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.650608] (socketcan_bridge) StderrLine: {'line': b'      |     \x1b[32m\x1b[Kcos\x1b[m\x1b[K\n'}
+[4.652675] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:59:63:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcan_msgs::Frame\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[4.653133] (socketcan_bridge) StderrLine: {'line': b'   59 | void convertSocketCANToMessage(const can::Frame& f, can_msgs::\x1b[01;31m\x1b[KFrame\x1b[m\x1b[K& m)\n'}
+[4.653334] (socketcan_bridge) StderrLine: {'line': b'      |                                                               \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.653502] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:\x1b[m\x1b[K In function \xe2\x80\x98\x1b[01m\x1b[Kvoid socketcan_bridge::convertSocketCANToMessage(const can::Frame&, int&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.653670] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:61:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kid\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.653841] (socketcan_bridge) StderrLine: {'line': b'   61 |   m.\x1b[01;31m\x1b[Kid\x1b[m\x1b[K = f.id;\n'}
+[4.654008] (socketcan_bridge) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[4.654175] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:62:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kdlc\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.654351] (socketcan_bridge) StderrLine: {'line': b'   62 |   m.\x1b[01;31m\x1b[Kdlc\x1b[m\x1b[K = f.dlc;\n'}
+[4.654520] (socketcan_bridge) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.654687] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:63:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kis_error\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.654908] (socketcan_bridge) StderrLine: {'line': b'   63 |   m.\x1b[01;31m\x1b[Kis_error\x1b[m\x1b[K = f.is_error;\n'}
+[4.655083] (socketcan_bridge) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.655252] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:64:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kis_rtr\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.655425] (socketcan_bridge) StderrLine: {'line': b'   64 |   m.\x1b[01;31m\x1b[Kis_rtr\x1b[m\x1b[K = f.is_rtr;\n'}
+[4.655596] (socketcan_bridge) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[4.655763] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:65:5:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kis_extended\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.655937] (socketcan_bridge) StderrLine: {'line': b'   65 |   m.\x1b[01;31m\x1b[Kis_extended\x1b[m\x1b[K = f.is_extended;\n'}
+[4.656108] (socketcan_bridge) StderrLine: {'line': b'      |     \x1b[01;31m\x1b[K^~~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.656272] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:69:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Krequest for member \xe2\x80\x98\x1b[01m\x1b[Kdata\x1b[m\x1b[K\xe2\x80\x99 in \xe2\x80\x98\x1b[01m\x1b[Km\x1b[m\x1b[K\xe2\x80\x99, which is of non-class type \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.656799] (socketcan_bridge) StderrLine: {'line': b'   69 |     m.\x1b[01;31m\x1b[Kdata\x1b[m\x1b[K[i] = f.data[i];\n'}
+[4.656983] (socketcan_bridge) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~\x1b[m\x1b[K\n'}
+[4.657146] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:\x1b[m\x1b[K At global scope:\n'}
+[4.657306] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:71:2:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.657475] (socketcan_bridge) StderrLine: {'line': b'   71 | }\x1b[01;35m\x1b[K;\x1b[m\x1b[K\n'}
+[4.657641] (socketcan_bridge) StderrLine: {'line': b'      |  \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.657804] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:73:2:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.657968] (socketcan_bridge) StderrLine: {'line': b'   73 | }\x1b[01;35m\x1b[K;\x1b[m\x1b[K  // namespace socketcan_bridge\n'}
+[4.658138] (socketcan_bridge) StderrLine: {'line': b'      |  \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.658299] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:35:53:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KXmlRpc\x1b[m\x1b[K\xe2\x80\x99 does not name a type\n'}
+[4.658465] (socketcan_bridge) StderrLine: {'line': b'   35 | template<> can::FrameFilterSharedPtr tofilter(const \x1b[01;31m\x1b[KXmlRpc\x1b[m\x1b[K::XmlRpcValue  &ct)\n'}
+[4.658642] (socketcan_bridge) StderrLine: {'line': b'      |                                                     \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[4.658802] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:35:74:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected unqualified-id before \xe2\x80\x98\x1b[01m\x1b[K&\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.658975] (socketcan_bridge) StderrLine: {'line': b'   35 | template<> can::FrameFilterSharedPtr tofilter(const XmlRpc::XmlRpcValue  \x1b[01;31m\x1b[K&\x1b[m\x1b[Kct)\n'}
+[4.659136] (socketcan_bridge) StderrLine: {'line': b'      |                                                                          \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.659301] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:35:72:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected \xe2\x80\x98\x1b[01m\x1b[K)\x1b[m\x1b[K\xe2\x80\x99 before \xe2\x80\x98\x1b[01m\x1b[K&\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.659481] (socketcan_bridge) StderrLine: {'line': b'   35 | template<> can::FrameFilterSharedPtr tofilter\x1b[34m\x1b[K(\x1b[m\x1b[Kconst XmlRpc::XmlRpcValue\x1b[01;31m\x1b[K \x1b[m\x1b[K \x1b[32m\x1b[K&\x1b[m\x1b[Kct)\n'}
+[4.659642] (socketcan_bridge) StderrLine: {'line': b'      |                                              \x1b[34m\x1b[K~\x1b[m\x1b[K                         \x1b[01;31m\x1b[K^\x1b[m\x1b[K \x1b[32m\x1b[K~\x1b[m\x1b[K\n'}
+[4.659802] (socketcan_bridge) StderrLine: {'line': b'      |                                                                        \x1b[32m\x1b[K)\x1b[m\x1b[K\n'}
+[4.659962] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:35:75:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected initializer before \xe2\x80\x98\x1b[01m\x1b[Kct\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.660127] (socketcan_bridge) StderrLine: {'line': b'   35 | template<> can::FrameFilterSharedPtr tofilter(const XmlRpc::XmlRpcValue  &\x1b[01;31m\x1b[Kct\x1b[m\x1b[K)\n'}
+[4.660290] (socketcan_bridge) StderrLine: {'line': b'      |                                                                           \x1b[01;31m\x1b[K^~\x1b[m\x1b[K\n'}
+[4.660481] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:52:37:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kexpected constructor, destructor, or type conversion before \xe2\x80\x98\x1b[01m\x1b[K(\x1b[m\x1b[K\xe2\x80\x99 token\n'}
+[4.660646] (socketcan_bridge) StderrLine: {'line': b'   52 |   SocketCANToTopic::SocketCANToTopic\x1b[01;31m\x1b[K(\x1b[m\x1b[Kros::NodeHandle* nh, ros::NodeHandle* nh_param,\n'}
+[4.660821] (socketcan_bridge) StderrLine: {'line': b'      |                                     \x1b[01;31m\x1b[K^\x1b[m\x1b[K\n'}
+[4.660987] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:65:6:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.661153] (socketcan_bridge) StderrLine: {'line': b'   65 |     }\x1b[01;35m\x1b[K;\x1b[m\x1b[K\n'}
+[4.661319] (socketcan_bridge) StderrLine: {'line': b'      |      \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.672154] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:78:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kvariable or field \xe2\x80\x98\x1b[01m\x1b[Ksetup\x1b[m\x1b[K\xe2\x80\x99 declared void\n'}
+[4.672449] (socketcan_bridge) StderrLine: {'line': b'   78 |   void SocketCANToTopic::setup(\x1b[01;31m\x1b[KXmlRpc\x1b[m\x1b[K::XmlRpcValue filters)\n'}
+[4.672645] (socketcan_bridge) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[4.672822] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:78:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KXmlRpc\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[4.673006] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:82:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kvariable or field \xe2\x80\x98\x1b[01m\x1b[Ksetup\x1b[m\x1b[K\xe2\x80\x99 declared void\n'}
+[4.673194] (socketcan_bridge) StderrLine: {'line': b'   82 |   void SocketCANToTopic::setup(\x1b[01;31m\x1b[Kros\x1b[m\x1b[K::NodeHandle nh)\n'}
+[4.673357] (socketcan_bridge) StderrLine: {'line': b'      |                                \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.673517] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:82:32:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kros\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[4.677176] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid socketcan_bridge::SocketCANToTopic::frameCallback(const can::Frame&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.677452] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:95:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KROS_ERROR\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[KSO_ERROR\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[4.677636] (socketcan_bridge) StderrLine: {'line': b'   95 |         \x1b[01;31m\x1b[KROS_ERROR\x1b[m\x1b[K("Invalid frame from SocketCAN: id: %#04x, length: %d, is_extended: %d, is_error: %d, is_rtr: %d",\n'}
+[4.677811] (socketcan_bridge) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[4.677979] (socketcan_bridge) StderrLine: {'line': b'      |         \x1b[32m\x1b[KSO_ERROR\x1b[m\x1b[K\n'}
+[4.681997] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:105:11:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KROS_WARN\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[4.682274] (socketcan_bridge) StderrLine: {'line': b'  105 |           \x1b[01;31m\x1b[KROS_WARN\x1b[m\x1b[K("Received frame is error: %s", can::tostring(f, true).c_str());\n'}
+[4.682457] (socketcan_bridge) StderrLine: {'line': b'      |           \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.682970] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:109:17:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KFrame\x1b[m\x1b[K\xe2\x80\x99 is not a member of \xe2\x80\x98\x1b[01m\x1b[Kcan_msgs\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.683370] (socketcan_bridge) StderrLine: {'line': b'  109 |       can_msgs::\x1b[01;31m\x1b[KFrame\x1b[m\x1b[K msg;\n'}
+[4.683554] (socketcan_bridge) StderrLine: {'line': b'      |                 \x1b[01;31m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.683723] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:109:17:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Ksuggested alternatives:\n'}
+[4.683890] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4\x1b[m\x1b[K,\n'}
+[4.684071] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4\x1b[m\x1b[K,\n'}
+[4.684862] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:31\x1b[m\x1b[K,\n'}
+[4.685066] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[4.685250] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:62:8:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcan::Frame\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.685419] (socketcan_bridge) StderrLine: {'line': b'   62 | struct \x1b[01;36m\x1b[KFrame\x1b[m\x1b[K: public Header{\n'}
+[4.685586] (socketcan_bridge) StderrLine: {'line': b'      |        \x1b[01;36m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.685750] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp:7\x1b[m\x1b[K,\n'}
+[4.685913] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:33\x1b[m\x1b[K,\n'}
+[4.686075] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[4.686237] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp:209:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcan_msgs::msg::Frame\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.686411] (socketcan_bridge) StderrLine: {'line': b'  209 | using \x1b[01;36m\x1b[KFrame\x1b[m\x1b[K =\n'}
+[4.686567] (socketcan_bridge) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.686729] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:111:36:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kmsg\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[4.686891] (socketcan_bridge) StderrLine: {'line': b'  111 |       convertSocketCANToMessage(f, \x1b[01;31m\x1b[Kmsg\x1b[m\x1b[K);\n'}
+[4.687051] (socketcan_bridge) StderrLine: {'line': b'      |                                    \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.687212] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:111:36:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Ksuggested alternatives:\n'}
+[4.687373] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp:19\x1b[m\x1b[K,\n'}
+[4.687537] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp:19\x1b[m\x1b[K,\n'}
+[4.687698] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp:7\x1b[m\x1b[K,\n'}
+[4.687854] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:33\x1b[m\x1b[K,\n'}
+[4.688011] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[4.688166] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.hpp:26:11:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kbuiltin_interfaces::msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.688325] (socketcan_bridge) StderrLine: {'line': b'   26 | namespace \x1b[01;36m\x1b[Kmsg\x1b[m\x1b[K\n'}
+[4.688520] (socketcan_bridge) StderrLine: {'line': b'      |           \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.688680] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp:19\x1b[m\x1b[K,\n'}
+[4.688846] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp:7\x1b[m\x1b[K,\n'}
+[4.689022] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:33\x1b[m\x1b[K,\n'}
+[4.689185] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[4.689348] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp:30:11:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstd_msgs::msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.689512] (socketcan_bridge) StderrLine: {'line': b'   30 | namespace \x1b[01;36m\x1b[Kmsg\x1b[m\x1b[K\n'}
+[4.689672] (socketcan_bridge) StderrLine: {'line': b'      |           \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.689834] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp:7\x1b[m\x1b[K,\n'}
+[4.689999] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:33\x1b[m\x1b[K,\n'}
+[4.690166] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[4.690325] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp:30:11:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kcan_msgs::msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.690610] (socketcan_bridge) StderrLine: {'line': b'   30 | namespace \x1b[01;36m\x1b[Kmsg\x1b[m\x1b[K\n'}
+[4.690775] (socketcan_bridge) StderrLine: {'line': b'      |           \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.690933] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/statistics_msgs/msg/detail/metrics_message__struct.hpp:22\x1b[m\x1b[K,\n'}
+[4.691088] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/statistics_msgs/msg/metrics_message.hpp:7\x1b[m\x1b[K,\n'}
+[4.691251] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:21\x1b[m\x1b[K,\n'}
+[4.691417] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23\x1b[m\x1b[K,\n'}
+[4.691593] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50\x1b[m\x1b[K,\n'}
+[4.691756] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25\x1b[m\x1b[K,\n'}
+[4.691920] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24\x1b[m\x1b[K,\n'}
+[4.692074] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18\x1b[m\x1b[K,\n'}
+[4.692233] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20\x1b[m\x1b[K,\n'}
+[4.692409] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executor.hpp:33\x1b[m\x1b[K,\n'}
+[4.692576] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[4.692746] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[4.692918] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[4.693084] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:34\x1b[m\x1b[K,\n'}
+[4.693254] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[4.693417] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/statistics_msgs/msg/detail/statistic_data_point__struct.hpp:26:11:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Kstatistics_msgs::msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.693583] (socketcan_bridge) StderrLine: {'line': b'   26 | namespace \x1b[01;36m\x1b[Kmsg\x1b[m\x1b[K\n'}
+[4.693744] (socketcan_bridge) StderrLine: {'line': b'      |           \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.693904] (socketcan_bridge) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/opt/ros/foxy/include/rcl_interfaces/msg/list_parameters_result.hpp:7\x1b[m\x1b[K,\n'}
+[4.694068] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/node.hpp:34\x1b[m\x1b[K,\n'}
+[4.694229] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28\x1b[m\x1b[K,\n'}
+[4.694392] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/executors.hpp:22\x1b[m\x1b[K,\n'}
+[4.694557] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146\x1b[m\x1b[K,\n'}
+[4.694722] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:34\x1b[m\x1b[K,\n'}
+[4.694886] (socketcan_bridge) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28\x1b[m\x1b[K:\n'}
+[4.695055] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/opt/ros/foxy/include/rcl_interfaces/msg/detail/list_parameters_result__struct.hpp:26:11:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  \xe2\x80\x98\x1b[01m\x1b[Krcl_interfaces::msg\x1b[m\x1b[K\xe2\x80\x99\n'}
+[4.695221] (socketcan_bridge) StderrLine: {'line': b'   26 | namespace \x1b[01;36m\x1b[Kmsg\x1b[m\x1b[K\n'}
+[4.695385] (socketcan_bridge) StderrLine: {'line': b'      |           \x1b[01;36m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.695535] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:114:26:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kros\x1b[m\x1b[K\xe2\x80\x99 has not been declared\n'}
+[4.695791] (socketcan_bridge) StderrLine: {'line': b'  114 |       msg.header.stamp = \x1b[01;31m\x1b[Kros\x1b[m\x1b[K::Time::now();\n'}
+[4.695942] (socketcan_bridge) StderrLine: {'line': b'      |                          \x1b[01;31m\x1b[K^~~\x1b[m\x1b[K\n'}
+[4.696103] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:116:7:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[Kcan_topic_\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[4.696268] (socketcan_bridge) StderrLine: {'line': b'  116 |       \x1b[01;31m\x1b[Kcan_topic_\x1b[m\x1b[K.publish(msg);\n'}
+[4.696450] (socketcan_bridge) StderrLine: {'line': b'      |       \x1b[01;31m\x1b[K^~~~~~~~~~\x1b[m\x1b[K\n'}
+[4.696614] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:\x1b[m\x1b[K At global scope:\n'}
+[4.696777] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:117:6:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.696941] (socketcan_bridge) StderrLine: {'line': b'  117 |     }\x1b[01;35m\x1b[K;\x1b[m\x1b[K\n'}
+[4.697115] (socketcan_bridge) StderrLine: {'line': b'      |      \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.697273] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid socketcan_bridge::SocketCANToTopic::stateCallback(const can::State&)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.697436] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:126:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KROS_INFO\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope\n'}
+[4.697599] (socketcan_bridge) StderrLine: {'line': b'  126 |         \x1b[01;31m\x1b[KROS_INFO\x1b[m\x1b[K("State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());\n'}
+[4.697761] (socketcan_bridge) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[4.700504] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:130:9:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[K\xe2\x80\x98\x1b[01m\x1b[KROS_ERROR\x1b[m\x1b[K\xe2\x80\x99 was not declared in this scope; did you mean \xe2\x80\x98\x1b[01m\x1b[KSO_ERROR\x1b[m\x1b[K\xe2\x80\x99?\n'}
+[4.700765] (socketcan_bridge) StderrLine: {'line': b'  130 |         \x1b[01;31m\x1b[KROS_ERROR\x1b[m\x1b[K("Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());\n'}
+[4.700936] (socketcan_bridge) StderrLine: {'line': b'      |         \x1b[01;31m\x1b[K^~~~~~~~~\x1b[m\x1b[K\n'}
+[4.701088] (socketcan_bridge) StderrLine: {'line': b'      |         \x1b[32m\x1b[KSO_ERROR\x1b[m\x1b[K\n'}
+[4.701254] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:\x1b[m\x1b[K At global scope:\n'}
+[4.701431] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:132:6:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.701603] (socketcan_bridge) StderrLine: {'line': b'  132 |     }\x1b[01;35m\x1b[K;\x1b[m\x1b[K\n'}
+[4.701783] (socketcan_bridge) StderrLine: {'line': b'      |      \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.701955] (socketcan_bridge) StderrLine: {'line': b'\x1b[01m\x1b[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:133:2:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kextra \xe2\x80\x98\x1b[01m\x1b[K;\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wpedantic\x1b[m\x1b[K]\n'}
+[4.702139] (socketcan_bridge) StderrLine: {'line': b'  133 | }\x1b[01;35m\x1b[K;\x1b[m\x1b[K  // namespace socketcan_bridge\n'}
+[4.702305] (socketcan_bridge) StderrLine: {'line': b'      |  \x1b[01;35m\x1b[K^\x1b[m\x1b[K\n'}
+[4.713145] (-) TimerEvent: {}
+[4.813509] (-) TimerEvent: {}
+[4.913867] (-) TimerEvent: {}
+[5.014227] (-) TimerEvent: {}
+[5.114590] (-) TimerEvent: {}
+[5.214950] (-) TimerEvent: {}
+[5.315309] (-) TimerEvent: {}
+[5.415676] (-) TimerEvent: {}
+[5.516061] (-) TimerEvent: {}
+[5.539803] (socketcan_bridge) StderrLine: {'line': b'make[2]: *** [CMakeFiles/topic_to_socketcan.dir/build.make:76: CMakeFiles/topic_to_socketcan.dir/src/topic_to_socketcan.cpp.o] Error 1\n'}
+[5.540095] (socketcan_bridge) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/topic_to_socketcan.dir/all] Error 2\n'}
+[5.540223] (socketcan_bridge) StderrLine: {'line': b'make[1]: *** Waiting for unfinished jobs....\n'}
+[5.616190] (-) TimerEvent: {}
+[5.666049] (socketcan_bridge) StderrLine: {'line': b'make[2]: *** [CMakeFiles/socketcan_to_topic.dir/build.make:76: CMakeFiles/socketcan_to_topic.dir/src/socketcan_to_topic.cpp.o] Error 1\n'}
+[5.666384] (socketcan_bridge) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:113: CMakeFiles/socketcan_to_topic.dir/all] Error 2\n'}
+[5.666523] (socketcan_bridge) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[5.668377] (socketcan_bridge) CommandEnded: {'returncode': 2}
+[5.708680] (socketcan_bridge) JobEnded: {'identifier': 'socketcan_bridge', 'rc': 2}
+[5.716384] (-) TimerEvent: {}
+[5.719415] (canopen_402) JobSkipped: {'identifier': 'canopen_402'}
+[5.719524] (canopen_chain_node) JobSkipped: {'identifier': 'canopen_chain_node'}
+[5.719562] (canopen_motor_node) JobSkipped: {'identifier': 'canopen_motor_node'}
+[5.719594] (ros_canopen) JobSkipped: {'identifier': 'ros_canopen'}
+[5.719627] (-) EventReactorShutdown: {}

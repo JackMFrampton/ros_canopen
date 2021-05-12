@@ -1,0 +1,8 @@
+[ 60%] Built target canopen_master
+[ 70%] [32m[1mLinking CXX executable canopen_bcm_sync[0m
+[ 90%] Built target canopen_master_plugin
+/usr/bin/ld: cannot find -lsocketcan_interface
+collect2: error: ld returned 1 exit status
+make[2]: *** [CMakeFiles/canopen_bcm_sync.dir/build.make:88: canopen_bcm_sync] Error 1
+make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/canopen_bcm_sync.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

@@ -1,0 +1,519 @@
+[0.015s] Invoking command in '/root/ros_canopen/build/canopen_master': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy /usr/bin/cmake /root/ros_canopen/canopen_master -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/canopen_master
+[0.036s] -- Found ament_cmake: 0.9.8 (/opt/ros/foxy/share/ament_cmake/cmake)
+[0.062s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.296s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.307s] -- Found class_loader: 2.0.2 (/opt/ros/foxy/share/class_loader/cmake)
+[0.326s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[0.329s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.334s] -- Found rosidl_adapter: 1.2.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[0.499s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.553s] -- Found socketcan_interface: 0.8.5 (/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake)
+[0.710s] -- Configuring done
+[0.730s] -- Generating done
+[0.734s] -- Build files have been written to: /root/ros_canopen/build/canopen_master
+[0.744s] Invoked command in '/root/ros_canopen/build/canopen_master' returned '0': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy /usr/bin/cmake /root/ros_canopen/canopen_master -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/root/ros_canopen/install/canopen_master
+[0.745s] Invoking command in '/root/ros_canopen/build/canopen_master': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/canopen_master -- -j4 -l4
+[0.807s] [35m[1mScanning dependencies of target canopen_bcm_sync[0m
+[0.808s] [35m[1mScanning dependencies of target canopen_master[0m
+[0.824s] [ 10%] [32mBuilding CXX object CMakeFiles/canopen_bcm_sync.dir/src/bcm_sync.cpp.o[0m
+[0.831s] [ 20%] [32mBuilding CXX object CMakeFiles/canopen_master.dir/src/emcy.cpp.o[0m
+[0.836s] [ 30%] [32mBuilding CXX object CMakeFiles/canopen_master.dir/src/objdict.cpp.o[0m
+[0.845s] [ 40%] [32mBuilding CXX object CMakeFiles/canopen_master.dir/src/node.cpp.o[0m
+[4.774s] In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12[m[K,
+[4.774s]                  from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:4[m[K,
+[4.774s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:4[m[K,
+[4.775s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[4.775s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:[m[K In member function ‘[01m[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const[m[K’:
+[4.775s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kn[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.775s]    38 |       virtual bool getRepr([01;35m[Kconst std::string &n[m[K, std::string & repr) const { return false; }
+[4.775s]       |                            [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[4.775s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krepr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.776s]    38 |       virtual bool getRepr(const std::string &n, [01;35m[Kstd::string & repr[m[K) const { return false; }
+[4.776s]       |                                                  [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+[4.797s] In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:4[m[K,
+[4.797s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:4[m[K,
+[4.797s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[4.798s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:[m[K In member function ‘[01m[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)[m[K’:
+[4.798s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksettings[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.798s]   190 |     virtual bool init(const std::string &device, bool loopback, [01;35m[KSettingsConstSharedPtr settings[m[K) {
+[4.798s]       |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[4.814s] In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12[m[K,
+[4.814s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4[m[K,
+[4.814s]                  from [01m[K/root/ros_canopen/canopen_master/src/node.cpp:1[m[K:
+[4.814s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:[m[K In member function ‘[01m[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const[m[K’:
+[4.815s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kn[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.815s]    38 |       virtual bool getRepr([01;35m[Kconst std::string &n[m[K, std::string & repr) const { return false; }
+[4.815s]       |                            [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[4.815s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krepr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.816s]    38 |       virtual bool getRepr(const std::string &n, [01;35m[Kstd::string & repr[m[K) const { return false; }
+[4.816s]       |                                                  [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+[4.817s] In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12[m[K,
+[4.817s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4[m[K,
+[4.818s]                  from [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:1[m[K:
+[4.818s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:[m[K In member function ‘[01m[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const[m[K’:
+[4.818s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kn[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.818s]    38 |       virtual bool getRepr([01;35m[Kconst std::string &n[m[K, std::string & repr) const { return false; }
+[4.818s]       |                            [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[4.818s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krepr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.820s]    38 |       virtual bool getRepr(const std::string &n, [01;35m[Kstd::string & repr[m[K) const { return false; }
+[4.820s]       |                                                  [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+[4.855s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4[m[K,
+[4.855s]                  from [01m[K/root/ros_canopen/canopen_master/src/node.cpp:1[m[K:
+[4.856s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:[m[K In member function ‘[01m[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)[m[K’:
+[4.856s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksettings[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.856s]   190 |     virtual bool init(const std::string &device, bool loopback, [01;35m[KSettingsConstSharedPtr settings[m[K) {
+[4.857s]       |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[4.889s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4[m[K,
+[4.890s]                  from [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:1[m[K:
+[4.890s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:[m[K In member function ‘[01m[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)[m[K’:
+[4.890s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksettings[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[4.890s]   190 |     virtual bool init(const std::string &device, bool loopback, [01;35m[KSettingsConstSharedPtr settings[m[K) {
+[4.890s]       |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[4.915s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:4[m[K,
+[4.915s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[4.915s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:[m[K In member function ‘[01m[Kbool can::BCMsocket::init(const string&)[m[K’:
+[4.915s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:69:38:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Ksockaddr_can::can_ifindex[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[4.915s]    69 |         struct sockaddr_can addr = {0[01;35m[K}[m[K;
+[4.915s]       |                                      [01;35m[K^[m[K
+[4.916s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp:69:38:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Ksockaddr_can::can_addr[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[5.088s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/objdict.hpp:15[m[K,
+[5.088s]                  from [01m[K/root/ros_canopen/canopen_master/src/objdict.cpp:1[m[K:
+[5.088s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:[m[K In constructor ‘[01m[Kcanopen::PointerInvalid::PointerInvalid(const string&)[m[K’:
+[5.089s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kw[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.089s]    17 |     PointerInvalid([01;35m[Kconst std::string &w[m[K) : Exception("Pointer invalid") {}
+[5.089s]       |                    [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[5.459s] In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12[m[K,
+[5.459s]                  from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/string.hpp:4[m[K,
+[5.459s]                  from [01m[K/root/ros_canopen/canopen_master/src/objdict.cpp:2[m[K:
+[5.459s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:[m[K In member function ‘[01m[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const[m[K’:
+[5.460s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kn[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.460s]    38 |       virtual bool getRepr([01;35m[Kconst std::string &n[m[K, std::string & repr) const { return false; }
+[5.460s]       |                            [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[5.460s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krepr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.460s]    38 |       virtual bool getRepr(const std::string &n, [01;35m[Kstd::string & repr[m[K) const { return false; }
+[5.460s]       |                                                  [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+[5.494s] In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/string.hpp:4[m[K,
+[5.494s]                  from [01m[K/root/ros_canopen/canopen_master/src/objdict.cpp:2[m[K:
+[5.495s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:[m[K In member function ‘[01m[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)[m[K’:
+[5.495s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksettings[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.495s]   190 |     virtual bool init(const std::string &device, bool loopback, [01;35m[KSettingsConstSharedPtr settings[m[K) {
+[5.495s]       |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[5.610s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7[m[K,
+[5.611s]                  from [01m[K/root/ros_canopen/canopen_master/src/node.cpp:1[m[K:
+[5.611s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:[m[K In constructor ‘[01m[Kcanopen::PointerInvalid::PointerInvalid(const string&)[m[K’:
+[5.611s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kw[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.612s]    17 |     PointerInvalid([01;35m[Kconst std::string &w[m[K) : Exception("Pointer invalid") {}
+[5.612s]       |                    [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[5.752s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[5.752s]                  from [01m[K/root/ros_canopen/canopen_master/src/node.cpp:1[m[K:
+[5.753s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K At global scope:
+[5.753s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[5.753s]    44 |     [01;35m[Kconst[m[K void warn(const std::string & r) { set(WARN, r); }
+[5.754s]       |     [01;35m[K^~~~~[m[K
+[5.754s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[5.754s]    45 |     [01;35m[Kconst[m[K void error(const std::string & r) { set(ERROR, r); }
+[5.755s]       |     [01;35m[K^~~~~[m[K
+[5.755s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[5.756s]    46 |     [01;35m[Kconst[m[K void stale(const std::string & r) { set(STALE, r); }
+[5.756s]       |     [01;35m[K^~~~~[m[K
+[5.772s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7[m[K,
+[5.772s]                  from [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:1[m[K:
+[5.772s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:[m[K In constructor ‘[01m[Kcanopen::PointerInvalid::PointerInvalid(const string&)[m[K’:
+[5.773s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kw[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.773s]    17 |     PointerInvalid([01;35m[Kconst std::string &w[m[K) : Exception("Pointer invalid") {}
+[5.773s]       |                    [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[5.776s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[5.776s]                  from [01m[K/root/ros_canopen/canopen_master/src/node.cpp:1[m[K:
+[5.780s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K In member function ‘[01m[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)[m[K’:
+[5.781s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.781s]   236 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}
+[5.781s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[5.918s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[5.918s]                  from [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:1[m[K:
+[5.918s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K At global scope:
+[5.918s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[5.918s]    44 |     [01;35m[Kconst[m[K void warn(const std::string & r) { set(WARN, r); }
+[5.919s]       |     [01;35m[K^~~~~[m[K
+[5.919s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[5.919s]    45 |     [01;35m[Kconst[m[K void error(const std::string & r) { set(ERROR, r); }
+[5.919s]       |     [01;35m[K^~~~~[m[K
+[5.919s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[5.919s]    46 |     [01;35m[Kconst[m[K void stale(const std::string & r) { set(STALE, r); }
+[5.920s]       |     [01;35m[K^~~~~[m[K
+[5.943s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[5.943s]                  from [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:1[m[K:
+[5.943s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K In member function ‘[01m[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)[m[K’:
+[5.944s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[5.944s]   236 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}
+[5.944s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[6.123s] [01m[K/root/ros_canopen/canopen_master/src/objdict.cpp:[m[K In member function ‘[01m[Ksize_t canopen::ObjectStorage::map(uint16_t, uint8_t, const ReadFunc&, const WriteFunc&)[m[K’:
+[6.124s] [01m[K/root/ros_canopen/canopen_master/src/objdict.cpp:374:16:[m[K [01;35m[Kwarning: [m[Kcatching polymorphic type ‘[01m[Kclass std::out_of_range[m[K’ by value [[01;35m[K-Wcatch-value=[m[K]
+[6.124s]   374 |     catch(std::[01;35m[Kout_of_range[m[K) {
+[6.124s]       |                [01;35m[K^~~~~~~~~~~~[m[K
+[6.605s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:5[m[K,
+[6.605s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[6.605s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:[m[K In member function ‘[01m[Kbool can::SocketCANInterface::init(const string&, bool, can_err_mask_t, can_err_mask_t)[m[K’:
+[6.605s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Ksockaddr_can::can_ifindex[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[6.605s]   180 |             struct sockaddr_can addr = {0[01;35m[K}[m[K;
+[6.606s]       |                                          [01;35m[K^[m[K
+[6.606s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Ksockaddr_can::can_addr[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[6.609s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:[m[K In member function ‘[01m[Kvirtual bool can::SocketCANInterface::enqueue(const can::Frame&)[m[K’:
+[6.609s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::can_dlc[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[6.609s]   216 |         can_frame frame = {0[01;35m[K}[m[K;
+[6.609s]       |                             [01;35m[K^[m[K
+[6.610s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::__pad[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[6.610s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::__res0[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[6.610s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::__res1[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[6.610s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::data[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[7.136s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7[m[K,
+[7.137s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6[m[K,
+[7.137s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[7.137s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:[m[K In constructor ‘[01m[Kcanopen::PointerInvalid::PointerInvalid(const string&)[m[K’:
+[7.137s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kw[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.137s]    17 |     PointerInvalid([01;35m[Kconst std::string &w[m[K) : Exception("Pointer invalid") {}
+[7.138s]       |                    [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[7.139s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[7.139s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6[m[K,
+[7.139s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[7.139s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K At global scope:
+[7.140s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[7.140s]    44 |     [01;35m[Kconst[m[K void warn(const std::string & r) { set(WARN, r); }
+[7.140s]       |     [01;35m[K^~~~~[m[K
+[7.140s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[7.140s]    45 |     [01;35m[Kconst[m[K void error(const std::string & r) { set(ERROR, r); }
+[7.141s]       |     [01;35m[K^~~~~[m[K
+[7.141s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[7.141s]    46 |     [01;35m[Kconst[m[K void stale(const std::string & r) { set(STALE, r); }
+[7.141s]       |     [01;35m[K^~~~~[m[K
+[7.177s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[7.178s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6[m[K,
+[7.178s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[7.179s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K In member function ‘[01m[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)[m[K’:
+[7.179s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.179s]   236 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}
+[7.180s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[7.392s] In file included from [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:1[m[K:
+[7.392s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K In constructor ‘[01m[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)[m[K’:
+[7.392s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:[m[K [01;35m[Kwarning: [m[K‘[01m[Kcanopen::SDOClient::storage_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[7.393s]    56 |     const ObjectStorageSharedPtr [01;35m[Kstorage_[m[K;
+[7.393s]       |                                  [01;35m[K^~~~~~~~[m[K
+[7.393s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kcan::BufferedReader canopen::SDOClient::reader_[m[K’ [[01;35m[K-Wreorder[m[K]
+[7.393s]    38 |     can::BufferedReader [01;35m[Kreader_[m[K;
+[7.394s]       |                         [01;35m[K^~~~~~~[m[K
+[7.394s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[7.394s]    60 |     [01;35m[KSDOClient[m[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)
+[7.394s]       |     [01;35m[K^~~~~~~~~[m[K
+[7.427s] In file included from [01m[K/root/ros_canopen/canopen_master/src/node.cpp:1[m[K:
+[7.427s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K In constructor ‘[01m[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)[m[K’:
+[7.427s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:[m[K [01;35m[Kwarning: [m[K‘[01m[Kcanopen::SDOClient::storage_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[7.428s]    56 |     const ObjectStorageSharedPtr [01;35m[Kstorage_[m[K;
+[7.428s]       |                                  [01;35m[K^~~~~~~~[m[K
+[7.428s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kcan::BufferedReader canopen::SDOClient::reader_[m[K’ [[01;35m[K-Wreorder[m[K]
+[7.428s]    38 |     can::BufferedReader [01;35m[Kreader_[m[K;
+[7.428s]       |                         [01;35m[K^~~~~~~[m[K
+[7.428s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[7.429s]    60 |     [01;35m[KSDOClient[m[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)
+[7.429s]       |     [01;35m[K^~~~~~~~~[m[K
+[7.438s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6[m[K,
+[7.439s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[7.439s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K In constructor ‘[01m[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)[m[K’:
+[7.439s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:[m[K [01;35m[Kwarning: [m[K‘[01m[Kcanopen::SDOClient::storage_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[7.439s]    56 |     const ObjectStorageSharedPtr [01;35m[Kstorage_[m[K;
+[7.439s]       |                                  [01;35m[K^~~~~~~~[m[K
+[7.440s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kcan::BufferedReader canopen::SDOClient::reader_[m[K’ [[01;35m[K-Wreorder[m[K]
+[7.440s]    38 |     can::BufferedReader [01;35m[Kreader_[m[K;
+[7.440s]       |                         [01;35m[K^~~~~~~[m[K
+[7.440s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[7.440s]    60 |     [01;35m[KSDOClient[m[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)
+[7.440s]       |     [01;35m[K^~~~~~~~~[m[K
+[7.445s] In file included from [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:1[m[K:
+[7.446s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K At global scope:
+[7.446s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[7.446s]   197 |     [01;35m[Kconst[m[K State getState();
+[7.446s]       |     [01;35m[K^~~~~[m[K
+[7.486s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:20:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[7.486s]    20 |     [01;35m[Kconst[m[K uint32_t get() const { return *(uint32_t*) this; }
+[7.486s]       |     [01;35m[K^~~~~[m[K
+[7.487s] In file included from [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:1[m[K:
+[7.487s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K In constructor ‘[01m[Kcanopen::EMCYHandler::EMCYHandler(can::CommInterfaceSharedPtr, canopen::ObjectStorageSharedPtr)[m[K’:
+[7.488s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:154:34:[m[K [01;35m[Kwarning: [m[K‘[01m[Kcanopen::EMCYHandler::storage_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[7.488s]   154 |     const ObjectStorageSharedPtr [01;35m[Kstorage_[m[K;
+[7.488s]       |                                  [01;35m[K^~~~~~~~[m[K
+[7.488s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:149:23:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kstd::atomic<bool> canopen::EMCYHandler::has_error_[m[K’ [[01;35m[K-Wreorder[m[K]
+[7.488s]   149 |     std::atomic<bool> [01;35m[Khas_error_[m[K;
+[7.489s]       |                       [01;35m[K^~~~~~~~~~[m[K
+[7.489s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:53:1:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[7.489s]    53 | [01;35m[KEMCYHandler[m[K::EMCYHandler(const can::CommInterfaceSharedPtr interface, const ObjectStorageSharedPtr storage): Layer("EMCY handler"), storage_(storage), has_error_(true){
+[7.489s]       | [01;35m[K^~~~~~~~~~~[m[K
+[7.491s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:[m[K In member function ‘[01m[Kvirtual void canopen::EMCYHandler::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)[m[K’:
+[7.491s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:79:44:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.491s]    79 | void EMCYHandler::handleWrite([01;35m[KLayerStatus &status[m[K, const LayerState &current_state) {
+[7.491s]       |                               [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.492s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:79:70:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.492s]    79 | void EMCYHandler::handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[7.492s]       |                                                    [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[7.496s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:[m[K In member function ‘[01m[Kvoid canopen::EMCYHandler::resetErrors(canopen::LayerStatus&)[m[K’:
+[7.496s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:136:44:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.496s]   136 | void EMCYHandler::resetErrors([01;35m[KLayerStatus &status[m[K){
+[7.497s]       |                               [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.497s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:[m[K In member function ‘[01m[Kvirtual void canopen::EMCYHandler::handleShutdown(canopen::LayerStatus&)[m[K’:
+[7.497s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:144:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.497s]   144 | void EMCYHandler::handleShutdown([01;35m[KLayerStatus &status[m[K){
+[7.497s]       |                                  [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.498s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:[m[K In member function ‘[01m[Kvirtual void canopen::EMCYHandler::handleHalt(canopen::LayerStatus&)[m[K’:
+[7.498s] [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:146:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.498s]   146 | void EMCYHandler::handleHalt([01;35m[KLayerStatus &status[m[K){
+[7.498s]       |                              [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.502s] In file included from [01m[K/root/ros_canopen/canopen_master/src/node.cpp:1[m[K:
+[7.502s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K At global scope:
+[7.502s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[7.503s]   197 |     [01;35m[Kconst[m[K State getState();
+[7.503s]       |     [01;35m[K^~~~~[m[K
+[7.520s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6[m[K,
+[7.521s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[7.521s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K At global scope:
+[7.521s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[7.521s]   197 |     [01;35m[Kconst[m[K State getState();
+[7.521s]       |     [01;35m[K^~~~~[m[K
+[7.526s] [01m[K/root/ros_canopen/canopen_master/src/node.cpp:[m[K In constructor ‘[01m[Kcanopen::Node::Node(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t, canopen::SyncCounterSharedPtr)[m[K’:
+[7.526s] [01m[K/root/ros_canopen/canopen_master/src/node.cpp:35:22:[m[K [01;35m[Kwarning: [m[Kcatching polymorphic type ‘[01m[Kconst class std::out_of_range[m[K’ by value [[01;35m[K-Wcatch-value=[m[K]
+[7.526s]    35 |     catch(const std::[01;35m[Kout_of_range[m[K){
+[7.527s]       |                      [01;35m[K^~~~~~~~~~~~[m[K
+[7.527s] [01m[K/root/ros_canopen/canopen_master/src/node.cpp:[m[K At global scope:
+[7.527s] [01m[K/root/ros_canopen/canopen_master/src/node.cpp:39:1:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[7.527s]    39 | [01;35m[Kconst[m[K Node::State Node::getState(){
+[7.527s]       | [01;35m[K^~~~~[m[K
+[7.546s] [01m[K/root/ros_canopen/canopen_master/src/node.cpp:[m[K In member function ‘[01m[Kvirtual void canopen::Node::handleShutdown(canopen::LayerStatus&)[m[K’:
+[7.546s] [01m[K/root/ros_canopen/canopen_master/src/node.cpp:210:40:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.546s]   210 | void Node::handleShutdown([01;35m[KLayerStatus &status[m[K){
+[7.546s]       |                           [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.547s] [01m[K/root/ros_canopen/canopen_master/src/node.cpp:[m[K In member function ‘[01m[Kvirtual void canopen::Node::handleHalt(canopen::LayerStatus&)[m[K’:
+[7.547s] [01m[K/root/ros_canopen/canopen_master/src/node.cpp:216:36:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.547s]   216 | void Node::handleHalt([01;35m[KLayerStatus &status[m[K){
+[7.548s]       |                       [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.595s] In file included from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[7.595s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:[m[K In member function ‘[01m[Kvirtual void canopen::BCMsync::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&)[m[K’:
+[7.596s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:78:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.596s]    78 |     virtual void handleRead([01;35m[KLayerStatus &status[m[K, const LayerState &current_state) {
+[7.596s]       |                             [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.598s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:[m[K In member function ‘[01m[Kvirtual void canopen::BCMsync::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)[m[K’:
+[7.598s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:82:43:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.598s]    82 |     virtual void handleWrite([01;35m[KLayerStatus &status[m[K, const LayerState &current_state) {
+[7.598s]       |                              [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.599s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:[m[K In member function ‘[01m[Kvirtual void canopen::BCMsync::handleShutdown(canopen::LayerStatus&)[m[K’:
+[7.599s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:119:46:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.599s]   119 |     virtual void handleShutdown([01;35m[KLayerStatus &status[m[K){
+[7.600s]       |                                 [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.600s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:[m[K In member function ‘[01m[Kvirtual void canopen::BCMsync::handleHalt(canopen::LayerStatus&)[m[K’:
+[7.600s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:125:42:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[7.601s]   125 |     virtual void handleHalt([01;35m[KLayerStatus &status[m[K) {
+[7.601s]       |                             [01;35m[K~~~~~~~~~~~~~^~~~~~[m[K
+[7.602s] In file included from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[7.602s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:[m[K In constructor ‘[01m[Kcanopen::BCMsync::BCMsync(const string&, can::SocketCANDriverSharedPtr, const canopen::SyncProperties&)[m[K’:
+[7.602s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:34:14:[m[K [01;35m[Kwarning: [m[K‘[01m[Kcanopen::BCMsync::sync_ms_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[7.602s]    34 |     uint16_t [01;35m[Ksync_ms_[m[K;
+[7.602s]       |              [01;35m[K^~~~~~~~[m[K
+[7.603s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:33:36:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kcan::SocketCANDriverSharedPtr canopen::BCMsync::driver_[m[K’ [[01;35m[K-Wreorder[m[K]
+[7.603s]    33 |     can::SocketCANDriverSharedPtr  [01;35m[Kdriver_[m[K;
+[7.603s]       |                                    [01;35m[K^~~~~~~[m[K
+[7.603s] In file included from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[7.603s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:143:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[7.603s]   143 |     [01;35m[KBCMsync[m[K(const std::string &device, can::SocketCANDriverSharedPtr  driver, const SyncProperties &sync_properties)
+[7.604s]       |     [01;35m[K^~~~~~~[m[K
+[8.932s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[8.932s]                  from [01m[K/root/ros_canopen/canopen_master/src/emcy.cpp:1[m[K:
+[8.932s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[8.932s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:[m[K   required from here
+[8.933s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[8.933s]   215 |     virtual void handleRead(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[8.933s]       |                                                  [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[8.933s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[8.933s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:[m[K   required from here
+[8.934s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[8.934s]   218 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[8.934s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[9.247s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[9.248s]                  from [01m[K/root/ros_canopen/canopen_master/src/node.cpp:1[m[K:
+[9.248s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[9.248s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:[m[K   required from here
+[9.249s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[9.249s]   215 |     virtual void handleRead(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[9.249s]       |                                                  [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[9.252s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[9.252s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:[m[K   required from here
+[9.252s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[9.253s]   218 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[9.253s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[9.331s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[9.331s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/bcm_sync.hpp:6[m[K,
+[9.332s]                  from [01m[K/root/ros_canopen/canopen_master/src/bcm_sync.cpp:1[m[K:
+[9.332s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[9.332s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:[m[K   required from here
+[9.332s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[9.333s]   215 |     virtual void handleRead(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[9.333s]       |                                                  [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[9.333s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[9.333s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:[m[K   required from here
+[9.333s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[9.334s]   218 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[9.334s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[11.033s] [ 50%] [32mBuilding CXX object CMakeFiles/canopen_master.dir/src/pdo.cpp.o[0m
+[12.544s] [ 60%] [32m[1mLinking CXX executable canopen_bcm_sync[0m
+[12.602s] [ 70%] [32mBuilding CXX object CMakeFiles/canopen_master.dir/src/sdo.cpp.o[0m
+[12.668s] /usr/bin/ld: cannot find -lsocketcan_interface
+[12.669s] collect2: error: ld returned 1 exit status
+[12.671s] make[2]: *** [CMakeFiles/canopen_bcm_sync.dir/build.make:88: canopen_bcm_sync] Error 1
+[12.671s] make[1]: *** [CMakeFiles/Makefile2:82: CMakeFiles/canopen_bcm_sync.dir/all] Error 2
+[12.672s] make[1]: *** Waiting for unfinished jobs....
+[13.923s] In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12[m[K,
+[13.923s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4[m[K,
+[13.923s]                  from [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:1[m[K:
+[13.923s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:[m[K In member function ‘[01m[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const[m[K’:
+[13.923s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kn[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[13.924s]    38 |       virtual bool getRepr([01;35m[Kconst std::string &n[m[K, std::string & repr) const { return false; }
+[13.924s]       |                            [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[13.924s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krepr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[13.924s]    38 |       virtual bool getRepr(const std::string &n, [01;35m[Kstd::string & repr[m[K) const { return false; }
+[13.924s]       |                                                  [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+[13.956s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4[m[K,
+[13.956s]                  from [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:1[m[K:
+[13.956s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:[m[K In member function ‘[01m[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)[m[K’:
+[13.956s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksettings[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[13.956s]   190 |     virtual bool init(const std::string &device, bool loopback, [01;35m[KSettingsConstSharedPtr settings[m[K) {
+[13.956s]       |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[14.516s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7[m[K,
+[14.516s]                  from [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:1[m[K:
+[14.516s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:[m[K In constructor ‘[01m[Kcanopen::PointerInvalid::PointerInvalid(const string&)[m[K’:
+[14.517s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kw[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[14.517s]    17 |     PointerInvalid([01;35m[Kconst std::string &w[m[K) : Exception("Pointer invalid") {}
+[14.517s]       |                    [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[14.644s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[14.644s]                  from [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:1[m[K:
+[14.644s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K At global scope:
+[14.645s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[14.645s]    44 |     [01;35m[Kconst[m[K void warn(const std::string & r) { set(WARN, r); }
+[14.646s]       |     [01;35m[K^~~~~[m[K
+[14.646s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[14.647s]    45 |     [01;35m[Kconst[m[K void error(const std::string & r) { set(ERROR, r); }
+[14.647s]       |     [01;35m[K^~~~~[m[K
+[14.648s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[14.648s]    46 |     [01;35m[Kconst[m[K void stale(const std::string & r) { set(STALE, r); }
+[14.648s]       |     [01;35m[K^~~~~[m[K
+[14.665s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[14.666s]                  from [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:1[m[K:
+[14.666s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K In member function ‘[01m[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)[m[K’:
+[14.666s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[14.666s]   236 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}
+[14.666s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[14.987s] In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12[m[K,
+[14.987s]                  from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4[m[K,
+[14.987s]                  from [01m[K/root/ros_canopen/canopen_master/src/sdo.cpp:1[m[K:
+[14.987s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:[m[K In member function ‘[01m[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const[m[K’:
+[14.987s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kn[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[14.988s]    38 |       virtual bool getRepr([01;35m[Kconst std::string &n[m[K, std::string & repr) const { return false; }
+[14.988s]       |                            [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[14.988s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krepr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[14.988s]    38 |       virtual bool getRepr(const std::string &n, [01;35m[Kstd::string & repr[m[K) const { return false; }
+[14.988s]       |                                                  [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+[15.015s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:4[m[K,
+[15.015s]                  from [01m[K/root/ros_canopen/canopen_master/src/sdo.cpp:1[m[K:
+[15.015s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:[m[K In member function ‘[01m[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)[m[K’:
+[15.016s] [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksettings[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[15.016s]   190 |     virtual bool init(const std::string &device, bool loopback, [01;35m[KSettingsConstSharedPtr settings[m[K) {
+[15.016s]       |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[15.606s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:7[m[K,
+[15.606s]                  from [01m[K/root/ros_canopen/canopen_master/src/sdo.cpp:1[m[K:
+[15.606s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:[m[K In constructor ‘[01m[Kcanopen::PointerInvalid::PointerInvalid(const string&)[m[K’:
+[15.606s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/exceptions.hpp:17:39:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kw[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[15.606s]    17 |     PointerInvalid([01;35m[Kconst std::string &w[m[K) : Exception("Pointer invalid") {}
+[15.607s]       |                    [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[15.691s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[15.691s]                  from [01m[K/root/ros_canopen/canopen_master/src/sdo.cpp:1[m[K:
+[15.692s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K At global scope:
+[15.692s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:44:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[15.692s]    44 |     [01;35m[Kconst[m[K void warn(const std::string & r) { set(WARN, r); }
+[15.692s]       |     [01;35m[K^~~~~[m[K
+[15.692s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:45:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[15.692s]    45 |     [01;35m[Kconst[m[K void error(const std::string & r) { set(ERROR, r); }
+[15.693s]       |     [01;35m[K^~~~~[m[K
+[15.693s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:46:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[15.693s]    46 |     [01;35m[Kconst[m[K void stale(const std::string & r) { set(STALE, r); }
+[15.693s]       |     [01;35m[K^~~~~[m[K
+[15.703s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[15.703s]                  from [01m[K/root/ros_canopen/canopen_master/src/sdo.cpp:1[m[K:
+[15.703s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:[m[K In member function ‘[01m[Kvirtual void canopen::LayerStack::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&)[m[K’:
+[15.703s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:236:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[15.703s]   236 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) { call_or_fail_rev(&Layer::write, &Layer::halt, status);}
+[15.704s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[15.838s] In file included from [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:1[m[K:
+[15.838s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K In constructor ‘[01m[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)[m[K’:
+[15.838s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:[m[K [01;35m[Kwarning: [m[K‘[01m[Kcanopen::SDOClient::storage_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[15.838s]    56 |     const ObjectStorageSharedPtr [01;35m[Kstorage_[m[K;
+[15.839s]       |                                  [01;35m[K^~~~~~~~[m[K
+[15.839s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kcan::BufferedReader canopen::SDOClient::reader_[m[K’ [[01;35m[K-Wreorder[m[K]
+[15.839s]    38 |     can::BufferedReader [01;35m[Kreader_[m[K;
+[15.839s]       |                         [01;35m[K^~~~~~~[m[K
+[15.840s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[15.840s]    60 |     [01;35m[KSDOClient[m[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)
+[15.840s]       |     [01;35m[K^~~~~~~~~[m[K
+[15.872s] In file included from [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:1[m[K:
+[15.872s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K At global scope:
+[15.872s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[15.872s]   197 |     [01;35m[Kconst[m[K State getState();
+[15.872s]       |     [01;35m[K^~~~~[m[K
+[15.884s] [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:[m[K In function ‘[01m[Kbool check_com_changed(const canopen::ObjectDict&, uint16_t)[m[K’:
+[15.885s] [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:62:21:[m[K [01;35m[Kwarning: [m[Kcatching polymorphic type ‘[01m[Kclass std::out_of_range[m[K’ by value [[01;35m[K-Wcatch-value=[m[K]
+[15.885s]    62 |         catch (std::[01;35m[Kout_of_range[m[K) {}
+[15.885s]       |                     [01;35m[K^~~~~~~~~~~~[m[K
+[15.885s] [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:[m[K In function ‘[01m[Kbool check_map_changed(const uint8_t&, const canopen::ObjectDict&, const uint16_t&)[m[K’:
+[15.885s] [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:79:25:[m[K [01;35m[Kwarning: [m[Kcatching polymorphic type ‘[01m[Kclass std::out_of_range[m[K’ by value [[01;35m[K-Wcatch-value=[m[K]
+[15.885s]    79 |             catch (std::[01;35m[Kout_of_range[m[K) {}
+[15.886s]       |                         [01;35m[K^~~~~~~~~~~~[m[K
+[15.927s] [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:[m[K In member function ‘[01m[Kvoid canopen::PDOMapper::Buffer::read(const canopen::ObjectDict::Entry&, canopen::String&)[m[K’:
+[15.927s] [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:363:16:[m[K [01;35m[Kwarning: [m[Kvariable ‘[01m[Kabs_time[m[K’ set but not used [[01;35m[K-Wunused-but-set-variable[m[K]
+[15.927s]   363 |     time_point [01;35m[Kabs_time[m[K = get_abs_time(boost::chrono::seconds(1));
+[15.928s]       |                [01;35m[K^~~~~~~~[m[K
+[16.629s] In file included from [01m[K/root/ros_canopen/canopen_master/src/sdo.cpp:1[m[K:
+[16.629s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K In constructor ‘[01m[Kcanopen::SDOClient::SDOClient(can::CommInterfaceSharedPtr, canopen::ObjectDictSharedPtr, uint8_t)[m[K’:
+[16.629s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:56:34:[m[K [01;35m[Kwarning: [m[K‘[01m[Kcanopen::SDOClient::storage_[m[K’ will be initialized after [[01;35m[K-Wreorder[m[K]
+[16.629s]    56 |     const ObjectStorageSharedPtr [01;35m[Kstorage_[m[K;
+[16.629s]       |                                  [01;35m[K^~~~~~~~[m[K
+[16.629s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:38:25:[m[K [01;35m[Kwarning: [m[K  ‘[01m[Kcan::BufferedReader canopen::SDOClient::reader_[m[K’ [[01;35m[K-Wreorder[m[K]
+[16.630s]    38 |     can::BufferedReader [01;35m[Kreader_[m[K;
+[16.630s]       |                         [01;35m[K^~~~~~~[m[K
+[16.630s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:60:5:[m[K [01;35m[Kwarning: [m[K  when initialized here [[01;35m[K-Wreorder[m[K]
+[16.630s]    60 |     [01;35m[KSDOClient[m[K(const can::CommInterfaceSharedPtr interface, const ObjectDictSharedPtr dict, uint8_t node_id)
+[16.630s]       |     [01;35m[K^~~~~~~~~[m[K
+[16.665s] In file included from [01m[K/root/ros_canopen/canopen_master/src/sdo.cpp:1[m[K:
+[16.665s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:[m[K At global scope:
+[16.665s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:197:5:[m[K [01;35m[Kwarning: [m[Ktype qualifiers ignored on function return type [[01;35m[K-Wignored-qualifiers[m[K]
+[16.666s]   197 |     [01;35m[Kconst[m[K State getState();
+[16.666s]       |     [01;35m[K^~~~~[m[K
+[16.840s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[16.840s]                  from [01m[K/root/ros_canopen/canopen_master/src/pdo.cpp:1[m[K:
+[16.840s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[16.841s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:[m[K   required from here
+[16.841s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[16.841s]   215 |     virtual void handleRead(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[16.841s]       |                                                  [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[16.841s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[16.841s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:[m[K   required from here
+[16.842s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[16.842s]   218 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[16.842s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[17.518s] In file included from [01m[K/root/ros_canopen/canopen_master/include/canopen_master/canopen.hpp:8[m[K,
+[17.519s]                  from [01m[K/root/ros_canopen/canopen_master/src/sdo.cpp:1[m[K:
+[17.519s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleRead(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[17.519s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:18:[m[K   required from here
+[17.519s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:215:68:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[17.519s]   215 |     virtual void handleRead(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[17.520s]       |                                                  [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[17.520s] /root/ros_canopen/canopen_master/include/canopen_master/layer.hpp: In instantiation of ‘[01m[Kvoid canopen::LayerGroup<T>::handleWrite(canopen::LayerStatus&, const canopen::Layer::LayerState&) [with T = canopen::Layer][m[K’:
+[17.520s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:18:[m[K   required from here
+[17.520s] [01m[K/root/ros_canopen/canopen_master/include/canopen_master/layer.hpp:218:69:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kcurrent_state[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+[17.520s]   218 |     virtual void handleWrite(LayerStatus &status, [01;35m[Kconst LayerState &current_state[m[K) {
+[17.520s]       |                                                   [01;35m[K~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~[m[K
+[18.774s] [ 80%] [32m[1mLinking CXX static library libcanopen_master.a[0m
+[19.577s] [ 80%] Built target canopen_master
+[19.582s] make: *** [Makefile:141: all] Error 2
+[19.589s] Invoked command in '/root/ros_canopen/build/canopen_master' returned '2': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/canopen_master -- -j4 -l4

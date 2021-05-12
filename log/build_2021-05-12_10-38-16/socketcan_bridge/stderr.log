@@ -1,0 +1,359 @@
+In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12[m[K,
+                 from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:31[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28[m[K:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:[m[K In member function ‘[01m[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const[m[K’:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kn[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   38 |       virtual bool getRepr([01;35m[Kconst std::string &n[m[K, std::string & repr) const { return false; }
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krepr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   38 |       virtual bool getRepr(const std::string &n, [01;35m[Kstd::string & repr[m[K) const { return false; }
+      |                                                  [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:31[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28[m[K:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:[m[K In member function ‘[01m[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)[m[K’:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksettings[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+  190 |     virtual bool init(const std::string &device, bool loopback, [01;35m[KSettingsConstSharedPtr settings[m[K) {
+      |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:12[m[K,
+                 from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:31[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:[m[K In member function ‘[01m[Kvirtual bool can::NoSettings::getRepr(const string&, std::string&) const[m[K’:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:47:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Kn[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   38 |       virtual bool getRepr([01;35m[Kconst std::string &n[m[K, std::string & repr) const { return false; }
+      |                            [01;35m[K~~~~~~~~~~~~~~~~~~~^[m[K
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp:38:64:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Krepr[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+   38 |       virtual bool getRepr(const std::string &n, [01;35m[Kstd::string & repr[m[K) const { return false; }
+      |                                                  [01;35m[K~~~~~~~~~~~~~~^~~~[m[K
+In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:31[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:[m[K In member function ‘[01m[Kvirtual bool can::DriverInterface::init(const string&, bool, can::SettingsConstSharedPtr)[m[K’:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:190:88:[m[K [01;35m[Kwarning: [m[Kunused parameter ‘[01m[Ksettings[m[K’ [[01;35m[K-Wunused-parameter[m[K]
+  190 |     virtual bool init(const std::string &device, bool loopback, [01;35m[KSettingsConstSharedPtr settings[m[K) {
+      |                                                                 [01;35m[K~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+In file included from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:31[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28[m[K:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:[m[K In member function ‘[01m[Kbool can::SocketCANInterface::init(const string&, bool, can_err_mask_t, can_err_mask_t)[m[K’:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Ksockaddr_can::can_ifindex[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+  180 |             struct sockaddr_can addr = {0[01;35m[K}[m[K;
+      |                                          [01;35m[K^[m[K
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Ksockaddr_can::can_addr[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:[m[K In member function ‘[01m[Kvirtual bool can::SocketCANInterface::enqueue(const can::Frame&)[m[K’:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::can_dlc[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+  216 |         can_frame frame = {0[01;35m[K}[m[K;
+      |                             [01;35m[K^[m[K
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::__pad[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::__res0[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::__res1[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::data[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+In file included from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:31[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:[m[K In member function ‘[01m[Kbool can::SocketCANInterface::init(const string&, bool, can_err_mask_t, can_err_mask_t)[m[K’:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Ksockaddr_can::can_ifindex[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+  180 |             struct sockaddr_can addr = {0[01;35m[K}[m[K;
+      |                                          [01;35m[K^[m[K
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:180:42:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Ksockaddr_can::can_addr[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:[m[K In member function ‘[01m[Kvirtual bool can::SocketCANInterface::enqueue(const can::Frame&)[m[K’:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::can_dlc[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+  216 |         can_frame frame = {0[01;35m[K}[m[K;
+      |                             [01;35m[K^[m[K
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::__pad[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::__res0[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::__res1[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:216:29:[m[K [01;35m[Kwarning: [m[Kmissing initializer for member ‘[01m[Kcan_frame::data[m[K’ [[01;35m[K-Wmissing-field-initializers[m[K]
+In file included from [01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:28[m[K:
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:[m[K At global scope:
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:40:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kros[m[K’ has not been declared
+   40 |     TopicToSocketCAN([01;31m[Kros[m[K::NodeHandle* nh, ros::NodeHandle* nh_param, can::DriverInterfaceSharedPtr driver);
+      |                      [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:40:37:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K*[m[K’ token
+   40 |     TopicToSocketCAN[34m[K([m[Kros::NodeHandle[01;31m[K*[m[K nh, ros::NodeHandle* nh_param, can::DriverInterfaceSharedPtr driver);
+      |                     [34m[K~[m[K               [01;31m[K^[m[K
+      |                                     [32m[K)[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:44:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kros[m[K’ does not name a type; did you mean ‘[01m[Kcos[m[K’?
+   44 |     [01;31m[Kros[m[K::Subscriber can_topic_;
+      |     [01;31m[K^~~[m[K
+      |     [32m[Kcos[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:38:[m[K [01;31m[Kerror: [m[K‘[01m[KFrame[m[K’ in namespace ‘[01m[Kcan_msgs[m[K’ does not name a type
+   49 |     void msgCallback(const can_msgs::[01;31m[KFrame[m[K::ConstPtr& msg);
+      |                                      [01;31m[K^~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:53:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K&[m[K’ token
+   49 |     void msgCallback(const can_msgs::Frame::ConstPtr[01;31m[K&[m[K msg);
+      |                                                     [01;31m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:53:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K&[m[K’ token
+   49 |     void msgCallback[34m[K([m[Kconst can_msgs::Frame::ConstPtr[01;31m[K&[m[K msg);
+      |                     [34m[K~[m[K                               [01;31m[K^[m[K
+      |                                                     [32m[K)[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:53:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K;[m[K’ at end of member declaration
+   49 |     void msgCallback(const can_msgs::Frame::ConstPtr[01;31m[K&[m[K msg);
+      |                                                     [01;31m[K^[m[K
+      |                                                      [32m[K;[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:49:55:[m[K [01;31m[Kerror: [m[K‘[01m[Kmsg[m[K’ does not name a type
+   49 |     void msgCallback(const can_msgs::Frame::ConstPtr& [01;31m[Kmsg[m[K);
+      |                                                       [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:53:48:[m[K [01;31m[Kerror: [m[K‘[01m[KFrame[m[K’ in namespace ‘[01m[Kcan_msgs[m[K’ does not name a type
+   53 | void convertMessageToSocketCAN(const can_msgs::[01;31m[KFrame[m[K& m, can::Frame& f)
+      |                                                [01;31m[K^~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:[m[K In function ‘[01m[Kvoid socketcan_bridge::convertMessageToSocketCAN(const int&, can::Frame&)[m[K’:
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:55:12:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kid[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   55 |   f.id = m.[01;31m[Kid[m[K;
+      |            [01;31m[K^~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:56:13:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kdlc[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   56 |   f.dlc = m.[01;31m[Kdlc[m[K;
+      |             [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:57:18:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kis_error[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   57 |   f.is_error = m.[01;31m[Kis_error[m[K;
+      |                  [01;31m[K^~~~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:58:16:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kis_rtr[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   58 |   f.is_rtr = m.[01;31m[Kis_rtr[m[K;
+      |                [01;31m[K^~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:59:21:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kis_extended[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   59 |   f.is_extended = m.[01;31m[Kis_extended[m[K;
+      |                     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:63:19:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kdata[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kconst int[m[K’
+   63 |     f.data[i] = m.[01;31m[Kdata[m[K[i];
+      |                   [01;31m[K^~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:[m[K At global scope:
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:65:2:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+   65 | }[01;35m[K;[m[K
+      |  [01;35m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/topic_to_socketcan.hpp:67:2:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+   67 | }[01;35m[K;[m[K  // namespace socketcan_bridge
+      |  [01;35m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:34:37:[m[K [01;31m[Kerror: [m[Kexpected constructor, destructor, or type conversion before ‘[01m[K([m[K’ token
+   34 |   TopicToSocketCAN::TopicToSocketCAN[01;31m[K([m[Kros::NodeHandle* nh, ros::NodeHandle* nh_param,
+      |                                     [01;31m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:46:6:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+   46 |     }[01;35m[K;[m[K
+      |      [01;35m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:48:54:[m[K [01;31m[Kerror: [m[K‘[01m[KFrame[m[K’ in namespace ‘[01m[Kcan_msgs[m[K’ does not name a type
+   48 |   void TopicToSocketCAN::msgCallback(const can_msgs::[01;31m[KFrame[m[K::ConstPtr& msg)
+      |                                                      [01;31m[K^~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:48:69:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K&[m[K’ token
+   48 |   void TopicToSocketCAN::msgCallback(const can_msgs::Frame::ConstPtr[01;31m[K&[m[K msg)
+      |                                                                     [01;31m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:48:69:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K&[m[K’ token
+   48 |   void TopicToSocketCAN::msgCallback[34m[K([m[Kconst can_msgs::Frame::ConstPtr[01;31m[K&[m[K msg)
+      |                                     [34m[K~[m[K                               [01;31m[K^[m[K
+      |                                                                     [32m[K)[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:48:71:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[Kmsg[m[K’
+   48 |   void TopicToSocketCAN::msgCallback(const can_msgs::Frame::ConstPtr& [01;31m[Kmsg[m[K)
+      |                                                                       [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:[m[K In member function ‘[01m[Kvoid socketcan_bridge::TopicToSocketCAN::stateCallback(const can::State&)[m[K’:
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:84:9:[m[K [01;31m[Kerror: [m[K‘[01m[KROS_INFO[m[K’ was not declared in this scope
+   84 |         [01;31m[KROS_INFO[m[K("State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:88:9:[m[K [01;31m[Kerror: [m[K‘[01m[KROS_ERROR[m[K’ was not declared in this scope; did you mean ‘[01m[KSO_ERROR[m[K’?
+   88 |         [01;31m[KROS_ERROR[m[K("Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+      |         [01;31m[K^~~~~~~~~[m[K
+      |         [32m[KSO_ERROR[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:[m[K At global scope:
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:90:6:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+   90 |     }[01;35m[K;[m[K
+      |      [01;35m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/topic_to_socketcan.cpp:91:2:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+   91 | }[01;35m[K;[m[K  // namespace socketcan_bridge
+      |  [01;35m[K^[m[K
+In file included from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:[m[K At global scope:
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:41:22:[m[K [01;31m[Kerror: [m[K‘[01m[Kros[m[K’ has not been declared
+   41 |     SocketCANToTopic([01;31m[Kros[m[K::NodeHandle* nh, ros::NodeHandle* nh_param, can::DriverInterfaceSharedPtr driver);
+      |                      [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:41:37:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K*[m[K’ token
+   41 |     SocketCANToTopic[34m[K([m[Kros::NodeHandle[01;31m[K*[m[K nh, ros::NodeHandle* nh_param, can::DriverInterfaceSharedPtr driver);
+      |                     [34m[K~[m[K               [01;31m[K^[m[K
+      |                                     [32m[K)[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:44:16:[m[K [01;31m[Kerror: [m[K‘[01m[KXmlRpc[m[K’ has not been declared
+   44 |     void setup([01;31m[KXmlRpc[m[K::XmlRpcValue filters);
+      |                [01;31m[K^~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:44:36:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[Kfilters[m[K’
+   44 |     void setup(XmlRpc::XmlRpcValue [01;31m[Kfilters[m[K);
+      |                                    [01;31m[K^~~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:45:16:[m[K [01;31m[Kerror: [m[K‘[01m[Kros[m[K’ has not been declared
+   45 |     void setup([01;31m[Kros[m[K::NodeHandle nh);
+      |                [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:45:32:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K,[m[K’ or ‘[01m[K...[m[K’ before ‘[01m[Knh[m[K’
+   45 |     void setup(ros::NodeHandle [01;31m[Knh[m[K);
+      |                                [01;31m[K^~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:45:10:[m[K [01;31m[Kerror: [m[K‘[01m[Kvoid socketcan_bridge::SocketCANToTopic::setup(int)[m[K’ cannot be overloaded with ‘[01m[Kvoid socketcan_bridge::SocketCANToTopic::setup(int)[m[K’
+   45 |     void [01;31m[Ksetup[m[K(ros::NodeHandle nh);
+      |          [01;31m[K^~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:44:10:[m[K [01;36m[Knote: [m[Kprevious declaration ‘[01m[Kvoid socketcan_bridge::SocketCANToTopic::setup(int)[m[K’
+   44 |     void [01;36m[Ksetup[m[K(XmlRpc::XmlRpcValue filters);
+      |          [01;36m[K^~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:48:5:[m[K [01;31m[Kerror: [m[K‘[01m[Kros[m[K’ does not name a type; did you mean ‘[01m[Kcos[m[K’?
+   48 |     [01;31m[Kros[m[K::Publisher can_topic_;
+      |     [01;31m[K^~~[m[K
+      |     [32m[Kcos[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:59:63:[m[K [01;31m[Kerror: [m[K‘[01m[Kcan_msgs::Frame[m[K’ has not been declared
+   59 | void convertSocketCANToMessage(const can::Frame& f, can_msgs::[01;31m[KFrame[m[K& m)
+      |                                                               [01;31m[K^~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:[m[K In function ‘[01m[Kvoid socketcan_bridge::convertSocketCANToMessage(const can::Frame&, int&)[m[K’:
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:61:5:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kid[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   61 |   m.[01;31m[Kid[m[K = f.id;
+      |     [01;31m[K^~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:62:5:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kdlc[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   62 |   m.[01;31m[Kdlc[m[K = f.dlc;
+      |     [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:63:5:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kis_error[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   63 |   m.[01;31m[Kis_error[m[K = f.is_error;
+      |     [01;31m[K^~~~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:64:5:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kis_rtr[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   64 |   m.[01;31m[Kis_rtr[m[K = f.is_rtr;
+      |     [01;31m[K^~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:65:5:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kis_extended[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   65 |   m.[01;31m[Kis_extended[m[K = f.is_extended;
+      |     [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:69:7:[m[K [01;31m[Kerror: [m[Krequest for member ‘[01m[Kdata[m[K’ in ‘[01m[Km[m[K’, which is of non-class type ‘[01m[Kint[m[K’
+   69 |     m.[01;31m[Kdata[m[K[i] = f.data[i];
+      |       [01;31m[K^~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:[m[K At global scope:
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:71:2:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+   71 | }[01;35m[K;[m[K
+      |  [01;35m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:73:2:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+   73 | }[01;35m[K;[m[K  // namespace socketcan_bridge
+      |  [01;35m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:35:53:[m[K [01;31m[Kerror: [m[K‘[01m[KXmlRpc[m[K’ does not name a type
+   35 | template<> can::FrameFilterSharedPtr tofilter(const [01;31m[KXmlRpc[m[K::XmlRpcValue  &ct)
+      |                                                     [01;31m[K^~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:35:74:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id before ‘[01m[K&[m[K’ token
+   35 | template<> can::FrameFilterSharedPtr tofilter(const XmlRpc::XmlRpcValue  [01;31m[K&[m[Kct)
+      |                                                                          [01;31m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:35:72:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K)[m[K’ before ‘[01m[K&[m[K’ token
+   35 | template<> can::FrameFilterSharedPtr tofilter[34m[K([m[Kconst XmlRpc::XmlRpcValue[01;31m[K [m[K [32m[K&[m[Kct)
+      |                                              [34m[K~[m[K                         [01;31m[K^[m[K [32m[K~[m[K
+      |                                                                        [32m[K)[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:35:75:[m[K [01;31m[Kerror: [m[Kexpected initializer before ‘[01m[Kct[m[K’
+   35 | template<> can::FrameFilterSharedPtr tofilter(const XmlRpc::XmlRpcValue  &[01;31m[Kct[m[K)
+      |                                                                           [01;31m[K^~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:52:37:[m[K [01;31m[Kerror: [m[Kexpected constructor, destructor, or type conversion before ‘[01m[K([m[K’ token
+   52 |   SocketCANToTopic::SocketCANToTopic[01;31m[K([m[Kros::NodeHandle* nh, ros::NodeHandle* nh_param,
+      |                                     [01;31m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:65:6:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+   65 |     }[01;35m[K;[m[K
+      |      [01;35m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:78:32:[m[K [01;31m[Kerror: [m[Kvariable or field ‘[01m[Ksetup[m[K’ declared void
+   78 |   void SocketCANToTopic::setup([01;31m[KXmlRpc[m[K::XmlRpcValue filters)
+      |                                [01;31m[K^~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:78:32:[m[K [01;31m[Kerror: [m[K‘[01m[KXmlRpc[m[K’ has not been declared
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:82:32:[m[K [01;31m[Kerror: [m[Kvariable or field ‘[01m[Ksetup[m[K’ declared void
+   82 |   void SocketCANToTopic::setup([01;31m[Kros[m[K::NodeHandle nh)
+      |                                [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:82:32:[m[K [01;31m[Kerror: [m[K‘[01m[Kros[m[K’ has not been declared
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:[m[K In member function ‘[01m[Kvoid socketcan_bridge::SocketCANToTopic::frameCallback(const can::Frame&)[m[K’:
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:95:9:[m[K [01;31m[Kerror: [m[K‘[01m[KROS_ERROR[m[K’ was not declared in this scope; did you mean ‘[01m[KSO_ERROR[m[K’?
+   95 |         [01;31m[KROS_ERROR[m[K("Invalid frame from SocketCAN: id: %#04x, length: %d, is_extended: %d, is_error: %d, is_rtr: %d",
+      |         [01;31m[K^~~~~~~~~[m[K
+      |         [32m[KSO_ERROR[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:105:11:[m[K [01;31m[Kerror: [m[K‘[01m[KROS_WARN[m[K’ was not declared in this scope
+  105 |           [01;31m[KROS_WARN[m[K("Received frame is error: %s", can::tostring(f, true).c_str());
+      |           [01;31m[K^~~~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:109:17:[m[K [01;31m[Kerror: [m[K‘[01m[KFrame[m[K’ is not a member of ‘[01m[Kcan_msgs[m[K’
+  109 |       can_msgs::[01;31m[KFrame[m[K msg;
+      |                 [01;31m[K^~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:109:17:[m[K [01;36m[Knote: [m[Ksuggested alternatives:
+In file included from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp:4[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:31[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp:62:8:[m[K [01;36m[Knote: [m[K  ‘[01m[Kcan::Frame[m[K’
+   62 | struct [01;36m[KFrame[m[K: public Header{
+      |        [01;36m[K^~~~~[m[K
+In file included from [01m[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp:7[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:33[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp:209:7:[m[K [01;36m[Knote: [m[K  ‘[01m[Kcan_msgs::msg::Frame[m[K’
+  209 | using [01;36m[KFrame[m[K =
+      |       [01;36m[K^~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:111:36:[m[K [01;31m[Kerror: [m[K‘[01m[Kmsg[m[K’ was not declared in this scope
+  111 |       convertSocketCANToMessage(f, [01;31m[Kmsg[m[K);
+      |                                    [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:111:36:[m[K [01;36m[Knote: [m[Ksuggested alternatives:
+In file included from [01m[K/opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp:19[m[K,
+                 from [01m[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp:19[m[K,
+                 from [01m[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp:7[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:33[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/opt/ros/foxy/include/builtin_interfaces/msg/detail/time__struct.hpp:26:11:[m[K [01;36m[Knote: [m[K  ‘[01m[Kbuiltin_interfaces::msg[m[K’
+   26 | namespace [01;36m[Kmsg[m[K
+      |           [01;36m[K^~~[m[K
+In file included from [01m[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp:19[m[K,
+                 from [01m[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp:7[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:33[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/opt/ros/foxy/include/std_msgs/msg/detail/header__struct.hpp:30:11:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstd_msgs::msg[m[K’
+   30 | namespace [01;36m[Kmsg[m[K
+      |           [01;36m[K^~~[m[K
+In file included from [01m[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/frame.hpp:7[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:33[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/root/ros_canopen/install/can_msgs/include/can_msgs/msg/detail/frame__struct.hpp:30:11:[m[K [01;36m[Knote: [m[K  ‘[01m[Kcan_msgs::msg[m[K’
+   30 | namespace [01;36m[Kmsg[m[K
+      |           [01;36m[K^~~[m[K
+In file included from [01m[K/opt/ros/foxy/include/statistics_msgs/msg/detail/metrics_message__struct.hpp:22[m[K,
+                 from [01m[K/opt/ros/foxy/include/statistics_msgs/msg/metrics_message.hpp:7[m[K,
+                 from [01m[K/opt/ros/foxy/include/libstatistics_collector/collector/generate_statistics_message.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/topic_statistics/subscription_topic_statistics.hpp:23[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/subscription.hpp:50[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/any_executable.hpp:25[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategy.hpp:24[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/memory_strategies.hpp:18[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor_options.hpp:20[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executor.hpp:33[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/multi_threaded_executor.hpp:25[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:21[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:34[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/opt/ros/foxy/include/statistics_msgs/msg/detail/statistic_data_point__struct.hpp:26:11:[m[K [01;36m[Knote: [m[K  ‘[01m[Kstatistics_msgs::msg[m[K’
+   26 | namespace [01;36m[Kmsg[m[K
+      |           [01;36m[K^~~[m[K
+In file included from [01m[K/opt/ros/foxy/include/rcl_interfaces/msg/list_parameters_result.hpp:7[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/node.hpp:34[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors/single_threaded_executor.hpp:28[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/executors.hpp:22[m[K,
+                 from [01m[K/opt/ros/foxy/include/rclcpp/rclcpp.hpp:146[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/include/socketcan_bridge/socketcan_to_topic.hpp:34[m[K,
+                 from [01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:28[m[K:
+[01m[K/opt/ros/foxy/include/rcl_interfaces/msg/detail/list_parameters_result__struct.hpp:26:11:[m[K [01;36m[Knote: [m[K  ‘[01m[Krcl_interfaces::msg[m[K’
+   26 | namespace [01;36m[Kmsg[m[K
+      |           [01;36m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:114:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kros[m[K’ has not been declared
+  114 |       msg.header.stamp = [01;31m[Kros[m[K::Time::now();
+      |                          [01;31m[K^~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:116:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kcan_topic_[m[K’ was not declared in this scope
+  116 |       [01;31m[Kcan_topic_[m[K.publish(msg);
+      |       [01;31m[K^~~~~~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:[m[K At global scope:
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:117:6:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+  117 |     }[01;35m[K;[m[K
+      |      [01;35m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:[m[K In member function ‘[01m[Kvoid socketcan_bridge::SocketCANToTopic::stateCallback(const can::State&)[m[K’:
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:126:9:[m[K [01;31m[Kerror: [m[K‘[01m[KROS_INFO[m[K’ was not declared in this scope
+  126 |         [01;31m[KROS_INFO[m[K("State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:130:9:[m[K [01;31m[Kerror: [m[K‘[01m[KROS_ERROR[m[K’ was not declared in this scope; did you mean ‘[01m[KSO_ERROR[m[K’?
+  130 |         [01;31m[KROS_ERROR[m[K("Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+      |         [01;31m[K^~~~~~~~~[m[K
+      |         [32m[KSO_ERROR[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:[m[K At global scope:
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:132:6:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+  132 |     }[01;35m[K;[m[K
+      |      [01;35m[K^[m[K
+[01m[K/root/ros_canopen/socketcan_bridge/src/socketcan_to_topic.cpp:133:2:[m[K [01;35m[Kwarning: [m[Kextra ‘[01m[K;[m[K’ [[01;35m[K-Wpedantic[m[K]
+  133 | }[01;35m[K;[m[K  // namespace socketcan_bridge
+      |  [01;35m[K^[m[K
+make[2]: *** [CMakeFiles/topic_to_socketcan.dir/build.make:76: CMakeFiles/topic_to_socketcan.dir/src/topic_to_socketcan.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:140: CMakeFiles/topic_to_socketcan.dir/all] Error 2
+make[1]: *** Waiting for unfinished jobs....
+make[2]: *** [CMakeFiles/socketcan_to_topic.dir/build.make:76: CMakeFiles/socketcan_to_topic.dir/src/socketcan_to_topic.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:113: CMakeFiles/socketcan_to_topic.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

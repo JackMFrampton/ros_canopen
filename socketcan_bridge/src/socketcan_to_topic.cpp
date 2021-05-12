@@ -27,7 +27,7 @@
 
 #include <socketcan_bridge/socketcan_to_topic.hpp>
 #include <socketcan_interface/string.hpp>
-#include <can_msgs/Frame.hpp>
+#include <can_msgs/msg/frame.hpp>
 #include <string>
 
 namespace can

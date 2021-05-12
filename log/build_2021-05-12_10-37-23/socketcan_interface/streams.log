@@ -1,0 +1,47 @@
+[0.036s] Invoking command in '/root/ros_canopen/build/socketcan_interface': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/socketcan_interface -- -j4 -l4
+[0.107s] [ 25%] Built target socketcan_interface_plugin
+[0.109s] [ 50%] Built target socketcan_interface_string
+[0.171s] [ 75%] Built target socketcan_bcm
+[0.171s] [100%] Built target socketcan_dump
+[0.189s] Invoked command in '/root/ros_canopen/build/socketcan_interface' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/socketcan_interface -- -j4 -l4
+[0.248s] Invoking command in '/root/ros_canopen/build/socketcan_interface': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/ros_canopen/build/socketcan_interface
+[0.258s] -- Install configuration: ""
+[0.259s] -- Execute custom install script
+[0.259s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_bcm
+[0.260s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/socketcan_interface/socketcan_dump
+[0.260s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_plugin.a
+[0.260s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/lib/libsocketcan_interface_string.a
+[0.261s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/asio_base.hpp
+[0.262s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/bcm.hpp
+[0.262s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/delegates.hpp
+[0.262s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/dispatcher.hpp
+[0.262s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/dummy.hpp
+[0.263s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/filter.hpp
+[0.263s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/interface.hpp
+[0.263s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/logging.hpp
+[0.264s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/make_shared.hpp
+[0.264s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/reader.hpp
+[0.264s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/settings.hpp
+[0.265s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/socketcan.hpp
+[0.265s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/string.hpp
+[0.265s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/threading.hpp
+[0.266s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/include/socketcan_interface/xmlrpc_settings.hpp
+[0.266s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/socketcan_interface_plugin.xml
+[0.267s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/package_run_dependencies/socketcan_interface
+[0.267s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/parent_prefix_path/socketcan_interface
+[0.268s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.sh
+[0.268s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/ament_prefix_path.dsv
+[0.269s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.sh
+[0.269s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/environment/path.dsv
+[0.269s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.bash
+[0.270s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.sh
+[0.270s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.zsh
+[0.271s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/local_setup.dsv
+[0.271s] -- Symlinking: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.dsv
+[0.281s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/ament_index/resource_index/packages/socketcan_interface
+[0.282s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.282s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.283s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig.cmake
+[0.283s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/cmake/socketcan_interfaceConfig-version.cmake
+[0.283s] -- Up-to-date symlink: /root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.xml
+[0.286s] Invoked command in '/root/ros_canopen/build/socketcan_interface' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/ros_canopen/build/socketcan_interface

@@ -1,0 +1,362 @@
+[0.388s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--symlink-install', '--continue-on-error']
+[0.389s] DEBUG:colcon:Parsed command line arguments: Namespace(ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=True, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7fbaecb41c70>>, merge_install=False, metas=['./colcon.meta'], mixin=None, mixin_files=None, mixin_verb=('build',), packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=4, paths=None, symlink_install=True, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7fbaecb41c70>, verb_name='build', verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7fbaecb4c280>)
+[0.396s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.397s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/Gazebo.meta'
+[0.398s] INFO:colcon.colcon_metadata.package_discovery.colcon_meta:Using configuration from '/root/.colcon/metadata/default/fastrtps.meta'
+[0.398s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.398s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.398s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.398s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.398s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.398s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/root/ros_canopen'
+[0.398s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.398s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.398s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.398s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.398s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.399s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.399s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.399s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.399s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.414s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.414s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.414s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.414s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.414s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(can_msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(can_msgs) by extension 'ignore'
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(can_msgs) by extension 'ignore_ament_install'
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(can_msgs) by extensions ['colcon_pkg']
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(can_msgs) by extension 'colcon_pkg'
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(can_msgs) by extensions ['colcon_meta']
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(can_msgs) by extension 'colcon_meta'
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(can_msgs) by extensions ['ros']
+[0.415s] Level 1:colcon.colcon_core.package_identification:_identify(can_msgs) by extension 'ros'
+[0.419s] DEBUG:colcon.colcon_core.package_identification:Package 'can_msgs' with type 'ros.ament_cmake' and name 'can_msgs'
+[0.419s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_402) by extensions ['ignore', 'ignore_ament_install']
+[0.419s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_402) by extension 'ignore'
+[0.419s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_402) by extension 'ignore_ament_install'
+[0.419s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_402) by extensions ['colcon_pkg']
+[0.419s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_402) by extension 'colcon_pkg'
+[0.419s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_402) by extensions ['colcon_meta']
+[0.419s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_402) by extension 'colcon_meta'
+[0.420s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_402) by extensions ['ros']
+[0.420s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_402) by extension 'ros'
+[0.421s] DEBUG:colcon.colcon_core.package_identification:Package 'canopen_402' with type 'ros.catkin' and name 'canopen_402'
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_chain_node) by extensions ['ignore', 'ignore_ament_install']
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_chain_node) by extension 'ignore'
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_chain_node) by extension 'ignore_ament_install'
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_chain_node) by extensions ['colcon_pkg']
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_chain_node) by extension 'colcon_pkg'
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_chain_node) by extensions ['colcon_meta']
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_chain_node) by extension 'colcon_meta'
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_chain_node) by extensions ['ros']
+[0.421s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_chain_node) by extension 'ros'
+[0.424s] DEBUG:colcon.colcon_core.package_identification:Package 'canopen_chain_node' with type 'ros.catkin' and name 'canopen_chain_node'
+[0.424s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_master) by extensions ['ignore', 'ignore_ament_install']
+[0.424s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_master) by extension 'ignore'
+[0.424s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_master) by extension 'ignore_ament_install'
+[0.424s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_master) by extensions ['colcon_pkg']
+[0.424s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_master) by extension 'colcon_pkg'
+[0.425s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_master) by extensions ['colcon_meta']
+[0.425s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_master) by extension 'colcon_meta'
+[0.425s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_master) by extensions ['ros']
+[0.425s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_master) by extension 'ros'
+[0.427s] DEBUG:colcon.colcon_core.package_identification:Package 'canopen_master' with type 'ros.ament_cmake' and name 'canopen_master'
+[0.427s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_motor_node) by extensions ['ignore', 'ignore_ament_install']
+[0.427s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_motor_node) by extension 'ignore'
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_motor_node) by extension 'ignore_ament_install'
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_motor_node) by extensions ['colcon_pkg']
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_motor_node) by extension 'colcon_pkg'
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_motor_node) by extensions ['colcon_meta']
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_motor_node) by extension 'colcon_meta'
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_motor_node) by extensions ['ros']
+[0.428s] Level 1:colcon.colcon_core.package_identification:_identify(canopen_motor_node) by extension 'ros'
+[0.431s] DEBUG:colcon.colcon_core.package_identification:Package 'canopen_motor_node' with type 'ros.catkin' and name 'canopen_motor_node'
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.431s] Level 1:colcon.colcon_core.package_identification:_identify(ros_canopen) by extensions ['ignore', 'ignore_ament_install']
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(ros_canopen) by extension 'ignore'
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(ros_canopen) by extension 'ignore_ament_install'
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(ros_canopen) by extensions ['colcon_pkg']
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(ros_canopen) by extension 'colcon_pkg'
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(ros_canopen) by extensions ['colcon_meta']
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(ros_canopen) by extension 'colcon_meta'
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(ros_canopen) by extensions ['ros']
+[0.432s] Level 1:colcon.colcon_core.package_identification:_identify(ros_canopen) by extension 'ros'
+[0.433s] DEBUG:colcon.colcon_core.package_identification:Package 'ros_canopen' with type 'ros.catkin' and name 'ros_canopen'
+[0.433s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_bridge) by extensions ['ignore', 'ignore_ament_install']
+[0.433s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_bridge) by extension 'ignore'
+[0.433s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_bridge) by extension 'ignore_ament_install'
+[0.433s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_bridge) by extensions ['colcon_pkg']
+[0.433s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_bridge) by extension 'colcon_pkg'
+[0.433s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_bridge) by extensions ['colcon_meta']
+[0.433s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_bridge) by extension 'colcon_meta'
+[0.433s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_bridge) by extensions ['ros']
+[0.434s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_bridge) by extension 'ros'
+[0.435s] DEBUG:colcon.colcon_core.package_identification:Package 'socketcan_bridge' with type 'ros.ament_cmake' and name 'socketcan_bridge'
+[0.435s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_interface) by extensions ['ignore', 'ignore_ament_install']
+[0.435s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_interface) by extension 'ignore'
+[0.435s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_interface) by extension 'ignore_ament_install'
+[0.435s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_interface) by extensions ['colcon_pkg']
+[0.435s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_interface) by extension 'colcon_pkg'
+[0.435s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_interface) by extensions ['colcon_meta']
+[0.435s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_interface) by extension 'colcon_meta'
+[0.436s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_interface) by extensions ['ros']
+[0.436s] Level 1:colcon.colcon_core.package_identification:_identify(socketcan_interface) by extension 'ros'
+[0.437s] DEBUG:colcon.colcon_core.package_identification:Package 'socketcan_interface' with type 'ros.ament_cmake' and name 'socketcan_interface'
+[0.437s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.437s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.437s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.437s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.437s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.465s] Level 5:colcon.colcon_core.verb:set package 'can_msgs' build argument 'cmake_args' from command line to 'None'
+[0.465s] Level 5:colcon.colcon_core.verb:set package 'can_msgs' build argument 'cmake_target' from command line to 'None'
+[0.465s] Level 5:colcon.colcon_core.verb:set package 'can_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.465s] Level 5:colcon.colcon_core.verb:set package 'can_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.465s] Level 5:colcon.colcon_core.verb:set package 'can_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.465s] Level 5:colcon.colcon_core.verb:set package 'can_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.465s] Level 5:colcon.colcon_core.verb:set package 'can_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.465s] Level 5:colcon.colcon_core.verb:set package 'can_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.465s] Level 5:colcon.colcon_core.verb:set package 'can_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.465s] DEBUG:colcon.colcon_core.verb:Building package 'can_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros_canopen/build/can_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros_canopen/install/can_msgs', 'merge_install': False, 'path': '/root/ros_canopen/can_msgs', 'symlink_install': True, 'test_result_base': None}
+[0.469s] Level 5:colcon.colcon_core.verb:set package 'socketcan_interface' build argument 'cmake_args' from command line to 'None'
+[0.469s] Level 5:colcon.colcon_core.verb:set package 'socketcan_interface' build argument 'cmake_target' from command line to 'None'
+[0.470s] Level 5:colcon.colcon_core.verb:set package 'socketcan_interface' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.470s] Level 5:colcon.colcon_core.verb:set package 'socketcan_interface' build argument 'cmake_clean_cache' from command line to 'False'
+[0.470s] Level 5:colcon.colcon_core.verb:set package 'socketcan_interface' build argument 'cmake_clean_first' from command line to 'False'
+[0.470s] Level 5:colcon.colcon_core.verb:set package 'socketcan_interface' build argument 'cmake_force_configure' from command line to 'False'
+[0.470s] Level 5:colcon.colcon_core.verb:set package 'socketcan_interface' build argument 'ament_cmake_args' from command line to 'None'
+[0.470s] Level 5:colcon.colcon_core.verb:set package 'socketcan_interface' build argument 'catkin_cmake_args' from command line to 'None'
+[0.470s] Level 5:colcon.colcon_core.verb:set package 'socketcan_interface' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.470s] DEBUG:colcon.colcon_core.verb:Building package 'socketcan_interface' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros_canopen/build/socketcan_interface', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros_canopen/install/socketcan_interface', 'merge_install': False, 'path': '/root/ros_canopen/socketcan_interface', 'symlink_install': True, 'test_result_base': None}
+[0.474s] Level 5:colcon.colcon_core.verb:set package 'canopen_master' build argument 'cmake_args' from command line to 'None'
+[0.474s] Level 5:colcon.colcon_core.verb:set package 'canopen_master' build argument 'cmake_target' from command line to 'None'
+[0.474s] Level 5:colcon.colcon_core.verb:set package 'canopen_master' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.474s] Level 5:colcon.colcon_core.verb:set package 'canopen_master' build argument 'cmake_clean_cache' from command line to 'False'
+[0.474s] Level 5:colcon.colcon_core.verb:set package 'canopen_master' build argument 'cmake_clean_first' from command line to 'False'
+[0.474s] Level 5:colcon.colcon_core.verb:set package 'canopen_master' build argument 'cmake_force_configure' from command line to 'False'
+[0.474s] Level 5:colcon.colcon_core.verb:set package 'canopen_master' build argument 'ament_cmake_args' from command line to 'None'
+[0.474s] Level 5:colcon.colcon_core.verb:set package 'canopen_master' build argument 'catkin_cmake_args' from command line to 'None'
+[0.474s] Level 5:colcon.colcon_core.verb:set package 'canopen_master' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.474s] DEBUG:colcon.colcon_core.verb:Building package 'canopen_master' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros_canopen/build/canopen_master', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros_canopen/install/canopen_master', 'merge_install': False, 'path': '/root/ros_canopen/canopen_master', 'symlink_install': True, 'test_result_base': None}
+[0.478s] Level 5:colcon.colcon_core.verb:set package 'socketcan_bridge' build argument 'cmake_args' from command line to 'None'
+[0.478s] Level 5:colcon.colcon_core.verb:set package 'socketcan_bridge' build argument 'cmake_target' from command line to 'None'
+[0.478s] Level 5:colcon.colcon_core.verb:set package 'socketcan_bridge' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.478s] Level 5:colcon.colcon_core.verb:set package 'socketcan_bridge' build argument 'cmake_clean_cache' from command line to 'False'
+[0.478s] Level 5:colcon.colcon_core.verb:set package 'socketcan_bridge' build argument 'cmake_clean_first' from command line to 'False'
+[0.478s] Level 5:colcon.colcon_core.verb:set package 'socketcan_bridge' build argument 'cmake_force_configure' from command line to 'False'
+[0.478s] Level 5:colcon.colcon_core.verb:set package 'socketcan_bridge' build argument 'ament_cmake_args' from command line to 'None'
+[0.478s] Level 5:colcon.colcon_core.verb:set package 'socketcan_bridge' build argument 'catkin_cmake_args' from command line to 'None'
+[0.478s] Level 5:colcon.colcon_core.verb:set package 'socketcan_bridge' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.478s] DEBUG:colcon.colcon_core.verb:Building package 'socketcan_bridge' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros_canopen/build/socketcan_bridge', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros_canopen/install/socketcan_bridge', 'merge_install': False, 'path': '/root/ros_canopen/socketcan_bridge', 'symlink_install': True, 'test_result_base': None}
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'canopen_402' build argument 'cmake_args' from command line to 'None'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'canopen_402' build argument 'cmake_target' from command line to 'None'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'canopen_402' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'canopen_402' build argument 'cmake_clean_cache' from command line to 'False'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'canopen_402' build argument 'cmake_clean_first' from command line to 'False'
+[0.482s] Level 5:colcon.colcon_core.verb:set package 'canopen_402' build argument 'cmake_force_configure' from command line to 'False'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'canopen_402' build argument 'ament_cmake_args' from command line to 'None'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'canopen_402' build argument 'catkin_cmake_args' from command line to 'None'
+[0.483s] Level 5:colcon.colcon_core.verb:set package 'canopen_402' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.483s] DEBUG:colcon.colcon_core.verb:Building package 'canopen_402' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros_canopen/build/canopen_402', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros_canopen/install/canopen_402', 'merge_install': False, 'path': '/root/ros_canopen/canopen_402', 'symlink_install': True, 'test_result_base': None}
+[0.486s] Level 5:colcon.colcon_core.verb:set package 'canopen_chain_node' build argument 'cmake_args' from command line to 'None'
+[0.486s] Level 5:colcon.colcon_core.verb:set package 'canopen_chain_node' build argument 'cmake_target' from command line to 'None'
+[0.487s] Level 5:colcon.colcon_core.verb:set package 'canopen_chain_node' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.487s] Level 5:colcon.colcon_core.verb:set package 'canopen_chain_node' build argument 'cmake_clean_cache' from command line to 'False'
+[0.487s] Level 5:colcon.colcon_core.verb:set package 'canopen_chain_node' build argument 'cmake_clean_first' from command line to 'False'
+[0.487s] Level 5:colcon.colcon_core.verb:set package 'canopen_chain_node' build argument 'cmake_force_configure' from command line to 'False'
+[0.487s] Level 5:colcon.colcon_core.verb:set package 'canopen_chain_node' build argument 'ament_cmake_args' from command line to 'None'
+[0.487s] Level 5:colcon.colcon_core.verb:set package 'canopen_chain_node' build argument 'catkin_cmake_args' from command line to 'None'
+[0.487s] Level 5:colcon.colcon_core.verb:set package 'canopen_chain_node' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.487s] DEBUG:colcon.colcon_core.verb:Building package 'canopen_chain_node' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros_canopen/build/canopen_chain_node', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros_canopen/install/canopen_chain_node', 'merge_install': False, 'path': '/root/ros_canopen/canopen_chain_node', 'symlink_install': True, 'test_result_base': None}
+[0.491s] Level 5:colcon.colcon_core.verb:set package 'canopen_motor_node' build argument 'cmake_args' from command line to 'None'
+[0.491s] Level 5:colcon.colcon_core.verb:set package 'canopen_motor_node' build argument 'cmake_target' from command line to 'None'
+[0.491s] Level 5:colcon.colcon_core.verb:set package 'canopen_motor_node' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.491s] Level 5:colcon.colcon_core.verb:set package 'canopen_motor_node' build argument 'cmake_clean_cache' from command line to 'False'
+[0.491s] Level 5:colcon.colcon_core.verb:set package 'canopen_motor_node' build argument 'cmake_clean_first' from command line to 'False'
+[0.491s] Level 5:colcon.colcon_core.verb:set package 'canopen_motor_node' build argument 'cmake_force_configure' from command line to 'False'
+[0.491s] Level 5:colcon.colcon_core.verb:set package 'canopen_motor_node' build argument 'ament_cmake_args' from command line to 'None'
+[0.491s] Level 5:colcon.colcon_core.verb:set package 'canopen_motor_node' build argument 'catkin_cmake_args' from command line to 'None'
+[0.491s] Level 5:colcon.colcon_core.verb:set package 'canopen_motor_node' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.491s] DEBUG:colcon.colcon_core.verb:Building package 'canopen_motor_node' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros_canopen/build/canopen_motor_node', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros_canopen/install/canopen_motor_node', 'merge_install': False, 'path': '/root/ros_canopen/canopen_motor_node', 'symlink_install': True, 'test_result_base': None}
+[0.495s] Level 5:colcon.colcon_core.verb:set package 'ros_canopen' build argument 'cmake_args' from command line to 'None'
+[0.495s] Level 5:colcon.colcon_core.verb:set package 'ros_canopen' build argument 'cmake_target' from command line to 'None'
+[0.495s] Level 5:colcon.colcon_core.verb:set package 'ros_canopen' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.495s] Level 5:colcon.colcon_core.verb:set package 'ros_canopen' build argument 'cmake_clean_cache' from command line to 'False'
+[0.495s] Level 5:colcon.colcon_core.verb:set package 'ros_canopen' build argument 'cmake_clean_first' from command line to 'False'
+[0.495s] Level 5:colcon.colcon_core.verb:set package 'ros_canopen' build argument 'cmake_force_configure' from command line to 'False'
+[0.495s] Level 5:colcon.colcon_core.verb:set package 'ros_canopen' build argument 'ament_cmake_args' from command line to 'None'
+[0.495s] Level 5:colcon.colcon_core.verb:set package 'ros_canopen' build argument 'catkin_cmake_args' from command line to 'None'
+[0.495s] Level 5:colcon.colcon_core.verb:set package 'ros_canopen' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.495s] DEBUG:colcon.colcon_core.verb:Building package 'ros_canopen' with the following arguments: {'ament_cmake_args': None, 'build_base': '/root/ros_canopen/build/ros_canopen', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/root/ros_canopen/install/ros_canopen', 'merge_install': False, 'path': '/root/ros_canopen/ros_canopen', 'symlink_install': True, 'test_result_base': None}
+[0.496s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.498s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.498s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/ros_canopen/socketcan_interface' with build type 'ament_cmake'
+[0.499s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/ros_canopen/socketcan_interface'
+[0.505s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.506s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.506s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.510s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[0.513s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/ros_canopen/can_msgs' with build type 'ament_cmake'
+[0.514s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/ros_canopen/can_msgs'
+[0.516s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.516s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.519s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[0.529s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros_canopen/build/socketcan_interface': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/socketcan_interface -- -j4 -l4
+[0.540s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros_canopen/build/can_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/can_msgs -- -j4 -l4
+[0.673s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros_canopen/build/socketcan_interface' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/socketcan_interface -- -j4 -l4
+[0.741s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros_canopen/build/socketcan_interface': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/ros_canopen/build/socketcan_interface
+[0.779s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(socketcan_interface)
+[0.781s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros_canopen/build/socketcan_interface' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/ros_canopen/build/socketcan_interface
+[0.786s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface' for CMake module files
+[0.787s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface' for CMake config files
+[0.788s] Level 1:colcon.colcon_core.shell:create_environment_hook('socketcan_interface', 'cmake_prefix_path')
+[0.789s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/hook/cmake_prefix_path.ps1'
+[0.790s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/hook/cmake_prefix_path.dsv'
+[0.791s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/hook/cmake_prefix_path.sh'
+[0.794s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface/lib'
+[0.794s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface/bin'
+[0.794s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface/lib/pkgconfig/socketcan_interface.pc'
+[0.794s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface/lib/python3.8/site-packages'
+[0.795s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.ps1'
+[0.796s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.dsv'
+[0.797s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.sh'
+[0.799s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.bash'
+[0.800s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.zsh'
+[0.801s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros_canopen/install/socketcan_interface/share/colcon-core/packages/socketcan_interface)
+[0.852s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(socketcan_interface)
+[0.853s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface' for CMake module files
+[0.854s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface' for CMake config files
+[0.855s] Level 1:colcon.colcon_core.shell:create_environment_hook('socketcan_interface', 'cmake_prefix_path')
+[0.856s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/hook/cmake_prefix_path.ps1'
+[0.857s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/hook/cmake_prefix_path.dsv'
+[0.858s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/hook/cmake_prefix_path.sh'
+[0.859s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface/lib'
+[0.859s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface/bin'
+[0.859s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface/lib/pkgconfig/socketcan_interface.pc'
+[0.859s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_interface/lib/python3.8/site-packages'
+[0.860s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.ps1'
+[0.861s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.dsv'
+[0.862s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.sh'
+[0.863s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.bash'
+[0.864s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_interface/share/socketcan_interface/package.zsh'
+[0.865s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros_canopen/install/socketcan_interface/share/colcon-core/packages/socketcan_interface)
+[0.868s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/ros_canopen/canopen_master' with build type 'ament_cmake'
+[0.868s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/ros_canopen/canopen_master'
+[0.870s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.870s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.873s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[0.890s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros_canopen/build/canopen_master': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/canopen_master -- -j4 -l4
+[0.891s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros_canopen/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/can_msgs -- -j4 -l4
+[0.975s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros_canopen/build/can_msgs': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/ros_canopen/build/can_msgs
+[1.058s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros_canopen/build/canopen_master' returned '2': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/opt/ros/foxy /usr/bin/cmake --build /root/ros_canopen/build/canopen_master -- -j4 -l4
+[1.089s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(can_msgs)
+[1.090s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs' for CMake module files
+[1.092s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros_canopen/build/can_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/foxy /usr/bin/cmake --install /root/ros_canopen/build/can_msgs
+[1.093s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs' for CMake config files
+[1.094s] Level 1:colcon.colcon_core.shell:create_environment_hook('can_msgs', 'cmake_prefix_path')
+[1.095s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/cmake_prefix_path.ps1'
+[1.096s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/cmake_prefix_path.dsv'
+[1.096s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/cmake_prefix_path.sh'
+[1.097s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs/lib'
+[1.097s] Level 1:colcon.colcon_core.shell:create_environment_hook('can_msgs', 'ld_library_path_lib')
+[1.097s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/ld_library_path_lib.ps1'
+[1.098s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/ld_library_path_lib.dsv'
+[1.098s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/ld_library_path_lib.sh'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs/bin'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs/lib/pkgconfig/can_msgs.pc'
+[1.099s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages'
+[1.099s] Level 1:colcon.colcon_core.shell:create_environment_hook('can_msgs', 'pythonpath')
+[1.100s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/pythonpath.ps1'
+[1.101s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/pythonpath.dsv'
+[1.101s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/pythonpath.sh'
+[1.103s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/can_msgs/share/can_msgs/package.ps1'
+[1.104s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros_canopen/install/can_msgs/share/can_msgs/package.dsv'
+[1.105s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/can_msgs/share/can_msgs/package.sh'
+[1.106s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/can_msgs/share/can_msgs/package.bash'
+[1.106s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/can_msgs/share/can_msgs/package.zsh'
+[1.107s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros_canopen/install/can_msgs/share/colcon-core/packages/can_msgs)
+[1.112s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(canopen_master)
+[1.114s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/canopen_master' for CMake module files
+[1.115s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/canopen_master' for CMake config files
+[1.116s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/canopen_master/bin'
+[1.116s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/canopen_master/lib/pkgconfig/canopen_master.pc'
+[1.116s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/canopen_master/lib/python3.8/site-packages'
+[1.117s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/canopen_master/share/canopen_master/package.ps1'
+[1.118s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros_canopen/install/canopen_master/share/canopen_master/package.dsv'
+[1.119s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/canopen_master/share/canopen_master/package.sh'
+[1.120s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/canopen_master/share/canopen_master/package.bash'
+[1.121s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/canopen_master/share/canopen_master/package.zsh'
+[1.121s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros_canopen/install/canopen_master/share/colcon-core/packages/canopen_master)
+[1.164s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(can_msgs)
+[1.165s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs' for CMake module files
+[1.166s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs' for CMake config files
+[1.167s] Level 1:colcon.colcon_core.shell:create_environment_hook('can_msgs', 'cmake_prefix_path')
+[1.168s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/cmake_prefix_path.ps1'
+[1.168s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/cmake_prefix_path.dsv'
+[1.169s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/cmake_prefix_path.sh'
+[1.169s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs/lib'
+[1.170s] Level 1:colcon.colcon_core.shell:create_environment_hook('can_msgs', 'ld_library_path_lib')
+[1.170s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/ld_library_path_lib.ps1'
+[1.171s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/ld_library_path_lib.dsv'
+[1.171s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/ld_library_path_lib.sh'
+[1.171s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs/bin'
+[1.172s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs/lib/pkgconfig/can_msgs.pc'
+[1.172s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages'
+[1.172s] Level 1:colcon.colcon_core.shell:create_environment_hook('can_msgs', 'pythonpath')
+[1.172s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/pythonpath.ps1'
+[1.173s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/pythonpath.dsv'
+[1.173s] INFO:colcon.colcon_core.shell:Creating environment hook '/root/ros_canopen/install/can_msgs/share/can_msgs/hook/pythonpath.sh'
+[1.174s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/can_msgs/share/can_msgs/package.ps1'
+[1.175s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros_canopen/install/can_msgs/share/can_msgs/package.dsv'
+[1.176s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/can_msgs/share/can_msgs/package.sh'
+[1.177s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/can_msgs/share/can_msgs/package.bash'
+[1.177s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/can_msgs/share/can_msgs/package.zsh'
+[1.177s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros_canopen/install/can_msgs/share/colcon-core/packages/can_msgs)
+[1.178s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/root/ros_canopen/socketcan_bridge' with build type 'ament_cmake'
+[1.178s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/root/ros_canopen/socketcan_bridge'
+[1.179s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[1.179s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[1.182s] DEBUG:colcon.colcon_core.shell:Ignoring prefix path '/opt/ros/foxy'
+[1.199s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/root/ros_canopen/build/socketcan_bridge': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy LD_LIBRARY_PATH=/root/ros_canopen/install/can_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros_canopen/build/socketcan_bridge -- -j4 -l4
+[2.375s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/root/ros_canopen/build/socketcan_bridge' returned '2': AMENT_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/root/ros_canopen/install/socketcan_interface:/root/ros_canopen/install/can_msgs:/opt/ros/foxy LD_LIBRARY_PATH=/root/ros_canopen/install/can_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/root/ros_canopen/install/can_msgs/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/cmake --build /root/ros_canopen/build/socketcan_bridge -- -j4 -l4
+[2.410s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(socketcan_bridge)
+[2.412s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_bridge' for CMake module files
+[2.413s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_bridge' for CMake config files
+[2.413s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_bridge/bin'
+[2.414s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_bridge/lib/pkgconfig/socketcan_bridge.pc'
+[2.414s] Level 1:colcon.colcon_core.environment:checking '/root/ros_canopen/install/socketcan_bridge/lib/python3.8/site-packages'
+[2.415s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_bridge/share/socketcan_bridge/package.ps1'
+[2.416s] INFO:colcon.colcon_core.shell:Creating package descriptor '/root/ros_canopen/install/socketcan_bridge/share/socketcan_bridge/package.dsv'
+[2.416s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_bridge/share/socketcan_bridge/package.sh'
+[2.417s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_bridge/share/socketcan_bridge/package.bash'
+[2.417s] INFO:colcon.colcon_core.shell:Creating package script '/root/ros_canopen/install/socketcan_bridge/share/socketcan_bridge/package.zsh'
+[2.418s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/root/ros_canopen/install/socketcan_bridge/share/colcon-core/packages/socketcan_bridge)
+[2.429s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[2.429s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[2.429s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '2'
+[2.429s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[2.439s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.notify_send': Could not find 'notify-send'
+[2.439s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[2.439s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[2.439s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[2.439s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.NotSupported: Unable to autolaunch a dbus-daemon without a $DISPLAY for X11
+[2.439s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[2.440s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ros_canopen/install/local_setup.ps1'
+[2.442s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/ros_canopen/install/_local_setup_util_ps1.py'
+[2.444s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ros_canopen/install/setup.ps1'
+[2.448s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ros_canopen/install/local_setup.sh'
+[2.449s] INFO:colcon.colcon_core.shell:Creating prefix util module '/root/ros_canopen/install/_local_setup_util_sh.py'
+[2.450s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ros_canopen/install/setup.sh'
+[2.453s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ros_canopen/install/local_setup.bash'
+[2.454s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ros_canopen/install/setup.bash'
+[2.457s] INFO:colcon.colcon_core.shell:Creating prefix script '/root/ros_canopen/install/local_setup.zsh'
+[2.458s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/root/ros_canopen/install/setup.zsh'
