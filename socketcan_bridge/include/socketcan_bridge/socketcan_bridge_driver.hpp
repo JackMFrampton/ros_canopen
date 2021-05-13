@@ -15,7 +15,9 @@ class SocketCANDriver : public rclcpp::Node
     ~SocketCANDriver();
 
     void init_param();
-    void init_can();
+    void init_can_driver();
+    void init_topic_to_socket_can(std::shared_ptr<rclcpp::Node> nh);
+    void init_socket_can_to_topic(std::shared_ptr<rclcpp::Node> nh);
 
   private:
     rclcpp::Parameter can_device;

@@ -27,6 +27,7 @@
 
 #include <rclcpp/rclcpp.hpp>
 #include <socketcan_bridge/socketcan_to_topic.hpp>
+#include <socketcan_bridge/socketcan_bridge_driver.hpp>
 #include <socketcan_interface/threading.hpp>
 #include <socketcan_interface/string.hpp>
 #include <socketcan_interface/xmlrpc_settings.hpp>
@@ -37,33 +38,21 @@
 
 int main(int argc, char *argv[])
 {
-  ros::init(argc, argv, "socketcan_to_topic_node");
+  rclcpp::init(argc, argv);
 
-  ros::NodeHandle nh(""), nh_param("~");
+  auto node_name = std::string("socketcan_to_topic_node");
 
-  std::string can_device;
-  nh_param.param<std::string>("can_device", can_device, "can0");
+  rclcpp::NodeOptions options = rclcpp::NodeOptions();
+  options.allow_undeclared_parameters(true);
+  options.automatically_declare_parameters_from_overrides(true);
 
-  can::ThreadedSocketCANInterfaceSharedPtr driver = std::make_shared<can::ThreadedSocketCANInterface> ();
+  // Type = std::shared_ptr<rclcpp::Node>
+  auto socketcan_bridge_driver = std::make_shared<socketcan_bridge_driver::SocketCANDriver>(node_name, options);
+  socketcan_bridge_driver->init_param();
+  socketcan_bridge_driver->init_can();
 
-  // initialize device at can_device, 0 for no loopback.
-  if (!driver->init(can_device, 0, XmlRpcSettings::create(nh_param)))
-  {
-    ROS_FATAL("Failed to initialize can_device at %s", can_device.c_str());
-    return 1;
-  }
-    else
-  {
-    ROS_INFO("Successfully connected to %s.", can_device.c_str());
-  }
+  socketcan_bridge_driver->init_socket_can_to_topic(socketcan_bridge_driver);
 
-  socketcan_bridge::SocketCANToTopic to_topic_bridge(&nh, &nh_param, driver);
-  to_topic_bridge.setup(nh_param);
-
-  ros::spin();
-
-  driver->shutdown();
-  driver.reset();
-
-  ros::waitForShutdown();
+  rclcpp::spin(socketcan_bridge_driver);
+  rclcpp::shutdown();
 }

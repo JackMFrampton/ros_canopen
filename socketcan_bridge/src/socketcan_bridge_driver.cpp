@@ -28,7 +28,7 @@ void SocketCANDriver::init_param()
         RCLCPP_WARN_ONCE(get_logger(), "Could not get can device, setting: %s", can_device.as_string().c_str());)
     }
 
-void SocketCANDriver::init_can()
+void SocketCANDriver::init_can_driver()
 {
     driver = std::make_shared<can::ThreadedSocketCANInterface> ();
 
@@ -39,6 +39,18 @@ void SocketCANDriver::init_can()
     else{
         ROS_INFO("Successfully connected to %s.", can_device.c_str());
     }
+}
+
+void SocketCANDriver::init_topic_to_socket_can(std::shared_ptr<rclcpp::Node> nh)
+{
+    socketcan_bridge::TopicToSocketCAN to_socketcan_bridge(nh, driver);
+    to_socketcan_bridge.setup();
+}
+
+void SocketCANDriver::init_socket_can_to_topic(std::shared_ptr<rclcpp::Node> nh)
+{
+    socketcan_bridge::SocketCANToTopic to_topic_bridge(nh, driver);
+    to_topic_bridge.setup(nh);
 }
 }
 

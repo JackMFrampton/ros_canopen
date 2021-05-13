@@ -45,17 +45,14 @@ int main(int argc, char *argv[])
   options.allow_undeclared_parameters(true);
   options.automatically_declare_parameters_from_overrides(true);
 
-  // Type = std::shared_ptr<rclcpp::Node> ?
+  // Type = std::shared_ptr<rclcpp::Node>
   auto socketcan_bridge_driver = std::make_shared<socketcan_bridge_driver::SocketCANDriver>(node_name, options);
   socketcan_bridge_driver->init_param();
-  socketcan_bridge_driver->init_can();
+  socketcan_bridge_driver->init_can_driver();
 
   // initialize the bridge both ways.
-  socketcan_bridge::TopicToSocketCAN to_socketcan_bridge(&nh, &nh_param, driver);
-  to_socketcan_bridge.setup();
-
-  socketcan_bridge::SocketCANToTopic to_topic_bridge(&nh, &nh_param, driver);
-  to_topic_bridge.setup(nh_param);
+  socketcan_bridge_driver->init_topic_to_socket_can(socketcan_bridge_driver);
+  socketcan_bridge_driver->init_socket_can_to_topic(socketcan_bridge_driver);
 
   rclcpp::spin(socketcan_bridge_driver);
   rclcpp::shutdown();

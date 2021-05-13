@@ -31,27 +31,27 @@
 
 namespace socketcan_bridge
 {
-  TopicToSocketCAN::TopicToSocketCAN(ros::NodeHandle* nh, ros::NodeHandle* nh_param,
+  TopicToSocketCAN::TopicToSocketCAN(std::shared_ptr<rclcpp::Node> nh,
       can::DriverInterfaceSharedPtr driver)
     {
-      can_topic_ = nh->subscribe<can_msgs::Frame>("sent_messages", nh_param->param("sent_messages_queue_size", 10),
-                    std::bind(&TopicToSocketCAN::msgCallback, this, std::placeholders::_1));
+      can_topic_ = nh->create_subscription<can_msgs::msg::Frame>("sent_messages", 10,
+                    std::bind(&TopicToSocketCAN::msgCallback, nh, _1));
       driver_ = driver;
     };
 
   void TopicToSocketCAN::setup()
     {
       state_listener_ = driver_->createStateListener(
-              std::bind(&TopicToSocketCAN::stateCallback, this, std::placeholders::_1));
+              std::bind(&TopicToSocketCAN::stateCallback, this, _1));
     };
 
-  void TopicToSocketCAN::msgCallback(const can_msgs::Frame::ConstPtr& msg)
+  void TopicToSocketCAN::msgCallback(const can_msgs::msg::Frame::ConstPtr& msg)
     {
       // ROS_DEBUG("Message came from sent_messages topic");
 
       // translate it to the socketcan frame type.
 
-      can_msgs::Frame m = *msg.get();  // ROS message
+      can_msgs::msg::Frame m = *msg.get();  // ROS message
       can::Frame f;  // socketcan type
 
       // converts the can_msgs::Frame (ROS msg) to can::Frame (socketcan.h)
@@ -62,14 +62,14 @@ namespace socketcan_bridge
         // ROS_WARN("Refusing to send invalid frame: %s.", can::tostring(f, true).c_str());
         // can::tostring cannot be used for dlc > 8 frames. It causes an crash
         // due to usage of boost::array for the data array. The should always work.
-        ROS_ERROR("Invalid frame from topic: id: %#04x, length: %d, is_extended: %d", m.id, m.dlc, m.is_extended);
+        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Invalid frame from topic: id: %#04x, length: %d, is_extended: %d", m.id, m.dlc, m.is_extended);
         return;
       }
 
       bool res = driver_->send(f);
       if (!res)
       {
-        ROS_ERROR("Failed to send message: %s.", can::tostring(f, true).c_str());
+        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Failed to send message: %s.", can::tostring(f, true).c_str());
       }
     };
 
@@ -81,11 +81,11 @@ namespace socketcan_bridge
       driver_->translateError(s.internal_error, err);
       if (!s.internal_error)
       {
-        ROS_INFO("State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
       }
       else
       {
-        ROS_ERROR("Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
       }
     };
 };  // namespace socketcan_bridge
