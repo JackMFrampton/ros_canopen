@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
   options.allow_undeclared_parameters(true);
   options.automatically_declare_parameters_from_overrides(true);
 
+  // Type = std::shared_ptr<rclcpp::Node> ?
   auto socketcan_bridge_driver = std::make_shared<socketcan_bridge_driver::SocketCANDriver>(node_name, options);
   socketcan_bridge_driver->init_param();
   socketcan_bridge_driver->init_can();

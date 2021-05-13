@@ -1,1 +1,0 @@
-/root/ros_canopen/can_msgs/msg/Frame.msg

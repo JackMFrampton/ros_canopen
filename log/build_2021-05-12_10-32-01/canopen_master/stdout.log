@@ -1,6 +1,0 @@
-[ 60%] Built target canopen_master
-[ 70%] [32m[1mLinking CXX executable canopen_bcm_sync[0m
-[35m[1mScanning dependencies of target canopen_master_plugin[0m
-[ 80%] [32mBuilding CXX object CMakeFiles/canopen_master_plugin.dir/src/master_plugin.cpp.o[0m
-[ 90%] [32m[1mLinking CXX static library libcanopen_master_plugin.a[0m
-[ 90%] Built target canopen_master_plugin

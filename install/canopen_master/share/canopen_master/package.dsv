@@ -1,5 +1,0 @@
-source;share/canopen_master/local_setup.bash
-source;share/canopen_master/local_setup.dsv
-source;share/canopen_master/local_setup.ps1
-source;share/canopen_master/local_setup.sh
-source;share/canopen_master/local_setup.zsh

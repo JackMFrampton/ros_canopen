@@ -1,1 +1,0 @@
-/root/ros_canopen/build/socketcan_interface/ament_cmake_core/socketcan_interfaceConfig-version.cmake
