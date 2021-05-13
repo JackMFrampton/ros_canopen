@@ -35,14 +35,14 @@ namespace socketcan_bridge
       can::DriverInterfaceSharedPtr driver)
     {
       can_topic_ = nh->create_subscription<can_msgs::msg::Frame>("sent_messages", 10,
-                    std::bind(&TopicToSocketCAN::msgCallback, nh, _1));
+                    std::bind(&TopicToSocketCAN::msgCallback, nh, std::placeholders::_1));
       driver_ = driver;
     };
 
   void TopicToSocketCAN::setup()
     {
       state_listener_ = driver_->createStateListener(
-              std::bind(&TopicToSocketCAN::stateCallback, this, _1));
+              std::bind(&TopicToSocketCAN::stateCallback, this, std::placeholders::_1));
     };
 
   void TopicToSocketCAN::msgCallback(const can_msgs::msg::Frame::ConstPtr& msg)

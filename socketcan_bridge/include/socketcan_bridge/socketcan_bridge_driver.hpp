@@ -11,13 +11,13 @@ namespace socketcan_bridge_driver
 class SocketCANDriver : public rclcpp::Node
 {
   public:
-    SocketCANDriver(const std::string &node_name, const rclcpp::NodeOptions &options);
-    ~SocketCANDriver();
+    SocketCANDriver(const std::string &node_name, const rclcpp::NodeOptions &options);  // Constructor
+    ~SocketCANDriver(); // Destructor
 
-    void init_param();
-    void init_can_driver();
-    void init_topic_to_socket_can(std::shared_ptr<rclcpp::Node> nh);
-    void init_socket_can_to_topic(std::shared_ptr<rclcpp::Node> nh);
+    void init_param();  // Initiate node parameters
+    void init_can_driver(); // Initiate can device
+    void init_topic_to_socket_can(std::shared_ptr<rclcpp::Node> nh);  // Subscriber
+    void init_socket_can_to_topic(std::shared_ptr<rclcpp::Node> nh);  // Publisher
 
   private:
     rclcpp::Parameter can_device;

@@ -10,17 +10,20 @@
 namespace socketcan_bridge_driver
 {
 
+// Constructor
 SocketCANDriver::SocketCANDriver(const std::string &node_name, const rclcpp::NodeOptions &options) : Node(node_name, options) 
 {
 
 }
 
+// Destructor
 SocketCANDriver::~SocketCANDriver()
 {
     driver->shutdown();
     driver.reset();
 }
 
+// Initiate parameters
 void SocketCANDriver::init_param()
 {
     auto flag_can_device = get_parameter_or("can_device", can_device, rclcpp::Parameter("can_device", "can0"))
@@ -28,6 +31,7 @@ void SocketCANDriver::init_param()
         RCLCPP_WARN_ONCE(get_logger(), "Could not get can device, setting: %s", can_device.as_string().c_str());)
     }
 
+// Initialise can device
 void SocketCANDriver::init_can_driver()
 {
     driver = std::make_shared<can::ThreadedSocketCANInterface> ();
@@ -41,12 +45,14 @@ void SocketCANDriver::init_can_driver()
     }
 }
 
+// Subscriber
 void SocketCANDriver::init_topic_to_socket_can(std::shared_ptr<rclcpp::Node> nh)
 {
     socketcan_bridge::TopicToSocketCAN to_socketcan_bridge(nh, driver);
     to_socketcan_bridge.setup();
 }
 
+// Publisher
 void SocketCANDriver::init_socket_can_to_topic(std::shared_ptr<rclcpp::Node> nh)
 {
     socketcan_bridge::SocketCANToTopic to_topic_bridge(nh, driver);
