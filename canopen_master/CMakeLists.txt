@@ -65,11 +65,8 @@ install(
 )
 
 install(
-  DIRECTORY
-    include/${PROJECT_NAME}/
-  DESTINATION include
-  FILES_MATCHING PATTERN "*.h"
-)
+  DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION include/${PROJECT_NAME})
 
 install(
   FILES
