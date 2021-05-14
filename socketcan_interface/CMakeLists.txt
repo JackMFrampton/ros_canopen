@@ -68,6 +68,8 @@ install(
   TARGETS
     socketcan_bcm
     socketcan_dump
+    ${PROJECT_NAME}_string
+    ${PROJECT_NAME}_plugin
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
