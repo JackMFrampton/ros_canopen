@@ -17,7 +17,6 @@
   <!-- <buildtool_depend>rosidl_default_generators</buildtool_depend> -->
 
   <depend>can_msgs</depend>
-  <depend>rosconsole_bridge</depend>
   <depend>rclcpp</depend>
   <depend>socketcan_interface</depend>
   <!-- <exec_depend>rosidl_default_runtime</exec_depend> -->
