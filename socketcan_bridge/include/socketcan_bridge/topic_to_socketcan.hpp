@@ -29,6 +29,7 @@
 #define SOCKETCAN_BRIDGE_TOPIC_TO_SOCKETCAN_H
 
 #include <socketcan_interface/socketcan.hpp>
+#include <socketcan_bridge/socketcan_converter.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 
@@ -43,28 +44,15 @@ class TopicToSocketCAN
   private:
     rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr can_topic_;
     can::DriverInterfaceSharedPtr driver_;
+    std::shared_ptr<rclcpp::Node> nh_;
 
     can::StateListenerConstSharedPtr state_listener_;
 
-    void msgCallback(const can_msgs::msg::Frame::ConstPtr& msg);
+    void msgCallback(const can_msgs::msg::Frame::SharedPtr msg);
     void stateCallback(const can::State & s);
 };
 
-void convertMessageToSocketCAN(const can_msgs::msg::Frame& m, can::Frame& f)
-{
-  f.id = m.id;
-  f.dlc = m.dlc;
-  f.is_error = m.is_error;
-  f.is_rtr = m.is_rtr;
-  f.is_extended = m.is_extended;
-
-  for (int i = 0; i < 8; i++)  // always copy all data, regardless of dlc.
-  {
-    f.data[i] = m.data[i];
-  }
-};
-
-};  // namespace socketcan_bridge
+}  // namespace socketcan_bridge
 
 
 #endif  // SOCKETCAN_BRIDGE_TOPIC_TO_SOCKETCAN_H

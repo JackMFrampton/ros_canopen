@@ -68,8 +68,8 @@ install(
   TARGETS
     socketcan_bcm
     socketcan_dump
-    ${PROJECT_NAME}_plugin
     ${PROJECT_NAME}_string
+    ${PROJECT_NAME}_plugin
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME}
@@ -146,7 +146,9 @@ install(
 
 #endif()
 
+ament_export_libraries(${PROJECT_NAME}_string ${PROJECT_NAME}_plugin)
 ament_export_dependencies(
+                        ament_cmake
                         Boost 
                         console_bridge 
                         class_loader)

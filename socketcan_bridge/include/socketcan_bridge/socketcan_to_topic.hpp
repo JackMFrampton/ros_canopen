@@ -30,6 +30,7 @@
 
 #include <socketcan_interface/socketcan.hpp>
 #include <socketcan_interface/filter.hpp>
+#include <socketcan_bridge/socketcan_converter.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 
@@ -41,11 +42,12 @@ class SocketCANToTopic
     SocketCANToTopic(std::shared_ptr<rclcpp::Node> nh, can::DriverInterfaceSharedPtr driver);
     void setup();
     void setup(const can::FilteredFrameListener::FilterVector &filters);
-    void setup(XmlRpc::XmlRpcValue filters);
-    void setup(std::shared_ptr<rclcpp::Node> nh);
+    // void setup(XmlRpc::XmlRpcValue filters);
+    // void setup(std::shared_ptr<rclcpp::Node> nh);
 
   private:
     rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr can_topic_;
+    std::shared_ptr<rclcpp::Node> nh_;
     can::DriverInterfaceSharedPtr driver_;
 
     can::FrameListenerConstSharedPtr frame_listener_;
@@ -56,21 +58,7 @@ class SocketCANToTopic
     void stateCallback(const can::State & s);
 };
 
-void convertSocketCANToMessage(const can::Frame& f, can_msgs::msg::Frame& m)
-{
-  m.id = f.id;
-  m.dlc = f.dlc;
-  m.is_error = f.is_error;
-  m.is_rtr = f.is_rtr;
-  m.is_extended = f.is_extended;
-
-  for (int i = 0; i < 8; i++)  // always copy all data, regardless of dlc.
-  {
-    m.data[i] = f.data[i];
-  }
-};
-
-};  // namespace socketcan_bridge
+}  // namespace socketcan_bridge
 
 
 #endif  // SOCKETCAN_BRIDGE_SOCKETCAN_TO_TOPIC_H

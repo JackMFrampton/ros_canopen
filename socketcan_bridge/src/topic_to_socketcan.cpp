@@ -34,18 +34,19 @@ namespace socketcan_bridge
   TopicToSocketCAN::TopicToSocketCAN(std::shared_ptr<rclcpp::Node> nh,
       can::DriverInterfaceSharedPtr driver)
     {
-      can_topic_ = nh->create_subscription<can_msgs::msg::Frame>("sent_messages", 10,
-                    std::bind(&TopicToSocketCAN::msgCallback, nh, std::placeholders::_1));
+      nh_ = nh;
+      can_topic_ = nh_->create_subscription<can_msgs::msg::Frame>("sent_messages", 10,
+                    std::bind(&TopicToSocketCAN::msgCallback, this, std::placeholders::_1));
       driver_ = driver;
-    };
+    }
 
   void TopicToSocketCAN::setup()
     {
       state_listener_ = driver_->createStateListener(
               std::bind(&TopicToSocketCAN::stateCallback, this, std::placeholders::_1));
-    };
+    }
 
-  void TopicToSocketCAN::msgCallback(const can_msgs::msg::Frame::ConstPtr& msg)
+  void TopicToSocketCAN::msgCallback(const can_msgs::msg::Frame::SharedPtr msg)
     {
       // ROS_DEBUG("Message came from sent_messages topic");
 
@@ -62,16 +63,16 @@ namespace socketcan_bridge
         // ROS_WARN("Refusing to send invalid frame: %s.", can::tostring(f, true).c_str());
         // can::tostring cannot be used for dlc > 8 frames. It causes an crash
         // due to usage of boost::array for the data array. The should always work.
-        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Invalid frame from topic: id: %#04x, length: %d, is_extended: %d", m.id, m.dlc, m.is_extended);
+        RCLCPP_ERROR(nh_->get_logger(), "Invalid frame from topic: id: %#04x, length: %d, is_extended: %d", m.id, m.dlc, m.is_extended);
         return;
       }
 
       bool res = driver_->send(f);
       if (!res)
       {
-        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Failed to send message: %s.", can::tostring(f, true).c_str());
+        RCLCPP_ERROR(nh_->get_logger(), "Failed to send message: %s.", can::tostring(f, true).c_str());
       }
-    };
+    }
 
 
 
@@ -81,11 +82,11 @@ namespace socketcan_bridge
       driver_->translateError(s.internal_error, err);
       if (!s.internal_error)
       {
-        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+        RCLCPP_INFO(nh_->get_logger(), "State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
       }
       else
       {
-        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+        RCLCPP_ERROR(nh_->get_logger(), "Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
       }
-    };
-};  // namespace socketcan_bridge
+    }
+}  // namespace socketcan_bridge
