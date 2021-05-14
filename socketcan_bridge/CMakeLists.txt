@@ -20,6 +20,14 @@ find_package(socketcan_interface REQUIRED)
 include_directories(include)
 include_directories(${socketcan_interface_INCLUDE_DIRS})
 
+# socketcan_converter
+add_library(socketcan_converter
+  src/socketcan_converter.cpp
+)
+ament_target_dependencies(socketcan_converter
+  can_msgs
+  socketcan_interface)
+
 # socketcan_to_topic
 add_library(socketcan_to_topic
   src/rosconsole_bridge.cpp
@@ -27,8 +35,12 @@ add_library(socketcan_to_topic
 )
 ament_target_dependencies(socketcan_to_topic
   rclcpp
-  can_msgs)
-
+  can_msgs
+  socketcan_interface
+  rosconsole_bridge)
+target_link_libraries(socketcan_to_topic
+  socketcan_converter
+)
 
 # topic_to_socketcan
 add_library(topic_to_socketcan
@@ -37,38 +49,53 @@ add_library(topic_to_socketcan
 )
 ament_target_dependencies(topic_to_socketcan
   rclcpp
-  can_msgs)
+  can_msgs
+  socketcan_interface
+  rosconsole_bridge)
+target_link_libraries(topic_to_socketcan
+  socketcan_converter
+)
 
-# socketcan_to_topic_node
+# # socketcan_to_topic_node
 add_executable(socketcan_to_topic_node
+  src/${PROJECT_NAME}_driver.cpp
   src/socketcan_to_topic_node.cpp
 )
 ament_target_dependencies(socketcan_to_topic_node
   rclcpp
-  can_msgs)
+  can_msgs
+  socketcan_interface
+  rosconsole_bridge)
 target_link_libraries(socketcan_to_topic_node
   socketcan_to_topic
+  topic_to_socketcan
 )
 
-# topic_to_socketcan_node
+# # topic_to_socketcan_node
 add_executable(topic_to_socketcan_node
+  src/${PROJECT_NAME}_driver.cpp
   src/topic_to_socketcan_node.cpp
 )
 ament_target_dependencies(topic_to_socketcan_node
   rclcpp
-  can_msgs)
+  can_msgs
+  socketcan_interface
+  rosconsole_bridge)
 target_link_libraries(topic_to_socketcan_node
+  socketcan_to_topic
   topic_to_socketcan
 )
 
 # socketcan_bridge_node
 add_executable(${PROJECT_NAME}_node
-  src/${PROJECT_NAME}_node.cpp
   src/${PROJECT_NAME}_driver.cpp
+  src/${PROJECT_NAME}_node.cpp
 )
 ament_target_dependencies(${PROJECT_NAME}_node
   rclcpp
-  can_msgs)
+  can_msgs
+  socketcan_interface
+  rosconsole_bridge)
 target_link_libraries(${PROJECT_NAME}_node
   topic_to_socketcan
   socketcan_to_topic
@@ -77,9 +104,7 @@ target_link_libraries(${PROJECT_NAME}_node
 install(
   TARGETS
     ${PROJECT_NAME}_node
-    socketcan_to_topic
     socketcan_to_topic_node
-    topic_to_socketcan
     topic_to_socketcan_node
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
@@ -128,14 +153,14 @@ install(
 
 #endif()
 
-ament_export_dependencies(can_msgs 
+ament_export_dependencies(ament_cmake
+                          can_msgs 
                           rosconsole_bridge
                           roscpp
                           socketcan_interface)
 
 ament_export_include_directories(include)
 
-ament_export_libraries(socketcan_to_topic
-                        topic_to_socketcan)
+ament_export_libraries(socketcan_to_topic topic_to_socketcan socketcan_converter)
 
 ament_package()

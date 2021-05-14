@@ -48,9 +48,10 @@ target_link_libraries(${PROJECT_NAME}_plugin
 add_executable(canopen_bcm_sync
   src/bcm_sync.cpp
 )
+ament_target_dependencies(canopen_bcm_sync
+  socketcan_interface)
 target_link_libraries(canopen_bcm_sync
   ${Boost_LIBRARIES}
-  socketcan_interface
 )
 
 install(

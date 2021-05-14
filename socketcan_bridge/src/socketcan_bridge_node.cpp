@@ -26,11 +26,11 @@
  */
 
 #include "rclcpp/rclcpp.hpp"
-#include <socketcan_bridge/topic_to_socketcan.hpp>
-#include <socketcan_bridge/socketcan_to_topic.hpp>
+// #include <socketcan_bridge/topic_to_socketcan.hpp>
+// #include <socketcan_bridge/socketcan_to_topic.hpp>
 #include <socketcan_bridge/socketcan_bridge_driver.hpp>
 #include <socketcan_interface/threading.hpp>
-#include <socketcan_interface/xmlrpc_settings.hpp>
+// #include <socketcan_interface/xmlrpc_settings.hpp>
 #include <memory>
 #include <string>
 
@@ -47,12 +47,13 @@ int main(int argc, char *argv[])
 
   // Type = std::shared_ptr<rclcpp::Node>
   auto socketcan_bridge_driver = std::make_shared<socketcan_bridge_driver::SocketCANDriver>(node_name, options);
+  auto driver_node_shared_ptr = socketcan_bridge_driver->shared_from_this();
   socketcan_bridge_driver->init_param();
   socketcan_bridge_driver->init_can_driver();
 
   // initialize the bridge both ways.
-  socketcan_bridge_driver->init_topic_to_socket_can(socketcan_bridge_driver);
-  socketcan_bridge_driver->init_socket_can_to_topic(socketcan_bridge_driver);
+  socketcan_bridge_driver->init_topic_to_socket_can(driver_node_shared_ptr);
+  socketcan_bridge_driver->init_socket_can_to_topic(driver_node_shared_ptr);
 
   rclcpp::spin(socketcan_bridge_driver);
   rclcpp::shutdown();

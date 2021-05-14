@@ -5,6 +5,7 @@
 #include <socketcan_bridge/socketcan_to_topic.hpp>
 #include <socketcan_interface/threading.hpp>
 #include <socketcan_interface/xmlrpc_settings.hpp>
+#include "rclcpp/rclcpp.hpp"
 
 namespace socketcan_bridge_driver
 {
@@ -22,6 +23,8 @@ class SocketCANDriver : public rclcpp::Node
   private:
     rclcpp::Parameter can_device;
     can::ThreadedSocketCANInterfaceSharedPtr driver;
+    std::unique_ptr<socketcan_bridge::TopicToSocketCAN> to_socketcan_bridge;
+    std::unique_ptr<socketcan_bridge::SocketCANToTopic> to_topic_bridge;
 };
 
 }  // namespace socketcan_bridge_driver

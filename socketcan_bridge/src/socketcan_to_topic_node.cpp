@@ -48,10 +48,11 @@ int main(int argc, char *argv[])
 
   // Type = std::shared_ptr<rclcpp::Node>
   auto socketcan_bridge_driver = std::make_shared<socketcan_bridge_driver::SocketCANDriver>(node_name, options);
+  auto driver_node_shared_ptr = socketcan_bridge_driver->shared_from_this();
   socketcan_bridge_driver->init_param();
-  socketcan_bridge_driver->init_can();
+  socketcan_bridge_driver->init_can_driver();
 
-  socketcan_bridge_driver->init_socket_can_to_topic(socketcan_bridge_driver);
+  socketcan_bridge_driver->init_socket_can_to_topic(driver_node_shared_ptr);
 
   rclcpp::spin(socketcan_bridge_driver);
   rclcpp::shutdown();
