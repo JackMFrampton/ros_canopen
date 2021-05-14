@@ -49,12 +49,18 @@
 
 namespace socketcan_bridge
 {
-  SocketCANToTopic::SocketCANToTopic(std::shared_ptr<rclcpp::Node> nh,
-      can::DriverInterfaceSharedPtr driver)
+  SocketCANToTopic::SocketCANToTopic(can::DriverInterfaceSharedPtr driver) : Node("socketcan_to_topic_node", 
+                                                                                  rclcpp::NodeOptions()
+                                                                                  .allow_undeclared_parameters(true)
+                                                                                  .automatically_declare_parameters_from_overrides(true)) 
     {
-      nh_ = nh;
-      can_topic_ = nh_->create_publisher<can_msgs::msg::Frame>("received_messages", 10);
-      driver_ = driver;
+      auto flag_can_device = get_parameter_or("can_device", can_device, rclcpp::Parameter("can_device", "can0"));
+      if (!flag_can_device)
+      {
+          RCLCPP_WARN_ONCE(get_logger(), "Could not get can device, setting: %s", can_device.as_string().c_str());
+      }
+      can_topic_ = this->create_publisher<can_msgs::msg::Frame>("received_messages", 10);
+      driver_ = driver;    
     }
 
   void SocketCANToTopic::setup()
@@ -91,7 +97,7 @@ namespace socketcan_bridge
       // ROS_DEBUG("Message came in: %s", can::tostring(f, true).c_str());
       if (!f.isValid())
       {
-        RCLCPP_ERROR(nh_->get_logger(), "Invalid frame from SocketCAN: id: %#04x, length: %d, is_extended: %d, is_error: %d, is_rtr: %d",
+        RCLCPP_ERROR(this->get_logger(), "Invalid frame from SocketCAN: id: %#04x, length: %d, is_extended: %d, is_error: %d, is_rtr: %d",
                   f.id, f.dlc, f.is_extended, f.is_error, f.is_rtr);
         return;
       }
@@ -101,7 +107,7 @@ namespace socketcan_bridge
         {
           // can::tostring cannot be used for dlc > 8 frames. It causes an crash
           // due to usage of boost::array for the data array. The should always work.
-          RCLCPP_WARN(nh_->get_logger(), "Received frame is error: %s", can::tostring(f, true).c_str());
+          RCLCPP_WARN(this->get_logger(), "Received frame is error: %s", can::tostring(f, true).c_str());
         }
       }
 
@@ -110,7 +116,7 @@ namespace socketcan_bridge
       convertSocketCANToMessage(f, msg);
 
       msg.header.frame_id = "";  // empty frame is the de-facto standard for no frame.
-      msg.header.stamp = nh_->get_clock()->now();
+      msg.header.stamp = this->get_clock()->now();
 
       can_topic_->publish(msg);
     }
@@ -122,11 +128,11 @@ namespace socketcan_bridge
       driver_->translateError(s.internal_error, err);
       if (!s.internal_error)
       {
-        RCLCPP_INFO(rclcpp::get_logger("rclcpp"), "State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+        RCLCPP_INFO(this->get_logger(), "State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
       }
       else
       {
-        RCLCPP_ERROR(rclcpp::get_logger("rclcpp"), "Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+        RCLCPP_ERROR(this->get_logger(), "Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
       }
     }
 }  // namespace socketcan_bridge

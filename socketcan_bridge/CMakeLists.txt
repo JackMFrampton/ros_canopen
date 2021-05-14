@@ -60,7 +60,6 @@ target_link_libraries(topic_to_socketcan
 
 # # socketcan_to_topic_node
 add_executable(socketcan_to_topic_node
-  src/${PROJECT_NAME}_driver.cpp
   src/socketcan_to_topic_node.cpp
 )
 ament_target_dependencies(socketcan_to_topic_node
@@ -75,7 +74,6 @@ target_link_libraries(socketcan_to_topic_node
 
 # # topic_to_socketcan_node
 add_executable(topic_to_socketcan_node
-  src/${PROJECT_NAME}_driver.cpp
   src/topic_to_socketcan_node.cpp
 )
 ament_target_dependencies(topic_to_socketcan_node
@@ -90,7 +88,6 @@ target_link_libraries(topic_to_socketcan_node
 
 # socketcan_bridge_node
 add_executable(${PROJECT_NAME}_node
-  src/${PROJECT_NAME}_driver.cpp
   src/${PROJECT_NAME}_node.cpp
 )
 ament_target_dependencies(${PROJECT_NAME}_node

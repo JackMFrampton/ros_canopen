@@ -34,20 +34,20 @@
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 
-namespace socketcan_bridge
+namespace socketcan_bridge 
 {
-class SocketCANToTopic
+class SocketCANToTopic : public rclcpp::Node
 {
   public:
-    SocketCANToTopic(std::shared_ptr<rclcpp::Node> nh, can::DriverInterfaceSharedPtr driver);
+    SocketCANToTopic(can::DriverInterfaceSharedPtr driver);
     void setup();
     void setup(const can::FilteredFrameListener::FilterVector &filters);
     // void setup(XmlRpc::XmlRpcValue filters);
     // void setup(std::shared_ptr<rclcpp::Node> nh);
 
   private:
+    rclcpp::Parameter can_device;
     rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr can_topic_;
-    std::shared_ptr<rclcpp::Node> nh_;
     can::DriverInterfaceSharedPtr driver_;
 
     can::FrameListenerConstSharedPtr frame_listener_;

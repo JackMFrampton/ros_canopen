@@ -31,10 +31,16 @@
 
 namespace socketcan_bridge
 {
-  TopicToSocketCAN::TopicToSocketCAN(std::shared_ptr<rclcpp::Node> nh,
-      can::DriverInterfaceSharedPtr driver)
+  TopicToSocketCAN::TopicToSocketCAN(can::DriverInterfaceSharedPtr driver) : Node("topic_to_socketcan_node", 
+                                                                                  rclcpp::NodeOptions()
+                                                                                  .allow_undeclared_parameters(true)
+                                                                                  .automatically_declare_parameters_from_overrides(true)) 
     {
-      nh_ = nh;
+      auto flag_can_device = get_parameter_or("can_device", can_device, rclcpp::Parameter("can_device", "can0"));
+      if (!flag_can_device)
+      {
+          RCLCPP_WARN_ONCE(get_logger(), "Could not get can device, setting: %s", can_device.as_string().c_str());
+      }
       can_topic_ = nh_->create_subscription<can_msgs::msg::Frame>("sent_messages", 10,
                     std::bind(&TopicToSocketCAN::msgCallback, this, std::placeholders::_1));
       driver_ = driver;
@@ -63,14 +69,14 @@ namespace socketcan_bridge
         // ROS_WARN("Refusing to send invalid frame: %s.", can::tostring(f, true).c_str());
         // can::tostring cannot be used for dlc > 8 frames. It causes an crash
         // due to usage of boost::array for the data array. The should always work.
-        RCLCPP_ERROR(nh_->get_logger(), "Invalid frame from topic: id: %#04x, length: %d, is_extended: %d", m.id, m.dlc, m.is_extended);
+        RCLCPP_ERROR(this->get_logger(), "Invalid frame from topic: id: %#04x, length: %d, is_extended: %d", m.id, m.dlc, m.is_extended);
         return;
       }
 
       bool res = driver_->send(f);
       if (!res)
       {
-        RCLCPP_ERROR(nh_->get_logger(), "Failed to send message: %s.", can::tostring(f, true).c_str());
+        RCLCPP_ERROR(this->get_logger(), "Failed to send message: %s.", can::tostring(f, true).c_str());
       }
     }
 
@@ -82,11 +88,11 @@ namespace socketcan_bridge
       driver_->translateError(s.internal_error, err);
       if (!s.internal_error)
       {
-        RCLCPP_INFO(nh_->get_logger(), "State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+        RCLCPP_INFO(this->get_logger(), "State: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
       }
       else
       {
-        RCLCPP_ERROR(nh_->get_logger(), "Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
+        RCLCPP_ERROR(this-->get_logger(), "Error: %s, asio: %s", err.c_str(), s.error_code.message().c_str());
       }
     }
 }  // namespace socketcan_bridge

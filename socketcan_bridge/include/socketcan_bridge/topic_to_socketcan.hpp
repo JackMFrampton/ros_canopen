@@ -35,16 +35,16 @@
 
 namespace socketcan_bridge
 {
-class TopicToSocketCAN
+class TopicToSocketCAN : public rclcpp::Node
 {
   public:
-    TopicToSocketCAN(std::shared_ptr<rclcpp::Node> nh, can::DriverInterfaceSharedPtr driver);
+    TopicToSocketCAN(can::DriverInterfaceSharedPtr driver);
     void setup();
 
   private:
+    rclcpp::Parameter can_device;
     rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr can_topic_;
     can::DriverInterfaceSharedPtr driver_;
-    std::shared_ptr<rclcpp::Node> nh_;
 
     can::StateListenerConstSharedPtr state_listener_;
 

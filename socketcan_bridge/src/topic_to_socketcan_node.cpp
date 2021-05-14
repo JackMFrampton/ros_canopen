@@ -40,20 +40,29 @@ int main(int argc, char *argv[])
 {
   rclcpp::init(argc, argv);
 
-  auto node_name = std::string("topic_to_socketcan_node");
+  driver = std::make_shared<can::ThreadedSocketCANInterface>();
 
-  rclcpp::NodeOptions options = rclcpp::NodeOptions();
-  options.allow_undeclared_parameters(true);
-  options.automatically_declare_parameters_from_overrides(true);
+  auto topic_to_socketcan = std::make_shared<socketcan_bridge::TopicToSocketCAN>(driver);
+  auto driver_node_shared_ptr = topic_to_socketcan->shared_from_this();
 
-  // Type = std::shared_ptr<rclcpp::Node>
-  auto socketcan_bridge_driver = std::make_shared<socketcan_bridge_driver::SocketCANDriver>(node_name, options);
-  auto driver_node_shared_ptr = socketcan_bridge_driver->shared_from_this();
-  socketcan_bridge_driver->init_param();
-  socketcan_bridge_driver->init_can_driver();
+  std::string can_device;
+  driver_node_shared_ptr->get_parameter("can_device", can_device);
 
-  socketcan_bridge_driver->init_topic_to_socket_can(driver_node_shared_ptr);
+  if (!driver->init(can_device.as_string(), 0, can::NoSettings::create()))
+  {
+    RCLCPP_FATAL(driver_node_shared_ptr->get_logger(), "Failed to initialize can_device at %s", can_device.as_string().c_str());
+  }
+  else
+  {
+    RCLCPP_INFO(driver_node_shared_ptr->get_logger(), "Successfully connected to %s.", can_device.as_string().c_str());
+  }
 
-  rclcpp::spin(socketcan_bridge_driver);
+  topic_to_socketcan->setup();
+
+  rclcpp::spin(topic_to_socketcan);
+
   rclcpp::shutdown();
+
+  driver->shutdown();
+  driver.reset();
 }
