@@ -25,8 +25,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SOCKETCAN_BRIDGE_SOCKETCAN_TO_TOPIC_H
-#define SOCKETCAN_BRIDGE_SOCKETCAN_TO_TOPIC_H
+#ifndef SOCKETCAN_BRIDGE__SOCKETCAN_TO_TOPIC_HPP_
+#define SOCKETCAN_BRIDGE__SOCKETCAN_TO_TOPIC_HPP_
 
 #include <socketcan_interface/socketcan.hpp>
 #include <socketcan_interface/filter.hpp>
@@ -34,12 +34,12 @@
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 
-namespace socketcan_bridge 
+namespace socketcan_bridge
 {
 class SocketCANToTopic : public rclcpp::Node
 {
   public:
-    SocketCANToTopic(can::DriverInterfaceSharedPtr driver);
+    explicit SocketCANToTopic(can::DriverInterfaceSharedPtr driver);
     void setup();
     void setup(const can::FilteredFrameListener::FilterVector &filters);
     // void setup(XmlRpc::XmlRpcValue filters);
@@ -61,4 +61,4 @@ class SocketCANToTopic : public rclcpp::Node
 }  // namespace socketcan_bridge
 
 
-#endif  // SOCKETCAN_BRIDGE_SOCKETCAN_TO_TOPIC_H
+#endif  // SOCKETCAN_BRIDGE__SOCKETCAN_TO_TOPIC_HPP_

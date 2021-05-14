@@ -158,6 +158,7 @@ endif()
 #endif()
 
 ament_export_dependencies(ament_cmake
+                          Boost
                           can_msgs
                           roscpp
                           socketcan_interface)

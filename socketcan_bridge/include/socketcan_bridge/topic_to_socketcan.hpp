@@ -25,8 +25,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SOCKETCAN_BRIDGE_TOPIC_TO_SOCKETCAN_H
-#define SOCKETCAN_BRIDGE_TOPIC_TO_SOCKETCAN_H
+#ifndef SOCKETCAN_BRIDGE__TOPIC_TO_SOCKETCAN_HPP_
+#define SOCKETCAN_BRIDGE__TOPIC_TO_SOCKETCAN_HPP_
 
 #include <socketcan_interface/socketcan.hpp>
 #include <socketcan_bridge/socketcan_converter.hpp>
@@ -38,7 +38,7 @@ namespace socketcan_bridge
 class TopicToSocketCAN : public rclcpp::Node
 {
   public:
-    TopicToSocketCAN(can::DriverInterfaceSharedPtr driver);
+    explicit TopicToSocketCAN(can::DriverInterfaceSharedPtr driver);
     void setup();
 
   private:
@@ -55,4 +55,4 @@ class TopicToSocketCAN : public rclcpp::Node
 }  // namespace socketcan_bridge
 
 
-#endif  // SOCKETCAN_BRIDGE_TOPIC_TO_SOCKETCAN_H
+#endif  // SOCKETCAN_BRIDGE__TOPIC_TO_SOCKETCAN_HPP_

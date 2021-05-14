@@ -1,8 +1,8 @@
-#include <canopen_master/bcm_sync.h>
-#include <socketcan_interface/string.h>
-#include <socketcan_interface/xmlrpc_settings.h>
-#include <canopen_master/can_layer.h>
-#include <ros/ros.h>
+#include <canopen_master/bcm_sync.hpp>
+#include <socketcan_interface/string.hpp>
+//#include <socketcan_interface/xmlrpc_settings.h>
+#include <canopen_master/can_layer.hpp>
+#include <rclcpp/rclcpp.hpp>
 #include <diagnostic_updater/diagnostic_updater.h>
 
 template<typename T > std::string join(const T &container, const std::string &delim){

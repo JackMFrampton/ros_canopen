@@ -25,22 +25,20 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <rclcpp/rclcpp.hpp>
 #include <socketcan_bridge/topic_to_socketcan.hpp>
-#include <socketcan_bridge/socketcan_bridge_driver.hpp>
 #include <socketcan_interface/threading.hpp>
 #include <socketcan_interface/string.hpp>
-#include <socketcan_interface/xmlrpc_settings.hpp>
+//#include <socketcan_interface/xmlrpc_settings.hpp>
 #include <memory>
 #include <string>
-
+#include <rclcpp/rclcpp.hpp>
 
 
 int main(int argc, char *argv[])
 {
   rclcpp::init(argc, argv);
 
-  driver = std::make_shared<can::ThreadedSocketCANInterface>();
+  auto driver = std::make_shared<can::ThreadedSocketCANInterface>();
 
   auto topic_to_socketcan = std::make_shared<socketcan_bridge::TopicToSocketCAN>(driver);
   auto driver_node_shared_ptr = topic_to_socketcan->shared_from_this();
@@ -48,13 +46,15 @@ int main(int argc, char *argv[])
   std::string can_device;
   driver_node_shared_ptr->get_parameter("can_device", can_device);
 
-  if (!driver->init(can_device.as_string(), 0, can::NoSettings::create()))
+  if (!driver->init(can_device.c_str(), 0, can::NoSettings::create()))
   {
-    RCLCPP_FATAL(driver_node_shared_ptr->get_logger(), "Failed to initialize can_device at %s", can_device.as_string().c_str());
-  }
-  else
-  {
-    RCLCPP_INFO(driver_node_shared_ptr->get_logger(), "Successfully connected to %s.", can_device.as_string().c_str());
+    RCLCPP_FATAL(driver_node_shared_ptr->get_logger(), 
+                "Failed to initialize can_device at %s", 
+                can_device.c_str());
+  }else{
+    RCLCPP_INFO(driver_node_shared_ptr->get_logger(), 
+                "Successfully connected to %s.", 
+                can_device.c_str());
   }
 
   topic_to_socketcan->setup();
