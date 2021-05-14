@@ -119,6 +119,11 @@ install(
   DESTINATION include/${PROJECT_NAME}
 )
 
+if(BUILD_TESTING)
+  find_package(ament_cmake_cpplint REQUIRED)
+  ament_cpplint()
+endif()
+
 #if(BUILD_TESTING)
 #  find_package(rostest REQUIRED)
 #  find_package(roslint REQUIRED)
