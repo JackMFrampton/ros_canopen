@@ -116,6 +116,11 @@ install(
   DESTINATION include/${PROJECT_NAME}
 )
 
+install(DIRECTORY
+  config
+  DESTINATION share/${PROJECT_NAME}
+)
+
 if(BUILD_TESTING)
   find_package(ament_cmake_cpplint REQUIRED)
   ament_cpplint()
