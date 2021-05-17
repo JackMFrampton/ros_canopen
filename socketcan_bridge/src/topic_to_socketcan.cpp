@@ -31,17 +31,19 @@
 
 namespace socketcan_bridge
 {
-  TopicToSocketCAN::TopicToSocketCAN(can::DriverInterfaceSharedPtr driver) 
-                                    : Node("topic_to_socketcan_node", 
+  TopicToSocketCAN::TopicToSocketCAN(can::DriverInterfaceSharedPtr driver)
+                                    : Node("topic_to_socketcan_node",
                                     rclcpp::NodeOptions()
                                     .allow_undeclared_parameters(true)
                                     .automatically_declare_parameters_from_overrides(true))
     {
-      auto flag_can_device = get_parameter_or("can_device", can_device, rclcpp::Parameter("can_device", "can0"));
+      auto flag_can_device = get_parameter_or("can_device",
+                                              can_device,
+                                              rclcpp::Parameter("can_device", "can0"));
       if (!flag_can_device)
       {
-          RCLCPP_WARN_ONCE(get_logger(), 
-                          "Could not get can device, setting: %s", 
+          RCLCPP_WARN_ONCE(get_logger(),
+                          "Could not get can device, setting: %s",
                           can_device.as_string().c_str());
       }
       can_topic_ = this->create_subscription<can_msgs::msg::Frame>("sent_messages", 10,
@@ -99,9 +101,7 @@ namespace socketcan_bridge
                     "State: %s, asio: %s",
                     err.c_str(),
                     s.error_code.message().c_str());
-      }
-      else
-      {
+      }else{
         RCLCPP_ERROR(this->get_logger(),
                     "Error: %s, asio: %s",
                     err.c_str(),

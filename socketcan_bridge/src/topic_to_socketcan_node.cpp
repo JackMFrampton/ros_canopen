@@ -28,10 +28,10 @@
 #include <socketcan_bridge/topic_to_socketcan.hpp>
 #include <socketcan_interface/threading.hpp>
 #include <socketcan_interface/string.hpp>
-//#include <socketcan_interface/xmlrpc_settings.hpp>
+// #include <socketcan_interface/xmlrpc_settings.hpp>
 #include <memory>
 #include <string>
-#include <rclcpp/rclcpp.hpp>
+#include "rclcpp/rclcpp.hpp"
 
 
 int main(int argc, char *argv[])
@@ -48,12 +48,12 @@ int main(int argc, char *argv[])
 
   if (!driver->init(can_device.c_str(), 0, can::NoSettings::create()))
   {
-    RCLCPP_FATAL(driver_node_shared_ptr->get_logger(), 
-                "Failed to initialize can_device at %s", 
+    RCLCPP_FATAL(driver_node_shared_ptr->get_logger(),
+                "Failed to initialize can_device at %s",
                 can_device.c_str());
   }else{
-    RCLCPP_INFO(driver_node_shared_ptr->get_logger(), 
-                "Successfully connected to %s.", 
+    RCLCPP_INFO(driver_node_shared_ptr->get_logger(),
+                "Successfully connected to %s.",
                 can_device.c_str());
   }
 

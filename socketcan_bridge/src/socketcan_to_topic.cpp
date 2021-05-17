@@ -65,7 +65,7 @@ namespace socketcan_bridge
                           can_device.as_string().c_str());
       }
       can_topic_ = this->create_publisher<can_msgs::msg::Frame>("received_messages", 10);
-      driver_ = driver;    
+      driver_ = driver;
     }
 
   void SocketCANToTopic::setup()
@@ -102,13 +102,13 @@ namespace socketcan_bridge
       // ROS_DEBUG("Message came in: %s", can::tostring(f, true).c_str());
       if (!f.isValid())
       {
+        std::string strErr  = "Invalid frame from SocketCAN: ";
+        std::string strErr2 = "id: %#04x, length: %d, is_extended: %d, is_error: %d, is_rtr: %d";
         RCLCPP_ERROR(this->get_logger(),
-                    "Invalid frame from SocketCAN: id: %#04x, length: %d, is_extended: %d, is_error: %d, is_rtr: %d",
-                    f.id, f.dlc, f.is_extended, f.is_error, f.is_rtr);
+        strErr.append(strErr2),
+        f.id, f.dlc, f.is_extended, f.is_error, f.is_rtr);
         return;
-      }
-      else
-      {
+      }else{
         if (f.is_error)
         {
           // can::tostring cannot be used for dlc > 8 frames. It causes an crash
@@ -140,9 +140,7 @@ namespace socketcan_bridge
                     "State: %s, asio: %s",
                     err.c_str(),
                     s.error_code.message().c_str());
-      }
-      else
-      {
+      }else{
         RCLCPP_ERROR(this->get_logger(),
                     "Error: %s, asio: %s",
                     err.c_str(),

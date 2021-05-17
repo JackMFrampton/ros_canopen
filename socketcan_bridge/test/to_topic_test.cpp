@@ -78,7 +78,9 @@ TEST(SocketCANToTopicTest, checkCorrectData)
   msgCollector message_collector_;
 
   // register for messages on received_messages.
-  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 1, &msgCollector::msgCallback, &message_collector_);
+  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 1,
+                                            &msgCollector::msgCallback,
+                                            &message_collector_);
 
   // create a can frame
   can::Frame f;
@@ -140,7 +142,9 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
   msgCollector message_collector_;
 
   // register for messages on received_messages.
-  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 1, &msgCollector::msgCallback, &message_collector_);
+  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 1,
+                                            &msgCollector::msgCallback,
+                                            &message_collector_);
 
   // create a message
   can::Frame f;
@@ -188,7 +192,9 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
   msgCollector message_collector_;
 
   // register for messages on received_messages.
-  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 1, &msgCollector::msgCallback, &message_collector_);
+  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 1,
+                                            &msgCollector::msgCallback,
+                                            &message_collector_);
 
   // create a can frame
   can::Frame f;
@@ -248,7 +254,9 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
   msgCollector message_collector_;
 
   // register for messages on received_messages.
-  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 1, &msgCollector::msgCallback, &message_collector_);
+  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 1,
+                                            &msgCollector::msgCallback,
+                                            &message_collector_);
 
   // create a can frame
   can::Frame f;
@@ -296,7 +304,9 @@ TEST(SocketCANToTopicTest, checkMaskFilter)
   msgCollector message_collector_;
 
   // register for messages on received_messages.
-  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 10, &msgCollector::msgCallback, &message_collector_);
+  ros::Subscriber subscriber_ = nh.subscribe("received_messages", 10,
+                                            &msgCollector::msgCallback,
+                                            &message_collector_);
 
   const std::string pass1("300#1234"), nopass1("302#9999"), pass2("301#5678");
 

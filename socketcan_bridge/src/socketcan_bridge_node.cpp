@@ -52,8 +52,7 @@ int main(int argc, char *argv[])
     RCLCPP_FATAL(driver_node_shared_ptr->get_logger(),
                 "Failed to initialize can_device at %s",
                 can_device.c_str());
-  }else
-  {
+  }else{
     RCLCPP_INFO(driver_node_shared_ptr->get_logger(),
                 "Successfully connected to %s.",
                 can_device.c_str());
