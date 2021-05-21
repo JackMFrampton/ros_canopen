@@ -33,6 +33,7 @@
 #include <socketcan_bridge/socketcan_converter.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
+#include <map>
 
 namespace socketcan_bridge
 {
@@ -46,13 +47,13 @@ class SocketCANToTopic : public rclcpp::Node
     // void setup(std::shared_ptr<rclcpp::Node> nh);
 
   private:
-    rclcpp::Parameter can_device;
-    rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr can_topic_;
+    rclcpp::Parameter can_device_;
     can::DriverInterfaceSharedPtr driver_;
 
     can::FrameListenerConstSharedPtr frame_listener_;
     can::StateListenerConstSharedPtr state_listener_;
 
+    std::map<int, rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr> s_to_t_id_map_;
 
     void frameCallback(const can::Frame& f);
     void stateCallback(const can::State & s);

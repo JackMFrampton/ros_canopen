@@ -38,24 +38,41 @@ int main(int argc, char *argv[])
   rclcpp::init(argc, argv);
   rclcpp::executors::SingleThreadedExecutor exec;
 
-  auto driver = std::make_shared<can::ThreadedSocketCANInterface>();
+  auto driver_s_to_t = std::make_shared<can::ThreadedSocketCANInterface>();
+  auto driver_t_to_s = std::make_shared<can::ThreadedSocketCANInterface>();
 
-  auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(driver);
-  auto topic_to_socketcan = std::make_shared<socketcan_bridge::TopicToSocketCAN>(driver);
-  auto driver_node_shared_ptr = socketcan_to_topic->shared_from_this();
+  auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(driver_s_to_t);
+  auto topic_to_socketcan = std::make_shared<socketcan_bridge::TopicToSocketCAN>(driver_t_to_s);
 
-  std::string can_device;
-  driver_node_shared_ptr->get_parameter("can_device", can_device);
+  auto s_to_t_shared_ptr = socketcan_to_topic->shared_from_this();
+  auto t_to_s_shared_ptr = topic_to_socketcan->shared_from_this();
 
-  if (!driver->init(can_device.c_str(), 0, can::NoSettings::create()))
+  std::string s_to_t_can_device;
+  std::string t_to_s_can_device;
+
+  s_to_t_shared_ptr->get_parameter("can_device", s_to_t_can_device);
+  t_to_s_shared_ptr->get_parameter("can_device", t_to_s_can_device);
+
+  if (!driver_s_to_t->init(s_to_t_can_device.c_str(), 0, can::NoSettings::create()))
   {
-    RCLCPP_FATAL(driver_node_shared_ptr->get_logger(),
+    RCLCPP_FATAL(s_to_t_shared_ptr->get_logger(),
                 "Failed to initialize can_device at %s",
-                can_device.c_str());
+                s_to_t_can_device.c_str());
   }else{
-    RCLCPP_INFO(driver_node_shared_ptr->get_logger(),
+    RCLCPP_INFO(s_to_t_shared_ptr->get_logger(),
                 "Successfully connected to %s.",
-                can_device.c_str());
+                s_to_t_can_device.c_str());
+  }
+
+  if (!driver_t_to_s->init(t_to_s_can_device.c_str(), 0, can::NoSettings::create()))
+  {
+    RCLCPP_FATAL(t_to_s_shared_ptr->get_logger(),
+                "Failed to initialize can_device at %s",
+                t_to_s_can_device.c_str());
+  }else{
+    RCLCPP_INFO(t_to_s_shared_ptr->get_logger(),
+                "Successfully connected to %s.",
+                t_to_s_can_device.c_str());
   }
 
   socketcan_to_topic->setup();
@@ -68,6 +85,9 @@ int main(int argc, char *argv[])
 
   rclcpp::shutdown();
 
-  driver->shutdown();
-  driver.reset();
+  driver_s_to_t->shutdown();
+  driver_s_to_t.reset();
+
+  driver_t_to_s->shutdown();
+  driver_t_to_s.reset();
 }

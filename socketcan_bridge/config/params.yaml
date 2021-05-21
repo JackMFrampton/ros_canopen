@@ -1,7 +1,7 @@
-topic_to_socketcan_node:
+socketcan_to_topic_node:
   ros__parameters:
     can_device: "vcan0"
 
-socketcan_to_topic_node:
+topic_to_socketcan_node:
   ros__parameters:
     can_device: "vcan0"

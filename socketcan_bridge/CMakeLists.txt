@@ -21,6 +21,7 @@ find_package(Boost REQUIRED
     system
     thread
 )
+find_package(nlohmann_json REQUIRED)
 
 include_directories(include)
 include_directories(include ${Boost_INCLUDE_DIRS})
@@ -70,6 +71,7 @@ target_link_libraries(socketcan_to_topic_node
   socketcan_to_topic
   topic_to_socketcan
   ${Boost_LIBRARIES}
+  nlohmann_json::nlohmann_json
 )
 
 # # topic_to_socketcan_node
@@ -98,6 +100,7 @@ target_link_libraries(${PROJECT_NAME}_node
   topic_to_socketcan
   socketcan_to_topic
   ${Boost_LIBRARIES}
+  nlohmann_json::nlohmann_json
 )
 
 install(
@@ -118,6 +121,11 @@ install(
 
 install(DIRECTORY
   config
+  DESTINATION share/${PROJECT_NAME}
+)
+
+install(DIRECTORY
+  launch
   DESTINATION share/${PROJECT_NAME}
 )
 

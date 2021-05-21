@@ -28,7 +28,12 @@
 #include <socketcan_bridge/socketcan_to_topic.hpp>
 #include <socketcan_interface/string.hpp>
 #include <can_msgs/msg/frame.hpp>
+#include <nlohmann/json.hpp>
+#include <fstream>
 #include <string>
+#include <map>
+
+using json = nlohmann::json;
 
 // namespace can
 // {
@@ -56,15 +61,50 @@ namespace socketcan_bridge
                                     .automatically_declare_parameters_from_overrides(true))
     {
       auto flag_can_device = get_parameter_or("can_device",
-                                              can_device,
+                                              can_device_,
                                               rclcpp::Parameter("can_device", "can0"));
       if (!flag_can_device)
       {
           RCLCPP_WARN_ONCE(get_logger(),
                           "Could not get can device, setting: %s",
-                          can_device.as_string().c_str());
+                          can_device_.as_string().c_str());
       }
-      can_topic_ = this->create_publisher<can_msgs::msg::Frame>("received_messages", 10);
+
+      std::ifstream jsonFile("/home/ros2/foxy/deepx/json_example.json");
+      if (jsonFile)
+      {
+        json j = json::parse(jsonFile);
+        if (j.is_discarded())
+        {
+          std::cerr << "JSON File could not be parsed\n";
+          std::cerr << "Error code: " << strerror(errno);
+        }
+
+        // Iterates through the "messages" array in the json file
+        for (const auto& ele : j["messages"])
+        {
+          int tmp_id;
+          rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr tmp_pub;
+
+          // Takes first instances of id and name
+          // May be a better implementation
+          if (ele.contains("id"))
+          {
+            tmp_id = ele["id"].get<int>();
+          }
+          if (ele.contains("name"))
+          {
+            tmp_pub = this->create_publisher<can_msgs::msg::Frame>
+                                            (ele["name"].get<std::string>().c_str(), 10);
+          }
+
+          s_to_t_id_map_.emplace(tmp_id, tmp_pub);
+        }
+      }else{
+        std::cerr << "JSON File could not be opened\n";
+        std::cerr << "Error code: " << strerror(errno);
+      }
+
       driver_ = driver;
     }
 
@@ -102,10 +142,10 @@ namespace socketcan_bridge
       // ROS_DEBUG("Message came in: %s", can::tostring(f, true).c_str());
       if (!f.isValid())
       {
-        std::string strErr  = "Invalid frame from SocketCAN: ";
-        std::string strErr2 = "id: %#04x, length: %d, is_extended: %d, is_error: %d, is_rtr: %d";
+        std::string errStr  = "Invalid frame from SocketCAN: ";
+        std::string errStr2 = "id: %#04x, length: %d, is_extended: %d, is_error: %d, is_rtr: %d";
         RCLCPP_ERROR(this->get_logger(),
-        strErr.append(strErr2),
+        errStr.append(errStr2),
         f.id, f.dlc, f.is_extended, f.is_error, f.is_rtr);
         return;
       }else{
@@ -119,14 +159,23 @@ namespace socketcan_bridge
         }
       }
 
-      can_msgs::msg::Frame msg;
-      // converts the can::Frame (socketcan.h) to can_msgs::Frame (ROS msg)
-      convertSocketCANToMessage(f, msg);
+      std::map<int, rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr>::iterator tmp_iter;
+      tmp_iter = s_to_t_id_map_.find(f.id);
 
-      msg.header.frame_id = "";  // empty frame is the de-facto standard for no frame.
-      msg.header.stamp = this->get_clock()->now();
+      if (tmp_iter != s_to_t_id_map_.end())
+      {
+        // RCLCPP_INFO(this->get_logger(),
+        //            "Message published to ID %i",
+        //            f.id);
+        can_msgs::msg::Frame msg;
+        // converts the can::Frame (socketcan.h) to can_msgs::Frame (ROS msg)
+        convertSocketCANToMessage(f, msg);
 
-      can_topic_->publish(msg);
+        msg.header.frame_id = "";  // empty frame is the de-facto standard for no frame.
+        msg.header.stamp = this->get_clock()->now();
+
+        tmp_iter->second->publish(msg);
+      }
     }
 
 

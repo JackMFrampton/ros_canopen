@@ -27,7 +27,12 @@
 
 #include <socketcan_bridge/topic_to_socketcan.hpp>
 #include <socketcan_interface/string.hpp>
+#include <nlohmann/json.hpp>
+#include <fstream>
 #include <string>
+#include <map>
+
+using json = nlohmann::json;
 
 namespace socketcan_bridge
 {
@@ -38,16 +43,52 @@ namespace socketcan_bridge
                                     .automatically_declare_parameters_from_overrides(true))
     {
       auto flag_can_device = get_parameter_or("can_device",
-                                              can_device,
+                                              can_device_,
                                               rclcpp::Parameter("can_device", "can0"));
       if (!flag_can_device)
       {
           RCLCPP_WARN_ONCE(get_logger(),
                           "Could not get can device, setting: %s",
-                          can_device.as_string().c_str());
+                          can_device_.as_string().c_str());
       }
-      can_topic_ = this->create_subscription<can_msgs::msg::Frame>("sent_messages", 10,
-                    std::bind(&TopicToSocketCAN::msgCallback, this, std::placeholders::_1));
+
+      std::ifstream jsonFile("/home/ros2/foxy/deepx/json_example.json");
+      if (jsonFile)
+      {
+        json j = json::parse(jsonFile);
+        if (j.is_discarded())
+        {
+          std::cerr << "JSON File could not be parsed\n";
+          std::cerr << "Error code: " << strerror(errno);
+        }
+
+        // Iterates through the "messages" array in the json file
+        for (const auto& ele : j["messages"])
+        {
+          int tmp_id;
+          rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr tmp_sub;
+
+          // Takes first instances of id and name
+          // May be a better implementation
+          if (ele.contains("id"))
+          {
+            tmp_id = ele["id"].get<int>();
+          }
+          if (ele.contains("name"))
+          {
+            tmp_sub = this->create_subscription<can_msgs::msg::Frame>
+                          (ele["name"].get<std::string>().c_str(), 10,
+                          std::bind(&TopicToSocketCAN::msgCallback,
+                          this, std::placeholders::_1));
+          }
+
+          t_to_s_id_map_.emplace(tmp_id, tmp_sub);
+        }
+      }else{
+        std::cerr << "JSON File could not be opened\n";
+        std::cerr << "Error code: " << strerror(errno);
+      }
+
       driver_ = driver;
     }
 

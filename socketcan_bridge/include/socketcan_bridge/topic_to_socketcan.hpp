@@ -32,6 +32,10 @@
 #include <socketcan_bridge/socketcan_converter.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
+#include <nlohmann/json.hpp>
+#include <map>
+
+using json = nlohmann::json;
 
 namespace socketcan_bridge
 {
@@ -42,11 +46,12 @@ class TopicToSocketCAN : public rclcpp::Node
     void setup();
 
   private:
-    rclcpp::Parameter can_device;
-    rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr can_topic_;
+    rclcpp::Parameter can_device_;
     can::DriverInterfaceSharedPtr driver_;
 
     can::StateListenerConstSharedPtr state_listener_;
+
+    std::map<int, rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr> t_to_s_id_map_;
 
     void msgCallback(const can_msgs::msg::Frame::SharedPtr msg);
     void stateCallback(const can::State & s);
