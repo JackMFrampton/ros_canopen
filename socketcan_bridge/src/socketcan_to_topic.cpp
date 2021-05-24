@@ -164,9 +164,9 @@ namespace socketcan_bridge
 
       if (tmp_iter != s_to_t_id_map_.end())
       {
-        // RCLCPP_INFO(this->get_logger(),
-        //            "Message published to ID %i",
-        //            f.id);
+         RCLCPP_INFO(this->get_logger(),
+                    "Message published to ID %i",
+                    f.id);
         can_msgs::msg::Frame msg;
         // converts the can::Frame (socketcan.h) to can_msgs::Frame (ROS msg)
         convertSocketCANToMessage(f, msg);

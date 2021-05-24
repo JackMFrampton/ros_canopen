@@ -51,7 +51,8 @@ class TopicToSocketCAN : public rclcpp::Node
 
     can::StateListenerConstSharedPtr state_listener_;
 
-    std::map<int, rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr> t_to_s_id_map_;
+    // std::map<int, rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr> t_to_s_id_map_;
+    std::vector<rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr> t_to_s_topic_vector_;
 
     void msgCallback(const can_msgs::msg::Frame::SharedPtr msg);
     void stateCallback(const can::State & s);

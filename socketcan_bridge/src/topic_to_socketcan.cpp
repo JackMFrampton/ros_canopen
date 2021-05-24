@@ -65,15 +65,15 @@ namespace socketcan_bridge
         // Iterates through the "messages" array in the json file
         for (const auto& ele : j["messages"])
         {
-          int tmp_id;
+          // int tmp_id;
           rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr tmp_sub;
 
           // Takes first instances of id and name
           // May be a better implementation
-          if (ele.contains("id"))
-          {
-            tmp_id = ele["id"].get<int>();
-          }
+          // if (ele.contains("id"))
+          // {
+          //  tmp_id = ele["id"].get<int>();
+          // }
           if (ele.contains("name"))
           {
             tmp_sub = this->create_subscription<can_msgs::msg::Frame>
@@ -82,7 +82,8 @@ namespace socketcan_bridge
                           this, std::placeholders::_1));
           }
 
-          t_to_s_id_map_.emplace(tmp_id, tmp_sub);
+          // t_to_s_id_map_.emplace(tmp_id, tmp_sub);
+          t_to_s_topic_vector_.push_back(tmp_sub);
         }
       }else{
         std::cerr << "JSON File could not be opened\n";
