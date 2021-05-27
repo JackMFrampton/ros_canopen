@@ -48,6 +48,7 @@ class TopicToSocketCAN : public rclcpp::Node
 
   private:
     rclcpp::Parameter can_device_;
+    rclcpp::Parameter json_file_;
     can::DriverInterfaceSharedPtr driver_;
 
     can::StateListenerConstSharedPtr state_listener_;

@@ -31,9 +31,12 @@
 #include <socketcan_interface/socketcan.hpp>
 #include <socketcan_interface/filter.hpp>
 #include <socketcan_bridge/socketcan_converter.hpp>
+#include <socketcan_bridge/socketcan_signal.hpp>
+#include <socketcan_bridge/socketcan_decoder.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <map>
+#include <vector>
 
 namespace socketcan_bridge
 {
@@ -48,12 +51,13 @@ class SocketCANToTopic : public rclcpp::Node
 
   private:
     rclcpp::Parameter can_device_;
+    rclcpp::Parameter json_file_;
     can::DriverInterfaceSharedPtr driver_;
 
     can::FrameListenerConstSharedPtr frame_listener_;
     can::StateListenerConstSharedPtr state_listener_;
-
-    std::map<int, rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr> s_to_t_id_map_;
+    std::map<int, std::vector<socketcan_bridge::SocketCANSignal>> s_to_t_id_signal_map_;
+    std::map<int, rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr> s_to_t_id_pub_map_;
 
     void frameCallback(const can::Frame& f);
     void stateCallback(const can::State & s);

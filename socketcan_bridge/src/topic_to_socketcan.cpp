@@ -31,6 +31,7 @@
 #include <fstream>
 #include <string>
 #include <map>
+#include <boost/algorithm/string.hpp>
 
 using json = nlohmann::json;
 
@@ -52,42 +53,51 @@ namespace socketcan_bridge
                           can_device_.as_string().c_str());
       }
 
-      std::ifstream jsonFile("/home/ros2/foxy/deepx/json_example.json");
+      auto flag_json_file = get_parameter_or("json_file",
+            json_file_,
+            rclcpp::Parameter("json_file", "/home/ros2/foxy/deepx/json_example.json"));
+      if (!flag_json_file)
+      {
+          RCLCPP_WARN_ONCE(get_logger(),
+                          "Could not get JSON file: %s",
+                          json_file_.as_string().c_str());
+      }
+
+      std::ifstream jsonFile(json_file_.as_string().c_str());
       if (jsonFile)
       {
         json j = json::parse(jsonFile);
         if (j.is_discarded())
         {
-          std::cerr << "JSON File could not be parsed\n";
-          std::cerr << "Error code: " << strerror(errno);
+          RCLCPP_ERROR(this->get_logger(),
+                      "JSON File could not be parsed\n");
+          RCLCPP_ERROR(this->get_logger(),
+                      strerror(errno));
         }
 
         // Iterates through the "messages" array in the json file
         for (const auto& ele : j["messages"])
         {
-          // int tmp_id;
           rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr tmp_sub;
 
-          // Takes first instances of id and name
-          // May be a better implementation
-          // if (ele.contains("id"))
-          // {
-          //  tmp_id = ele["id"].get<int>();
-          // }
           if (ele.contains("name"))
           {
+            std::string tmp_topic_str = ele["name"].get<std::string>();
+            boost::to_lower(tmp_topic_str);
+
             tmp_sub = this->create_subscription<can_msgs::msg::Frame>
-                          (ele["name"].get<std::string>().c_str(), 10,
-                          std::bind(&TopicToSocketCAN::msgCallback,
-                          this, std::placeholders::_1));
+                            (tmp_topic_str.c_str(), 10,
+                            std::bind(&TopicToSocketCAN::msgCallback,
+                            this, std::placeholders::_1));
           }
 
-          // t_to_s_id_map_.emplace(tmp_id, tmp_sub);
           t_to_s_topic_vector_.push_back(tmp_sub);
         }
       }else{
-        std::cerr << "JSON File could not be opened\n";
-        std::cerr << "Error code: " << strerror(errno);
+        RCLCPP_ERROR(this->get_logger(),
+                    "JSON File could not be opened\n");
+        RCLCPP_ERROR(this->get_logger(),
+                    strerror(errno));
       }
 
       driver_ = driver;

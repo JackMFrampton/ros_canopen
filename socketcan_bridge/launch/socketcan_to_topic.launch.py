@@ -14,7 +14,7 @@ def generate_launch_description():
 
     node = Node(
         package='socketcan_bridge',
-        name='socketcan_to_topic_node:',
+        name='socketcan_to_topic_node',
         executable='socketcan_to_topic_node',
         parameters=[config]
     )

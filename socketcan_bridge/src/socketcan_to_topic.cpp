@@ -26,12 +26,16 @@
  */
 
 #include <socketcan_bridge/socketcan_to_topic.hpp>
+#include <socketcan_bridge/socketcan_signal.hpp>
+#include <socketcan_bridge/socketcan_decoder.hpp>
 #include <socketcan_interface/string.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <nlohmann/json.hpp>
 #include <fstream>
 #include <string>
 #include <map>
+#include <vector>
+#include <boost/algorithm/string.hpp>
 
 using json = nlohmann::json;
 
@@ -70,14 +74,26 @@ namespace socketcan_bridge
                           can_device_.as_string().c_str());
       }
 
-      std::ifstream jsonFile("/home/ros2/foxy/deepx/json_example.json");
+      auto flag_json_file = get_parameter_or("json_file",
+            json_file_,
+            rclcpp::Parameter("json_file", "/home/ros2/foxy/deepx/json_example.json"));
+      if (!flag_json_file)
+      {
+          RCLCPP_WARN_ONCE(get_logger(),
+                          "Could not get JSON file: %s",
+                          json_file_.as_string().c_str());
+      }
+
+      std::ifstream jsonFile(json_file_.as_string().c_str());
       if (jsonFile)
       {
         json j = json::parse(jsonFile);
         if (j.is_discarded())
         {
-          std::cerr << "JSON File could not be parsed\n";
-          std::cerr << "Error code: " << strerror(errno);
+          RCLCPP_ERROR(this->get_logger(),
+                      "JSON File could not be parsed\n");
+          RCLCPP_ERROR(this->get_logger(),
+                      strerror(errno));
         }
 
         // Iterates through the "messages" array in the json file
@@ -85,6 +101,7 @@ namespace socketcan_bridge
         {
           int tmp_id;
           rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr tmp_pub;
+          std::vector<socketcan_bridge::SocketCANSignal> tmp_vector_signals;
 
           // Takes first instances of id and name
           // May be a better implementation
@@ -94,15 +111,90 @@ namespace socketcan_bridge
           }
           if (ele.contains("name"))
           {
+            std::string tmp_topic_str = ele["name"].get<std::string>();
+            boost::to_lower(tmp_topic_str);
+
             tmp_pub = this->create_publisher<can_msgs::msg::Frame>
-                                            (ele["name"].get<std::string>().c_str(), 10);
+                                (tmp_topic_str.c_str(), 10);
+          }
+          if (ele.contains("signals"))
+          {
+            if (ele["signals"].size() > 0)
+            {
+              for (const auto& sig : ele["signals"])
+              {
+                int tmp_bit_length;
+                float tmp_factor;
+                bool tmp_is_big_endian;
+                bool tmp_is_signed;
+                int tmp_max;
+                int tmp_min;
+                std::string tmp_name;
+                float tmp_offset;
+                int tmp_start_bit;
+
+                if (sig.contains("bit_length"))
+                {
+                  tmp_bit_length = sig["bit_length"].get<int>();
+                }
+                if (sig.contains("factor"))
+                {
+                  tmp_factor = std::stoi(sig["factor"].get<std::string>());
+                }
+                if (sig.contains("is_big_endian"))
+                {
+                  tmp_is_big_endian = sig["is_big_endian"].get<bool>();
+                }
+                if (sig.contains("is_signed"))
+                {
+                  tmp_is_signed = sig["is_signed"].get<bool>();
+                }
+                if (sig.contains("max"))
+                {
+                  tmp_max = std::stoi(sig["max"].get<std::string>());
+                }
+                if (sig.contains("min"))
+                {
+                  tmp_min = std::stoi(sig["min"].get<std::string>());
+                }
+                if (sig.contains("name"))
+                {
+                  tmp_name = sig["name"].get<std::string>();
+                  boost::to_lower(tmp_name);
+                }
+                if (sig.contains("offset"))
+                {
+                  tmp_offset = std::stoi(sig["offset"].get<std::string>());
+                }
+                if (sig.contains("start_bit"))
+                {
+                  tmp_start_bit = sig["start_bit"].get<int>();
+                }
+
+                socketcan_bridge::SocketCANSignal tmp_signal(tmp_bit_length,
+                                                             tmp_factor,
+                                                             tmp_is_big_endian,
+                                                             tmp_is_signed,
+                                                             tmp_max,
+                                                             tmp_min,
+                                                             tmp_name,
+                                                             tmp_offset,
+                                                             tmp_start_bit);
+
+                tmp_vector_signals.push_back(tmp_signal);
+              }
+            }
+            
           }
 
-          s_to_t_id_map_.emplace(tmp_id, tmp_pub);
+          s_to_t_id_signal_map_.emplace(tmp_id, tmp_vector_signals);
+          s_to_t_id_pub_map_.emplace(tmp_id, tmp_pub);
         }
       }else{
-        std::cerr << "JSON File could not be opened\n";
-        std::cerr << "Error code: " << strerror(errno);
+        RCLCPP_ERROR(this->get_logger(),
+                    "JSON File could not be opened\n");
+        RCLCPP_ERROR(this->get_logger(),
+                    strerror(errno));
       }
 
       driver_ = driver;
@@ -159,22 +251,24 @@ namespace socketcan_bridge
         }
       }
 
-      std::map<int, rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr>::iterator tmp_iter;
-      tmp_iter = s_to_t_id_map_.find(f.id);
+      auto tmp_pub_iter = s_to_t_id_pub_map_.find(f.id);
+      auto tmp_signal_iter = s_to_t_id_signal_map_.find(f.id);
 
-      if (tmp_iter != s_to_t_id_map_.end())
+      if (tmp_pub_iter != s_to_t_id_pub_map_.end() && tmp_signal_iter != s_to_t_id_signal_map_.end())
       {
-         RCLCPP_INFO(this->get_logger(),
-                    "Message published to ID %i",
-                    f.id);
         can_msgs::msg::Frame msg;
         // converts the can::Frame (socketcan.h) to can_msgs::Frame (ROS msg)
         convertSocketCANToMessage(f, msg);
 
+        if (tmp_signal_iter->second.size() > 0)
+        {
+          decodeSocketCANMessage(f.data, tmp_signal_iter->second, msg);
+        }
+
         msg.header.frame_id = "";  // empty frame is the de-facto standard for no frame.
         msg.header.stamp = this->get_clock()->now();
 
-        tmp_iter->second->publish(msg);
+        tmp_pub_iter->second->publish(msg);
       }
     }
 

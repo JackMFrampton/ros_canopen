@@ -27,6 +27,18 @@ include_directories(include)
 include_directories(include ${Boost_INCLUDE_DIRS})
 include_directories(${socketcan_interface_INCLUDE_DIRS})
 
+# socketcan_signal
+add_library(socketcan_signal
+  src/socketcan_signal.cpp
+)
+
+# socketcan_decoder
+add_library(socketcan_decoder
+  src/socketcan_decoder.cpp
+)
+ament_target_dependencies(socketcan_decoder
+  can_msgs)
+
 # socketcan_converter
 add_library(socketcan_converter
   src/socketcan_converter.cpp
@@ -44,8 +56,9 @@ ament_target_dependencies(socketcan_to_topic
   can_msgs
   socketcan_interface)
 target_link_libraries(socketcan_to_topic
-  socketcan_converter
-)
+  socketcan_decoder
+  socketcan_signal
+  socketcan_converter)
 
 # topic_to_socketcan
 add_library(topic_to_socketcan
@@ -56,8 +69,9 @@ ament_target_dependencies(topic_to_socketcan
   can_msgs
   socketcan_interface)
 target_link_libraries(topic_to_socketcan
-  socketcan_converter
-)
+  socketcan_decoder
+  socketcan_signal
+  socketcan_converter)
 
 # # socketcan_to_topic_node
 add_executable(socketcan_to_topic_node
@@ -71,8 +85,7 @@ target_link_libraries(socketcan_to_topic_node
   socketcan_to_topic
   topic_to_socketcan
   ${Boost_LIBRARIES}
-  nlohmann_json::nlohmann_json
-)
+  nlohmann_json::nlohmann_json)
 
 # # topic_to_socketcan_node
 add_executable(topic_to_socketcan_node
@@ -182,6 +195,6 @@ ament_export_dependencies(ament_cmake
 
 ament_export_include_directories(include)
 
-ament_export_libraries(socketcan_to_topic topic_to_socketcan socketcan_converter)
+ament_export_libraries(socketcan_to_topic topic_to_socketcan socketcan_converter socketcan_signal socketcan_decoder)
 
 ament_package()

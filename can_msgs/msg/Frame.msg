@@ -5,3 +5,6 @@ bool is_extended
 bool is_error
 uint8 dlc
 uint8[8] data
+string name
+string[] signal_names
+float64[] signal_values
