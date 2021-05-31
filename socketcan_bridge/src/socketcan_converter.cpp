@@ -38,10 +38,10 @@ namespace socketcan_bridge
     m.is_rtr = f.is_rtr;
     m.is_extended = f.is_extended;
 
-    for (int i = 0; i < 8; i++)  // always copy all data, regardless of dlc.
-    {
-      m.data[i] = f.data[i];
-    }
+    // for (int i = 0; i < 8; i++)  // always copy all data, regardless of dlc.
+    // {
+    //   m.data[i] = f.data[i];
+    // }
   }
 
   void convertMessageToSocketCAN(const can_msgs::msg::Frame& m, can::Frame& f)
@@ -52,10 +52,10 @@ namespace socketcan_bridge
     f.is_rtr = m.is_rtr;
     f.is_extended = m.is_extended;
 
-    for (int i = 0; i < 8; i++)  // always copy all data, regardless of dlc.
-    {
-      f.data[i] = m.data[i];
-    }
+    // for (int i = 0; i < 8; i++)  // always copy all data, regardless of dlc.
+    // {
+    //   f.data[i] = m.data[i];
+    // }
   }
 
 }  // namespace socketcan_bridge

@@ -11,6 +11,8 @@
 #include "socketcan_interface/logging.hpp"
 #include "socketcan_interface/settings.hpp"
 
+#include <stdint.h>
+
 namespace can{
 
 /** Header for CAN id an meta data*/

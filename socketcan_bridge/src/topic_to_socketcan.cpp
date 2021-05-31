@@ -28,10 +28,10 @@
 #include <socketcan_bridge/topic_to_socketcan.hpp>
 #include <socketcan_interface/string.hpp>
 #include <nlohmann/json.hpp>
+#include <boost/algorithm/string.hpp>
 #include <fstream>
 #include <string>
 #include <map>
-#include <boost/algorithm/string.hpp>
 
 using json = nlohmann::json;
 

@@ -1,6 +1,34 @@
+/*
+ * Copyright (c) 2021, DeepX, Inc.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *   * Redistributions of source code must retain the above copyright notice,
+ *     this list of conditions and the following disclaimer.
+ *   * Redistributions in binary form must reproduce the above copyright
+ *     notice, this list of conditions and the following disclaimer in the
+ *     documentation and/or other materials provided with the distribution.
+ *   * Neither the name of the copyright holder nor the names of its
+ *     contributors may be used to endorse or promote products derived from
+ *     this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+
 #ifndef SOCKETCAN_BRIDGE__SOCKETCAN_SIGNAL_HPP_
 #define SOCKETCAN_BRIDGE__SOCKETCAN_SIGNAL_HPP_
 
+#include <stdint.h>
 #include <string>
 
 namespace socketcan_bridge
@@ -8,31 +36,29 @@ namespace socketcan_bridge
 class SocketCANSignal
 {
   public:
-    SocketCANSignal(const int &bit_length,
+    SocketCANSignal(const uint16_t &bit_length,
                     const float &factor,
                     const bool &is_big_endian,
                     const bool &is_signed,
-                    const int &max,
-                    const int &min,
-                    const std::string &name,
+                    const float &max,
+                    const float &min,
+                    const std::string &signal_name,
                     const float &offset,
-                    const int &start_bit);
+                    const uint16_t &start_bit,
+                    const std::string &topic_name);
 
-    int end_index_bit_;
-    int start_byte_;
-    int end_byte_;
-    int bitset_width_factor_;
-    int start_bit_;
-    int end_bit_;
-    int bit_length_;
+    uint16_t bit_length_;
     float factor_;
     bool is_big_endian_;
     bool is_signed_;
-    int max_;
-    int min_;
-    std::string name_;
+    float max_;
+    float min_;
+    std::string signal_name_;
     float offset_;
-    int start_index_bit_;
+    uint16_t start_bit_;
+    std::string topic_name_;
+
+    float value_;
 };
 
 }  // namespace socketcan_bridge
