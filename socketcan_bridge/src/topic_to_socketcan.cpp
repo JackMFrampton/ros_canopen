@@ -200,6 +200,8 @@ namespace socketcan_bridge
       can_msgs::msg::Frame m = *msg.get();  // ROS message
       can::Frame f;  // socketcan type
 
+      auto tmp_signal_names = m.signal_names;
+      auto tmp_signal_values = m.signal_values;
       auto tmp_signal_iter = t_to_s_id_signal_map_.find(m.id);
 
       if (tmp_signal_iter != t_to_s_id_signal_map_.end())
@@ -213,11 +215,16 @@ namespace socketcan_bridge
 
           for (auto &signal : tmp_signal_iter->second)
           {
-            for (size_t i = 0; i < m.signal_names.size(); ++i)
+            for (size_t i = 0; i < tmp_signal_names.size(); ++i)
             {
-              if (m.signal_names[i] == signal.signal_name_)
+              if (tmp_signal_names[i] == signal.signal_name_)
               {
-                signal.value_ = m.signal_values[i];
+                signal.value_ = tmp_signal_values[i];
+
+                tmp_signal_names.erase(tmp_signal_names.begin()+i);
+                tmp_signal_values.erase(tmp_signal_values.begin()+i);
+
+                break;
               }
             }
             encode(data.data(), signal);
