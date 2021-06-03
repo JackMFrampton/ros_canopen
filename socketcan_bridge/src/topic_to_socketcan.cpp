@@ -210,13 +210,17 @@ namespace socketcan_bridge
         if (tmp_signal_iter->second.size() > 0)
         {
           std::array<uint8_t, 8> data;
-          int8_t count = 0;
 
           for (auto &signal : tmp_signal_iter->second)
           {
-            signal.value_ = m.signal_values[count];
+            for (size_t i = 0; i < m.signal_names.size(); ++i)
+            {
+              if (m.signal_names[i] == signal.signal_name_)
+              {
+                signal.value_ = m.signal_values[i];
+              }
+            }
             encode(data.data(), signal);
-            ++count;
           }
 
           std::copy(begin(data), end(data), begin(f.data));
