@@ -30,10 +30,12 @@
 
 #include <socketcan_interface/socketcan.hpp>
 #include <socketcan_bridge/socketcan_converter.hpp>
+#include <socketcan_bridge/socketcan_signal.hpp>
+#include <socketcan_bridge/socketcan_decoder_encoder.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <nlohmann/json.hpp>
-// #include <map>
+#include <map>
 #include <vector>
 
 using json = nlohmann::json;
@@ -53,7 +55,7 @@ class TopicToSocketCAN : public rclcpp::Node
 
     can::StateListenerConstSharedPtr state_listener_;
 
-    // std::map<int, rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr> t_to_s_id_map_;
+    std::map<int, std::vector<socketcan_bridge::SocketCANSignal>> t_to_s_id_signal_map_;
     std::vector<rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr> t_to_s_topic_vector_;
 
     void msgCallback(const can_msgs::msg::Frame::SharedPtr msg);

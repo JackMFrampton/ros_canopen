@@ -26,12 +26,17 @@
  */
 
 #include <socketcan_bridge/topic_to_socketcan.hpp>
+#include <socketcan_bridge/socketcan_signal.hpp>
+#include <socketcan_bridge/socketcan_decoder_encoder.hpp>
 #include <socketcan_interface/string.hpp>
 #include <nlohmann/json.hpp>
 #include <boost/algorithm/string.hpp>
+#include <stdint.h>
 #include <fstream>
 #include <string>
 #include <map>
+#include <vector>
+#include <algorithm>
 
 using json = nlohmann::json;
 
@@ -78,8 +83,15 @@ namespace socketcan_bridge
         // Iterates through the "messages" array in the json file
         for (const auto& ele : j["messages"])
         {
+          uint32_t tmp_id;
           rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr tmp_sub;
+          std::vector<socketcan_bridge::SocketCANSignal> tmp_vector_signals;
+          std::string tmp_topic_str;
 
+          if (ele.contains("id"))
+          {
+            tmp_id = ele["id"].get<uint32_t>();
+          }
           if (ele.contains("name"))
           {
             std::string tmp_topic_str = ele["name"].get<std::string>();
@@ -90,7 +102,77 @@ namespace socketcan_bridge
                             std::bind(&TopicToSocketCAN::msgCallback,
                             this, std::placeholders::_1));
           }
+          if (ele.contains("signals"))
+          {
+            if (ele["signals"].size() > 0)
+            {
+              for (const auto& sig : ele["signals"])
+              {
+                uint16_t tmp_bit_length;
+                float tmp_factor;
+                bool tmp_is_big_endian;
+                bool tmp_is_signed;
+                float tmp_max;
+                float tmp_min;
+                std::string tmp_name;
+                float tmp_offset;
+                uint16_t tmp_start_bit;
 
+                if (sig.contains("bit_length"))
+                {
+                  tmp_bit_length = sig["bit_length"].get<uint16_t>();
+                }
+                if (sig.contains("factor"))
+                {
+                  tmp_factor = std::stof(sig["factor"].get<std::string>());
+                }
+                if (sig.contains("is_big_endian"))
+                {
+                  tmp_is_big_endian = sig["is_big_endian"].get<bool>();
+                }
+                if (sig.contains("is_signed"))
+                {
+                  tmp_is_signed = sig["is_signed"].get<bool>();
+                }
+                if (sig.contains("max"))
+                {
+                  tmp_max = std::stof(sig["max"].get<std::string>());
+                }
+                if (sig.contains("min"))
+                {
+                  tmp_min = std::stof(sig["min"].get<std::string>());
+                }
+                if (sig.contains("name"))
+                {
+                  tmp_name = sig["name"].get<std::string>();
+                  boost::to_lower(tmp_name);
+                }
+                if (sig.contains("offset"))
+                {
+                  tmp_offset = std::stof(sig["offset"].get<std::string>());
+                }
+                if (sig.contains("start_bit"))
+                {
+                  tmp_start_bit = sig["start_bit"].get<uint16_t>();
+                }
+
+                socketcan_bridge::SocketCANSignal tmp_signal(tmp_bit_length,
+                                                             tmp_factor,
+                                                             tmp_is_big_endian,
+                                                             tmp_is_signed,
+                                                             tmp_max,
+                                                             tmp_min,
+                                                             tmp_name,
+                                                             tmp_offset,
+                                                             tmp_start_bit,
+                                                             tmp_topic_str);
+
+                tmp_vector_signals.push_back(tmp_signal);
+              }
+            }
+          }
+
+          t_to_s_id_signal_map_.emplace(tmp_id, tmp_vector_signals);
           t_to_s_topic_vector_.push_back(tmp_sub);
         }
       }else{
@@ -118,8 +200,28 @@ namespace socketcan_bridge
       can_msgs::msg::Frame m = *msg.get();  // ROS message
       can::Frame f;  // socketcan type
 
-      // converts the can_msgs::Frame (ROS msg) to can::Frame (socketcan.h)
-      convertMessageToSocketCAN(m, f);
+      auto tmp_signal_iter = t_to_s_id_signal_map_.find(m.id);
+
+      if (tmp_signal_iter != t_to_s_id_signal_map_.end())
+      {
+        // converts the can_msgs::Frame (ROS msg) to can::Frame (socketcan.h)
+        convertMessageToSocketCAN(m, f);
+
+        if (tmp_signal_iter->second.size() > 0)
+        {
+          std::array<uint8_t, 8> data;
+          int8_t count = 0;
+
+          for (auto &signal : tmp_signal_iter->second)
+          {
+            signal.value_ = m.signal_values[count];
+            encode(data.data(), signal);
+            ++count;
+          }
+
+          std::copy(begin(data), end(data), begin(f.data));
+        }
+      }
 
       if (!f.isValid())  // check if the id and flags are appropriate.
       {

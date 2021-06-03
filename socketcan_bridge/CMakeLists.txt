@@ -32,11 +32,11 @@ add_library(socketcan_signal
   src/socketcan_signal.cpp
 )
 
-# socketcan_decoder
-add_library(socketcan_decoder
-  src/socketcan_decoder.cpp
+# socketcan_decoder_encoder
+add_library(socketcan_decoder_encoder
+  src/socketcan_decoder_encoder.cpp
 )
-ament_target_dependencies(socketcan_decoder
+ament_target_dependencies(socketcan_decoder_encoder
   can_msgs)
 
 # socketcan_converter
@@ -56,7 +56,7 @@ ament_target_dependencies(socketcan_to_topic
   can_msgs
   socketcan_interface)
 target_link_libraries(socketcan_to_topic
-  socketcan_decoder
+  socketcan_decoder_encoder
   socketcan_signal
   socketcan_converter)
 
@@ -69,7 +69,7 @@ ament_target_dependencies(topic_to_socketcan
   can_msgs
   socketcan_interface)
 target_link_libraries(topic_to_socketcan
-  socketcan_decoder
+  socketcan_decoder_encoder
   socketcan_signal
   socketcan_converter)
 
@@ -195,6 +195,6 @@ ament_export_dependencies(ament_cmake
 
 ament_export_include_directories(include)
 
-ament_export_libraries(socketcan_to_topic topic_to_socketcan socketcan_converter socketcan_signal socketcan_decoder)
+ament_export_libraries(socketcan_to_topic topic_to_socketcan socketcan_converter socketcan_signal socketcan_decoder_encoder)
 
 ament_package()

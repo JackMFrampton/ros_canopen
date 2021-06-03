@@ -27,7 +27,7 @@
 
 #include <socketcan_bridge/socketcan_to_topic.hpp>
 #include <socketcan_bridge/socketcan_signal.hpp>
-#include <socketcan_bridge/socketcan_decoder.hpp>
+#include <socketcan_bridge/socketcan_decoder_encoder.hpp>
 #include <socketcan_interface/string.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <nlohmann/json.hpp>
@@ -101,7 +101,7 @@ namespace socketcan_bridge
         // Iterates through the "messages" array in the json file
         for (const auto& ele : j["messages"])
         {
-          int tmp_id;
+          uint32_t tmp_id;
           rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr tmp_pub;
           std::vector<socketcan_bridge::SocketCANSignal> tmp_vector_signals;
           std::string tmp_topic_str;
@@ -110,7 +110,7 @@ namespace socketcan_bridge
           // May be a better implementation
           if (ele.contains("id"))
           {
-            tmp_id = ele["id"].get<int>();
+            tmp_id = ele["id"].get<uint32_t>();
           }
           if (ele.contains("name"))
           {
@@ -138,7 +138,7 @@ namespace socketcan_bridge
 
                 if (sig.contains("bit_length"))
                 {
-                  tmp_bit_length = sig["bit_length"].get<int>();
+                  tmp_bit_length = sig["bit_length"].get<uint16_t>();
                 }
                 if (sig.contains("factor"))
                 {
@@ -171,7 +171,7 @@ namespace socketcan_bridge
                 }
                 if (sig.contains("start_bit"))
                 {
-                  tmp_start_bit = sig["start_bit"].get<int>();
+                  tmp_start_bit = sig["start_bit"].get<uint16_t>();
                 }
 
                 socketcan_bridge::SocketCANSignal tmp_signal(tmp_bit_length,
@@ -259,7 +259,7 @@ namespace socketcan_bridge
 
       if (tmp_pub_iter != s_to_t_id_pub_map_.end()
           && tmp_signal_iter != s_to_t_id_signal_map_.end())
-      {
+      { 
         can_msgs::msg::Frame msg;
         // converts the can::Frame (socketcan.h) to can_msgs::Frame (ROS msg)
         convertSocketCANToMessage(f, msg);
@@ -273,12 +273,22 @@ namespace socketcan_bridge
           {
             signal.value_ = decode(data.data(), signal);
 
+            if(signal.value_ < signal.min_)
+            {
+              signal.value_ = signal.min_;
+            }
+            if(signal.value_ > signal.max_)
+            {
+              signal.value_ = signal.max_;
+            }
+
             msg.signal_names.push_back(signal.signal_name_);
             msg.signal_values.push_back(signal.value_);
           }
         }
 
-        msg.header.frame_id = "";  // empty frame is the de-facto standard for no frame.
+        msg.header.frame_id = "";
+        msg.id = tmp_pub_iter->first;
         msg.header.stamp = this->get_clock()->now();
 
         tmp_pub_iter->second->publish(msg);

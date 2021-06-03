@@ -26,8 +26,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef SOCKETCAN_BRIDGE__SOCKETCAN_DECODER_HPP_
-#define SOCKETCAN_BRIDGE__SOCKETCAN_DECODER_HPP_
+#ifndef SOCKETCAN_BRIDGE__SOCKETCAN_DECODER_ENCODER_HPP_
+#define SOCKETCAN_BRIDGE__SOCKETCAN_DECODER_ENCODER_HPP_
 
 #include <socketcan_bridge/socketcan_signal.hpp>
 #include <can_msgs/msg/frame.hpp>
@@ -61,4 +61,4 @@ namespace socketcan_bridge
 }  // namespace socketcan_bridge
 
 
-#endif  // SOCKETCAN_BRIDGE__SOCKETCAN_DECODER_HPP_
+#endif  // SOCKETCAN_BRIDGE__SOCKETCAN_DECODER_ENCODER_HPP_

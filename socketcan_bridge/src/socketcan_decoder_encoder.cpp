@@ -26,7 +26,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <socketcan_bridge/socketcan_decoder.hpp>
+#include <socketcan_bridge/socketcan_decoder_encoder.hpp>
 #include <stdint.h>  // uint typedefinitions, non-rtw!
 #include <assert.h>
 #include <math.h>

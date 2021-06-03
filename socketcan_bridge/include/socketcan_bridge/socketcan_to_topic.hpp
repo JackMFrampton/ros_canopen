@@ -32,7 +32,7 @@
 #include <socketcan_interface/filter.hpp>
 #include <socketcan_bridge/socketcan_converter.hpp>
 #include <socketcan_bridge/socketcan_signal.hpp>
-#include <socketcan_bridge/socketcan_decoder.hpp>
+#include <socketcan_bridge/socketcan_decoder_encoder.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <map>
