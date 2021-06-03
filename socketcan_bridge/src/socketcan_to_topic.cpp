@@ -273,14 +273,18 @@ namespace socketcan_bridge
           {
             signal.value_ = decode(data.data(), signal);
 
-            if(signal.value_ < signal.min_)
-            {
-              signal.value_ = signal.min_;
-            }
-            if(signal.value_ > signal.max_)
-            {
-              signal.value_ = signal.max_;
-            }
+            // Signal value is used to reconstruct original data
+            // It may be best to constrain signal values once it is collected
+            // to preserve original CAN data
+            //
+            // if(signal.value_ < signal.min_)
+            // {
+            //   signal.value_ = signal.min_;
+            // }
+            // if(signal.value_ > signal.max_)
+            // {
+            //   signal.value_ = signal.max_;
+            // }
 
             msg.signal_names.push_back(signal.signal_name_);
             msg.signal_values.push_back(signal.value_);
