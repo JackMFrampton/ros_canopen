@@ -259,7 +259,7 @@ namespace socketcan_bridge
 
       if (tmp_pub_iter != s_to_t_id_pub_map_.end()
           && tmp_signal_iter != s_to_t_id_signal_map_.end())
-      { 
+      {
         can_msgs::msg::Frame msg;
         // converts the can::Frame (socketcan.h) to can_msgs::Frame (ROS msg)
         convertSocketCANToMessage(f, msg);
