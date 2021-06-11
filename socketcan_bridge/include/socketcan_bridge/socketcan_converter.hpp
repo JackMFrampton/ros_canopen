@@ -29,14 +29,18 @@
 #define SOCKETCAN_BRIDGE__SOCKETCAN_CONVERTER_HPP_
 
 #include <socketcan_interface/socketcan.hpp>
+#include <socketcan_bridge/socketcan_signal.hpp>
 #include <can_msgs/msg/frame.hpp>
+#include <map>
 
 namespace socketcan_bridge
 {
 
-void convertSocketCANToMessage(const can::Frame& f, can_msgs::msg::Frame& m);
+void convertSocketCANToMessage(const can::Frame& f, can_msgs::msg::Frame& m,
+    std::map<int, std::vector<socketcan_bridge::SocketCANSignal>>& map);
 
-void convertMessageToSocketCAN(const can_msgs::msg::Frame& m, can::Frame& f);
+void convertMessageToSocketCAN(const can_msgs::msg::Frame& m, can::Frame& f,
+    std::map<int, std::vector<socketcan_bridge::SocketCANSignal>>& map);
 
 }  // namespace socketcan_bridge
 

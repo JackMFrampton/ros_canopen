@@ -26,11 +26,17 @@
  */
 
 #include <socketcan_bridge/socketcan_converter.hpp>
+#include <socketcan_bridge/socketcan_decoder_encoder.hpp>
+#include <stdint.h>
+#include <map>
+#include <vector>
+#include <algorithm>
 
 namespace socketcan_bridge
 {
 
-  void convertSocketCANToMessage(const can::Frame& f, can_msgs::msg::Frame& m)
+  void convertSocketCANToMessage(const can::Frame& f, can_msgs::msg::Frame& m,
+      std::map<int, std::vector<socketcan_bridge::SocketCANSignal>>& map)
   {
     m.id = f.id;
     m.dlc = f.dlc;
@@ -38,13 +44,25 @@ namespace socketcan_bridge
     m.is_rtr = f.is_rtr;
     m.is_extended = f.is_extended;
 
-    // for (int i = 0; i < 8; i++)  // always copy all data, regardless of dlc.
-    // {
-    //   m.data[i] = f.data[i];
-    // }
+    auto tmp_signal_iter = map.find(f.id);
+
+    if (tmp_signal_iter->second.size() > 0)
+    {
+      std::array<uint8_t, 8> data;
+      std::copy(begin(f.data), end(f.data), begin(data));
+
+      for (auto &signal : tmp_signal_iter->second)
+      {
+        signal.value_ = decode(data.data(), signal);
+
+        m.signal_names.push_back(signal.signal_name_);
+        m.signal_values.push_back(signal.value_);
+      }
+    }
   }
 
-  void convertMessageToSocketCAN(const can_msgs::msg::Frame& m, can::Frame& f)
+  void convertMessageToSocketCAN(const can_msgs::msg::Frame& m, can::Frame& f,
+      std::map<int, std::vector<socketcan_bridge::SocketCANSignal>>& map)
   {
     f.id = m.id;
     f.dlc = m.dlc;
@@ -52,10 +70,36 @@ namespace socketcan_bridge
     f.is_rtr = m.is_rtr;
     f.is_extended = m.is_extended;
 
-    // for (int i = 0; i < 8; i++)  // always copy all data, regardless of dlc.
-    // {
-    //   f.data[i] = m.data[i];
-    // }
+    auto tmp_signal_names = m.signal_names;
+    auto tmp_signal_values = m.signal_values;
+    auto tmp_signal_iter = map.find(m.id);
+
+    if (tmp_signal_iter != map.end())
+    {
+      if (tmp_signal_iter->second.size() > 0)
+      {
+        std::array<uint8_t, 8> data;
+
+        for (auto &signal : tmp_signal_iter->second)
+        {
+          for (size_t i = 0; i < tmp_signal_names.size(); ++i)
+          {
+            if (tmp_signal_names[i] == signal.signal_name_)
+            {
+              signal.value_ = tmp_signal_values[i];
+
+              tmp_signal_names.erase(tmp_signal_names.begin()+i);
+              tmp_signal_values.erase(tmp_signal_values.begin()+i);
+
+              break;
+            }
+          }
+          encode(data.data(), signal);
+        }
+
+        std::copy(begin(data), end(data), begin(f.data));
+      }
+    }
   }
 
 }  // namespace socketcan_bridge

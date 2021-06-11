@@ -255,44 +255,13 @@ namespace socketcan_bridge
       }
 
       auto tmp_pub_iter = s_to_t_id_pub_map_.find(f.id);
-      auto tmp_signal_iter = s_to_t_id_signal_map_.find(f.id);
 
-      if (tmp_pub_iter != s_to_t_id_pub_map_.end()
-          && tmp_signal_iter != s_to_t_id_signal_map_.end())
+      if (tmp_pub_iter != s_to_t_id_pub_map_.end())
       {
         can_msgs::msg::Frame msg;
-        // converts the can::Frame (socketcan.h) to can_msgs::Frame (ROS msg)
-        convertSocketCANToMessage(f, msg);
-
-        if (tmp_signal_iter->second.size() > 0)
-        {
-          std::array<uint8_t, 8> data;
-          std::copy(begin(f.data), end(f.data), begin(data));
-
-          for (auto &signal : tmp_signal_iter->second)
-          {
-            signal.value_ = decode(data.data(), signal);
-
-            // Signal value is used to reconstruct original data
-            // It may be best to constrain signal values once it is collected
-            // to preserve original CAN data
-            //
-            // if(signal.value_ < signal.min_)
-            // {
-            //   signal.value_ = signal.min_;
-            // }
-            // if(signal.value_ > signal.max_)
-            // {
-            //   signal.value_ = signal.max_;
-            // }
-
-            msg.signal_names.push_back(signal.signal_name_);
-            msg.signal_values.push_back(signal.value_);
-          }
-        }
+        convertSocketCANToMessage(f, msg, s_to_t_id_signal_map_);
 
         msg.header.frame_id = "";
-        msg.id = tmp_pub_iter->first;
         msg.header.stamp = this->get_clock()->now();
 
         tmp_pub_iter->second->publish(msg);

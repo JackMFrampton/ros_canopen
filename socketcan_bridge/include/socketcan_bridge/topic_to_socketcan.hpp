@@ -54,7 +54,6 @@ class TopicToSocketCAN : public rclcpp::Node
     can::DriverInterfaceSharedPtr driver_;
 
     can::StateListenerConstSharedPtr state_listener_;
-
     std::map<int, std::vector<socketcan_bridge::SocketCANSignal>> t_to_s_id_signal_map_;
     std::vector<rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr> t_to_s_topic_vector_;
 

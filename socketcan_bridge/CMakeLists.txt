@@ -42,6 +42,8 @@ ament_target_dependencies(socketcan_decoder_encoder
 # socketcan_converter
 add_library(socketcan_converter
   src/socketcan_converter.cpp
+  src/socketcan_signal.cpp
+  src/socketcan_decoder_encoder.cpp
 )
 ament_target_dependencies(socketcan_converter
   can_msgs
@@ -143,12 +145,36 @@ install(DIRECTORY
 )
 
 if(BUILD_TESTING)
+  find_package(ament_cmake_gtest REQUIRED)
   find_package(ament_lint_auto REQUIRED)
+
   list(APPEND AMENT_LINT_AUTO_EXCLUDE
     ament_cmake_copyright
     ament_cmake_uncrustify
   )
   ament_lint_auto_find_test_dependencies()
+
+  ament_add_gtest(test_to_topic
+    test/to_topic.test
+    test/to_topic_test.cpp
+  )
+  ament_target_dependencies(test_to_topic
+    rclcpp
+    can_msgs
+    socketcan_interface)
+  target_link_libraries(test_to_topic
+    socketcan_to_topic
+    topic_to_socketcan
+    ${Boost_LIBRARIES}
+    nlohmann_json::nlohmann_json)
+
+  #ament_add_gtest(test_conversion
+  #  test/test_conversion.cpp
+  #)
+  #target_link_libraries(test_conversion
+  #  topic_to_socketcan
+  #  socketcan_to_topic
+  #)
 endif()
 
 #if(BUILD_TESTING)

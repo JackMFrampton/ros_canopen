@@ -27,7 +27,6 @@
 
 #include <socketcan_bridge/topic_to_socketcan.hpp>
 #include <socketcan_bridge/socketcan_signal.hpp>
-#include <socketcan_bridge/socketcan_decoder_encoder.hpp>
 #include <socketcan_interface/string.hpp>
 #include <nlohmann/json.hpp>
 #include <boost/algorithm/string.hpp>
@@ -200,39 +199,7 @@ namespace socketcan_bridge
       can_msgs::msg::Frame m = *msg.get();  // ROS message
       can::Frame f;  // socketcan type
 
-      auto tmp_signal_names = m.signal_names;
-      auto tmp_signal_values = m.signal_values;
-      auto tmp_signal_iter = t_to_s_id_signal_map_.find(m.id);
-
-      if (tmp_signal_iter != t_to_s_id_signal_map_.end())
-      {
-        // converts the can_msgs::Frame (ROS msg) to can::Frame (socketcan.h)
-        convertMessageToSocketCAN(m, f);
-
-        if (tmp_signal_iter->second.size() > 0)
-        {
-          std::array<uint8_t, 8> data;
-
-          for (auto &signal : tmp_signal_iter->second)
-          {
-            for (size_t i = 0; i < tmp_signal_names.size(); ++i)
-            {
-              if (tmp_signal_names[i] == signal.signal_name_)
-              {
-                signal.value_ = tmp_signal_values[i];
-
-                tmp_signal_names.erase(tmp_signal_names.begin()+i);
-                tmp_signal_values.erase(tmp_signal_values.begin()+i);
-
-                break;
-              }
-            }
-            encode(data.data(), signal);
-          }
-
-          std::copy(begin(data), end(data), begin(f.data));
-        }
-      }
+      convertMessageToSocketCAN(m, f, t_to_s_id_signal_map_);
 
       if (!f.isValid())  // check if the id and flags are appropriate.
       {

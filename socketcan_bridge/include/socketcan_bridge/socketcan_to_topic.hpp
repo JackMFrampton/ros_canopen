@@ -48,6 +48,7 @@ class SocketCANToTopic : public rclcpp::Node
     void setup(const can::FilteredFrameListener::FilterVector &filters);
     // void setup(XmlRpc::XmlRpcValue filters);
     // void setup(std::shared_ptr<rclcpp::Node> nh);
+    std::map<int, std::vector<socketcan_bridge::SocketCANSignal>> s_to_t_id_signal_map_;
 
   private:
     rclcpp::Parameter can_device_;
@@ -56,7 +57,7 @@ class SocketCANToTopic : public rclcpp::Node
 
     can::FrameListenerConstSharedPtr frame_listener_;
     can::StateListenerConstSharedPtr state_listener_;
-    std::map<int, std::vector<socketcan_bridge::SocketCANSignal>> s_to_t_id_signal_map_;
+    
     std::map<int, rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr> s_to_t_id_pub_map_;
 
     void frameCallback(const can::Frame& f);
