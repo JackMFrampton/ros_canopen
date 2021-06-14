@@ -47,6 +47,9 @@ namespace socketcan_bridge
                                     .allow_undeclared_parameters(true)
                                     .automatically_declare_parameters_from_overrides(true))
     {
+      // Attempts to collect can_device parameter
+      // If executed from launch script, parameter is assigned via .yaml file
+      // else parameter is set to can0 by default
       auto flag_can_device = get_parameter_or("can_device",
                                               can_device_,
                                               rclcpp::Parameter("can_device", "can0"));
@@ -57,6 +60,9 @@ namespace socketcan_bridge
                           can_device_.as_string().c_str());
       }
 
+      // Attempts to collect json_file parameter
+      // If executed from launch script, parameter is assigned via .yaml file
+      // else parameter is set to a default file path
       auto flag_json_file = get_parameter_or("json_file",
             json_file_,
             rclcpp::Parameter("json_file", "/home/ros2/foxy/deepx/json_example.json"));
@@ -87,10 +93,13 @@ namespace socketcan_bridge
           std::vector<socketcan_bridge::SocketCANSignal> tmp_vector_signals;
           std::string tmp_topic_str;
 
+          // Takes first instances of id and name
+          // May be a better implementation
           if (ele.contains("id"))
           {
             tmp_id = ele["id"].get<uint32_t>();
           }
+
           if (ele.contains("name"))
           {
             std::string tmp_topic_str = ele["name"].get<std::string>();
@@ -101,10 +110,14 @@ namespace socketcan_bridge
                             std::bind(&TopicToSocketCAN::msgCallback,
                             this, std::placeholders::_1));
           }
+
+          // Takes first instance of signals
           if (ele.contains("signals"))
           {
+            // Some messages have no signals in the json array
             if (ele["signals"].size() > 0)
             {
+              // Iterate through each element in the json array
               for (const auto& sig : ele["signals"])
               {
                 uint16_t tmp_bit_length;
@@ -117,6 +130,7 @@ namespace socketcan_bridge
                 float tmp_offset;
                 uint16_t tmp_start_bit;
 
+                // Iterate through the first instance of each relevent variable
                 if (sig.contains("bit_length"))
                 {
                   tmp_bit_length = sig["bit_length"].get<uint16_t>();
@@ -155,6 +169,7 @@ namespace socketcan_bridge
                   tmp_start_bit = sig["start_bit"].get<uint16_t>();
                 }
 
+                // Create a signal object that contains each value
                 socketcan_bridge::SocketCANSignal tmp_signal(tmp_bit_length,
                                                              tmp_factor,
                                                              tmp_is_big_endian,
@@ -171,6 +186,7 @@ namespace socketcan_bridge
             }
           }
 
+          // msg id mapped with a vector of its signals, public for access
           t_to_s_id_signal_map_.emplace(tmp_id, tmp_vector_signals);
           t_to_s_topic_vector_.push_back(tmp_sub);
         }
@@ -199,7 +215,17 @@ namespace socketcan_bridge
       can_msgs::msg::Frame m = *msg.get();  // ROS message
       can::Frame f;  // socketcan type
 
-      convertMessageToSocketCAN(m, f, t_to_s_id_signal_map_);
+      // map iterator to key value pair of matching can id and vector of signals
+      auto tmp_signal_iter = t_to_s_id_signal_map_.find(m.id);
+
+      // convert if the can id is valid 
+      // (according to the json file)
+      // this is the subscriber msgCallback which should only recieve valid msgs
+      // just as a precaution, maybe not needed
+      if (tmp_signal_iter != t_to_s_id_signal_map_.end())
+      {
+        convertMessageToSocketCAN(m, f, t_to_s_id_signal_map_);
+      }
 
       if (!f.isValid())  // check if the id and flags are appropriate.
       {

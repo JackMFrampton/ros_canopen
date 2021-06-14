@@ -154,6 +154,7 @@ if(BUILD_TESTING)
   )
   ament_lint_auto_find_test_dependencies()
 
+  # socketcan to topic
   ament_add_gtest(test_to_topic
     test/to_topic.test
     test/to_topic_test.cpp
@@ -161,20 +162,29 @@ if(BUILD_TESTING)
   ament_target_dependencies(test_to_topic
     rclcpp
     can_msgs
-    socketcan_interface)
+    socketcan_interface
+  )
   target_link_libraries(test_to_topic
     socketcan_to_topic
     topic_to_socketcan
     ${Boost_LIBRARIES}
-    nlohmann_json::nlohmann_json)
+    nlohmann_json::nlohmann_json
+  )
 
-  #ament_add_gtest(test_conversion
-  #  test/test_conversion.cpp
-  #)
-  #target_link_libraries(test_conversion
-  #  topic_to_socketcan
-  #  socketcan_to_topic
-  #)
+  # socketcan converter
+  ament_add_gtest(test_conversion
+    test/test_conversion.cpp
+  )
+  ament_target_dependencies(test_conversion
+    can_msgs
+    socketcan_interface
+  )
+  target_link_libraries(test_conversion
+    topic_to_socketcan
+    socketcan_to_topic
+    ${Boost_LIBRARIES}
+    nlohmann_json::nlohmann_json
+  )
 endif()
 
 #if(BUILD_TESTING)

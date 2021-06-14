@@ -44,13 +44,18 @@ namespace socketcan_bridge
     m.is_rtr = f.is_rtr;
     m.is_extended = f.is_extended;
 
+    // map iterator to key value pair of matching can id and vector of signals
     auto tmp_signal_iter = map.find(f.id);
 
+    // the message associated with the can id may not have any signals
+    // proceed only if there are signals to process
     if (tmp_signal_iter->second.size() > 0)
     {
       std::array<uint8_t, 8> data;
       std::copy(begin(f.data), end(f.data), begin(data));
 
+      // iterate through each signal in the message
+      // decode each signal and push them to the ros msg arrays
       for (auto &signal : tmp_signal_iter->second)
       {
         signal.value_ = decode(data.data(), signal);
@@ -72,33 +77,40 @@ namespace socketcan_bridge
 
     auto tmp_signal_names = m.signal_names;
     auto tmp_signal_values = m.signal_values;
+    // map iterator to key value pair of matching can id and vector of signals
     auto tmp_signal_iter = map.find(m.id);
 
-    if (tmp_signal_iter != map.end())
+    // can id may be valid
+    // but the message may not have any signals
+    if (tmp_signal_iter->second.size() > 0)
     {
-      if (tmp_signal_iter->second.size() > 0)
+      std::array<uint8_t, 8> data;
+
+      // iterate through each signal in the message
+      for (auto &signal : tmp_signal_iter->second)
       {
-        std::array<uint8_t, 8> data;
-
-        for (auto &signal : tmp_signal_iter->second)
+        // loop through the ros msg vectors until it matches current signal
+        for (size_t i = 0; i < tmp_signal_names.size(); ++i)
         {
-          for (size_t i = 0; i < tmp_signal_names.size(); ++i)
+          // once a match is found: 
+          // assign signal value
+          // erase here so each subsequent iteration is more efficient
+          // break here to prevent reiteration
+          if (tmp_signal_names[i] == signal.signal_name_)
           {
-            if (tmp_signal_names[i] == signal.signal_name_)
-            {
-              signal.value_ = tmp_signal_values[i];
+            signal.value_ = tmp_signal_values[i];
 
-              tmp_signal_names.erase(tmp_signal_names.begin()+i);
-              tmp_signal_values.erase(tmp_signal_values.begin()+i);
+            tmp_signal_names.erase(tmp_signal_names.begin()+i);
+            tmp_signal_values.erase(tmp_signal_values.begin()+i);
 
-              break;
-            }
+            break;
           }
-          encode(data.data(), signal);
         }
-
-        std::copy(begin(data), end(data), begin(f.data));
+        // signals fed into the encode function slowly build up data[8] array
+        encode(data.data(), signal);
       }
+
+      std::copy(begin(data), end(data), begin(f.data));
     }
   }
 
