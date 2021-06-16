@@ -35,6 +35,7 @@
 #include <socketcan_bridge/socketcan_decoder_encoder.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
+#include <string>
 #include <map>
 #include <vector>
 
@@ -49,6 +50,7 @@ class SocketCANToTopic : public rclcpp::Node
     // void setup(XmlRpc::XmlRpcValue filters);
     // void setup(std::shared_ptr<rclcpp::Node> nh);
     std::map<int, std::vector<socketcan_bridge::SocketCANSignal>> s_to_t_id_signal_map_;
+    std::map<int, std::string> s_to_t_id_name_map_;
 
   private:
     rclcpp::Parameter can_device_;
@@ -57,7 +59,7 @@ class SocketCANToTopic : public rclcpp::Node
 
     can::FrameListenerConstSharedPtr frame_listener_;
     can::StateListenerConstSharedPtr state_listener_;
-    
+
     std::map<int, rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr> s_to_t_id_pub_map_;
 
     void frameCallback(const can::Frame& f);

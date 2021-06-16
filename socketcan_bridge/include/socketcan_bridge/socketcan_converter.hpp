@@ -32,6 +32,7 @@
 #include <socketcan_bridge/socketcan_signal.hpp>
 #include <can_msgs/msg/frame.hpp>
 #include <map>
+#include <vector>
 
 namespace socketcan_bridge
 {

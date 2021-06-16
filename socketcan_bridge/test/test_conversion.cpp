@@ -31,6 +31,9 @@
 #include <can_msgs/msg/frame.hpp>
 #include <socketcan_interface/socketcan.hpp>
 
+// Bring in gtest
+#include <gtest/gtest.h>
+
 #include <nlohmann/json.hpp>
 #include <boost/algorithm/string.hpp>
 #include <stdint.h>
@@ -39,9 +42,6 @@
 #include <map>
 #include <vector>
 #include <algorithm>
-
-// Bring in gtest
-#include <gtest/gtest.h>
 
 using json = nlohmann::json;
 
@@ -57,12 +57,12 @@ class MessageReference
       uint32_t tmp_id = 1;
       std::string tmp_topic_str = "test_topic";
 
-      uint16_t tmp_bit_length = 8;
+      uint16_t tmp_bit_length = 64;
       float tmp_factor = 1.0;
       bool tmp_is_big_endian = false;
       bool tmp_is_signed = false;
-      float tmp_max = 255;
-      float tmp_min = 0;
+      float tmp_max = 255.0;
+      float tmp_min = 0.0;
       std::string tmp_name = "test_signal_name";
       float tmp_offset = 0;
       uint16_t tmp_start_bit = 0;
@@ -114,7 +114,7 @@ TEST(ConversionTest, socketCANToTopicStandard)
   EXPECT_EQ(false, m.is_rtr);
   EXPECT_EQ(false, m.is_extended);
   EXPECT_EQ("test_signal_name", m.signal_names[0]);
-  EXPECT_EQ(0,m.signal_values[0]);
+  EXPECT_EQ(0, m.signal_values[0]);
 }
 
 // test all three flags seperately.
@@ -123,6 +123,17 @@ TEST(ConversionTest, socketCANToTopicFlags)
   MessageReference ref;
   can::Frame f;
   can_msgs::msg::Frame m;
+
+  // create a dummy can::Frame
+  f.id = 1;
+  f.dlc = 8;
+  f.is_error = false;
+  f.is_rtr = false;
+  f.is_extended = false;
+  for (uint8_t i = 0; i < f.dlc; ++i)
+  {
+    f.data[i] = 0;
+  }
 
   f.is_error = true;
   // compare the created can::Frame, f, to the converted can_msgs::msg::Frame message, m
@@ -156,17 +167,16 @@ TEST(ConversionTest, topicToSocketCANStandard)
   m.is_error = false;
   m.is_rtr = false;
   m.is_extended = false;
-  m.signal_names[0] = "test_signal_name";
-  m.signal_values[0] = 0;
+  m.signal_names.push_back("test_signal_name");
+  m.signal_values.push_back(0);
 
   // compare the created can_msgs::msg::Frame message, m, to the converted can::Frame, f
   socketcan_bridge::convertMessageToSocketCAN(m, f, ref.id_signal_map_);
-  EXPECT_EQ(127, f.id);
+  EXPECT_EQ(1, f.id);
   EXPECT_EQ(8, f.dlc);
   EXPECT_EQ(false, f.is_error);
   EXPECT_EQ(false, f.is_rtr);
   EXPECT_EQ(false, f.is_extended);
-
 
   for (uint8_t i=0; i < 8; i++)
   {
@@ -179,6 +189,15 @@ TEST(ConversionTest, topicToSocketCANFlags)
   MessageReference ref;
   can::Frame f;
   can_msgs::msg::Frame m;
+
+  // create a dummy can_msgs::msg::Frame
+  m.id = 1;
+  m.dlc = 8;
+  m.is_error = false;
+  m.is_rtr = false;
+  m.is_extended = true;
+  m.signal_names.push_back("test_signal_name");
+  m.signal_values.push_back(0);
 
   m.is_error = true;
   // compare the created can_msgs::msg::Frame message, m, to the converted can::Frame, f

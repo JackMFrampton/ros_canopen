@@ -36,6 +36,7 @@
 #include <memory>
 #include <string>
 #include <chrono>
+#include <map>
 #include <vector>
 #include "rclcpp/rclcpp.hpp"
 
@@ -43,11 +44,12 @@
 class GTestSubscriber : public rclcpp::Node
 {
   public:
-    GTestSubscriber()
+    explicit GTestSubscriber(const std::string &topic_name)
     : Node("gtest_subscriber")
     {
       subscriber_ = this->create_subscription<can_msgs::msg::Frame>(
-      "bremse_33", 1, std::bind(&GTestSubscriber::topic_callback, this, std::placeholders::_1));
+      topic_name.c_str(), 10, std::bind(&GTestSubscriber::topic_callback,
+                                      this, std::placeholders::_1));
     }
 
     std::list<can_msgs::msg::Frame> messages;
@@ -55,6 +57,7 @@ class GTestSubscriber : public rclcpp::Node
   private:
     void topic_callback(const can_msgs::msg::Frame::SharedPtr msg)
     {
+      RCLCPP_INFO(this->get_logger(), "ros msg recieved");
       can_msgs::msg::Frame m = *msg.get();
       messages.push_back(m);
     }
@@ -71,7 +74,7 @@ std::map<int, std::vector<socketcan_bridge::SocketCANSignal>>& map, bool lc = tr
 
 TEST(SocketCANToTopicTest, checkCorrectData)
 {
-  rclcpp::executors::SingleThreadedExecutor exec;
+  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkCorrectData");
 
   // create the dummy interface
@@ -85,18 +88,19 @@ TEST(SocketCANToTopicTest, checkCorrectData)
   dummy->init(bus.name, true, can::NoSettings::create());
 
   // Create subscriber for default topic bremse_33.
-  auto subscriber = std::make_shared<GTestSubscriber>();
+  std::string topic_name = "abs_switch";
+  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
-  // create a can frame
+  // create a can::frame
   can::Frame f;
   f.is_extended = true;
   f.is_rtr = false;
   f.is_error = false;
-  f.id = 0x343;
+  f.id = 588;  // can id 835 = bremse_33, 112 = MM5_10_TX1
   f.dlc = 8;
   for (uint8_t i=0; i < f.dlc; i++)
   {
-    f.data[i] = i;
+    f.data[i] = 0;
   }
 
   // send the can frame to the driver
@@ -106,10 +110,11 @@ TEST(SocketCANToTopicTest, checkCorrectData)
   rclcpp::Rate sleepRate(std::chrono::seconds(1));
   sleepRate.sleep();
 
-  exec.add_node(socketcan_to_topic);
-  exec.add_node(subscriber);
+  // exec.add_node(socketcan_to_topic);
+  // exec.add_node(subscriber);
+  // exec.spin_some();
 
-  exec.spin_once();
+  rclcpp::spin_some(subscriber);
 
   ASSERT_EQ(1, subscriber->messages.size());
 
@@ -125,6 +130,9 @@ TEST(SocketCANToTopicTest, checkCorrectData)
   EXPECT_EQ(received.is_rtr, f.is_rtr);
   EXPECT_EQ(received.is_error, f.is_error);
   EXPECT_EQ(received.data, f.data);
+
+  dummy->shutdown();
+  dummy.reset();
 }
 
 TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
@@ -132,10 +140,10 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
   // - tries to send a non-extended frame with an id larger than 11 bits.
   //   that should not be sent.
   // - verifies that sending one larger than 11 bits actually works.
-
   // sending a message with a dlc > 8 is not possible as the DummyInterface
   // causes a crash then.
-  rclcpp::executors::SingleThreadedExecutor exec;
+
+  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkInvalidFrameHandling");
 
   // create the dummy interface
@@ -148,39 +156,51 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
   dummy->init(bus.name, true, can::NoSettings::create());
 
   // Create subscriber for default topic bremse_33.
-  auto subscriber = std::make_shared<GTestSubscriber>();
+  std::string topic_name = "bremse_33";
+  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
   // create a message
   can::Frame f;
   f.is_extended = false;
+  f.is_rtr = false;
+  f.is_error = false;
   f.id = (1<<11)+1;  // this is an illegal CAN packet... should not be sent.
+  f.dlc = 8;
+  for (uint8_t i=0; i < f.dlc; i++)
+  {
+    f.data[i] = i;
+  }
 
   // send the can::Frame over the driver.
-  dummy->send(f);
+  // dummy->send(f);
 
   // give some time for the interface some time to process the message
   rclcpp::Rate sleepRate(std::chrono::seconds(1));
   sleepRate.sleep();
 
-  exec.add_node(socketcan_to_topic);
-  exec.add_node(subscriber);
+  // exec.add_node(socketcan_to_topic);
+  // exec.add_node(subscriber);
+  // exec.spin_some();
 
-  exec.spin_once();
+  rclcpp::spin_some(subscriber);
 
   EXPECT_EQ(subscriber->messages.size(), 0);
 
   f.is_extended = true;
-  f.id = (1<<11)+1;  // now it should be alright.
+  f.id = 835;  // now it should be alright, can id 835 = bremse_33
 
   dummy->send(f);
   sleepRate.sleep();
-  exec.spin_once();
+  rclcpp::spin_some(subscriber);
   EXPECT_EQ(subscriber->messages.size(), 1);
+
+  dummy->shutdown();
+  dummy.reset();
 }
 
 TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
 {
-  rclcpp::executors::SingleThreadedExecutor exec;
+  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkCorrectCanIdFilter");
 
   // create the dummy interface
@@ -198,14 +218,15 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
   dummy->init(bus.name, true, can::NoSettings::create());
 
   // Create subscriber for default topic bremse_33.
-  auto subscriber = std::make_shared<GTestSubscriber>();
+  std::string topic_name = "bremse_33";
+  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
-  // create a can frame
+  // create a can::frame
   can::Frame f;
   f.is_extended = true;
   f.is_rtr = false;
   f.is_error = false;
-  f.id = 0x343;
+  f.id = 835;  // can id 835 = bremse_33
   f.dlc = 8;
   for (uint8_t i=0; i < f.dlc; i++)
   {
@@ -219,10 +240,11 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
   rclcpp::Rate sleepRate(std::chrono::seconds(1));
   sleepRate.sleep();
 
-  exec.add_node(socketcan_to_topic);
-  exec.add_node(subscriber);
+  // exec.add_node(socketcan_to_topic);
+  // exec.add_node(subscriber);
+  // exec.spin_some();
 
-  exec.spin_once();
+  rclcpp::spin_some(subscriber);
 
   ASSERT_EQ(1, subscriber->messages.size());
 
@@ -238,11 +260,14 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
   EXPECT_EQ(received.is_rtr, f.is_rtr);
   EXPECT_EQ(received.is_error, f.is_error);
   EXPECT_EQ(received.data, f.data);
+
+  dummy->shutdown();
+  dummy.reset();
 }
 
 TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
 {
-  rclcpp::executors::SingleThreadedExecutor exec;
+  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkInvalidCanIdFilter");
 
   // create the dummy interface
@@ -260,14 +285,15 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
   dummy->init(bus.name, true, can::NoSettings::create());
 
   // Create subscriber for default topic bremse_33.
-  auto subscriber = std::make_shared<GTestSubscriber>();
+  std::string topic_name = "bremse_33";
+  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
-  // create a can frame
+  // create a can::frame
   can::Frame f;
   f.is_extended = true;
   f.is_rtr = false;
   f.is_error = false;
-  f.id = 0x343;
+  f.id = 835;  // can id 835 = bremse_33
   f.dlc = 8;
   for (uint8_t i=0; i < f.dlc; i++)
   {
@@ -280,13 +306,17 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
   // give some time for the interface some time to process the message
   rclcpp::Rate sleepRate(std::chrono::seconds(1));
   sleepRate.sleep();
-  
-  exec.add_node(socketcan_to_topic);
-  exec.add_node(subscriber);
 
-  exec.spin_once();
+  // exec.add_node(socketcan_to_topic);
+  // exec.add_node(subscriber);
+  // exec.spin_some();
+
+  rclcpp::spin_some(subscriber);
 
   EXPECT_EQ(0, subscriber->messages.size());
+
+  dummy->shutdown();
+  dummy.reset();
 }
 
 TEST(SocketCANToTopicTest, checkMaskFilter)
@@ -309,29 +339,43 @@ TEST(SocketCANToTopicTest, checkMaskFilter)
   dummy->init(bus.name, true, can::NoSettings::create());
 
   // Create subscriber for default topic bremse_33.
-  auto subscriber = std::make_shared<GTestSubscriber>();
+  std::string topic_name = "bremse_33";
+  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
   const std::string pass1("300#1234"), nopass1("302#9999"), pass2("301#5678");
 
-  // send the can framew to the driver
-  dummy->send(can::toframe(pass1));
-  dummy->send(can::toframe(nopass1));
-  dummy->send(can::toframe(pass2));
+  // send the can frame to the driver with valid id
+  can::Frame p1 = can::toframe(pass1);
+  p1.id = 835;  // can id 835 = bremse_33
+
+  can::Frame np1 = can::toframe(nopass1);
+  np1.id = 835;  // can id 835 = bremse_33
+
+  can::Frame p2 = can::toframe(pass2);
+  p2.id = 835;  // can id 835 = bremse_33
+
+  dummy->send(p1);
+  dummy->send(np1);
+  dummy->send(p2);
 
   // give some time for the interface some time to process the message
   rclcpp::Rate sleepRate(std::chrono::seconds(1));
   sleepRate.sleep();
-  
+
   exec.add_node(socketcan_to_topic);
   exec.add_node(subscriber);
+  exec.spin_some();
 
-  exec.spin_once();
+  // rclcpp::spin_some(subscriber);
 
   // compare the received can_msgs::Frame message to the sent can::Frame.
   auto map = socketcan_to_topic->s_to_t_id_signal_map_;
   ASSERT_EQ(2, subscriber->messages.size());
   EXPECT_EQ(pass1, convertMessageToString(subscriber->messages.front(), map));
   EXPECT_EQ(pass2, convertMessageToString(subscriber->messages.back(), map));
+
+  dummy->shutdown();
+  dummy.reset();
 }
 
 int main(int argc, char **argv)

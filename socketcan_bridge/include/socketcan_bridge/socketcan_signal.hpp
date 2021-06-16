@@ -58,7 +58,7 @@ class SocketCANSignal
     uint16_t start_bit_;
     std::string topic_name_;
 
-    float value_;
+    double value_;
 };
 
 }  // namespace socketcan_bridge

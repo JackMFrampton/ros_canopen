@@ -52,7 +52,7 @@ namespace socketcan_bridge
       // else parameter is set to can0 by default
       auto flag_can_device = get_parameter_or("can_device",
                                               can_device_,
-                                              rclcpp::Parameter("can_device", "can0"));
+                                              rclcpp::Parameter("can_device", "vcan0"));
       if (!flag_can_device)
       {
           RCLCPP_WARN_ONCE(get_logger(),
@@ -69,7 +69,7 @@ namespace socketcan_bridge
       if (!flag_json_file)
       {
           RCLCPP_WARN_ONCE(get_logger(),
-                          "Could not get JSON file: %s",
+                          "Could not get JSON file, setting: %s",
                           json_file_.as_string().c_str());
       }
 
@@ -102,7 +102,7 @@ namespace socketcan_bridge
 
           if (ele.contains("name"))
           {
-            std::string tmp_topic_str = ele["name"].get<std::string>();
+            tmp_topic_str = ele["name"].get<std::string>();
             boost::to_lower(tmp_topic_str);
 
             tmp_sub = this->create_subscription<can_msgs::msg::Frame>
@@ -189,12 +189,11 @@ namespace socketcan_bridge
           // msg id mapped with a vector of its signals, public for access
           t_to_s_id_signal_map_.emplace(tmp_id, tmp_vector_signals);
           t_to_s_topic_vector_.push_back(tmp_sub);
+          t_to_s_id_name_map_.emplace(tmp_id, tmp_topic_str);
         }
       }else{
-        RCLCPP_ERROR(this->get_logger(),
-                    "JSON File could not be opened\n");
-        RCLCPP_ERROR(this->get_logger(),
-                    strerror(errno));
+        RCLCPP_ERROR(this->get_logger(), "JSON File could not be opened\n");
+        RCLCPP_ERROR(this->get_logger(), strerror(errno));
       }
 
       driver_ = driver;
@@ -218,32 +217,31 @@ namespace socketcan_bridge
       // map iterator to key value pair of matching can id and vector of signals
       auto tmp_signal_iter = t_to_s_id_signal_map_.find(m.id);
 
-      // convert if the can id is valid 
+      // convert if the can id is valid
       // (according to the json file)
       // this is the subscriber msgCallback which should only recieve valid msgs
       // just as a precaution, maybe not needed
       if (tmp_signal_iter != t_to_s_id_signal_map_.end())
       {
         convertMessageToSocketCAN(m, f, t_to_s_id_signal_map_);
-      }
+        if (!f.isValid())  // check if the id and flags are appropriate.
+        {
+          // ROS_WARN("Refusing to send invalid frame: %s.", can::tostring(f, true).c_str());
+          // can::tostring cannot be used for dlc > 8 frames. It causes an crash
+          // due to usage of boost::array for the data array. The should always work.
+          RCLCPP_ERROR(this->get_logger(),
+                      "Invalid frame from topic: id: %#04x, length: %d, is_extended: %d",
+                      m.id, m.dlc, m.is_extended);
+          return;
+        }
 
-      if (!f.isValid())  // check if the id and flags are appropriate.
-      {
-        // ROS_WARN("Refusing to send invalid frame: %s.", can::tostring(f, true).c_str());
-        // can::tostring cannot be used for dlc > 8 frames. It causes an crash
-        // due to usage of boost::array for the data array. The should always work.
-        RCLCPP_ERROR(this->get_logger(),
-                    "Invalid frame from topic: id: %#04x, length: %d, is_extended: %d",
-                    m.id, m.dlc, m.is_extended);
-        return;
-      }
-
-      bool res = driver_->send(f);
-      if (!res)
-      {
-        RCLCPP_ERROR(this->get_logger(),
-                    "Failed to send message: %s.",
-                    can::tostring(f, true).c_str());
+        bool res = driver_->send(f);
+        if (!res)
+        {
+          RCLCPP_ERROR(this->get_logger(),
+                      "Failed to send message: %s.",
+                      can::tostring(f, true).c_str());
+        }
       }
     }
 

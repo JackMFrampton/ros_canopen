@@ -171,6 +171,23 @@ if(BUILD_TESTING)
     nlohmann_json::nlohmann_json
   )
 
+  # topic to socketcan
+  ament_add_gtest(test_to_socketcan
+    test/to_socketcan.test
+    test/to_socketcan_test.cpp
+  )
+  ament_target_dependencies(test_to_socketcan
+    rclcpp
+    can_msgs
+    socketcan_interface
+  )
+  target_link_libraries(test_to_socketcan
+    socketcan_to_topic
+    topic_to_socketcan
+    ${Boost_LIBRARIES}
+    nlohmann_json::nlohmann_json
+  )
+
   # socketcan converter
   ament_add_gtest(test_conversion
     test/test_conversion.cpp

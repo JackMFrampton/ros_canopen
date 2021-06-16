@@ -71,7 +71,7 @@ namespace socketcan_bridge
       // else parameter is set to can0 by default
       auto flag_can_device = get_parameter_or("can_device",
                                               can_device_,
-                                              rclcpp::Parameter("can_device", "can0"));
+                                              rclcpp::Parameter("can_device", "vcan0"));
       if (!flag_can_device)
       {
           RCLCPP_WARN_ONCE(get_logger(),
@@ -88,7 +88,7 @@ namespace socketcan_bridge
       if (!flag_json_file)
       {
           RCLCPP_WARN_ONCE(get_logger(),
-                          "Could not get JSON file: %s",
+                          "Could not get JSON file, setting: %s",
                           json_file_.as_string().c_str());
       }
 
@@ -206,6 +206,7 @@ namespace socketcan_bridge
           // msg id mapped with a vector of its signals, public for access
           s_to_t_id_signal_map_.emplace(tmp_id, tmp_vector_signals);
           s_to_t_id_pub_map_.emplace(tmp_id, tmp_pub);
+          s_to_t_id_name_map_.emplace(tmp_id, tmp_topic_str);
         }
       }else{
         RCLCPP_ERROR(this->get_logger(),
@@ -248,7 +249,7 @@ namespace socketcan_bridge
 
   void SocketCANToTopic::frameCallback(const can::Frame& f)
     {
-      // ROS_DEBUG("Message came in: %s", can::tostring(f, true).c_str());
+      RCLCPP_INFO(this->get_logger(), "Frame recieved");
       if (!f.isValid())
       {
         std::string errStr  = "Invalid frame from SocketCAN: ";
@@ -271,13 +272,18 @@ namespace socketcan_bridge
       // map iterator to key value pair of matching can id and publisher object
       auto tmp_pub_iter = s_to_t_id_pub_map_.find(f.id);
 
-      // convert and publish if the can id is valid 
+      // convert and publish if the can id is valid
       // (according to the json file)
       if (tmp_pub_iter != s_to_t_id_pub_map_.end())
       {
         can_msgs::msg::Frame msg;
         convertSocketCANToMessage(f, msg, s_to_t_id_signal_map_);
 
+        auto tmp_name_iter = s_to_t_id_name_map_.find(f.id);
+        if (tmp_name_iter != s_to_t_id_name_map_.end())
+        {
+          msg.name = tmp_name_iter->second;
+        }
         msg.header.frame_id = "";
         msg.header.stamp = this->get_clock()->now();
 

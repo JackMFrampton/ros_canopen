@@ -35,6 +35,7 @@
 #include <can_msgs/msg/frame.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <nlohmann/json.hpp>
+#include <string>
 #include <map>
 #include <vector>
 
@@ -48,13 +49,15 @@ class TopicToSocketCAN : public rclcpp::Node
     explicit TopicToSocketCAN(can::DriverInterfaceSharedPtr driver);
     void setup();
 
+    std::map<int, std::vector<socketcan_bridge::SocketCANSignal>> t_to_s_id_signal_map_;
+    std::map<int, std::string> t_to_s_id_name_map_;
+
   private:
     rclcpp::Parameter can_device_;
     rclcpp::Parameter json_file_;
     can::DriverInterfaceSharedPtr driver_;
 
     can::StateListenerConstSharedPtr state_listener_;
-    std::map<int, std::vector<socketcan_bridge::SocketCANSignal>> t_to_s_id_signal_map_;
     std::vector<rclcpp::Subscription<can_msgs::msg::Frame>::SharedPtr> t_to_s_topic_vector_;
 
     void msgCallback(const can_msgs::msg::Frame::SharedPtr msg);

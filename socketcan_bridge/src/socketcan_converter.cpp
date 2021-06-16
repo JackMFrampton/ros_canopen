@@ -49,19 +49,22 @@ namespace socketcan_bridge
 
     // the message associated with the can id may not have any signals
     // proceed only if there are signals to process
-    if (tmp_signal_iter->second.size() > 0)
+    if (tmp_signal_iter != map.end())
     {
-      std::array<uint8_t, 8> data;
-      std::copy(begin(f.data), end(f.data), begin(data));
-
-      // iterate through each signal in the message
-      // decode each signal and push them to the ros msg arrays
-      for (auto &signal : tmp_signal_iter->second)
+      if (tmp_signal_iter->second.size() > 0)
       {
-        signal.value_ = decode(data.data(), signal);
+        std::array<uint8_t, 8> data;
+        std::copy(begin(f.data), end(f.data), begin(data));
 
-        m.signal_names.push_back(signal.signal_name_);
-        m.signal_values.push_back(signal.value_);
+        // iterate through each signal in the message
+        // decode each signal and push them to the ros msg arrays
+        for (auto &signal : tmp_signal_iter->second)
+        {
+          signal.value_ = decode(data.data(), signal);
+
+          m.signal_names.push_back(signal.signal_name_);
+          m.signal_values.push_back(signal.value_);
+        }
       }
     }
   }
@@ -82,35 +85,38 @@ namespace socketcan_bridge
 
     // can id may be valid
     // but the message may not have any signals
-    if (tmp_signal_iter->second.size() > 0)
+    if (tmp_signal_iter != map.end())
     {
-      std::array<uint8_t, 8> data;
-
-      // iterate through each signal in the message
-      for (auto &signal : tmp_signal_iter->second)
+      if (tmp_signal_iter->second.size() > 0)
       {
-        // loop through the ros msg vectors until it matches current signal
-        for (size_t i = 0; i < tmp_signal_names.size(); ++i)
+        std::array<uint8_t, 8> data;
+
+        // iterate through each signal in the message
+        for (auto &signal : tmp_signal_iter->second)
         {
-          // once a match is found: 
-          // assign signal value
-          // erase here so each subsequent iteration is more efficient
-          // break here to prevent reiteration
-          if (tmp_signal_names[i] == signal.signal_name_)
+          // loop through the ros msg vectors until it matches current signal
+          for (size_t i = 0; i < tmp_signal_names.size(); ++i)
           {
-            signal.value_ = tmp_signal_values[i];
+            // once a match is found:
+            // assign signal value
+            // erase here so each subsequent iteration is more efficient
+            // break here to prevent reiteration
+            if (tmp_signal_names[i] == signal.signal_name_)
+            {
+              signal.value_ = tmp_signal_values[i];
 
-            tmp_signal_names.erase(tmp_signal_names.begin()+i);
-            tmp_signal_values.erase(tmp_signal_values.begin()+i);
+              tmp_signal_names.erase(tmp_signal_names.begin()+i);
+              tmp_signal_values.erase(tmp_signal_values.begin()+i);
 
-            break;
+              break;
+            }
           }
+          // signals fed into the encode function slowly build up data[8] array
+          encode(data.data(), signal);
         }
-        // signals fed into the encode function slowly build up data[8] array
-        encode(data.data(), signal);
-      }
 
-      std::copy(begin(data), end(data), begin(f.data));
+        std::copy(begin(data), end(data), begin(f.data));
+      }
     }
   }
 

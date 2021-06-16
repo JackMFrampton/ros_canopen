@@ -24,17 +24,41 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-#include <socketcan_bridge/topic_to_socketcan.h>
-#include <socketcan_bridge/socketcan_to_topic.h>
+#include <socketcan_bridge/topic_to_socketcan.hpp>
+#include <socketcan_bridge/socketcan_to_topic.hpp>
 
-#include <can_msgs/Frame.h>
-#include <socketcan_interface/socketcan.h>
-#include <socketcan_interface/dummy.h>
+#include <can_msgs/msg/frame.hpp>
+#include <socketcan_interface/socketcan.hpp>
+#include <socketcan_interface/dummy.hpp>
+
+#include <boost/random.hpp>
 
 #include <gtest/gtest.h>
-#include <ros/ros.h>
 #include <list>
 #include <memory>
+#include <string>
+#include <chrono>
+#include <map>
+#include <vector>
+#include "rclcpp/rclcpp.hpp"
+
+class GTestPublisher : public rclcpp::Node
+{
+  public:
+    explicit GTestPublisher(const std::string &topic_name)
+    : Node("gtest_publisher")
+    {
+      publisher_ = this->create_publisher<can_msgs::msg::Frame>(topic_name.c_str(), 10);
+    }
+
+    void PublishMsg(const can_msgs::msg::Frame &msg)
+    {
+      publisher_->publish(msg);
+      RCLCPP_INFO(this->get_logger(), "ros msg published");
+    }
+  private:
+    rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr publisher_;
+};
 
 class frameCollector
 {
@@ -51,64 +75,87 @@ class frameCollector
 
 TEST(TopicToSocketCANTest, checkCorrectData)
 {
-  ros::NodeHandle nh(""), nh_param("~");
-
+  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkCorrectData");
   // create the dummy interface
   can::ThreadedDummyInterfaceSharedPtr dummy = std::make_shared<can::ThreadedDummyInterface>();
 
   // start the to topic bridge.
-  socketcan_bridge::TopicToSocketCAN to_socketcan_bridge(&nh, &nh_param, dummy);
-  to_socketcan_bridge.setup();
+  auto topic_to_socketcan = std::make_shared<socketcan_bridge::TopicToSocketCAN>(dummy);
+  topic_to_socketcan->setup();
+  auto signal_map = topic_to_socketcan->t_to_s_id_signal_map_;
+  auto name_map = topic_to_socketcan->t_to_s_id_name_map_;
 
   // init the driver to test stateListener (not checked automatically).
   dummy->init(bus.name, true, can::NoSettings::create());
 
-  // register for messages on received_messages.
-  ros::Publisher publisher_ = nh.advertise<can_msgs::Frame>("sent_messages", 10);
+  // register for messages on bremse_33.
+  std::string topic_name = name_map.begin()->second;
+  auto publisher = std::make_shared<GTestPublisher>(topic_name);
 
   // create a frame collector.
   frameCollector frame_collector_;
 
   //  driver->createMsgListener(&frameCallback);
   can::FrameListenerConstSharedPtr frame_listener_ = dummy->createMsgListener(
-
             std::bind(&frameCollector::frameCallback, &frame_collector_, std::placeholders::_1));
 
-  // create a message
-  can_msgs::Frame msg;
-  msg.is_extended = true;
+  // create a can_msgs::msg::frame message
+  can_msgs::msg::Frame msg;
+  msg.is_extended = false;
   msg.is_rtr = false;
   msg.is_error = false;
-  msg.id = 0x1337;
+  msg.id = signal_map.begin()->first;
   msg.dlc = 8;
-  for (uint8_t i=0; i < msg.dlc; i++)
+
+  boost::random::mt19937 rng;
+
+  if (signal_map.begin()->second.size() > 0)
   {
-    msg.data[i] = i;
+    for (auto &signal : signal_map.begin()->second)
+    {
+      msg.signal_names.push_back(signal.signal_name_);
+      boost::random::uniform_real_distribution<double> gen(signal.min_, signal.max_);
+      msg.signal_values.push_back(gen(rng));
+    }
   }
 
   msg.header.frame_id = "0";  // "0" for no frame.
-  msg.header.stamp = ros::Time::now();
+  msg.header.stamp = topic_to_socketcan->get_clock()->now();
 
   // send the can_frame::Frame message to the sent_messages topic.
-  publisher_.publish(msg);
+  publisher->PublishMsg(msg);
 
   // give some time for the interface some time to process the message
-  ros::WallDuration(1.0).sleep();
-  ros::spinOnce();
+  rclcpp::Rate sleepRate(std::chrono::seconds(1));
+  sleepRate.sleep();
+
+  // exec.add_node(topic_to_socketcan);
+  // exec.add_node(publisher);
+  // exec.spin_some();
+  rclcpp::spin_some(topic_to_socketcan);
 
   dummy->flush();
 
-  can_msgs::Frame received;
+  can_msgs::msg::Frame received;
   can::Frame f = frame_collector_.frames.back();
-  socketcan_bridge::convertSocketCANToMessage(f, received);
+  socketcan_bridge::convertSocketCANToMessage(f, received, signal_map);
 
   EXPECT_EQ(received.id, msg.id);
   EXPECT_EQ(received.dlc, msg.dlc);
   EXPECT_EQ(received.is_extended, msg.is_extended);
   EXPECT_EQ(received.is_rtr, msg.is_rtr);
   EXPECT_EQ(received.is_error, msg.is_error);
-  EXPECT_EQ(received.data, msg.data);
+
+  for (uint8_t i=0; i < signal_map.begin()->second.size(); i++)
+  {
+    RCLCPP_INFO(topic_to_socketcan->get_logger(), "value: %f", received.signal_values[i]);
+    EXPECT_EQ(received.signal_names[i], msg.signal_names[i]);
+    EXPECT_EQ(received.signal_values[i], msg.signal_values[i]);
+  }
+
+  dummy->shutdown();
+  dummy.reset();
 }
 
 TEST(TopicToSocketCANTest, checkInvalidFrameHandling)
@@ -118,23 +165,23 @@ TEST(TopicToSocketCANTest, checkInvalidFrameHandling)
   // - verifies that sending one larger than 11 bits actually works.
   // - tries sending a message with a dlc > 8 bytes, this should not be sent.
   //   sending with 8 bytes is verified by the checkCorrectData testcase.
-
-  ros::NodeHandle nh(""), nh_param("~");
-
-
+  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkInvalidFrameHandling");
 
   // create the dummy interface
   can::ThreadedDummyInterfaceSharedPtr dummy = std::make_shared<can::ThreadedDummyInterface>();
 
   // start the to topic bridge.
-  socketcan_bridge::TopicToSocketCAN to_socketcan_bridge(&nh, &nh_param, dummy);
-  to_socketcan_bridge.setup();
+  auto topic_to_socketcan = std::make_shared<socketcan_bridge::TopicToSocketCAN>(dummy);
+  topic_to_socketcan->setup();
+  auto signal_map = topic_to_socketcan->t_to_s_id_signal_map_;
+  auto name_map = topic_to_socketcan->t_to_s_id_name_map_;
 
   dummy->init(bus.name, true, can::NoSettings::create());
 
-  // register for messages on received_messages.
-  ros::Publisher publisher_ = nh.advertise<can_msgs::Frame>("sent_messages", 10);
+  // register for messages on bremse_33.
+  std::string topic_name = name_map.begin()->second;
+  auto publisher = std::make_shared<GTestPublisher>(topic_name.c_str());
 
   // create a frame collector.
   frameCollector frame_collector_;
@@ -144,28 +191,39 @@ TEST(TopicToSocketCANTest, checkInvalidFrameHandling)
           std::bind(&frameCollector::frameCallback, &frame_collector_, std::placeholders::_1));
 
   // create a message
-  can_msgs::Frame msg;
-  msg.is_extended = false;
+  can_msgs::msg::Frame msg;
+
   msg.id = (1<<11)+1;  // this is an illegal CAN packet... should not be sent.
+  msg.dlc = 8;
+  msg.is_error = false;
+  msg.is_rtr = false;
+  msg.is_extended = false;
   msg.header.frame_id = "0";  // "0" for no frame.
-  msg.header.stamp = ros::Time::now();
+  msg.header.stamp = topic_to_socketcan->get_clock()->now();
 
   // send the can_frame::Frame message to the sent_messages topic.
-  publisher_.publish(msg);
+  publisher->PublishMsg(msg);
 
   // give some time for the interface some time to process the message
-  ros::WallDuration(1.0).sleep();
-  ros::spinOnce();
+  rclcpp::Rate sleepRate(std::chrono::seconds(1));
+  sleepRate.sleep();
+
+  // exec.add_node(topic_to_socketcan);
+  // exec.add_node(publisher);
+  // exec.spin_some();
+
+  rclcpp::spin_some(topic_to_socketcan);
+
   dummy->flush();
 
   EXPECT_EQ(frame_collector_.frames.size(), 0);
 
   msg.is_extended = true;
-  msg.id = (1<<11)+1;  // now it should be alright.
+  msg.id = signal_map.begin()->first;  // now it should be alright, can id 835 = bremse_33
   // send the can_frame::Frame message to the sent_messages topic.
-  publisher_.publish(msg);
-  ros::WallDuration(1.0).sleep();
-  ros::spinOnce();
+  publisher->PublishMsg(msg);
+  sleepRate.sleep();
+  rclcpp::spin_some(topic_to_socketcan);
   dummy->flush();
 
   EXPECT_EQ(frame_collector_.frames.size(), 1);
@@ -173,22 +231,24 @@ TEST(TopicToSocketCANTest, checkInvalidFrameHandling)
   // wipe the frame queue.
   frame_collector_.frames.clear();
 
-
   // finally, check if frames with a dlc > 8 are discarded.
   msg.dlc = 10;
-  publisher_.publish(msg);
-  ros::WallDuration(1.0).sleep();
-  ros::spinOnce();
+  publisher->PublishMsg(msg);
+  sleepRate.sleep();
+  rclcpp::spin_some(topic_to_socketcan);
   dummy->flush();
 
   EXPECT_EQ(frame_collector_.frames.size(), 0);
+
+  dummy->shutdown();
+  dummy.reset();
 }
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "test_to_topic");
-  ros::NodeHandle nh;
-  ros::WallDuration(1.0).sleep();
+  rclcpp::init(argc, argv);
+  rclcpp::Rate sleepRate(std::chrono::seconds(1));
+  sleepRate.sleep();
   testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }
