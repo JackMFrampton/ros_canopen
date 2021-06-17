@@ -184,6 +184,7 @@ if(BUILD_TESTING)
   target_link_libraries(test_to_socketcan
     socketcan_to_topic
     topic_to_socketcan
+    socketcan_decoder_encoder
     ${Boost_LIBRARIES}
     nlohmann_json::nlohmann_json
   )

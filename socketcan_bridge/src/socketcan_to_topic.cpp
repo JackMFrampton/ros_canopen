@@ -315,7 +315,7 @@ namespace socketcan_bridge
 
   void SocketCANToTopic::frameCallback(const can::Frame& f)
     {
-      RCLCPP_INFO(this->get_logger(), "Frame recieved");
+      // RCLCPP_INFO(this->get_logger(), "Frame recieved");  // debug
       if (!f.isValid())
       {
         std::string errStr  = "Invalid frame from SocketCAN: ";
@@ -336,6 +336,7 @@ namespace socketcan_bridge
       }
 
       // map iterator to key value pair of matching can id and publisher object
+      // RCLCPP_INFO(this->get_logger(), "id: %i", f.id);  // debug
       auto tmp_pub_iter = s_to_t_id_pub_map_.find(f.id);
 
       // convert and publish if the can id is valid
@@ -354,6 +355,7 @@ namespace socketcan_bridge
         msg.header.stamp = this->get_clock()->now();
 
         // publish the ros msg to the topic matching the can id
+        // RCLCPP_INFO(this->get_logger(), "msg published");  // debug
         tmp_pub_iter->second->publish(msg);
       }
     }

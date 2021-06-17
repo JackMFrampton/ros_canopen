@@ -26,6 +26,7 @@
  */
 #include <socketcan_bridge/topic_to_socketcan.hpp>
 #include <socketcan_bridge/socketcan_to_topic.hpp>
+#include <socketcan_bridge/socketcan_decoder_encoder.hpp>
 
 #include <can_msgs/msg/frame.hpp>
 #include <socketcan_interface/socketcan.hpp>
@@ -54,7 +55,7 @@ class GTestPublisher : public rclcpp::Node
     void PublishMsg(const can_msgs::msg::Frame &msg)
     {
       publisher_->publish(msg);
-      RCLCPP_INFO(this->get_logger(), "ros msg published");
+      // RCLCPP_INFO(this->get_logger(), "ros msg published");  // debug
     }
   private:
     rclcpp::Publisher<can_msgs::msg::Frame>::SharedPtr publisher_;
@@ -91,7 +92,7 @@ TEST(TopicToSocketCANTest, checkCorrectData)
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  int id = 835;
+  int id = 112;
   auto iter = signal_map.find(id);
   auto iter2 = name_map.find(id);
   // register for messages
@@ -118,11 +119,34 @@ TEST(TopicToSocketCANTest, checkCorrectData)
 
   if (iter->second.size() > 0)
   {
+    // create random dummy frame data
+    // from this we will get random signal values
+    std::array<uint8_t, 8> data;
+    for (uint8_t i=0; i < data.size(); i++)
+    {
+      boost::random::uniform_int_distribution<> gen(0, 255);
+      data[i] = gen(rng);
+    }
+
     for (auto &signal : iter->second)
     {
+      // break if the signal has no bit length
+      // a CAN msg that spans the full 64 bits
+      // will have a dummy signal with 0 bit length
+      // some dummy signals will have a bit length
+      // this is so that the original data is preserved
+      if (signal.bit_length_ == 0)
+      {
+        signal.value_ = 0.0;
+        msg.signal_names.push_back(signal.signal_name_);
+        msg.signal_values.push_back(signal.value_);
+        break;
+      }
+
+      signal.value_ = decode(data.data(), signal);
+
       msg.signal_names.push_back(signal.signal_name_);
-      boost::random::uniform_real_distribution<double> gen(signal.min_, signal.max_);
-      msg.signal_values.push_back(gen(rng));
+      msg.signal_values.push_back(signal.value_);
     }
   }
 
@@ -150,10 +174,11 @@ TEST(TopicToSocketCANTest, checkCorrectData)
   EXPECT_EQ(received.is_rtr, msg.is_rtr);
   EXPECT_EQ(received.is_error, msg.is_error);
 
-  for (uint8_t i=0; i < signal_map.begin()->second.size(); i++)
+  for (uint8_t i=0; i < iter->second.size(); i++)
   {
     EXPECT_EQ(received.signal_names[i], msg.signal_names[i]);
-    EXPECT_NEAR(received.signal_values[i], msg.signal_values[i], 0.01*msg.signal_values[i]);
+    EXPECT_EQ(received.signal_values[i], msg.signal_values[i]);
+    // EXPECT_NEAR(received.signal_values[i], msg.signal_values[i], 0.01*msg.signal_values[i]);
   }
 
   dummy->shutdown();

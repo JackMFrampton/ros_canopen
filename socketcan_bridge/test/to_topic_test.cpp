@@ -57,7 +57,7 @@ class GTestSubscriber : public rclcpp::Node
   private:
     void topic_callback(const can_msgs::msg::Frame::SharedPtr msg)
     {
-      RCLCPP_INFO(this->get_logger(), "ros msg recieved");
+      // RCLCPP_INFO(this->get_logger(), "ros msg received");  // debug
       can_msgs::msg::Frame m = *msg.get();
       messages.push_back(m);
     }
@@ -108,7 +108,7 @@ TEST(SocketCANToTopicTest, checkCorrectData)
   f.dlc = 8;
   for (uint8_t i=0; i < f.dlc; i++)
   {
-    f.data[i] = 0;
+    f.data[i] = i;
   }
 
   // send the can frame to the driver
@@ -353,7 +353,6 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
 
 TEST(SocketCANToTopicTest, checkMaskFilter)
 {
-  rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkMaskFilter");
 
   // create the dummy interface
@@ -385,13 +384,22 @@ TEST(SocketCANToTopicTest, checkMaskFilter)
   const std::string pass1("300#1234"), nopass1("302#9999"), pass2("301#5678");
 
   // send the can frame to the driver with valid id
-  can::Frame p1 = can::toframe(pass1);
+  /* can::Frame p1 = can::toframe(pass1);
+  p1.id = iter->first; */
+  can::Frame p1;
+  p1 = can::toframe(pass1);
   p1.id = iter->first;
 
-  can::Frame np1 = can::toframe(nopass1);
+  /* can::Frame np1 = can::toframe(nopass1);
+  np1.id = iter->first; */
+  can::Frame np1;
+  np1 = can::toframe(nopass1);
   np1.id = iter->first;
 
-  can::Frame p2 = can::toframe(pass2);
+  /* can::Frame p2 = can::toframe(pass2);
+  p2.id = iter->first; */
+  can::Frame p2;
+  p2 = can::toframe(pass2);
   p2.id = iter->first;
 
   dummy->send(p1);
@@ -402,9 +410,7 @@ TEST(SocketCANToTopicTest, checkMaskFilter)
   rclcpp::Rate sleepRate(std::chrono::seconds(1));
   sleepRate.sleep();
 
-  exec.add_node(socketcan_to_topic);
-  exec.add_node(subscriber);
-  exec.spin_some();
+  rclcpp::spin_some(subscriber);
 
   // rclcpp::spin_some(subscriber);
 
