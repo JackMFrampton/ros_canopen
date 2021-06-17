@@ -37,11 +37,11 @@
 namespace socketcan_bridge
 {
 
-    float toPhysicalValue(uint64_t target, float factor, float offset,
+    double toPhysicalValue(uint64_t target, double factor, double offset,
                                 bool is_signed);
 
-    uint64_t fromPhysicalValue(float physical_value, float factor,
-                                    float offset);
+    uint64_t fromPhysicalValue(double physical_value, double factor,
+                                    double offset);
 
     void clearBits(uint8_t* target_byte, uint8_t* bits_to_clear,
                         const uint8_t startbit, const uint8_t length);
@@ -52,7 +52,7 @@ namespace socketcan_bridge
     uint64_t extractSignal(const uint8_t* frame, const uint8_t startbit,
                                 const uint8_t length, bool is_big_endian, bool is_signed);
 
-    float decode(const uint8_t* frame,
+    double decode(const uint8_t* frame,
                         const socketcan_bridge::SocketCANSignal &signal);
 
     void encode(uint8_t* frame,

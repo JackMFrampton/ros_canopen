@@ -83,12 +83,20 @@ TEST(SocketCANToTopicTest, checkCorrectData)
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
   socketcan_to_topic->setup();  // initiate the message callbacks
+  auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
+  auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
 
   // init the driver to test stateListener (not checked automatically).
   dummy->init(bus.name, true, can::NoSettings::create());
 
-  // Create subscriber for default topic bremse_33.
-  std::string topic_name = "abs_switch";
+  // id is an explicitly specified valid id
+  // will implement method so that gtest will cycle
+  // through all valid ids created from the json
+  int id = 835;
+  auto iter = signal_map.find(id);
+  auto iter2 = name_map.find(id);
+  // register for messages
+  std::string topic_name = iter2->second;
   auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
   // create a can::frame
@@ -96,7 +104,7 @@ TEST(SocketCANToTopicTest, checkCorrectData)
   f.is_extended = true;
   f.is_rtr = false;
   f.is_error = false;
-  f.id = 588;  // can id 835 = bremse_33, 112 = MM5_10_TX1
+  f.id = iter->first;
   f.dlc = 8;
   for (uint8_t i=0; i < f.dlc; i++)
   {
@@ -121,8 +129,7 @@ TEST(SocketCANToTopicTest, checkCorrectData)
   // compare the received can_msgs::Frame message to the sent can::Frame.
   can::Frame received;
   can_msgs::msg::Frame msg = subscriber->messages.back();
-  socketcan_bridge::convertMessageToSocketCAN(msg, received,
-                    socketcan_to_topic->s_to_t_id_signal_map_);
+  socketcan_bridge::convertMessageToSocketCAN(msg, received, signal_map);
 
   EXPECT_EQ(received.id, f.id);
   EXPECT_EQ(received.dlc, f.dlc);
@@ -152,11 +159,20 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
   socketcan_to_topic->setup();  // initiate the message callbacks
+  auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
+  auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
 
+  // init the driver to test stateListener (not checked automatically).
   dummy->init(bus.name, true, can::NoSettings::create());
 
-  // Create subscriber for default topic bremse_33.
-  std::string topic_name = "bremse_33";
+  // id is an explicitly specified valid id
+  // will implement method so that gtest will cycle
+  // through all valid ids created from the json
+  int id = 835;
+  auto iter = signal_map.find(id);
+  auto iter2 = name_map.find(id);
+  // register for messages
+  std::string topic_name = iter2->second;
   auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
   // create a message
@@ -187,7 +203,7 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
   EXPECT_EQ(subscriber->messages.size(), 0);
 
   f.is_extended = true;
-  f.id = 835;  // now it should be alright, can id 835 = bremse_33
+  f.id = iter->first;  // now a valid id
 
   dummy->send(f);
   sleepRate.sleep();
@@ -213,12 +229,20 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
   socketcan_to_topic->setup(can::tofilters(pass_can_ids));  // initiate the message callbacks
+  auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
+  auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
 
   // init the driver to test stateListener (not checked automatically).
   dummy->init(bus.name, true, can::NoSettings::create());
 
-  // Create subscriber for default topic bremse_33.
-  std::string topic_name = "bremse_33";
+  // id is an explicitly specified valid id
+  // will implement method so that gtest will cycle
+  // through all valid ids created from the json
+  int id = 835;
+  auto iter = signal_map.find(id);
+  auto iter2 = name_map.find(id);
+  // register for messages
+  std::string topic_name = iter2->second;
   auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
   // create a can::frame
@@ -226,7 +250,7 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
   f.is_extended = true;
   f.is_rtr = false;
   f.is_error = false;
-  f.id = 835;  // can id 835 = bremse_33
+  f.id = iter->first;
   f.dlc = 8;
   for (uint8_t i=0; i < f.dlc; i++)
   {
@@ -280,12 +304,20 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
   socketcan_to_topic->setup(can::tofilters(pass_can_ids));  // initiate the message callbacks
+  auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
+  auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
 
   // init the driver to test stateListener (not checked automatically).
   dummy->init(bus.name, true, can::NoSettings::create());
 
-  // Create subscriber for default topic bremse_33.
-  std::string topic_name = "bremse_33";
+  // id is an explicitly specified valid id
+  // will implement method so that gtest will cycle
+  // through all valid ids created from the json
+  int id = 835;
+  auto iter = signal_map.find(id);
+  auto iter2 = name_map.find(id);
+  // register for messages
+  std::string topic_name = iter2->second;
   auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
   // create a can::frame
@@ -293,7 +325,7 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
   f.is_extended = true;
   f.is_rtr = false;
   f.is_error = false;
-  f.id = 835;  // can id 835 = bremse_33
+  f.id = iter->first;
   f.dlc = 8;
   for (uint8_t i=0; i < f.dlc; i++)
   {
@@ -334,25 +366,33 @@ TEST(SocketCANToTopicTest, checkMaskFilter)
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
   socketcan_to_topic->setup(filters);  // initiate the message callbacks
+  auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
+  auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
 
   // init the driver to test stateListener (not checked automatically).
   dummy->init(bus.name, true, can::NoSettings::create());
 
-  // Create subscriber for default topic bremse_33.
-  std::string topic_name = "bremse_33";
+  // id is an explicitly specified valid id
+  // will implement method so that gtest will cycle
+  // through all valid ids created from the json
+  int id = 835;
+  auto iter = signal_map.find(id);
+  auto iter2 = name_map.find(id);
+  // register for messages
+  std::string topic_name = iter2->second;
   auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
   const std::string pass1("300#1234"), nopass1("302#9999"), pass2("301#5678");
 
   // send the can frame to the driver with valid id
   can::Frame p1 = can::toframe(pass1);
-  p1.id = 835;  // can id 835 = bremse_33
+  p1.id = iter->first;
 
   can::Frame np1 = can::toframe(nopass1);
-  np1.id = 835;  // can id 835 = bremse_33
+  np1.id = iter->first;
 
   can::Frame p2 = can::toframe(pass2);
-  p2.id = 835;  // can id 835 = bremse_33
+  p2.id = iter->first;
 
   dummy->send(p1);
   dummy->send(np1);

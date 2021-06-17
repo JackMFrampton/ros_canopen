@@ -37,24 +37,24 @@ class SocketCANSignal
 {
   public:
     SocketCANSignal(const uint16_t &bit_length,
-                    const float &factor,
+                    const double &factor,
                     const bool &is_big_endian,
                     const bool &is_signed,
-                    const float &max,
-                    const float &min,
+                    const double &max,
+                    const double &min,
                     const std::string &signal_name,
-                    const float &offset,
+                    const double &offset,
                     const uint16_t &start_bit,
                     const std::string &topic_name);
 
     uint16_t bit_length_;
-    float factor_;
+    double factor_;
     bool is_big_endian_;
     bool is_signed_;
-    float max_;
-    float min_;
+    double max_;
+    double min_;
     std::string signal_name_;
-    float offset_;
+    double offset_;
     uint16_t start_bit_;
     std::string topic_name_;
 

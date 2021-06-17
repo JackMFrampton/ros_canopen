@@ -75,7 +75,6 @@ class frameCollector
 
 TEST(TopicToSocketCANTest, checkCorrectData)
 {
-  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkCorrectData");
   // create the dummy interface
   can::ThreadedDummyInterfaceSharedPtr dummy = std::make_shared<can::ThreadedDummyInterface>();
@@ -89,8 +88,14 @@ TEST(TopicToSocketCANTest, checkCorrectData)
   // init the driver to test stateListener (not checked automatically).
   dummy->init(bus.name, true, can::NoSettings::create());
 
-  // register for messages on bremse_33.
-  std::string topic_name = name_map.begin()->second;
+  // id is an explicitly specified valid id
+  // will implement method so that gtest will cycle
+  // through all valid ids created from the json
+  int id = 835;
+  auto iter = signal_map.find(id);
+  auto iter2 = name_map.find(id);
+  // register for messages
+  std::string topic_name = iter2->second;
   auto publisher = std::make_shared<GTestPublisher>(topic_name);
 
   // create a frame collector.
@@ -102,17 +107,18 @@ TEST(TopicToSocketCANTest, checkCorrectData)
 
   // create a can_msgs::msg::frame message
   can_msgs::msg::Frame msg;
-  msg.is_extended = false;
+  msg.is_extended = true;
   msg.is_rtr = false;
   msg.is_error = false;
-  msg.id = signal_map.begin()->first;
+  msg.id = iter->first;
   msg.dlc = 8;
 
   boost::random::mt19937 rng;
+  rng.seed(time(NULL));
 
-  if (signal_map.begin()->second.size() > 0)
+  if (iter->second.size() > 0)
   {
-    for (auto &signal : signal_map.begin()->second)
+    for (auto &signal : iter->second)
     {
       msg.signal_names.push_back(signal.signal_name_);
       boost::random::uniform_real_distribution<double> gen(signal.min_, signal.max_);
@@ -130,9 +136,6 @@ TEST(TopicToSocketCANTest, checkCorrectData)
   rclcpp::Rate sleepRate(std::chrono::seconds(1));
   sleepRate.sleep();
 
-  // exec.add_node(topic_to_socketcan);
-  // exec.add_node(publisher);
-  // exec.spin_some();
   rclcpp::spin_some(topic_to_socketcan);
 
   dummy->flush();
@@ -149,9 +152,8 @@ TEST(TopicToSocketCANTest, checkCorrectData)
 
   for (uint8_t i=0; i < signal_map.begin()->second.size(); i++)
   {
-    RCLCPP_INFO(topic_to_socketcan->get_logger(), "value: %f", received.signal_values[i]);
     EXPECT_EQ(received.signal_names[i], msg.signal_names[i]);
-    EXPECT_EQ(received.signal_values[i], msg.signal_values[i]);
+    EXPECT_NEAR(received.signal_values[i], msg.signal_values[i], 0.01*msg.signal_values[i]);
   }
 
   dummy->shutdown();
@@ -179,8 +181,14 @@ TEST(TopicToSocketCANTest, checkInvalidFrameHandling)
 
   dummy->init(bus.name, true, can::NoSettings::create());
 
-  // register for messages on bremse_33.
-  std::string topic_name = name_map.begin()->second;
+  // id is an explicitly specified valid id
+  // will implement method so that gtest will cycle
+  // through all valid ids created from the json
+  int id = 835;
+  auto iter = signal_map.find(id);
+  auto iter2 = name_map.find(id);
+  // register for messages
+  std::string topic_name = iter2->second;
   auto publisher = std::make_shared<GTestPublisher>(topic_name.c_str());
 
   // create a frame collector.
@@ -219,7 +227,7 @@ TEST(TopicToSocketCANTest, checkInvalidFrameHandling)
   EXPECT_EQ(frame_collector_.frames.size(), 0);
 
   msg.is_extended = true;
-  msg.id = signal_map.begin()->first;  // now it should be alright, can id 835 = bremse_33
+  msg.id = iter->first;  // now it should be alright
   // send the can_frame::Frame message to the sent_messages topic.
   publisher->PublishMsg(msg);
   sleepRate.sleep();

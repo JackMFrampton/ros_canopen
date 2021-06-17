@@ -121,13 +121,13 @@ namespace socketcan_bridge
               for (const auto& sig : ele["signals"])
               {
                 uint16_t tmp_bit_length;
-                float tmp_factor;
+                double tmp_factor;
                 bool tmp_is_big_endian;
                 bool tmp_is_signed;
-                float tmp_max;
-                float tmp_min;
+                double tmp_max;
+                double tmp_min;
                 std::string tmp_name;
-                float tmp_offset;
+                double tmp_offset;
                 uint16_t tmp_start_bit;
 
                 // Iterate through the first instance of each relevent variable
@@ -185,7 +185,73 @@ namespace socketcan_bridge
               }
             }
           }
+          // dummy signal needed for every CAN msg
+          // this will help preserve data
+          if (!tmp_vector_signals.empty())
+          {
+            auto end_signal = tmp_vector_signals.back();
 
+            double dummy_tmp_factor = 1.0;
+            bool dummy_tmp_is_big_endian = end_signal.is_big_endian_;
+            bool dummy_tmp_is_signed = false;
+            std::string dummy_tmp_name = "dummy_signal";
+            double dummy_tmp_offset = 0.0;
+            uint16_t dummy_tmp_start_bit = end_signal.start_bit_
+                                            + end_signal.bit_length_;
+            uint16_t dummy_tmp_bit_length = 64 - dummy_tmp_start_bit;
+            std::string dummy_tmp_topic_str = tmp_topic_str;
+            double dummy_tmp_max;
+            double dummy_tmp_min;
+            if (dummy_tmp_bit_length == 0)
+            {
+              dummy_tmp_max = 1;
+              dummy_tmp_min = -dummy_tmp_max;
+            }else{
+              dummy_tmp_max = (1 << uint64_t(dummy_tmp_bit_length)) - 1;
+              dummy_tmp_min = -dummy_tmp_max;
+            }
+
+            socketcan_bridge::SocketCANSignal dummy_tmp_signal(
+                                              dummy_tmp_bit_length,
+                                              dummy_tmp_factor,
+                                              dummy_tmp_is_big_endian,
+                                              dummy_tmp_is_signed,
+                                              dummy_tmp_max,
+                                              dummy_tmp_min,
+                                              dummy_tmp_name,
+                                              dummy_tmp_offset,
+                                              dummy_tmp_start_bit,
+                                              dummy_tmp_topic_str);
+
+            tmp_vector_signals.push_back(dummy_tmp_signal);
+          }else{
+            // This will be for edge cases where the CAN msg has no signals
+            // Again, this is for preservation of data
+            double dummy_tmp_factor = 1.0;
+            bool dummy_tmp_is_big_endian = false;
+            bool dummy_tmp_is_signed = false;
+            std::string dummy_tmp_name = "dummy_signal";
+            double dummy_tmp_offset = 0;
+            uint16_t dummy_tmp_start_bit = 0;
+            uint16_t dummy_tmp_bit_length = 64;
+            std::string dummy_tmp_topic_str = tmp_topic_str;
+            double dummy_tmp_max = (1 << uint64_t(dummy_tmp_bit_length)) - 1;
+            double dummy_tmp_min = -dummy_tmp_max;
+
+            socketcan_bridge::SocketCANSignal dummy_tmp_signal(
+                                              dummy_tmp_bit_length,
+                                              dummy_tmp_factor,
+                                              dummy_tmp_is_big_endian,
+                                              dummy_tmp_is_signed,
+                                              dummy_tmp_max,
+                                              dummy_tmp_min,
+                                              dummy_tmp_name,
+                                              dummy_tmp_offset,
+                                              dummy_tmp_start_bit,
+                                              dummy_tmp_topic_str);
+
+            tmp_vector_signals.push_back(dummy_tmp_signal);
+          }
           // msg id mapped with a vector of its signals, public for access
           t_to_s_id_signal_map_.emplace(tmp_id, tmp_vector_signals);
           t_to_s_topic_vector_.push_back(tmp_sub);
@@ -213,6 +279,12 @@ namespace socketcan_bridge
 
       can_msgs::msg::Frame m = *msg.get();  // ROS message
       can::Frame f;  // socketcan type
+      /* if (!m.is_extended)
+      {
+        f = can::Frame(can::Header(m.id, m.is_extended, m.is_rtr, m.is_error));
+      }else{
+        f = can::Frame(can::ExtendedHeader(m.id));
+      } */
 
       // map iterator to key value pair of matching can id and vector of signals
       auto tmp_signal_iter = t_to_s_id_signal_map_.find(m.id);

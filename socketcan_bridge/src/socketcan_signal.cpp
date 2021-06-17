@@ -31,13 +31,13 @@
 namespace socketcan_bridge
 {
     SocketCANSignal::SocketCANSignal(const uint16_t &bit_length,
-                                    const float &factor,
+                                    const double &factor,
                                     const bool &is_big_endian,
                                     const bool &is_signed,
-                                    const float &max,
-                                    const float &min,
+                                    const double &max,
+                                    const double &min,
                                     const std::string &signal_name,
-                                    const float &offset,
+                                    const double &offset,
                                     const uint16_t &start_bit,
                                     const std::string &topic_name) :
                                     bit_length_{ bit_length },

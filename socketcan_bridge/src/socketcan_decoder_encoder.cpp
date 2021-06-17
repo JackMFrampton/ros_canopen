@@ -37,7 +37,7 @@ namespace socketcan_bridge
 {
 
 
-    float toPhysicalValue(uint64_t target, float factor, float offset, bool is_signed)
+    double toPhysicalValue(uint64_t target, double factor, double offset, bool is_signed)
     {
         if (is_signed)
         {
@@ -47,7 +47,7 @@ namespace socketcan_bridge
         }
     }
 
-    uint64_t fromPhysicalValue(float physical_value, float factor, float offset)
+    uint64_t fromPhysicalValue(double physical_value, double factor, double offset)
     {
         return (int64_t)((physical_value - offset) / factor);
     }
@@ -150,7 +150,7 @@ namespace socketcan_bridge
 
     // For Vector CAN DB files https://vector.com/vi_candb_en.html
 
-    float decode(const uint8_t* frame, const socketcan_bridge::SocketCANSignal &signal)
+    double decode(const uint8_t* frame, const socketcan_bridge::SocketCANSignal &signal)
     {
     return socketcan_bridge::toPhysicalValue(socketcan_bridge::extractSignal(frame,
                                             signal.start_bit_, signal.bit_length_,
