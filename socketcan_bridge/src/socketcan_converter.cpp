@@ -114,7 +114,7 @@ namespace socketcan_bridge
           }
 
           // loop through the ros msg vectors until it matches current signal
-          for (size_t i = 0; i < tmp_signal_names.size(); ++i)
+          for (size_t i = 0; i < tmp_signal_names.size(); i++)
           {
             // once a match is found:
             // assign signal value

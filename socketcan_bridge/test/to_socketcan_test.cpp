@@ -82,105 +82,107 @@ TEST(TopicToSocketCANTest, checkCorrectData)
 
   // start the to topic bridge.
   auto topic_to_socketcan = std::make_shared<socketcan_bridge::TopicToSocketCAN>(dummy);
-  topic_to_socketcan->setup();
   auto signal_map = topic_to_socketcan->t_to_s_id_signal_map_;
   auto name_map = topic_to_socketcan->t_to_s_id_name_map_;
-
-  // init the driver to test stateListener (not checked automatically).
-  dummy->init(bus.name, true, can::NoSettings::create());
 
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  int id = 112;
-  auto iter = signal_map.find(id);
-  auto iter2 = name_map.find(id);
-  // register for messages
-  std::string topic_name = iter2->second;
-  auto publisher = std::make_shared<GTestPublisher>(topic_name);
-
-  // create a frame collector.
-  frameCollector frame_collector_;
-
-  //  driver->createMsgListener(&frameCallback);
-  can::FrameListenerConstSharedPtr frame_listener_ = dummy->createMsgListener(
-            std::bind(&frameCollector::frameCallback, &frame_collector_, std::placeholders::_1));
-
-  // create a can_msgs::msg::frame message
-  can_msgs::msg::Frame msg;
-  msg.is_extended = true;
-  msg.is_rtr = false;
-  msg.is_error = false;
-  msg.id = iter->first;
-  msg.dlc = 8;
-
-  boost::random::mt19937 rng;
-  rng.seed(time(NULL));
-
-  if (iter->second.size() > 0)
+  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
   {
-    // create random dummy frame data
-    // from this we will get random signal values
-    std::array<uint8_t, 8> data;
-    for (uint8_t i=0; i < data.size(); i++)
-    {
-      boost::random::uniform_int_distribution<> gen(0, 255);
-      data[i] = gen(rng);
-    }
+    uint32_t valid_id = iter->first;
+    auto signal_iter = signal_map.find(valid_id);
 
-    for (auto &signal : iter->second)
+    topic_to_socketcan->setup();
+
+    // init the driver to test stateListener (not checked automatically).
+    dummy->init(bus.name, true, can::NoSettings::create());
+
+    // register for messages
+    std::string topic_name = iter->second;
+    auto publisher = std::make_shared<GTestPublisher>(topic_name);
+
+    // create a frame collector.
+    frameCollector frame_collector_;
+
+    //  driver->createMsgListener(&frameCallback);
+    can::FrameListenerConstSharedPtr frame_listener_ = dummy->createMsgListener(
+              std::bind(&frameCollector::frameCallback, &frame_collector_, std::placeholders::_1));
+
+    // create a can_msgs::msg::frame message
+    can_msgs::msg::Frame msg;
+    msg.is_extended = true;
+    msg.is_rtr = false;
+    msg.is_error = false;
+    msg.id = valid_id;
+    msg.dlc = 8;
+
+    boost::random::mt19937 rng;
+    rng.seed(time(NULL));
+
+    if (signal_iter->second.size() > 0)
     {
-      // break if the signal has no bit length
-      // a CAN msg that spans the full 64 bits
-      // will have a dummy signal with 0 bit length
-      // some dummy signals will have a bit length
-      // this is so that the original data is preserved
-      if (signal.bit_length_ == 0)
+      // create random dummy frame data
+      // from this we will get random signal values
+      std::array<uint8_t, 8> data;
+      for (uint8_t i=0; i < data.size(); i++)
       {
-        signal.value_ = 0.0;
-        msg.signal_names.push_back(signal.signal_name_);
-        msg.signal_values.push_back(signal.value_);
-        break;
+        boost::random::uniform_int_distribution<> gen(0, 255);
+        data[i] = gen(rng);
       }
 
-      signal.value_ = decode(data.data(), signal);
+      for (auto &signal : signal_iter->second)
+      {
+        // break if the signal has no bit length
+        // a CAN msg that spans the full 64 bits
+        // will have a dummy signal with 0 bit length
+        // some dummy signals will have a bit length
+        // this is so that the original data is preserved
+        if (signal.bit_length_ == 0)
+        {
+          signal.value_ = 0.0;
+          msg.signal_names.push_back(signal.signal_name_);
+          msg.signal_values.push_back(signal.value_);
+          break;
+        }
 
-      msg.signal_names.push_back(signal.signal_name_);
-      msg.signal_values.push_back(signal.value_);
+        signal.value_ = decode(data.data(), signal);
+
+        msg.signal_names.push_back(signal.signal_name_);
+        msg.signal_values.push_back(signal.value_);
+      }
+    }
+
+    msg.header.frame_id = "0";  // "0" for no frame.
+    msg.header.stamp = topic_to_socketcan->get_clock()->now();
+    // send the can_frame::Frame message to the sent_messages topic.
+    publisher->PublishMsg(msg);
+
+    // give some time for the interface some time to process the message
+    rclcpp::Rate sleepRate(std::chrono::seconds(1));
+    sleepRate.sleep();
+
+    rclcpp::spin_some(topic_to_socketcan);
+
+    dummy->flush();
+
+    can_msgs::msg::Frame received;
+    can::Frame f = frame_collector_.frames.back();
+    socketcan_bridge::convertSocketCANToMessage(f, received, signal_map);
+
+    EXPECT_EQ(received.id, msg.id);
+    EXPECT_EQ(received.dlc, msg.dlc);
+    EXPECT_EQ(received.is_extended, msg.is_extended);
+    EXPECT_EQ(received.is_rtr, msg.is_rtr);
+    EXPECT_EQ(received.is_error, msg.is_error);
+
+    RCLCPP_INFO(topic_to_socketcan->get_logger(), "1");
+    for (uint8_t i=0; i < signal_iter->second.size(); i++)
+    {
+      EXPECT_EQ(received.signal_names[i], msg.signal_names[i]);
+      EXPECT_FLOAT_EQ(received.signal_values[i], msg.signal_values[i]);
     }
   }
-
-  msg.header.frame_id = "0";  // "0" for no frame.
-  msg.header.stamp = topic_to_socketcan->get_clock()->now();
-
-  // send the can_frame::Frame message to the sent_messages topic.
-  publisher->PublishMsg(msg);
-
-  // give some time for the interface some time to process the message
-  rclcpp::Rate sleepRate(std::chrono::seconds(1));
-  sleepRate.sleep();
-
-  rclcpp::spin_some(topic_to_socketcan);
-
-  dummy->flush();
-
-  can_msgs::msg::Frame received;
-  can::Frame f = frame_collector_.frames.back();
-  socketcan_bridge::convertSocketCANToMessage(f, received, signal_map);
-
-  EXPECT_EQ(received.id, msg.id);
-  EXPECT_EQ(received.dlc, msg.dlc);
-  EXPECT_EQ(received.is_extended, msg.is_extended);
-  EXPECT_EQ(received.is_rtr, msg.is_rtr);
-  EXPECT_EQ(received.is_error, msg.is_error);
-
-  for (uint8_t i=0; i < iter->second.size(); i++)
-  {
-    EXPECT_EQ(received.signal_names[i], msg.signal_names[i]);
-    EXPECT_EQ(received.signal_values[i], msg.signal_values[i]);
-    // EXPECT_NEAR(received.signal_values[i], msg.signal_values[i], 0.01*msg.signal_values[i]);
-  }
-
   dummy->shutdown();
   dummy.reset();
 }
@@ -192,7 +194,6 @@ TEST(TopicToSocketCANTest, checkInvalidFrameHandling)
   // - verifies that sending one larger than 11 bits actually works.
   // - tries sending a message with a dlc > 8 bytes, this should not be sent.
   //   sending with 8 bytes is verified by the checkCorrectData testcase.
-  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkInvalidFrameHandling");
 
   // create the dummy interface
@@ -200,79 +201,77 @@ TEST(TopicToSocketCANTest, checkInvalidFrameHandling)
 
   // start the to topic bridge.
   auto topic_to_socketcan = std::make_shared<socketcan_bridge::TopicToSocketCAN>(dummy);
-  topic_to_socketcan->setup();
   auto signal_map = topic_to_socketcan->t_to_s_id_signal_map_;
   auto name_map = topic_to_socketcan->t_to_s_id_name_map_;
-
-  dummy->init(bus.name, true, can::NoSettings::create());
 
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  int id = 835;
-  auto iter = signal_map.find(id);
-  auto iter2 = name_map.find(id);
-  // register for messages
-  std::string topic_name = iter2->second;
-  auto publisher = std::make_shared<GTestPublisher>(topic_name.c_str());
+  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
+  {
+    uint32_t valid_id = iter->first;
 
-  // create a frame collector.
-  frameCollector frame_collector_;
+    topic_to_socketcan->setup();
 
-  //  add callback to the dummy interface.
-  can::FrameListenerConstSharedPtr frame_listener_ = dummy->createMsgListener(
-          std::bind(&frameCollector::frameCallback, &frame_collector_, std::placeholders::_1));
+    dummy->init(bus.name, true, can::NoSettings::create());
 
-  // create a message
-  can_msgs::msg::Frame msg;
+    // register for messages
+    std::string topic_name = iter->second;
+    auto publisher = std::make_shared<GTestPublisher>(topic_name.c_str());
 
-  msg.id = (1<<11)+1;  // this is an illegal CAN packet... should not be sent.
-  msg.dlc = 8;
-  msg.is_error = false;
-  msg.is_rtr = false;
-  msg.is_extended = false;
-  msg.header.frame_id = "0";  // "0" for no frame.
-  msg.header.stamp = topic_to_socketcan->get_clock()->now();
+    // create a frame collector.
+    frameCollector frame_collector_;
 
-  // send the can_frame::Frame message to the sent_messages topic.
-  publisher->PublishMsg(msg);
+    //  add callback to the dummy interface.
+    can::FrameListenerConstSharedPtr frame_listener_ = dummy->createMsgListener(
+            std::bind(&frameCollector::frameCallback, &frame_collector_, std::placeholders::_1));
 
-  // give some time for the interface some time to process the message
-  rclcpp::Rate sleepRate(std::chrono::seconds(1));
-  sleepRate.sleep();
+    // create a message
+    can_msgs::msg::Frame msg;
 
-  // exec.add_node(topic_to_socketcan);
-  // exec.add_node(publisher);
-  // exec.spin_some();
+    msg.id = (1<<11)+1;  // this is an illegal CAN packet... should not be sent.
+    msg.dlc = 8;
+    msg.is_error = false;
+    msg.is_rtr = false;
+    msg.is_extended = false;
+    msg.header.frame_id = "0";  // "0" for no frame.
+    msg.header.stamp = topic_to_socketcan->get_clock()->now();
 
-  rclcpp::spin_some(topic_to_socketcan);
+    // send the can_frame::Frame message to the sent_messages topic.
+    publisher->PublishMsg(msg);
 
-  dummy->flush();
+    // give some time for the interface some time to process the message
+    rclcpp::Rate sleepRate(std::chrono::seconds(1));
+    sleepRate.sleep();
 
-  EXPECT_EQ(frame_collector_.frames.size(), 0);
+    rclcpp::spin_some(topic_to_socketcan);
 
-  msg.is_extended = true;
-  msg.id = iter->first;  // now it should be alright
-  // send the can_frame::Frame message to the sent_messages topic.
-  publisher->PublishMsg(msg);
-  sleepRate.sleep();
-  rclcpp::spin_some(topic_to_socketcan);
-  dummy->flush();
+    dummy->flush();
 
-  EXPECT_EQ(frame_collector_.frames.size(), 1);
+    EXPECT_EQ(frame_collector_.frames.size(), 0);
 
-  // wipe the frame queue.
-  frame_collector_.frames.clear();
+    msg.is_extended = true;
+    msg.id = valid_id;  // now it should be alright
+    // send the can_frame::Frame message to the sent_messages topic.
+    publisher->PublishMsg(msg);
+    sleepRate.sleep();
+    rclcpp::spin_some(topic_to_socketcan);
+    dummy->flush();
 
-  // finally, check if frames with a dlc > 8 are discarded.
-  msg.dlc = 10;
-  publisher->PublishMsg(msg);
-  sleepRate.sleep();
-  rclcpp::spin_some(topic_to_socketcan);
-  dummy->flush();
+    EXPECT_EQ(frame_collector_.frames.size(), 1);
 
-  EXPECT_EQ(frame_collector_.frames.size(), 0);
+    // wipe the frame queue.
+    frame_collector_.frames.clear();
 
+    // finally, check if frames with a dlc > 8 are discarded.
+    msg.dlc = 10;
+    publisher->PublishMsg(msg);
+    sleepRate.sleep();
+    rclcpp::spin_some(topic_to_socketcan);
+    dummy->flush();
+
+    EXPECT_EQ(frame_collector_.frames.size(), 0);
+  }
   dummy->shutdown();
   dummy.reset();
 }

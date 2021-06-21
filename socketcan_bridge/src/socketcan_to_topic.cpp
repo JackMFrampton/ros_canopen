@@ -275,10 +275,8 @@ namespace socketcan_bridge
           s_to_t_id_name_map_.emplace(tmp_id, tmp_topic_str);
         }
       }else{
-        RCLCPP_ERROR(this->get_logger(),
-                    "JSON File could not be opened\n");
-        RCLCPP_ERROR(this->get_logger(),
-                    strerror(errno));
+        RCLCPP_ERROR(this->get_logger(), "JSON File could not be opened\n");
+        RCLCPP_ERROR(this->get_logger(), strerror(errno));
       }
 
       driver_ = driver;
@@ -315,7 +313,7 @@ namespace socketcan_bridge
 
   void SocketCANToTopic::frameCallback(const can::Frame& f)
     {
-      // RCLCPP_INFO(this->get_logger(), "Frame recieved");  // debug
+      RCLCPP_INFO(this->get_logger(), "Frame recieved");  // debug
       if (!f.isValid())
       {
         std::string errStr  = "Invalid frame from SocketCAN: ";

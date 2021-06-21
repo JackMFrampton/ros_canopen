@@ -29,6 +29,7 @@
 #include <can_msgs/msg/frame.hpp>
 #include <socketcan_interface/socketcan.hpp>
 #include <socketcan_interface/dummy.hpp>
+#include <socketcan_interface/string.hpp>
 #include <socketcan_bridge/topic_to_socketcan.hpp>
 
 #include <gtest/gtest.h>
@@ -38,6 +39,7 @@
 #include <chrono>
 #include <map>
 #include <vector>
+#include <sstream>
 #include "rclcpp/rclcpp.hpp"
 
 // Need to create a separate ROS2 node just to capture incoming msgs in its callback
@@ -74,7 +76,6 @@ std::map<int, std::vector<socketcan_bridge::SocketCANSignal>>& map, bool lc = tr
 
 TEST(SocketCANToTopicTest, checkCorrectData)
 {
-  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkCorrectData");
 
   // create the dummy interface
@@ -82,62 +83,64 @@ TEST(SocketCANToTopicTest, checkCorrectData)
 
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
-  socketcan_to_topic->setup();  // initiate the message callbacks
   auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
   auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
-
-  // init the driver to test stateListener (not checked automatically).
-  dummy->init(bus.name, true, can::NoSettings::create());
 
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  int id = 835;
-  auto iter = signal_map.find(id);
-  auto iter2 = name_map.find(id);
-  // register for messages
-  std::string topic_name = iter2->second;
-  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
-
-  // create a can::frame
-  can::Frame f;
-  f.is_extended = true;
-  f.is_rtr = false;
-  f.is_error = false;
-  f.id = iter->first;
-  f.dlc = 8;
-  for (uint8_t i=0; i < f.dlc; i++)
+  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
   {
-    f.data[i] = i;
+    uint32_t valid_id = iter->first;
+
+    socketcan_to_topic->setup();  // initiate the message callbacks
+
+    // init the driver to test stateListener (not checked automatically).
+    dummy->init(bus.name, true, can::NoSettings::create());
+
+    // register for messages
+    std::string topic_name = iter->second;
+    auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
+
+    // create a can::frame
+    can::Frame f;
+    f.is_extended = false;
+    f.is_rtr = false;
+    f.is_error = false;
+    f.id = valid_id;
+    f.dlc = 8;
+    for (uint8_t i=0; i < f.dlc; i++)
+    {
+      f.data[i] = 255;
+    }
+
+    // send the can frame to the driver
+    dummy->send(f);
+
+    // give some time for the interface some time to process the message
+    rclcpp::Rate sleepRate(std::chrono::seconds(1));
+    sleepRate.sleep();
+
+    rclcpp::spin_some(subscriber);
+
+    ASSERT_EQ(1, subscriber->messages.size());
+
+    // compare the received can_msgs::Frame message to the sent can::Frame.
+    can::Frame received;
+    can_msgs::msg::Frame msg = subscriber->messages.back();
+    RCLCPP_INFO(socketcan_to_topic->get_logger(), "id: %i", valid_id);
+    RCLCPP_INFO(socketcan_to_topic->get_logger(), "%s: %f",
+                                  msg.signal_names.back().c_str(),
+                                  msg.signal_values.back());
+    socketcan_bridge::convertMessageToSocketCAN(msg, received, signal_map);
+
+    EXPECT_EQ(received.id, f.id);
+    EXPECT_EQ(received.dlc, f.dlc);
+    EXPECT_EQ(received.is_extended, f.is_extended);
+    EXPECT_EQ(received.is_rtr, f.is_rtr);
+    EXPECT_EQ(received.is_error, f.is_error);
+    EXPECT_EQ(received.data, f.data);
   }
-
-  // send the can frame to the driver
-  dummy->send(f);
-
-  // give some time for the interface some time to process the message
-  rclcpp::Rate sleepRate(std::chrono::seconds(1));
-  sleepRate.sleep();
-
-  // exec.add_node(socketcan_to_topic);
-  // exec.add_node(subscriber);
-  // exec.spin_some();
-
-  rclcpp::spin_some(subscriber);
-
-  ASSERT_EQ(1, subscriber->messages.size());
-
-  // compare the received can_msgs::Frame message to the sent can::Frame.
-  can::Frame received;
-  can_msgs::msg::Frame msg = subscriber->messages.back();
-  socketcan_bridge::convertMessageToSocketCAN(msg, received, signal_map);
-
-  EXPECT_EQ(received.id, f.id);
-  EXPECT_EQ(received.dlc, f.dlc);
-  EXPECT_EQ(received.is_extended, f.is_extended);
-  EXPECT_EQ(received.is_rtr, f.is_rtr);
-  EXPECT_EQ(received.is_error, f.is_error);
-  EXPECT_EQ(received.data, f.data);
-
   dummy->shutdown();
   dummy.reset();
 }
@@ -158,195 +161,195 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
 
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
-  socketcan_to_topic->setup();  // initiate the message callbacks
   auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
   auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
-
-  // init the driver to test stateListener (not checked automatically).
-  dummy->init(bus.name, true, can::NoSettings::create());
 
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  int id = 835;
-  auto iter = signal_map.find(id);
-  auto iter2 = name_map.find(id);
-  // register for messages
-  std::string topic_name = iter2->second;
-  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
-
-  // create a message
-  can::Frame f;
-  f.is_extended = false;
-  f.is_rtr = false;
-  f.is_error = false;
-  f.id = (1<<11)+1;  // this is an illegal CAN packet... should not be sent.
-  f.dlc = 8;
-  for (uint8_t i=0; i < f.dlc; i++)
+  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
   {
-    f.data[i] = i;
+    uint32_t valid_id = iter->first;
+
+    socketcan_to_topic->setup();  // initiate the message callbacks
+
+    // init the driver to test stateListener (not checked automatically).
+    dummy->init(bus.name, true, can::NoSettings::create());
+
+    // register for messages
+    std::string topic_name = iter->second;
+    auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
+
+    // create a message
+    can::Frame f;
+    f.is_extended = false;
+    f.is_rtr = false;
+    f.is_error = false;
+    f.id = (1<<11)+1;  // this is an illegal CAN packet... should not be sent.
+    f.dlc = 8;
+    for (uint8_t i=0; i < f.dlc; i++)
+    {
+      f.data[i] = i;
+    }
+
+    // send the can::Frame over the driver.
+    // dummy->send(f);
+
+    // give some time for the interface some time to process the message
+    rclcpp::Rate sleepRate(std::chrono::seconds(1));
+    sleepRate.sleep();
+
+    // exec.add_node(socketcan_to_topic);
+    // exec.add_node(subscriber);
+    // exec.spin_some();
+
+    rclcpp::spin_some(subscriber);
+
+    EXPECT_EQ(subscriber->messages.size(), 0);
+
+    f.is_extended = true;
+    f.id = valid_id;  // now a valid id
+
+    dummy->send(f);
+    sleepRate.sleep();
+    rclcpp::spin_some(subscriber);
+    EXPECT_EQ(subscriber->messages.size(), 1);
   }
-
-  // send the can::Frame over the driver.
-  // dummy->send(f);
-
-  // give some time for the interface some time to process the message
-  rclcpp::Rate sleepRate(std::chrono::seconds(1));
-  sleepRate.sleep();
-
-  // exec.add_node(socketcan_to_topic);
-  // exec.add_node(subscriber);
-  // exec.spin_some();
-
-  rclcpp::spin_some(subscriber);
-
-  EXPECT_EQ(subscriber->messages.size(), 0);
-
-  f.is_extended = true;
-  f.id = iter->first;  // now a valid id
-
-  dummy->send(f);
-  sleepRate.sleep();
-  rclcpp::spin_some(subscriber);
-  EXPECT_EQ(subscriber->messages.size(), 1);
-
   dummy->shutdown();
   dummy.reset();
 }
 
 TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
 {
-  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkCorrectCanIdFilter");
 
   // create the dummy interface
   auto dummy = std::make_shared<can::ThreadedDummyInterface>();
 
-  // create can_id vector with id that should be passed and published to ros
-  std::vector<unsigned int> pass_can_ids;
-  pass_can_ids.push_back(0x343);
-
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
-  socketcan_to_topic->setup(can::tofilters(pass_can_ids));  // initiate the message callbacks
   auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
   auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
-
-  // init the driver to test stateListener (not checked automatically).
-  dummy->init(bus.name, true, can::NoSettings::create());
 
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  int id = 835;
-  auto iter = signal_map.find(id);
-  auto iter2 = name_map.find(id);
-  // register for messages
-  std::string topic_name = iter2->second;
-  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
-
-  // create a can::frame
-  can::Frame f;
-  f.is_extended = true;
-  f.is_rtr = false;
-  f.is_error = false;
-  f.id = iter->first;
-  f.dlc = 8;
-  for (uint8_t i=0; i < f.dlc; i++)
+  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
   {
-    f.data[i] = i;
+    uint32_t valid_id = iter->first;
+
+    // create can_id vector with id that should be passed and published to ros
+    std::vector<uint32_t> pass_can_ids;
+    pass_can_ids.push_back(valid_id);
+
+    socketcan_to_topic->setup(can::tofilters(pass_can_ids));  // initiate the message callbacks
+
+    // init the driver to test stateListener (not checked automatically).
+    dummy->init(bus.name, true, can::NoSettings::create());
+
+    // register for messages
+    std::string topic_name = iter->second;
+    auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
+
+    // create a can::frame
+    can::Frame f;
+    f.is_extended = true;
+    f.is_rtr = false;
+    f.is_error = false;
+    f.id = valid_id;
+    f.dlc = 8;
+    for (uint8_t i=0; i < f.dlc; i++)
+    {
+      f.data[i] = i;
+    }
+
+    // send the can frame to the driver
+    dummy->send(f);
+
+    // give some time for the interface some time to process the message
+    rclcpp::Rate sleepRate(std::chrono::seconds(1));
+    sleepRate.sleep();
+
+    rclcpp::spin_some(subscriber);
+
+    ASSERT_EQ(1, subscriber->messages.size());
+
+    // compare the received can_msgs::Frame message to the sent can::Frame.
+    can::Frame received;
+    can_msgs::msg::Frame msg = subscriber->messages.back();
+    socketcan_bridge::convertMessageToSocketCAN(msg, received, signal_map);
+
+    EXPECT_EQ(received.id, f.id);
+    EXPECT_EQ(received.dlc, f.dlc);
+    EXPECT_EQ(received.is_extended, f.is_extended);
+    EXPECT_EQ(received.is_rtr, f.is_rtr);
+    EXPECT_EQ(received.is_error, f.is_error);
+    EXPECT_EQ(received.data, f.data);
   }
-
-  // send the can frame to the driver
-  dummy->send(f);
-
-  // give some time for the interface some time to process the message
-  rclcpp::Rate sleepRate(std::chrono::seconds(1));
-  sleepRate.sleep();
-
-  // exec.add_node(socketcan_to_topic);
-  // exec.add_node(subscriber);
-  // exec.spin_some();
-
-  rclcpp::spin_some(subscriber);
-
-  ASSERT_EQ(1, subscriber->messages.size());
-
-  // compare the received can_msgs::Frame message to the sent can::Frame.
-  can::Frame received;
-  can_msgs::msg::Frame msg = subscriber->messages.back();
-  socketcan_bridge::convertMessageToSocketCAN(msg, received,
-                    socketcan_to_topic->s_to_t_id_signal_map_);
-
-  EXPECT_EQ(received.id, f.id);
-  EXPECT_EQ(received.dlc, f.dlc);
-  EXPECT_EQ(received.is_extended, f.is_extended);
-  EXPECT_EQ(received.is_rtr, f.is_rtr);
-  EXPECT_EQ(received.is_error, f.is_error);
-  EXPECT_EQ(received.data, f.data);
-
   dummy->shutdown();
   dummy.reset();
 }
 
 TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
 {
-  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkInvalidCanIdFilter");
 
   // create the dummy interface
   auto dummy = std::make_shared<can::ThreadedDummyInterface>();
 
-  // create can_id vector with id that should not be received on can bus
-  std::vector<unsigned int> pass_can_ids;
-  pass_can_ids.push_back(0x300);
-
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
-  socketcan_to_topic->setup(can::tofilters(pass_can_ids));  // initiate the message callbacks
   auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
   auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
-
-  // init the driver to test stateListener (not checked automatically).
-  dummy->init(bus.name, true, can::NoSettings::create());
 
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  int id = 835;
-  auto iter = signal_map.find(id);
-  auto iter2 = name_map.find(id);
-  // register for messages
-  std::string topic_name = iter2->second;
-  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
-
-  // create a can::frame
-  can::Frame f;
-  f.is_extended = true;
-  f.is_rtr = false;
-  f.is_error = false;
-  f.id = iter->first;
-  f.dlc = 8;
-  for (uint8_t i=0; i < f.dlc; i++)
+  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
   {
-    f.data[i] = i;
+    uint32_t valid_id = iter->first;
+
+    // invalid id in hex format
+    uint32_t invalid_id = valid_id+1;
+
+    // create can_id vector with id that should not be received on can bus
+    std::vector<uint32_t> pass_can_ids;
+    pass_can_ids.push_back(invalid_id);
+
+    socketcan_to_topic->setup(can::tofilters(pass_can_ids));  // initiate the message callbacks
+
+    // init the driver to test stateListener (not checked automatically).
+    dummy->init(bus.name, true, can::NoSettings::create());
+
+
+
+    // register for messages
+    std::string topic_name = iter->second;
+    auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
+
+    // create a can::frame
+    can::Frame f;
+    f.is_extended = true;
+    f.is_rtr = false;
+    f.is_error = false;
+    f.id = valid_id;
+    f.dlc = 8;
+    for (uint8_t i=0; i < f.dlc; i++)
+    {
+      f.data[i] = i;
+    }
+
+    // send the can frame to the driver
+    dummy->send(f);
+
+    // give some time for the interface some time to process the message
+    rclcpp::Rate sleepRate(std::chrono::seconds(1));
+    sleepRate.sleep();
+
+    rclcpp::spin_some(subscriber);
+
+    EXPECT_EQ(0, subscriber->messages.size());
   }
-
-  // send the can frame to the driver
-  dummy->send(f);
-
-  // give some time for the interface some time to process the message
-  rclcpp::Rate sleepRate(std::chrono::seconds(1));
-  sleepRate.sleep();
-
-  // exec.add_node(socketcan_to_topic);
-  // exec.add_node(subscriber);
-  // exec.spin_some();
-
-  rclcpp::spin_some(subscriber);
-
-  EXPECT_EQ(0, subscriber->messages.size());
-
   dummy->shutdown();
   dummy.reset();
 }
@@ -358,68 +361,75 @@ TEST(SocketCANToTopicTest, checkMaskFilter)
   // create the dummy interface
   auto dummy = std::make_shared<can::ThreadedDummyInterface>();
 
-  // setup filter
-  can::FilteredFrameListener::FilterVector filters;
-  filters.push_back(can::tofilter("300:ffe"));
-
   // start the to topic bridge.
   auto socketcan_to_topic = std::make_shared<socketcan_bridge::SocketCANToTopic>(dummy);
-  socketcan_to_topic->setup(filters);  // initiate the message callbacks
   auto signal_map = socketcan_to_topic->s_to_t_id_signal_map_;
   auto name_map = socketcan_to_topic->s_to_t_id_name_map_;
-
-  // init the driver to test stateListener (not checked automatically).
-  dummy->init(bus.name, true, can::NoSettings::create());
 
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  int id = 835;
-  auto iter = signal_map.find(id);
-  auto iter2 = name_map.find(id);
-  // register for messages
-  std::string topic_name = iter2->second;
-  auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
+  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
+  {
+    uint32_t valid_id = iter->first;
 
-  const std::string pass1("300#1234"), nopass1("302#9999"), pass2("301#5678");
+    std::stringstream sstream;
+    sstream << std::hex << valid_id;
+    std::string id_hex = sstream.str();
 
-  // send the can frame to the driver with valid id
-  /* can::Frame p1 = can::toframe(pass1);
-  p1.id = iter->first; */
-  can::Frame p1;
-  p1 = can::toframe(pass1);
-  p1.id = iter->first;
+    // setup filter
+    can::FilteredFrameListener::FilterVector filters;
+    filters.push_back(can::tofilter(id_hex + ":ffe"));
 
-  /* can::Frame np1 = can::toframe(nopass1);
-  np1.id = iter->first; */
-  can::Frame np1;
-  np1 = can::toframe(nopass1);
-  np1.id = iter->first;
+    socketcan_to_topic->setup(filters);  // initiate the message callbacks
 
-  /* can::Frame p2 = can::toframe(pass2);
-  p2.id = iter->first; */
-  can::Frame p2;
-  p2 = can::toframe(pass2);
-  p2.id = iter->first;
+    // init the driver to test stateListener (not checked automatically).
+    dummy->init(bus.name, true, can::NoSettings::create());
 
-  dummy->send(p1);
-  dummy->send(np1);
-  dummy->send(p2);
+    // register for messages
+    std::string topic_name = iter->second;
+    auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
-  // give some time for the interface some time to process the message
-  rclcpp::Rate sleepRate(std::chrono::seconds(1));
-  sleepRate.sleep();
+    const std::string pass1(id_hex + "#1234"),
+                      nopass1("302#9999"),
+                      pass2(id_hex + "#5678");
 
-  rclcpp::spin_some(subscriber);
+    // send the can frame to the driver with valid id
+    auto p1 = can::toframe(pass1);
+    auto np1 = can::toframe(nopass1);
+    auto p2 = can::toframe(pass2);
 
-  // rclcpp::spin_some(subscriber);
+    dummy->send(p1);
 
-  // compare the received can_msgs::Frame message to the sent can::Frame.
-  auto map = socketcan_to_topic->s_to_t_id_signal_map_;
-  ASSERT_EQ(2, subscriber->messages.size());
-  EXPECT_EQ(pass1, convertMessageToString(subscriber->messages.front(), map));
-  EXPECT_EQ(pass2, convertMessageToString(subscriber->messages.back(), map));
+    // give some time for the interface to process the message
+    rclcpp::Rate sleepRate(std::chrono::seconds(1));
+    sleepRate.sleep();
 
+    rclcpp::spin_some(subscriber);
+    // compare the received can_msgs::Frame message to the sent can::Frame.
+    ASSERT_EQ(1, subscriber->messages.size());
+
+    dummy->send(np1);
+
+    // give some time for the interface to process the message
+    sleepRate.sleep();
+
+    rclcpp::spin_some(subscriber);
+    // compare the received can_msgs::Frame message to the sent can::Frame.
+    ASSERT_EQ(1, subscriber->messages.size());
+
+    dummy->send(p2);
+
+    // give some time for the interface to process the message
+    sleepRate.sleep();
+
+    rclcpp::spin_some(subscriber);
+    // compare the received can_msgs::Frame message to the sent can::Frame.
+    ASSERT_EQ(2, subscriber->messages.size());
+
+    EXPECT_EQ(pass1, convertMessageToString(subscriber->messages.front(), signal_map));
+    EXPECT_EQ(pass2, convertMessageToString(subscriber->messages.back(), signal_map));
+  }
   dummy->shutdown();
   dummy.reset();
 }
