@@ -50,7 +50,7 @@ class GTestSubscriber : public rclcpp::Node
     : Node("gtest_subscriber")
     {
       subscriber_ = this->create_subscription<can_msgs::msg::Frame>(
-      topic_name.c_str(), 10, std::bind(&GTestSubscriber::topic_callback,
+      topic_name.c_str(), 1, std::bind(&GTestSubscriber::topic_callback,
                                       this, std::placeholders::_1));
     }
 
@@ -89,9 +89,10 @@ TEST(SocketCANToTopicTest, checkCorrectData)
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
+  for(auto iter = name_map.begin(); iter != name_map.end(); iter++)
   {
     uint32_t valid_id = iter->first;
+    auto signal_iter = signal_map.find(valid_id);
 
     socketcan_to_topic->setup();  // initiate the message callbacks
 
@@ -109,9 +110,31 @@ TEST(SocketCANToTopicTest, checkCorrectData)
     f.is_error = false;
     f.id = valid_id;
     f.dlc = 8;
-    for (uint8_t i=0; i < f.dlc; i++)
+
+    // this test first forms a dummy frame signal, f
+    // sends it through the bridge, creating a ros msg
+    // this ros msg is picked up by a subscriber
+    // converted back to a frame signal
+    // converted frame compared to dummy frame
+    // what if the CAN id it is sent to does not incorporate
+    // the full 64 bits? data will be lost when converting
+    if (signal_iter != signal_map.end())
     {
-      f.data[i] = 255;
+      if (signal_iter->second.size() > 0)
+      {
+        for (const auto &signal : signal_iter->second)
+        {
+          uint8_t start_byte = signal.start_bit_ / 8;
+          uint8_t end_byte = (signal.start_bit_ + signal.bit_length_ - 1) / 8;
+
+          for (uint8_t i=start_byte; i < end_byte+1; i++)
+          {
+            f.data[i] = 255;
+          }
+        }
+      }else{
+        std::fill(f.data.begin(), f.data.end(), 0);
+      }
     }
 
     // send the can frame to the driver
@@ -128,10 +151,8 @@ TEST(SocketCANToTopicTest, checkCorrectData)
     // compare the received can_msgs::Frame message to the sent can::Frame.
     can::Frame received;
     can_msgs::msg::Frame msg = subscriber->messages.back();
-    RCLCPP_INFO(socketcan_to_topic->get_logger(), "id: %i", valid_id);
-    RCLCPP_INFO(socketcan_to_topic->get_logger(), "%s: %f",
-                                  msg.signal_names.back().c_str(),
-                                  msg.signal_values.back());
+    RCLCPP_INFO(socketcan_to_topic->get_logger(), "CAN name: %s | id: %i",
+                                                  iter->second.c_str(), valid_id);
     socketcan_bridge::convertMessageToSocketCAN(msg, received, signal_map);
 
     EXPECT_EQ(received.id, f.id);
@@ -140,6 +161,8 @@ TEST(SocketCANToTopicTest, checkCorrectData)
     EXPECT_EQ(received.is_rtr, f.is_rtr);
     EXPECT_EQ(received.is_error, f.is_error);
     EXPECT_EQ(received.data, f.data);
+
+    subscriber->messages.clear();
   }
   dummy->shutdown();
   dummy.reset();
@@ -152,8 +175,6 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
   // - verifies that sending one larger than 11 bits actually works.
   // sending a message with a dlc > 8 is not possible as the DummyInterface
   // causes a crash then.
-
-  // rclcpp::executors::SingleThreadedExecutor exec;
   can::DummyBus bus("checkInvalidFrameHandling");
 
   // create the dummy interface
@@ -167,9 +188,10 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
+  for(auto iter = name_map.begin(); iter != name_map.end(); iter++)
   {
     uint32_t valid_id = iter->first;
+    auto signal_iter = signal_map.find(valid_id);
 
     socketcan_to_topic->setup();  // initiate the message callbacks
 
@@ -189,7 +211,36 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
     f.dlc = 8;
     for (uint8_t i=0; i < f.dlc; i++)
     {
-      f.data[i] = i;
+      if (f.data[i] != 0 && f.data[i] != 255)
+      {
+        f.data[i] = 0;
+      }
+    }
+
+    // this test first forms a dummy frame signal, f
+    // sends it through the bridge, creating a ros msg
+    // this ros msg is picked up by a subscriber
+    // converted back to a frame signal
+    // converted frame compared to dummy frame
+    // what if the CAN id it is sent to does not incorporate
+    // the full 64 bits? data will be lost when converting
+    if (signal_iter != signal_map.end())
+    {
+      if (signal_iter->second.size() > 0)
+      {
+        for (const auto &signal : signal_iter->second)
+        {
+          uint8_t start_byte = signal.start_bit_ / 8;
+          uint8_t end_byte = (signal.start_bit_ + signal.bit_length_ - 1) / 8;
+
+          for (uint8_t i=start_byte; i < end_byte+1; i++)
+          {
+            f.data[i] = 255;
+          }
+        }
+      }else{
+        std::fill(f.data.begin(), f.data.end(), 0);
+      }
     }
 
     // send the can::Frame over the driver.
@@ -198,10 +249,6 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
     // give some time for the interface some time to process the message
     rclcpp::Rate sleepRate(std::chrono::seconds(1));
     sleepRate.sleep();
-
-    // exec.add_node(socketcan_to_topic);
-    // exec.add_node(subscriber);
-    // exec.spin_some();
 
     rclcpp::spin_some(subscriber);
 
@@ -213,7 +260,12 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
     dummy->send(f);
     sleepRate.sleep();
     rclcpp::spin_some(subscriber);
+    RCLCPP_INFO(socketcan_to_topic->get_logger(), "CAN name: %s | id: %i",
+                                                  iter->second.c_str(), valid_id);
+
     EXPECT_EQ(subscriber->messages.size(), 1);
+
+    subscriber->messages.clear();
   }
   dummy->shutdown();
   dummy.reset();
@@ -234,9 +286,10 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
+  for(auto iter = name_map.begin(); iter != name_map.end(); iter++)
   {
     uint32_t valid_id = iter->first;
+    auto signal_iter = signal_map.find(valid_id);
 
     // create can_id vector with id that should be passed and published to ros
     std::vector<uint32_t> pass_can_ids;
@@ -253,16 +306,44 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
 
     // create a can::frame
     can::Frame f;
-    f.is_extended = true;
+    f.is_extended = false;
     f.is_rtr = false;
     f.is_error = false;
     f.id = valid_id;
     f.dlc = 8;
     for (uint8_t i=0; i < f.dlc; i++)
     {
-      f.data[i] = i;
+      if (f.data[i] != 0 && f.data[i] != 255)
+      {
+        f.data[i] = 0;
+      }
     }
 
+    // this test first forms a dummy frame signal, f
+    // sends it through the bridge, creating a ros msg
+    // this ros msg is picked up by a subscriber
+    // converted back to a frame signal
+    // converted frame compared to dummy frame
+    // what if the CAN id it is sent to does not incorporate
+    // the full 64 bits? data will be lost when converting
+    if (signal_iter != signal_map.end())
+    {
+      if (signal_iter->second.size() > 0)
+      {
+        for (const auto &signal : signal_iter->second)
+        {
+          uint8_t start_byte = signal.start_bit_ / 8;
+          uint8_t end_byte = (signal.start_bit_ + signal.bit_length_ - 1) / 8;
+
+          for (uint8_t i=start_byte; i < end_byte+1; i++)
+          {
+            f.data[i] = 255;
+          }
+        }
+      }else{
+        std::fill(f.data.begin(), f.data.end(), 0);
+      }
+    }
     // send the can frame to the driver
     dummy->send(f);
 
@@ -277,6 +358,8 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
     // compare the received can_msgs::Frame message to the sent can::Frame.
     can::Frame received;
     can_msgs::msg::Frame msg = subscriber->messages.back();
+    RCLCPP_INFO(socketcan_to_topic->get_logger(), "CAN name: %s | id: %i",
+                                                  iter->second.c_str(), valid_id);
     socketcan_bridge::convertMessageToSocketCAN(msg, received, signal_map);
 
     EXPECT_EQ(received.id, f.id);
@@ -285,6 +368,8 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
     EXPECT_EQ(received.is_rtr, f.is_rtr);
     EXPECT_EQ(received.is_error, f.is_error);
     EXPECT_EQ(received.data, f.data);
+
+    subscriber->messages.clear();
   }
   dummy->shutdown();
   dummy.reset();
@@ -305,9 +390,10 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
+  for(auto iter = name_map.begin(); iter != name_map.end(); iter++)
   {
     uint32_t valid_id = iter->first;
+    auto signal_iter = signal_map.find(valid_id);
 
     // invalid id in hex format
     uint32_t invalid_id = valid_id+1;
@@ -321,22 +407,49 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
     // init the driver to test stateListener (not checked automatically).
     dummy->init(bus.name, true, can::NoSettings::create());
 
-
-
     // register for messages
     std::string topic_name = iter->second;
     auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
     // create a can::frame
     can::Frame f;
-    f.is_extended = true;
+    f.is_extended = false;
     f.is_rtr = false;
     f.is_error = false;
     f.id = valid_id;
     f.dlc = 8;
     for (uint8_t i=0; i < f.dlc; i++)
     {
-      f.data[i] = i;
+      if (f.data[i] != 0 && f.data[i] != 255)
+      {
+        f.data[i] = 0;
+      }
+    }
+
+    // this test first forms a dummy frame signal, f
+    // sends it through the bridge, creating a ros msg
+    // this ros msg is picked up by a subscriber
+    // converted back to a frame signal
+    // converted frame compared to dummy frame
+    // what if the CAN id it is sent to does not incorporate
+    // the full 64 bits? data will be lost when converting
+    if (signal_iter != signal_map.end())
+    {
+      if (signal_iter->second.size() > 0)
+      {
+        for (const auto &signal : signal_iter->second)
+        {
+          uint8_t start_byte = signal.start_bit_ / 8;
+          uint8_t end_byte = (signal.start_bit_ + signal.bit_length_ - 1) / 8;
+
+          for (uint8_t i=start_byte; i < end_byte+1; i++)
+          {
+            f.data[i] = 255;
+          }
+        }
+      }else{
+        std::fill(f.data.begin(), f.data.end(), 0);
+      }
     }
 
     // send the can frame to the driver
@@ -347,8 +460,12 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
     sleepRate.sleep();
 
     rclcpp::spin_some(subscriber);
+    RCLCPP_INFO(socketcan_to_topic->get_logger(), "CAN name: %s | id: %i",
+                                                  iter->second.c_str(), valid_id);
 
     EXPECT_EQ(0, subscriber->messages.size());
+
+    subscriber->messages.clear();
   }
   dummy->shutdown();
   dummy.reset();
@@ -369,13 +486,19 @@ TEST(SocketCANToTopicTest, checkMaskFilter)
   // id is an explicitly specified valid id
   // will implement method so that gtest will cycle
   // through all valid ids created from the json
-  for(auto iter = name_map.begin(); iter != name_map.end(); ++iter)
+  for(auto iter = name_map.begin(); iter != name_map.end(); iter++)
   {
     uint32_t valid_id = iter->first;
+    auto signal_iter = signal_map.find(valid_id);
 
     std::stringstream sstream;
     sstream << std::hex << valid_id;
     std::string id_hex = sstream.str();
+
+    sstream.clear();
+
+    sstream << std::hex << valid_id+1;
+    std::string invalid_hex = sstream.str();
 
     // setup filter
     can::FilteredFrameListener::FilterVector filters;
@@ -390,14 +513,17 @@ TEST(SocketCANToTopicTest, checkMaskFilter)
     std::string topic_name = iter->second;
     auto subscriber = std::make_shared<GTestSubscriber>(topic_name);
 
-    const std::string pass1(id_hex + "#1234"),
-                      nopass1("302#9999"),
-                      pass2(id_hex + "#5678");
+    const std::string pass1(id_hex + "#"),
+                      nopass1(invalid_hex + "#9999"),
+                      pass2(id_hex + "#");
 
     // send the can frame to the driver with valid id
     auto p1 = can::toframe(pass1);
     auto np1 = can::toframe(nopass1);
     auto p2 = can::toframe(pass2);
+
+    RCLCPP_INFO(socketcan_to_topic->get_logger(), "CAN name: %s | id: %i",
+                                                  iter->second.c_str(), valid_id);
 
     dummy->send(p1);
 
@@ -429,6 +555,8 @@ TEST(SocketCANToTopicTest, checkMaskFilter)
 
     EXPECT_EQ(pass1, convertMessageToString(subscriber->messages.front(), signal_map));
     EXPECT_EQ(pass2, convertMessageToString(subscriber->messages.back(), signal_map));
+
+    subscriber->messages.clear();
   }
   dummy->shutdown();
   dummy.reset();

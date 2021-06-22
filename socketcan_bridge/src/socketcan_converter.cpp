@@ -60,19 +60,6 @@ namespace socketcan_bridge
         // decode each signal and push them to the ros msg arrays
         for (auto &signal : tmp_signal_iter->second)
         {
-          // break if the signal has no bit length
-          // a CAN msg that spans the full 64 bits
-          // will have a dummy signal with 0 bit length
-          // some dummy signals will have a bit length
-          // this is so that the original data is preserved
-          if (signal.bit_length_ == 0)
-          {
-            signal.value_ = 0.0;
-            m.signal_names.push_back(signal.signal_name_);
-            m.signal_values.push_back(signal.value_);
-            break;
-          }
-
           signal.value_ = decode(data.data(), signal);
 
           m.signal_names.push_back(signal.signal_name_);
@@ -105,14 +92,6 @@ namespace socketcan_bridge
         // iterate through each signal in the message
         for (auto &signal : tmp_signal_iter->second)
         {
-          // break if the signal has no bit length
-          // a CAN msg that spans the full 64 bits
-          // will have a dummy signal with 0 bit length
-          if (signal.bit_length_ == 0)
-          {
-            break;
-          }
-
           // loop through the ros msg vectors until it matches current signal
           for (size_t i = 0; i < tmp_signal_names.size(); i++)
           {
@@ -133,6 +112,8 @@ namespace socketcan_bridge
           // signals fed into the encode function slowly build up data[8] array
           encode(f.data.data(), signal);
         }
+      }else{
+        std::fill(f.data.begin(), f.data.end(), 0);
       }
     }
   }

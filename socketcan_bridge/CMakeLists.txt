@@ -158,7 +158,7 @@ if(BUILD_TESTING)
   ament_add_gtest(test_to_topic
     test/to_topic.test
     test/to_topic_test.cpp
-    TIMEOUT 180
+    TIMEOUT 300
   )
   ament_target_dependencies(test_to_topic
     rclcpp
@@ -176,7 +176,7 @@ if(BUILD_TESTING)
   ament_add_gtest(test_to_socketcan
     test/to_socketcan.test
     test/to_socketcan_test.cpp
-    TIMEOUT 180
+    TIMEOUT 300
   )
   ament_target_dependencies(test_to_socketcan
     rclcpp

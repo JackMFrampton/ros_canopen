@@ -168,6 +168,8 @@ TEST(TopicToSocketCANTest, checkCorrectData)
 
     can_msgs::msg::Frame received;
     can::Frame f = frame_collector_.frames.back();
+    RCLCPP_INFO(topic_to_socketcan->get_logger(), "CAN name: %s | id: %i",
+                                                  iter->second.c_str(), valid_id);
     socketcan_bridge::convertSocketCANToMessage(f, received, signal_map);
 
     EXPECT_EQ(received.id, msg.id);
@@ -176,7 +178,6 @@ TEST(TopicToSocketCANTest, checkCorrectData)
     EXPECT_EQ(received.is_rtr, msg.is_rtr);
     EXPECT_EQ(received.is_error, msg.is_error);
 
-    RCLCPP_INFO(topic_to_socketcan->get_logger(), "1");
     for (uint8_t i=0; i < signal_iter->second.size(); i++)
     {
       EXPECT_EQ(received.signal_names[i], msg.signal_names[i]);
@@ -247,6 +248,8 @@ TEST(TopicToSocketCANTest, checkInvalidFrameHandling)
     rclcpp::spin_some(topic_to_socketcan);
 
     dummy->flush();
+    RCLCPP_INFO(topic_to_socketcan->get_logger(), "CAN name: %s | id: %i",
+                                                  iter->second.c_str(), valid_id);
 
     EXPECT_EQ(frame_collector_.frames.size(), 0);
 
