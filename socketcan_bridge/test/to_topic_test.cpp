@@ -129,7 +129,7 @@ TEST(SocketCANToTopicTest, checkCorrectData)
 
           for (uint8_t i=start_byte; i < end_byte+1; i++)
           {
-            f.data[i] = 255;
+            f.data[i] = 100;
           }
         }
       }else{
@@ -209,13 +209,6 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
     f.is_error = false;
     f.id = (1<<11)+1;  // this is an illegal CAN packet... should not be sent.
     f.dlc = 8;
-    for (uint8_t i=0; i < f.dlc; i++)
-    {
-      if (f.data[i] != 0 && f.data[i] != 255)
-      {
-        f.data[i] = 0;
-      }
-    }
 
     // this test first forms a dummy frame signal, f
     // sends it through the bridge, creating a ros msg
@@ -235,7 +228,7 @@ TEST(SocketCANToTopicTest, checkInvalidFrameHandling)
 
           for (uint8_t i=start_byte; i < end_byte+1; i++)
           {
-            f.data[i] = 255;
+            f.data[i] = 100;
           }
         }
       }else{
@@ -311,13 +304,6 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
     f.is_error = false;
     f.id = valid_id;
     f.dlc = 8;
-    for (uint8_t i=0; i < f.dlc; i++)
-    {
-      if (f.data[i] != 0 && f.data[i] != 255)
-      {
-        f.data[i] = 0;
-      }
-    }
 
     // this test first forms a dummy frame signal, f
     // sends it through the bridge, creating a ros msg
@@ -337,7 +323,7 @@ TEST(SocketCANToTopicTest, checkCorrectCanIdFilter)
 
           for (uint8_t i=start_byte; i < end_byte+1; i++)
           {
-            f.data[i] = 255;
+            f.data[i] = 100;
           }
         }
       }else{
@@ -418,13 +404,6 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
     f.is_error = false;
     f.id = valid_id;
     f.dlc = 8;
-    for (uint8_t i=0; i < f.dlc; i++)
-    {
-      if (f.data[i] != 0 && f.data[i] != 255)
-      {
-        f.data[i] = 0;
-      }
-    }
 
     // this test first forms a dummy frame signal, f
     // sends it through the bridge, creating a ros msg
@@ -444,7 +423,7 @@ TEST(SocketCANToTopicTest, checkInvalidCanIdFilter)
 
           for (uint8_t i=start_byte; i < end_byte+1; i++)
           {
-            f.data[i] = 255;
+            f.data[i] = 100;
           }
         }
       }else{

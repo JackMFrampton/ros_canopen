@@ -63,7 +63,7 @@ struct ErrorHeader : public Header{
 /** representation of a CAN frame */
 struct Frame: public Header{
     using value_type = unsigned char;
-    std::array<value_type, 8> data; ///< array for 8 data bytes with bounds checking
+    std::array<value_type, 8> data = {0}; ///< array for 8 data bytes with bounds checking
     unsigned char dlc; ///< len of data
 
     /** check if frame header and length are valid*/
